@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linuxes on My New Hugo Site</title>
-    <link>http://10.168.1.149:1313/linux/</link>
+    <link>http://10.168.1.149:1313/hugo/linux/</link>
     <description>Recent content in Linuxes on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 27 May 2021 10:09:53 +0800</lastBuildDate><atom:link href="http://10.168.1.149:1313/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 10:09:53 +0800</lastBuildDate><atom:link href="http://10.168.1.149:1313/hugo/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux好玩的</title>
-      <link>http://10.168.1.149:1313/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</link>
+      <link>http://10.168.1.149:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</link>
       <pubDate>Thu, 27 May 2021 10:09:53 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</guid>
+      <guid>http://10.168.1.149:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</guid>
       <description>linux 好玩 压缩  tar -zcvf soft.tar.gz /soft/ /dir /dir  解压  tar -zxvf /soft.tar.gz -C /  查看版本  cat /etc/issue 查看版本  shell脚本的运行方式 1.set -x 或set xtrace
 会显示+以及脚本中的内容(执行的部分，没执行的不显示)
 set -xv（脚本中所有的内容都显示，包括没执行的部分）
@@ -22,10 +22,10 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
     
     <item>
       <title></title>
-      <link>http://10.168.1.149:1313/linux/httpd/</link>
+      <link>http://10.168.1.149:1313/hugo/linux/httpd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://10.168.1.149:1313/linux/httpd/</guid>
+      <guid>http://10.168.1.149:1313/hugo/linux/httpd/</guid>
       <description>httpd访问网络配置httpd_can_network_connect 检查网络访问的配置
 getsebool -a | grep httpd_can_network_connect
 如结果如下

@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://10.168.1.149:1313/categories/</loc>
+    <loc>http://10.168.1.149:1313/hugo/categories/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/categories/go/</loc>
+    <loc>http://10.168.1.149:1313/hugo/categories/go/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/go/go_install/</loc>
+    <loc>http://10.168.1.149:1313/hugo/go/go_install/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/go/</loc>
+    <loc>http://10.168.1.149:1313/hugo/go/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/</loc>
+    <loc>http://10.168.1.149:1313/hugo/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/tags/</loc>
+    <loc>http://10.168.1.149:1313/hugo/tags/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/tags/%E5%AE%89%E8%A3%85/</loc>
+    <loc>http://10.168.1.149:1313/hugo/tags/%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/tags/linux/</loc>
+    <loc>http://10.168.1.149:1313/hugo/tags/linux/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/categories/linux/</loc>
+    <loc>http://10.168.1.149:1313/hugo/categories/linux/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/linux/</loc>
+    <loc>http://10.168.1.149:1313/hugo/linux/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</loc>
+    <loc>http://10.168.1.149:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/tags/tar/</loc>
+    <loc>http://10.168.1.149:1313/hugo/tags/tar/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/linux/httpd/</loc>
+    <loc>http://10.168.1.149:1313/hugo/linux/httpd/</loc>
   </url>
 </urlset>
