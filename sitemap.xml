@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://10.168.1.149:1313/hugo/categories/</loc>
-    <lastmod>2021-06-04T16:44:35+08:00</lastmod>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/categories/linux/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/linux/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/linux/ssh/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/tags/ssh/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
+  </url><url>
+    <loc>http://10.168.1.149:1313/hugo/tags/</loc>
+    <lastmod>2021-06-17T14:26:33+08:00</lastmod>
   </url><url>
     <loc>http://10.168.1.149:1313/hugo/categories/go/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
@@ -14,22 +32,10 @@
     <loc>http://10.168.1.149:1313/hugo/go/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
-    <loc>http://10.168.1.149:1313/hugo/</loc>
-    <lastmod>2021-06-04T16:44:35+08:00</lastmod>
-  </url><url>
-    <loc>http://10.168.1.149:1313/hugo/tags/</loc>
-    <lastmod>2021-06-04T16:44:35+08:00</lastmod>
-  </url><url>
     <loc>http://10.168.1.149:1313/hugo/tags/%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
   </url><url>
     <loc>http://10.168.1.149:1313/hugo/tags/linux/</loc>
-    <lastmod>2021-05-27T10:09:53+08:00</lastmod>
-  </url><url>
-    <loc>http://10.168.1.149:1313/hugo/categories/linux/</loc>
-    <lastmod>2021-05-27T10:09:53+08:00</lastmod>
-  </url><url>
-    <loc>http://10.168.1.149:1313/hugo/linux/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
     <loc>http://10.168.1.149:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</loc>

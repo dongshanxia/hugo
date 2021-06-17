@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>linux好玩的</title>
+    <title>Ssh</title>
 
 
 
@@ -28,7 +28,7 @@
 
 <div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
     <div class="logo-wrapper">
-        <a href="http://10.168.1.149:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/" class="logo">标题<i
+        <a href="http://10.168.1.149:1313/hugo/linux/ssh/" class="logo">标题<i
                     style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
     </div>
 
@@ -64,62 +64,23 @@
             
         
 
-        <h1 id="linux--好玩">linux  好玩</h1>
-<h2 id="压缩">压缩</h2>
-<ul>
-<li>tar -zcvf soft.tar.gz /soft/  /dir  /dir</li>
-</ul>
-<h2 id="解压">解压</h2>
-<ul>
-<li>tar -zxvf /soft.tar.gz -C /</li>
-</ul>
-<h2 id="查看版本">查看版本</h2>
-<ul>
-<li>cat /etc/issue 查看版本</li>
-</ul>
-<h2 id="shell脚本的运行方式">shell脚本的运行方式</h2>
-<p>1.set -x 或set xtrace</p>
-<p>会显示+以及脚本中的内容(执行的部分，没执行的不显示)</p>
-<p>set -xv（脚本中所有的内容都显示，包括没执行的部分）</p>
-<h2 id="查看端口号">查看端口号</h2>
-<p>netstat -lnp|grep 8080</p>
-<h2 id="查找某个文件">查找某个文件</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## 寻找某个文件</span>
-find . -name <span class="s2">&#34;*.tar&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="软连接">软连接</h2>
+        <h2 id="生成公钥和私钥">生成公钥和私钥</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf
+<pre class="chroma"><code class="language-shell" data-lang="shell"> ssh-keygen -t ed25519 -C <span class="s2">&#34;984801940@qq.com&#34;</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="查询服务详情">查询服务详情</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"> journalctl -u 服务名
-</code></pre></td></tr></table>
-</div>
-</div>
+</div><ul>
+<li>后面第一个设置名字</li>
+<li>后面设置访问密码  （免密当然就是这个）</li>
+</ul>
+
         <br />
         <div>
             
-                <a href="http://10.168.1.149:1313/hugo/linux/ssh/">前一页</a>
-            
-            
-                <a href="http://10.168.1.149:1313/hugo/linux/ssh/">后一页</a>
             
         </div>
     </article>
