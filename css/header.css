@@ -2,6 +2,8 @@
 
 .header {
     padding: 20px;
+    border-bottom: #2a9d8f;
+    border-bottom-style: dashed;
 }
 
 .header:before {
@@ -57,6 +59,14 @@
 .menu .menu-item-link {
     font-size: 18px;
 }
+
+.menu .menu-item-link:hover {
+    color: #555;
+    font-weight: bold;
+    border-bottom:10px solid #c05b4d;
+}
+
+
 
 a {
     color: #34495e;
