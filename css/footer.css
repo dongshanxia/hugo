@@ -1,0 +1,24 @@
+.footer {
+    margin-top: 2em;
+}
+
+.footer .social-links {
+    text-align: center;
+}
+
+
+
+
+
+
+.footer .social-links .iconfont{
+    height: 3em;
+    width: 3em;
+}
+
+.footer .copyright {
+    margin: 10px 0;
+    color: #8a8a8a;
+    text-align: center;
+    font-family: Athelas,STHeiti,Microsoft Yahei,serif;
+}

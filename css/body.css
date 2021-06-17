@@ -1,0 +1,40 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    color: #34495e;
+    background: #fefefe;
+    scroll-behavior: smooth;
+    border-top: 3px solid #c05b4d;
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    background-color: #fefefe;
+    min-height: 100vh;
+}
+
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+        -webkit-box-shadow: -1px -5px 5px #cacaca;
+        box-shadow: -1px -5px 5px #cacaca;
+    }
+}
+
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

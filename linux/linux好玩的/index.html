@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>linux好玩的</title>
+
+
+
+
+
+
+
+
+<script src="/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/css/body.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css"></head>
+
+<div>
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/categories">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/about">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h1 id="linux--好玩">linux  好玩</h1>
+<h2 id="压缩">压缩</h2>
+<ul>
+<li>tar -zcvf soft.tar.gz /soft/  /dir  /dir</li>
+</ul>
+<h2 id="解压">解压</h2>
+<ul>
+<li>tar -zxvf /soft.tar.gz -C /</li>
+</ul>
+<h2 id="查看版本">查看版本</h2>
+<ul>
+<li>cat /etc/issue 查看版本</li>
+</ul>
+<h2 id="shell脚本的运行方式">shell脚本的运行方式</h2>
+<p>1.set -x 或set xtrace</p>
+<p>会显示+以及脚本中的内容(执行的部分，没执行的不显示)</p>
+<p>set -xv（脚本中所有的内容都显示，包括没执行的部分）</p>
+<h2 id="查看端口号">查看端口号</h2>
+<p>netstat -lnp|grep 8080</p>
+<h2 id="查找某个文件">查找某个文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## 寻找某个文件</span>
+find . -name <span class="s2">&#34;*.tar&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="软连接">软连接</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="查询服务详情">查询服务详情</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"> journalctl -u 服务名
+</code></pre></td></tr></table>
+</div>
+</div>
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">author</span>
+    <span><a href="http://www.beian.miit.gov.cn" target="_blank">shenmshenm</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
