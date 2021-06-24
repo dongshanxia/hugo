@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on My New Hugo Site</title>
-    <link>http://10.168.1.149:1313/hugo/tags/</link>
+    <link>http://127.0.0.1:1313/hugo/tags/</link>
     <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Jun 2021 14:26:33 +0800</lastBuildDate><atom:link href="http://10.168.1.149:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 14:26:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ssh</title>
-      <link>http://10.168.1.149:1313/hugo/tags/ssh/</link>
+      <link>http://127.0.0.1:1313/hugo/tags/ssh/</link>
       <pubDate>Thu, 17 Jun 2021 14:26:33 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/tags/ssh/</guid>
+      <guid>http://127.0.0.1:1313/hugo/tags/ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>安装</title>
-      <link>http://10.168.1.149:1313/hugo/tags/%E5%AE%89%E8%A3%85/</link>
+      <link>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</link>
       <pubDate>Fri, 04 Jun 2021 16:44:35 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/tags/%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://10.168.1.149:1313/hugo/tags/linux/</link>
+      <link>http://127.0.0.1:1313/hugo/tags/linux/</link>
       <pubDate>Thu, 27 May 2021 10:09:53 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/tags/linux/</guid>
+      <guid>http://127.0.0.1:1313/hugo/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tar</title>
-      <link>http://10.168.1.149:1313/hugo/tags/tar/</link>
+      <link>http://127.0.0.1:1313/hugo/tags/tar/</link>
       <pubDate>Thu, 27 May 2021 10:09:53 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/tags/tar/</guid>
+      <guid>http://127.0.0.1:1313/hugo/tags/tar/</guid>
       <description></description>
     </item>
     

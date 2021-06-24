@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on My New Hugo Site</title>
-    <link>http://10.168.1.149:1313/hugo/categories/</link>
+    <link>http://127.0.0.1:1313/hugo/categories/</link>
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Jun 2021 14:26:33 +0800</lastBuildDate><atom:link href="http://10.168.1.149:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 14:26:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux</title>
-      <link>http://10.168.1.149:1313/hugo/categories/linux/</link>
+      <link>http://127.0.0.1:1313/hugo/categories/linux/</link>
       <pubDate>Thu, 17 Jun 2021 14:26:33 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/categories/linux/</guid>
+      <guid>http://127.0.0.1:1313/hugo/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
-      <link>http://10.168.1.149:1313/hugo/categories/go/</link>
+      <link>http://127.0.0.1:1313/hugo/categories/go/</link>
       <pubDate>Fri, 04 Jun 2021 16:44:35 +0800</pubDate>
       
-      <guid>http://10.168.1.149:1313/hugo/categories/go/</guid>
+      <guid>http://127.0.0.1:1313/hugo/categories/go/</guid>
       <description></description>
     </item>
     
