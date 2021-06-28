@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/http/</link>
+    <description>Recent content in http on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Jun 2021 16:27:24 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Httpd</title>
+      <link>http://127.0.0.1:1313/hugo/linux/httpd/</link>
+      <pubDate>Mon, 28 Jun 2021 16:27:24 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/linux/httpd/</guid>
+      <description>httpd访问网络配置httpd_can_network_connect 检查网络访问的配置
+getsebool -a | grep httpd_can_network_connect
+如结果如下
+httpd_can_network_connect &amp;ndash;&amp;gt; off
+则执行如下命令打开：
+SELinux命令，临时配置，重启后失效 setsebool httpd_can_network_connect=1
+写入配置文件的命令，重启后保留
+setsebool -P httpd_can_network_connect 1</description>
+    </item>
+    
+  </channel>
+</rss>
