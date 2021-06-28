@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Httpd</title>
+    <title>Crontab</title>
 
 
 
@@ -28,7 +28,7 @@
 
 <div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
     <div class="logo-wrapper">
-        <a href="http://127.0.0.1:1313/hugo/linux/httpd/" class="logo">标题<i
+        <a href="http://127.0.0.1:1313/hugo/linux/crontab/" class="logo">标题<i
                     style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
     </div>
 
@@ -64,24 +64,69 @@
             
         
 
-        <h2 id="httpd访问网络配置httpd_can_network_connect">httpd访问网络配置httpd_can_network_connect</h2>
-<p>检查网络访问的配置</p>
-<p>getsebool -a | grep httpd_can_network_connect</p>
-<p>如结果如下</p>
-<p>httpd_can_network_connect &ndash;&gt; off</p>
-<p>则执行如下命令打开：</p>
-<h3 id="selinux命令临时配置重启后失效">SELinux命令，临时配置，重启后失效</h3>
-<p>setsebool httpd_can_network_connect=1</p>
-<p>写入配置文件的命令，重启后保留</p>
-<p>setsebool -P httpd_can_network_connect 1</p>
+        <h3 id="crontab">crontab</h3>
+<ul>
+<li>查看</li>
+<li>crontab -l</li>
+<li>编辑
+<ul>
+<li>crontab -e</li>
+</ul>
+</li>
+<li>如何配置</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>例子</p>
+<ul>
+<li>
+<p>每一分钟执行一次</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">* * * * * /bin/ls  
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>特殊日志消除</p>
+<ul>
+<li>&gt;/dev/null 2&gt;&amp;1  命令后面加这个</li>
+</ul>
+</li>
+</ul>
 
         <br />
         <div>
             
-                <a href="http://127.0.0.1:1313/hugo/linux/crontab/">前一页</a>
-            
-            
-                <a href="http://127.0.0.1:1313/hugo/linux/crontab/">后一页</a>
             
         </div>
     </article>
