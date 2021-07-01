@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DB on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/db/</link>
+    <description>Recent content in DB on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Jul 2021 11:37:32 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/db/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>离线安装mysql</title>
+      <link>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</link>
+      <pubDate>Thu, 01 Jul 2021 11:37:32 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</guid>
+      <description>离线安装mysql
+1.查看是否安装
+1 2  rpm -qa | grep mariadb rpm -qa | grep mysql   2.如果已安装则卸载rpm
+rpm -e &amp;ndash;nodeps
+&amp;ndash;nodeps:由于安装包的依赖问题，需要强制删除
+3.下载rpm包
+   rpm包     mysql-community-client   mysql-community-devel   mysql-community-libs   mysql-community-server   mysql-community-libs   mysql-community-common    4.将rpm包通过xftp等方式放入linux服务器
+5.根据rpm安装
+到rpm包目录下使用命令
+1  rpm -ivh --force mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs-5.7.24-1.el7.x86_64.rpm mysql-community-client-5.7.24-1.el7.x86_64.rpm mysql-community-server-5.7.24-1.el7.x86_64.rpm mysql-community-devel-5.7.24-1.el7.x86_64.rpm mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm   6.启动mysql
+1  service mysqld start   7.</description>
+    </item>
+    
+  </channel>
+</rss>

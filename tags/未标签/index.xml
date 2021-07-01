@@ -14,7 +14,7 @@
       
       <guid>http://127.0.0.1:1313/hugo/about/readme/</guid>
       <description>环境准备  需要有hugo的环境  下载项目 hugo地址
-创建一个属于某一个的类的文件  hugo create linux/aa.md  最好在项目的根目录执行 linux 相当于文件夹    浏览地址  xcb-github netlify-github xcb-gitlab 如果需要自动部署到自己平台 就直接CICD  </description>
+创建一个属于某一个的类的文件  hugo new linux/aa.md  最好在项目的根目录执行 linux 相当于文件夹    浏览地址  xcb-github netlify-github xcb-gitlab 如果需要自动部署到自己平台 就直接CICD  </description>
     </item>
     
   </channel>
