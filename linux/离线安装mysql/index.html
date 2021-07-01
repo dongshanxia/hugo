@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h1 id="离线安装mysql"><strong>离线安装mysql</strong></h1>
+<p>1.查看是否安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">rpm -qa <span class="p">|</span> grep mariadb
+rpm -qa <span class="p">|</span> grep mysql
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="C:%5CUsers%5CMR%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210701110134022.png" alt="image-20210701110134022"></p>
+<p><img src="C:%5CUsers%5CMR%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210701110224685.png" alt="image-20210701110224685"></p>
+<p>2.如果已安装则卸载rpm</p>
+<p>rpm -e &ndash;nodeps</p>
+<p>&ndash;nodeps:由于安装包的依赖问题，需要强制删除</p>
+<p>3.下载rpm包</p>
+<table>
+<thead>
+<tr>
+<th>rpm包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mysql-community-client</td>
+</tr>
+<tr>
+<td>mysql-community-devel</td>
+</tr>
+<tr>
+<td>mysql-community-libs</td>
+</tr>
+<tr>
+<td>mysql-community-server</td>
+</tr>
+<tr>
+<td>mysql-community-libs</td>
+</tr>
+<tr>
+<td>mysql-community-common</td>
+</tr>
+</tbody>
+</table>
+<p>4.将rpm包通过xftp等方式放入linux服务器</p>
+<p>5.根据rpm安装</p>
+<p>到rpm包目录下使用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">rpm -ivh --force mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs-5.7.24-1.el7.x86_64.rpm mysql-community-client-5.7.24-1.el7.x86_64.rpm mysql-community-server-5.7.24-1.el7.x86_64.rpm mysql-community-devel-5.7.24-1.el7.x86_64.rpm mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>6.启动mysql</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">service mysqld start
+</code></pre></td></tr></table>
+</div>
+</div><p>7.获取初始化密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">grep <span class="s1">&#39;temporary password&#39;</span> /var/log/mysqld.log
+</code></pre></td></tr></table>
+</div>
+</div><p>如果没有显示，可能原因是上次安装的残留没有删除干净，使用命令删除</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">rm -rf /var/lib/mysql
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启mysql后再去获取初始化密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">service mysqld restart
+grep <span class="s1">&#39;temporary password&#39;</span> /var/log/mysqld.log
+</code></pre></td></tr></table>
+</div>
+</div><p>如果还是没有。。。那就打开mysqld.log找一下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">tail -n <span class="m">100</span> /var/log/mysqld.log
+</code></pre></td></tr></table>
+</div>
+</div><p>8.登录mysql</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">mysql -u root -p
+</code></pre></td></tr></table>
+</div>
+</div><p>9.修改密码（注意mysql5.0版本与8.0版本的方式不同，可面向搜索引擎查找）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">SET</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PASSWORD</span><span class="p">(</span><span class="s1">&#39;密码&#39;</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="n">EXPIRE</span><span class="w"> </span><span class="n">NEVER</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div>
+        <br />
+        <div>
+            
+                <a href="http://127.0.0.1:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/">前一页</a>
+            
+            
+                <a href="http://127.0.0.1:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/">后一页</a>
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>

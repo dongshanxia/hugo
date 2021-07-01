@@ -73,5 +73,23 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
 查找某个文件 1 2  ## 寻找某个文件 find . -name &amp;#34;*.tar&amp;#34;   软连接 1  ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf   查询服务详情 1  journalctl -u 服务名   </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</guid>
+      <description>离线安装mysql 1.查看是否安装
+1 2  rpm -qa | grep mariadb rpm -qa | grep mysql   2.如果已安装则卸载rpm
+rpm -e &amp;ndash;nodeps
+&amp;ndash;nodeps:由于安装包的依赖问题，需要强制删除
+3.下载rpm包
+   rpm包     mysql-community-client   mysql-community-devel   mysql-community-libs   mysql-community-server   mysql-community-libs   mysql-community-common    4.将rpm包通过xftp等方式放入linux服务器
+5.根据rpm安装
+到rpm包目录下使用命令
+1  rpm -ivh --force mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs-5.7.24-1.el7.x86_64.rpm mysql-community-client-5.7.24-1.el7.x86_64.rpm mysql-community-server-5.7.24-1.el7.x86_64.rpm mysql-community-devel-5.7.24-1.el7.x86_64.rpm mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm   6.启动mysql
+1  service mysqld start   7.</description>
+    </item>
+    
   </channel>
 </rss>
