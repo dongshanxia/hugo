@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Picgo</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="http://127.0.0.1:1313/hugo/linux/picgo/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h1 id="picgo">picgo</h1>
+<ul>
+<li>地址 :  /home/zhu/software/node/node-v14.15.0-linux-x64/bin</li>
+<li>文件内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/usr/bin/env /home/zhu/software/node/node-v14.15.0-linux-x64/bin/node
+</span><span class="cp"></span>const <span class="nv">path</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;path&#39;</span><span class="o">)</span>
+const <span class="nv">minimist</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;minimist&#39;</span><span class="o">)</span>
+const <span class="nv">argv</span> <span class="o">=</span> minimist<span class="o">(</span>process.argv.slice<span class="o">(</span>2<span class="o">))</span>
+<span class="nb">let</span> <span class="nv">configPath</span> <span class="o">=</span> argv.c <span class="o">||</span> argv.config <span class="o">||</span> <span class="s1">&#39;&#39;</span>
+<span class="k">if</span> <span class="o">(</span>configPath !<span class="o">==</span> <span class="nb">true</span> <span class="o">&amp;&amp;</span> configPath !<span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nv">configPath</span> <span class="o">=</span> path.resolve<span class="o">(</span>configPath<span class="o">)</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="nv">configPath</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="o">}</span>
+const <span class="nv">PicGo</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;../dist/src/index&#39;</span><span class="o">)</span>
+const <span class="nv">picgo</span> <span class="o">=</span> new PicGo<span class="o">(</span>configPath<span class="o">)</span>
+picgo.registerCommands<span class="o">()</span>
+
+try <span class="o">{</span>
+  picgo.cmd.program.parse<span class="o">(</span>process.argv<span class="o">)</span>
+<span class="o">}</span> catch <span class="o">(</span>e<span class="o">)</span> <span class="o">{</span>
+  picgo.log.error<span class="o">(</span>e<span class="o">)</span>
+  <span class="k">if</span> <span class="o">(</span>process.argv.includes<span class="o">(</span><span class="s1">&#39;--debug&#39;</span><span class="o">))</span> <span class="o">{</span>
+    Promise.reject<span class="o">(</span>e<span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="安装插件">安装插件</h3>
+<ul>
+<li>picgo install gitee-uploader super-prefix web-uploader</li>
+</ul>
+<h3 id="配置插件">配置插件</h3>
+<ul>
+<li>
+<p>/home/zhu/.picgo</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">zhu@zhu-PC:~/.picgo$ cat config.json 
+<span class="o">{</span>
+  <span class="s2">&#34;picBed&#34;</span>: <span class="o">{</span>
+    <span class="s2">&#34;current&#34;</span>: <span class="s2">&#34;web-uploader&#34;</span>,
+    <span class="s2">&#34;uploader&#34;</span>: <span class="s2">&#34;web-uploader&#34;</span>,
+    <span class="s2">&#34;smms&#34;</span>: <span class="o">{</span>
+      <span class="s2">&#34;token&#34;</span>: <span class="s2">&#34;&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;web-uploader&#34;</span>: <span class="o">{</span>
+      <span class="s2">&#34;customBody&#34;</span>: null,
+      <span class="s2">&#34;customHeader&#34;</span>: null,
+      <span class="s2">&#34;jsonPath&#34;</span>: null,
+      <span class="s2">&#34;paramName&#34;</span>: <span class="s2">&#34;file&#34;</span>,
+      <span class="s2">&#34;url&#34;</span>: <span class="s2">&#34;http://our.dongshanxia.top:56789/img/upload/fileUpload&#34;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">&#34;picgoPlugins&#34;</span>: <span class="o">{</span>
+    <span class="s2">&#34;picgo-plugin-web-uploader&#34;</span>: true,
+    <span class="s2">&#34;picgo-plugin-gitee-uploader&#34;</span>: true,
+    <span class="s2">&#34;picgo-plugin-super-prefix&#34;</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
