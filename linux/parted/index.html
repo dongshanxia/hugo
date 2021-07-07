@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parted</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h2 id="parted">parted</h2>
+<h3 id="规划分区">规划分区</h3>
+<ul>
+<li>
+<p>进入某个磁盘的分区</p>
+<ul>
+<li>parted /dev/sdb</li>
+</ul>
+</li>
+<li>
+<p>新建标签类型</p>
+<ul>
+<li>
+<p>mklabel</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> mklabel                                                  
+新的磁盘标签类型？ gpt                                             
+警告: The existing disk label on /dev/sdb will be destroyed and all data on this disk will be lost. Do you want to <span class="k">continue</span>?
+是/Yes/否/No? yes 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>新建分区</p>
+<ul>
+<li>
+<p>mkpart</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> mkpart
+分区名称？  <span class="o">[]</span>? BigDataPart
+文件系统类型？  <span class="o">[</span>ext2<span class="o">]</span>? ext4
+起始点？ <span class="m">1</span>    可以输入具体的起始点（1M或者1G）1表示扇区最小的起始点   
+结束点？ -1   结束点一样也可以输入具体的结束点（100M或者300G）-1表示扇区最后的结束点                                                     
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>输出分区</p>
+<ul>
+<li>
+<p>p</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">(parted) p                                                                
+Model: DELL PERC H730P Adp (scsi)
+Disk /dev/sdb: 10.0TB
+Sector size (logical/physical): 512B/4096B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system  Name         标志
+ 1      1049kB  10.0TB  10.0TB  xfs          BigDataPart
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>退出</p>
+<ul>
+<li>
+<p>quit</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">(parted) quit                                                             
+信息: You may need to update /etc/fstab.
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h3 id="格式化分区">格式化分区</h3>
+<ul>
+<li>mkfs.ext4   /dev/sdb1</li>
+<li>上面的是ext4的格式化   sdb1 是上面规划出来的分区</li>
+</ul>
+<h3 id="挂载分区">挂载分区</h3>
+<ul>
+<li>
+<p>临时</p>
+</li>
+<li>
+<p>mount  /dev/sdb1  /docker/software</p>
+</li>
+<li>
+<p>永久</p>
+<ul>
+<li>
+<p>vi  /etc/fstab</p>
+</li>
+<li>
+<p>/dev/sdb1              /docker/software                     ext4    defaults        0 0</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#</span>
+<span class="c1"># /etc/fstab</span>
+<span class="c1"># Created by anaconda on Sat Jul  3 02:18:23 2021</span>
+<span class="c1">#</span>
+<span class="c1"># Accessible filesystems, by reference, are maintained under &#39;/dev/disk&#39;</span>
+<span class="c1"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span>
+<span class="c1">#</span>
+/dev/mapper/centos-root /                       xfs     defaults        <span class="m">0</span> <span class="m">0</span>
+<span class="nv">UUID</span><span class="o">=</span>c35ab2e3-6af6-46c2-bdd9-3a4562f25d47 /boot                   xfs     defaults        <span class="m">0</span> <span class="m">0</span>
+<span class="nv">UUID</span><span class="o">=</span>869C-6235          /boot/efi               vfat    <span class="nv">umask</span><span class="o">=</span>0077,shortname<span class="o">=</span>winnt <span class="m">0</span> <span class="m">0</span>
+/dev/mapper/centos-swap swap                    swap    defaults        <span class="m">0</span> <span class="m">0</span>
+
+/dev/sdb1              /docker/software                     ext4    defaults        <span class="m">0</span> <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
