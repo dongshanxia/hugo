@@ -3,18 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://127.0.0.1:1313/hugo/categories/</loc>
-    <lastmod>2021-07-01T12:05:58+08:00</lastmod>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/linux/</loc>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/linux/</loc>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/</loc>
-    <lastmod>2021-07-01T12:05:58+08:00</lastmod>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/</loc>
-    <lastmod>2021-07-01T12:05:58+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/linux/picgo/</loc>
-    <lastmod>2021-07-01T12:05:58+08:00</lastmod>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/</loc>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/linux/%E5%AE%9A%E5%88%B6%E5%8C%96iso/</loc>
+    <lastmod>2021-07-06T18:11:22+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/other/</loc>
+    <lastmod>2021-07-01T12:05:58+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/other/picgo/</loc>
     <lastmod>2021-07-01T12:05:58+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</loc>
@@ -27,9 +39,6 @@
     <lastmod>2021-07-01T11:37:32+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/install/</loc>
-    <lastmod>2021-07-01T11:37:32+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/categories/linux/</loc>
     <lastmod>2021-07-01T11:37:32+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</loc>
@@ -70,9 +79,6 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-06-04T16:44:35+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/linux/</loc>
-    <lastmod>2021-05-27T10:09:53+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>

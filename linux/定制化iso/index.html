@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定制化iso</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h1 id="定制化iso">定制化iso</h1>
+<h2 id="1准备环境">1、准备环境</h2>
+<h3 id="11-安装需要的包">1.1 安装需要的包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum install createrepo mkisofs isomd5sum squashfs-tools
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="12-创建需要的目录">1.2 创建需要的目录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mkdir /opt/centos
+mkdir /opt/old
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13-上传基础安装包">1.3 上传基础安装包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">网上下载：CentOS-7-x86_64-Minimal-1708.iso
+上传到 /opt/
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="14-挂载">1.4 挂载</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mount /opt/CentOS-7-x86_64-Minimal-1708.iso /opt/old/
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="15-复制相关文件">1.5 复制相关文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cp -r /opt/old/* /opt/centos/
+cp  /opt/old/.discinfo /opt/centos/
+cp  /opt/old/.treeinfo  /opt/centos/
+cp /root/anaconda-ks.cfg /opt/centos/isolinux/base-ks.cfg
+chmod +w /opt/centos/isolinux/base-ks.cfg
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="16-修改isolinux文件夹下的isolinuxcfg配置以下为修改的内容">1.6 修改isolinux文件夹下的isolinux.cfg配置(以下为修改的内容)</h3>
+<ul>
+<li>原来的内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cassandra" data-lang="cassandra"><span class="n">label</span><span class="w"> </span><span class="n">linux</span><span class="w">
+</span><span class="w">  </span><span class="n">menu</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">^</span><span class="n">Install</span><span class="w"> </span><span class="n">CentOS</span><span class="w"> </span><span class="mf">7</span><span class="w">
+</span><span class="w">  </span><span class="n">kernel</span><span class="w"> </span><span class="n">vmlinuz</span><span class="w">
+</span><span class="w">  </span><span class="n">append</span><span class="w"> </span><span class="n">initrd</span><span class="o">=</span><span class="n">initrd</span><span class="p">.</span><span class="n">img</span><span class="w"> </span><span class="n">inst</span><span class="p">.</span><span class="n">stage2</span><span class="o">=</span><span class="n">hd</span><span class="nv">:LABEL</span><span class="o">=</span><span class="n">CentOS</span><span class="err">\</span><span class="n">x207</span><span class="err">\</span><span class="n">x20x86_64</span><span class="w"> </span><span class="n">quiet</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">label</span><span class="w"> </span><span class="n">check</span><span class="w">
+</span><span class="w">  </span><span class="n">menu</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="o">^</span><span class="n">media</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">CentOS</span><span class="w"> </span><span class="mf">7</span><span class="w">
+</span><span class="w">  </span><span class="n">menu</span><span class="w"> </span><span class="n">default</span><span class="w">
+</span><span class="w">  </span><span class="n">kernel</span><span class="w"> </span><span class="n">vmlinuz</span><span class="w">
+</span><span class="w">  </span><span class="n">append</span><span class="w"> </span><span class="n">initrd</span><span class="o">=</span><span class="n">initrd</span><span class="p">.</span><span class="n">img</span><span class="w"> </span><span class="n">inst</span><span class="p">.</span><span class="n">stage2</span><span class="o">=</span><span class="n">hd</span><span class="nv">:LABEL</span><span class="o">=</span><span class="n">CentOS</span><span class="err">\</span><span class="n">x207</span><span class="err">\</span><span class="n">x20x86_64</span><span class="w"> </span><span class="n">rd</span><span class="p">.</span><span class="n">live</span><span class="p">.</span><span class="n">check</span><span class="w"> </span><span class="n">quiet</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>修改后的内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">label linux
+  menu label ^Install CentOS 7
+  kernel vmlinuz
+  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet
+label linuxcustom
+  menu label ^Install CentOS 7 For custom
+  menu default
+  kernel vmlinuz
+  append initrd=initrd.img inst.ks=hd:LABEL=TopCentos:/isolinux/base-ks.cfg inst.stage2=hd:LABEL=TopCentos
+label check
+  menu label Test this ^media &amp; install CentOS 7
+  kernel vmlinuz
+  append initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 rd.live.check quiet
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="17-修改efiboot下grubcfg配置以下为修改的内容">1.7 修改EFI/BOOT下grub.cfg配置(以下为修改的内容)</h3>
+<ul>
+<li>原内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">menuentry <span class="s1">&#39;Install CentOS 7&#39;</span> --class fedora --class gnu-linux --class gnu --class os <span class="o">{</span>
+	linuxefi /images/pxeboot/vmlinuz inst.stage2<span class="o">=</span>hd:LABEL<span class="o">=</span>CentOS<span class="se">\x</span>207<span class="se">\x</span>20x86_64 quiet
+	initrdefi /images/pxeboot/initrd.img
+<span class="o">}</span>
+menuentry <span class="s1">&#39;Test this media &amp; install CentOS 7&#39;</span> --class fedora --class gnu-linux --class gnu --class os <span class="o">{</span>
+	linuxefi /images/pxeboot/vmlinuz inst.stage2<span class="o">=</span>hd:LABEL<span class="o">=</span>CentOS<span class="se">\x</span>207<span class="se">\x</span>20x86_64 rd.live.check quiet
+	initrdefi /images/pxeboot/initrd.img
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>现内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">menuentry <span class="s1">&#39;Install CentOS 7&#39;</span> --class fedora --class gnu-linux --class gnu --class os <span class="o">{</span>
+	linuxefi /images/pxeboot/vmlinuz inst.stage2<span class="o">=</span>hd:LABEL<span class="o">=</span>CentOS<span class="se">\x</span>207<span class="se">\x</span>20x86_64 quiet
+	initrdefi /images/pxeboot/initrd.img
+<span class="o">}</span>
+menuentry <span class="s1">&#39;consumer Install CentOS 7&#39;</span> --class fedora --class gnu-linux --class gnu --class os <span class="o">{</span>
+	linuxefi /images/pxeboot/vmlinuz inst.ks<span class="o">=</span>hd:LABEL<span class="o">=</span>TopCentos:/isolinux/base-ks.cfg inst.stage2<span class="o">=</span>hd:LABEL<span class="o">=</span>TopCentos quiet
+	initrdefi /images/pxeboot/initrd.img
+<span class="o">}</span>
+menuentry <span class="s1">&#39;Test this media &amp; install CentOS 7&#39;</span> --class fedora --class gnu-linux --class gnu --class os <span class="o">{</span>
+	linuxefi /images/pxeboot/vmlinuz inst.stage2<span class="o">=</span>hd:LABEL<span class="o">=</span>CentOS<span class="se">\x</span>207<span class="se">\x</span>20x86_64 rd.live.check quiet
+	initrdefi /images/pxeboot/initrd.img
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
