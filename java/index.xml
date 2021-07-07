@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javae on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/java/</link>
+    <description>Recent content in Javae on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="http://127.0.0.1:1313/hugo/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/1.skywalking%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/1.skywalking%E6%90%AD%E5%BB%BA/</guid>
+      <description>基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控 [toc]
+一、安装环境部署 下载镜像：
+1 2 3  $ docker pull docker pull elasticsearch:7.10.1 $ docker pull apache/skywalking-oap-server:8.3.0-es7 $ docker pull apache/skywalking-ui:8.3.0   1.1 Docker 中安装 Elasticsearch7.6.2（方式一） 安装 Elasticsearch
+注意：使用版本为 7.6.2，你可以选择其他版本 拉取镜像
+1  docker pull elasticsearch:7.6.2   启动容器
+1 2 3  docker run --restart=always -p 9200:9200 -p 9300:9300 -e &amp;#34;discovery.type=single-node&amp;#34; \ -e ES_JAVA_OPTS=&amp;#34;-Xms512m -Xmx512m&amp;#34; \ --name=&amp;#39;elasticsearch&amp;#39; --cpuset-cpus=&amp;#34;1&amp;#34; -m 2G -d elasticsearch:7.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/2.skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/2.skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8/</guid>
+      <description>上传tomcat至服务器 1 2  #下载tomcat8 https://tomcat.apache.org/download-80.cgi   修改tomcat配置 1 2 3 4  # 端口修改8081 vim /opt/software/apache-tomcat-8.5.68/conf/server.xml # 修改tomcat启动方式 在加catalina.sh最上面！ CATALINA_OPTS=&amp;#34;$CATALINA_OPTS-javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&amp;#34;; export CATALINA_OPTS   上传springMvc的war包 1  cd /opt/software/apache-tomcat-8.5.68/webapps/   启动tomcat 1  ./opt/software/apache-tomcat-8.5.68/bin/startup.sh    请求一下项目 sky-walking-ui就有记录了！
+ </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/3.skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/3.skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8-/</guid>
+      <description>上传springboot的jar包 1  cd /opt/jar   ![image-20210616225104486](skyWalking搭配springboot应用 .assets/image-20210616225104486.png)
+修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   ![image-20210616230243851](skyWalking搭配springboot应用 .assets/image-20210616230243851.png)
+启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar   ![image-20210616230937487](skyWalking搭配springboot应用 .assets/image-20210616230937487.png)
+ 请求一下项目 sky-walking-ui就有记录了！
+ ![image-20210616230954510](skyWalking搭配springboot应用 .assets/image-20210616230954510.png)</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/4.skywalking%E7%9B%91%E6%8E%A7mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/4.skywalking%E7%9B%91%E6%8E%A7mysql/</guid>
+      <description>  准备以mysql为数据库的springboot应用
+  上传jar到指定目录
+  使用java-agent启动springboot应用
+1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar      可以在ui服务上看到，从用户请求到mysql的过程，还可以看到执行了什么sql,方便查找问题
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/5.skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E5%85%A5%E9%97%A8/5.skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96/</guid>
+      <description>之前使用agent，我们需要每起一个应用都cp一份agent文件，因为应用名称实在agen.config中配置的，为了避免这么麻烦，可以利用配置覆盖，使用同一个agent文件达到不同配置的目的
+ 配置覆盖 默认情况下，SkyWalking为agent提供了agent.config配置文件。
+配置覆盖意味着用户可以通过系统属性或agent选项覆盖配置文件中的配置。
+系统属性 使用 skywalking. + 配置文件中的配置名 作为系统属性的配置名来覆盖配置文件中的值。
+  为什么需要这个前缀？
+因为agent系统属性是和目标应用共享的，加前缀是为了避免冲突。
+  例子
+通过下面的系统属性覆盖agent.application_code。
+1  -Dskywalking.agent.application_code=31200   实际案例
+1 2 3 4 5 6  -Dskywalking.agent.service_name=skywalking_mysql #实际语句 java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar \ -Dskywalking.agent.service_name=skywalking_mysql \ /opt/jar/mysql-boot.jar     java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar
+-Dskywalking.agent.service_name=transaction1
+/opt/jar/transaction1.jar
+&amp;ndash;PROFILE=test
+&amp;ndash;server.port=8002 &amp;amp;
+java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar
+-Dskywalking.agent.service_name=transaction2
+/opt/jar/transaction2.jar
+&amp;ndash;PROFILE=test
+&amp;ndash;server.port=8003 &amp;amp;
+1 2 3 4 5 6 7  ## agent选项 在JVM参数的agent路径后面添加选项。   -javaagent:/path/to/skywalking-agent.</description>
+    </item>
+    
+  </channel>
+</rss>
