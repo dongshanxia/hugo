@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SkyWalking搭配springboot应用(三)</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h2 id="上传springboot的jar包">上传springboot的jar包</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd /opt/jar
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616225104486.png" alt="image-20210616225104486"></p>
+<h2 id="修改agent配置">修改agent配置</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /opt/software/skywalking/apache-skywalking-apm-bin
+mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot
+cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot
+<span class="c1"># 修改应用名称</span>
+vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616230243851.png" alt="image-20210616230243851"></p>
+<h2 id="启动应用">启动应用</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar 
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616230937487.png" alt="image-20210616230937487"></p>
+<blockquote>
+<p>请求一下项目 sky-walking-ui就有记录了！</p>
+</blockquote>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616230954510.png" alt="image-20210616230954510"></p>
+
+        <br />
+        <div>
+            
+                <a href="http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/">前一页</a>
+            
+            
+                <a href="http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/">后一页</a>
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>

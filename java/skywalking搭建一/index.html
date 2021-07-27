@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SkyWalking搭建(一)</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h1 id="基于-docker-部署-skywalking-并实现-springboot-全链路监控">基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控</h1>
+<p>[toc]</p>
+<h1 id="一安装环境部署">一、安装环境部署</h1>
+<p>下载镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ docker pull docker pull elasticsearch:7.10.1
+$ docker pull apache/skywalking-oap-server:8.3.0-es7
+$ docker pull apache/skywalking-ui:8.3.0
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="11-docker-中安装-elasticsearch762方式一">1.1 Docker 中安装 Elasticsearch7.6.2（方式一）</h2>
+<p>安装 Elasticsearch</p>
+<p>注意：使用版本为 7.6.2，你可以选择其他版本
+拉取镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker pull elasticsearch:7.6.2
+</code></pre></td></tr></table>
+</div>
+</div><p>启动容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run --restart=always -p 9200:9200 -p 9300:9300 -e &#34;discovery.type=single-node&#34; \
+-e ES_JAVA_OPTS=&#34;-Xms512m -Xmx512m&#34; \
+--name=&#39;elasticsearch&#39; --cpuset-cpus=&#34;1&#34; -m 2G -d elasticsearch:7.6.2xxxxxxxxxx docker run --restart=always -p 9200:9200 -p 9300:9300 -e &#34;discovery.type=single-node&#34; \-e ES_JAVA_OPTS=&#34;-Xms512m -Xmx512m&#34; \--name=&#39;elasticsearch&#39; --cpuset-cpus=&#34;1&#34; -m 2G -d elasticsearch:7.6.2123
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<ul>
+<li>-v /opt/hanlp:/opt/hanlp 如果使用了 hanlp 的分词，所以需要挂载词库</li>
+<li>ES_JAVA_OPTS 可以设置参数</li>
+<li>单节点启动</li>
+</ul>
+<p>访问地址：http://172.18.63.211:9200</p>
+<h2 id="12-安装部署-elasticsearch7101方式二">1.2 安装部署 elasticsearch:7.10.1（方式二）</h2>
+<h3 id="修改配置文件">修改配置文件</h3>
+<p>（可选）修改主机配置参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vi /etc/sysctl.conf
+vm.max_map_count=262144
+$ sysctl -p
+
+$ vi/etc/systemd/system.conf
+DefaultLimitNOFILE=65536
+DefaultLimitNPROC=32000
+DefaultLimitMEMLOCK=infinity
+$ systemctl daemon-reload
+
+$ vi /etc/security/limits.conf
+* soft nofile 65536
+* hard nofile 65536
+* soft nproc 4096
+* hard nproc 4096
+* hard memlock unlimited
+* soft memlock unlimited
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="启动-elasticsearch">启动 elasticsearch</h3>
+<p>创建持久化目录，并启动 elasticsearch</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ mkdir -p /data/elasticsearch/data
+$ mkdir -p /data/elasticsearch/logs
+$ chmod -R 777 /data/elasticsearch/data
+$ chmod -R 777 /data/elasticsearch/logs
+$ docker run -d --name=es7 \
+  --restart=always \
+  -p 9200:9200 -p 9300:9300 \
+  -e &#34;discovery.type=single-node&#34; \
+  -v /data/elasticsearch/data:/usr/share/elasticsearch/data \
+  -v /data/elasticsearch/logs:/usr/share/elasticsearch/logs \
+elasticsearch:7.10.1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="13-安装-oap">1.3 安装 oap</h2>
+<p><strong>注意：等待 elasticsearch 完全启动之后，再启动 oap</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ docker run --name oap --restart always -d \
+--restart=always \
+-e TZ=Asia/Shanghai \
+-p 12800:12800 \
+-p 11800:11800 \
+--link es7:es7 \
+-e SW_STORAGE=elasticsearch7 \
+-e SW_STORAGE_ES_CLUSTER_NODES=es7:9200 \
+apache/skywalking-oap-server:8.3.0-es7
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：这里指定 elasticsearch 来存储数据</p>
+<ul>
+<li>–link： es7 和你启动的 es 容器的 name 保持一致</li>
+<li>-e SW_STORAGE_ES_CLUSTER_NODES：es7 也可改为你 es 服务器部署的 Ip 地址，即 ip:9200</li>
+</ul>
+<p>如果有如下报错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Entrypoint] Apache SkyWalking Docker Image
+Current image doesn&#39;t Elasticsearch 6
+</code></pre></td></tr></table>
+</div>
+</div><p>把 SW_STORAGE 改成 elasticsearch7 即可</p>
+<h2 id="14-安装-ui">1.4 安装 ui</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ docker run -d --name skywalking-ui \
+--restart=always \
+-e TZ=Asia/Shanghai \
+-p 8080:8080 \
+--link oap:oap \
+-e SW_OAP_ADDRESS=oap:12800 \
+apache/skywalking-ui:8.3.0
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<ul>
+<li>– link：注意容器的名称</li>
+<li>-e SW_OAP_ADDRESS：oap 容器名称，也可改为 ip:12800，即其他服务的 IP 和端口</li>
+</ul>
+<h2 id="15-下载源码包会用到其中的-agent">1.5 下载源码包，会用到其中的 agent</h2>
+<p><a href="http://skywalking.apache.org/downloads/">http://skywalking.apache.org/downloads/</a></p>
+<p>[外链图片转存失败, 源站可能有防盗链机制, 建议将图片保存下来直接上传 (img-K4yXkgBY-1615948939842)(https://lovebetterworld.com/skywalking.png)]</p>
+<h1 id="二springboot-集成-skywalking">二、SpringBoot 集成 Skywalking</h1>
+<h2 id="21-配置">2.1 配置</h2>
+<h3 id="文件准备">文件准备</h3>
+<p>将 apache-skywalking-apm-bin-es7/agent 文件夹拷贝到发布容器中，位置可以根据情况调整。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cp -r ./agent/*  /opt/skywalkingAgent
+</code></pre></td></tr></table>
+</div>
+</div><p>文件说明</p>
+<ul>
+<li>config/agent.config：为客户端代理配置文件，可以根据系统情况进行响应调整，这里就不详细说明。</li>
+<li>logs：SW agent 相关运行情况日志。</li>
+<li>skywalking-agent.jar：agent 代理 jar 包。</li>
+</ul>
+<h3 id="使用方式">使用方式</h3>
+<p>优先级：探针 &gt; JVM 配置 &gt; 系统环境变量 &gt; agent.config</p>
+<p>一般都使用探针方式，其他方式就不介绍了，配置方式如下：s</p>
+<ul>
+<li>格式 1(推荐)：-javaagent:/path/to/skywalking-agent.jar={config1}={value1},{config2}={value2}</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-javaagent:../skywalking-agent.jar=agent.service_name=fw-gateway,collector.backend_service=127.0.0.1:11800
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>格式 2：-Dskywalking.[option1]=[value2]</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">-javaagent:../skywalking-agent.jar -Dskywalking.agent.service_name=fw-gateway -Dskywalking.collector.backend_service=127.0.0.1:11800
+</code></pre></td></tr></table>
+</div>
+</div><p>一般配置下面两项即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">agent.service_name：客户端服务名，在apm系统中显示的服务名称。
+collector.backend_service：SW上传的服务地址。
+</code></pre></td></tr></table>
+</div>
+</div><p>访问相关服务地址后可以在 SW 控制台中查看相关信息</p>
+<h3 id="详细配置">详细配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 探针代理命名空间，跨进场传输时的header标记
+# agent.namespace=${SW_AGENT_NAMESPACE:default-namespace}
+ 
+# 代理服务名称，在ui显示的的服务名称
+agent.service_name=${SW_AGENT_NAME:Your_ApplicationName}
+ 
+# 采样率，每3秒trace几条
+# 小于等于0使用默认值，每条都采样
+# agent.sample_n_per_3_secs=${SW_AGENT_SAMPLE:-1}
+ 
+# server端的认证配置
+# agent.authentication = ${SW_AGENT_AUTHENTICATION:xxxx}
+ 
+# 单个trace的span跨度，会有内存开销
+# agent.span_limit_per_segment=${SW_AGENT_SPAN_LIMIT:150}
+ 
+# 忽略span，多个逗号分隔
+# agent.ignore_suffix=${SW_AGENT_IGNORE_SUFFIX:.jpg,.jpeg,.js,.css,.png,.bmp,.gif,.ico,.mp3,.mp4,.html,.svg}
+ 
+# 开启debug模式，用于发现sw的bug
+# agent.is_open_debugging_class = ${SW_AGENT_OPEN_DEBUG:true}
+ 
+# 是否缓存sw的增强包
+# agent.is_cache_enhanced_class = ${SW_AGENT_CACHE_CLASS:false}
+ 
+# sw指令类的缓存模式: MEMORY or FILE
+# MEMORY: 缓存在内存中，占用内容
+# FILE: 缓存到/class-cache目录下, 退出自动删除
+# agent.class_cache_mode = ${SW_AGENT_CLASS_CACHE_MODE:MEMORY}
+ 
+# 操作名称的最大长度，最大不要超过190
+# agent.operation_name_threshold=${SW_AGENT_OPERATION_NAME_THRESHOLD:150}
+ 
+# 代理默认使用gRPC纯文本。
+# 如果为true，则即使未检测到CA文件，SkyWalking代理也会使用TLS。
+# agent.force_tls=${SW_AGENT_FORCE_TLS:false}
+ 
+# 是否使用新的配置文件
+# profile.active=${SW_AGENT_PROFILE_ACTIVE:true}
+ 
+# 并行监听的分段数量
+# profile.max_parallel=${SW_AGENT_PROFILE_MAX_PARALLEL:5}
+ 
+# 监听分段的最大时间，超出则停止
+# profile.duration=${SW_AGENT_PROFILE_DURATION:10}
+ 
+# 线程最大跨线程数
+# profile.dump_max_stack_depth=${SW_AGENT_PROFILE_DUMP_MAX_STACK_DEPTH:500}
+ 
+# 数据快照缓冲区大小
+# profile.snapshot_transport_buffer_size=${SW_AGENT_PROFILE_SNAPSHOT_TRANSPORT_BUFFER_SIZE:50}
+ 
+# server服务地址
+collector.backend_service=${SW_AGENT_COLLECTOR_BACKEND_SERVICES:127.0.0.1:11800}
+ 
+# sw日志文件
+logging.file_name=${SW_LOGGING_FILE_NAME:skywalking-api.log}
+ 
+# sw日志级别
+logging.level=${SW_LOGGING_LEVEL:INFO}
+ 
+# 日志文件地址
+# logging.dir=${SW_LOGGING_DIR:&#34;&#34;}
+ 
+# 单个日志文件大小, default: 300 * 1024 * 1024 = 314572800
+# logging.max_file_size=${SW_LOGGING_MAX_FILE_SIZE:314572800}
+ 
+# 最大日志文件数量，滚动删除，小于等于0时不删除
+# logging.max_history_files=${SW_LOGGING_MAX_HISTORY_FILES:-1}
+ 
+# 忽略异常
+# statuscheck.ignored_exceptions=${SW_STATUSCHECK_IGNORED_EXCEPTIONS:}
+ 
+# 异常trace的跟踪深度，建议小于10，对性能有影响
+# statuscheck.max_recursive_depth=${SW_STATUSCHECK_MAX_RECURSIVE_DEPTH:1}
+ 
+# 扩展插件
+plugin.mount=${SW_MOUNT_FOLDERS:plugins,activations}
+ 
+# 不加载插件
+# plugin.exclude_plugins=${SW_EXCLUDE_PLUGINS:}
+ 
+# mysql插件
+# plugin.mysql.trace_sql_parameters=${SW_MYSQL_TRACE_SQL_PARAMETERS:false}
+ 
+# Kafka地址
+# plugin.kafka.bootstrap_servers=${SW_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+ 
+# Match spring bean with regex expression for classname
+# plugin.springannotation.classname_match_regex=${SW_SPRINGANNOTATION_CLASSNAME_MATCH_REGEX:}
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="三使用systemctl">三、使用systemctl</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 创建后台启动模版</span>
+vim /etc/systemd/system/skywaking.service
+<span class="c1"># 内容如下：</span>
+<span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>skywaking
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="c1"># /usr/local/src/frp_0.34.2_linux_amd64 frp所在位置</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/opt/software/skywalking/apache-skywalking-apm-bin/bin/startup.sh
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+
+
+<span class="c1"># 启动测试</span>
+systemctl start skywaking.service
+<span class="c1"># 查看启动状态</span>
+systemctl status skywaking.service
+<span class="c1"># 开机自启</span>
+systemctl <span class="nb">enable</span> skywaking.service
+<span class="c1"># 重新启动</span>
+systemctl restart skywaking.service
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="skywalking-文档中文版社区提供">SkyWalking 文档中文版（社区提供）</h1>
+<p><a href="https://github.com/SkyAPM/document-cn-translation-of-skywalking">https://github.com/SkyAPM/document-cn-translation-of-skywalking</a></p>
+
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+</div>
+</body>
+
+</html>
