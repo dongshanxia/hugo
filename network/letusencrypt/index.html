@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LetusEncrypt</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css">
+
+
+
+</head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h2 id="1http与https">1.http与https</h2>
+<ul>
+<li>简单的说:
+<ul>
+<li>https = http+ssl(安全访问)</li>
+<li>https 比较安全</li>
+</ul>
+</li>
+</ul>
+<h2 id="2lets-encrypt">2.Let&rsquo;s Encrypt</h2>
+<ul>
+<li>想要 https 就是购买证书</li>
+<li>在 Let&rsquo;s Encrypt可以免费申请证书</li>
+<li><a href="https://letsencrypt.org/zh-cn/">官网</a></li>
+</ul>
+<h2 id="3certbot">3.Certbot</h2>
+<ul>
+<li>Let&rsquo;s Encrypt 官网提供的服务端的API  但是 作为使用者 还是别去研究API</li>
+<li>官网有很多语言的客户端的  (java,go)</li>
+<li>官网要推荐的客户端 cerbot</li>
+</ul>
+<h2 id="4开启-certbot-之旅">4.开启 Certbot 之旅</h2>
+<ul>
+<li>好像有多种模式 ,多种插件   (多条岔路容易错误)</li>
+<li>无插件 certbot 完成对SSL证书的 申请和续约</li>
+</ul>
+<h3 id="41-准备环境">4.1 准备环境</h3>
+<ul>
+<li>系统 debian  (debian:buster-slim)</li>
+<li>需要能连接互联网</li>
+<li>会用apt命令</li>
+</ul>
+<h3 id="42-安装certbot">4.2 安装certbot</h3>
+<ul>
+<li>更新 apt 源索引</li>
+<li>apt update</li>
+<li>安装 certbot
+<ul>
+<li>apt install certbot</li>
+</ul>
+</li>
+</ul>
+<h3 id="43-使用certbot">4.3 使用certbot</h3>
+<ul>
+<li>
+<p>安装申请证书</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">certbot certonly --agree-tos  --server https://acme-v02.api.letsencrypt.org/directory <span class="se">\
+</span><span class="se"></span>       -m xx@qq.com -d xxx.top --manual --preferred-challenges dns <span class="se">\
+</span><span class="se"></span>        --manual-auth-hook <span class="s2">&#34;/root/TopALiDns -method updateCerbot&#34;</span> -n 
+        --manual-public-ip-logging-ok  
+        --dry-run
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>解释</p>
+<ul>
+<li>certonly   只是申请证书</li>
+<li>&ndash;agree-tos   表示同意后面选项</li>
+<li>&ndash;server   api请求到的地址</li>
+<li>-m  后面加邮箱</li>
+<li>-d  后面加域名  也可以是泛域名 *.xx.top  -d 可以加多个</li>
+<li>&ndash;manual 通过交互式方式，或 Shell 脚本手动获取证书</li>
+<li>&ndash;preferred-challenges 通过什么方式 验证域名是你的</li>
+<li>&ndash;manual-auth-hook 验证过程中会调用后面方法   (看后面解释)</li>
+<li>-n  已非交互式  就是不需要选择的方式 (直接全部同意)</li>
+<li>&ndash;manual-public-ip-logging-ok   同意你的iP被记录</li>
+<li>&ndash;dry-run 就是测试是否通过   如果不加  失败几次就不能测试了  或者通过几次  也不能测试了</li>
+<li>具体限制地址 <a href="https://letsencrypt.org/zh-cn/docs/rate-limits/">dry-run 限制策略</a></li>
+</ul>
+</li>
+<li>
+<p>特殊解释: /root/TopALiDns -method updateCerbot</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">CERTBOT_DOMAIN：正在验证的域
+CERTBOT_VALIDATION：验证字符串
+CERTBOT_TOKEN：HTTP-01 挑战的资源名称部分（仅适用于 HTTP-01）
+CERTBOT_REMAINING_CHALLENGES：当前挑战之后剩余的挑战数
+CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列表
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>最主要还是 CERTBOT_VALIDATION</p>
+<ul>
+<li>shell可以通过echo ${CERTBOT_VALIDATION} 脚本获取</li>
+<li>go可以通过 var accessKeyID = os.Getenv(&ldquo;CERTBOT_VALIDATION&rdquo;) 获取</li>
+</ul>
+</li>
+<li>
+<p>通过这个脚本  完成一下操作</p>
+</li>
+<li>
+<p>| 主机记录 | 记录类型 | 解析线路 | 记录值 | TTL  | 状态 |
+|:&mdash;&mdash;: |: &mdash;&mdash;&ndash; :| :&mdash;&mdash;-: | :&mdash;-: | :&mdash;-: | :&mdash;-: |
+| _acme-challenge | TXT | 默认 | CERTBOT_VALIDATION | 10分钟 | 正常 |</p>
+</li>
+<li>
+<p>通过域名服务商 提供的API 完成 添加或者更新  DNS的解析</p>
+</li>
+<li>
+<p>完成以后 最好让脚本程序 睡眠10秒 (更改没那么快)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>这样就完成了全自动申请证书了</p>
+</li>
+</ul>
+</li>
+<li>
+<p>续期证书</p>
+<ul>
+<li>
+<p>因为证书申请下来 有效期为90天  90天后就需要吧</p>
+</li>
+<li>
+<p>续签命令</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">certbot renew  --manual --preferred-challenges dns  --manual-auth-hook <span class="s2">&#34;/root/cerbot/TopALiDns -method updateCerbot&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>目前这个命令还没测试 通过  (证书没有过期)</p>
+</li>
+<li>
+<p>可以用定时任务进行 上述命令</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="44-收尾操作">4.4 收尾操作</h3>
+<ul>
+<li>产生证书目录  /etc/letsencrypt/live</li>
+<li>可以和nginx 等其它配置结合</li>
+</ul>
+<h2 id="5额外需要封装">5.额外需要封装</h2>
+<h3 id="51封装docker化">5.1封装docker化</h3>
+<ul>
+<li>
+<p>dockerFile</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">FROM docker.nexus.registry:5000/docker/debian:2.6</span><span class="w">
+</span><span class="w"></span><span class="l">ENV CERRBOT_DIR=/etc/letsencrypt/</span><span class="w">
+</span><span class="w"></span><span class="l">ENV CERRBOT_CONFIG=$CERRBOT_DIR/live</span><span class="w">
+</span><span class="w"></span><span class="l">ENV SLEEPTIME=600  </span><span class="w"> </span><span class="c">## renew的查询的间隔时间</span><span class="w">
+</span><span class="w"></span><span class="c">## certbot</span><span class="w">
+</span><span class="w"></span><span class="l">RUN top_install_packages certbot </span><span class="w"> </span><span class="c">## 安装certbot</span><span class="w">
+</span><span class="w"></span><span class="l">COPY start_certbot.sh /root/start_certbot.sh   </span><span class="w">
+</span><span class="w"></span><span class="l">COPY TopALiDns /root/TopALiDns   </span><span class="w"> </span><span class="c">## 更新ali dns的脚本</span><span class="w">
+</span><span class="w"></span><span class="l">COPY start_sleep.sh /root/start_sleep.sh  </span><span class="w"> </span><span class="c">## 睡眠脚本</span><span class="w">
+</span><span class="w"></span><span class="l">CMD [&#34;/bin/bash&#34;,&#34;/root/start_certbot.sh&#34;]</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>最主要是基于debian</p>
+</li>
+</ul>
+</li>
+<li>
+<p>start_certbot.sh</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">set</span> -xv
+<span class="c1">#mysql初始化</span>
+INIT_GET_CERBORT<span class="o">(){</span>
+	<span class="nv">Config_Count</span><span class="o">=</span><span class="sb">`</span>ls <span class="si">${</span><span class="nv">CERRBOT_CONFIG</span><span class="si">}</span> <span class="p">|</span>wc -l<span class="sb">`</span>
+	<span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">Config_Count</span><span class="si">}</span><span class="s2">&#34;</span> -ge <span class="m">1</span> <span class="o">]]</span>
+	<span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;证书已经安装不需要再次申请&#34;</span>
+	<span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&#34;证书没有 需要重新申请&#34;</span>
+        certbot certonly --agree-tos  --server https://acme-v02.api.letsencrypt.org/directory <span class="se">\
+</span><span class="se"></span>        -m 邮箱@qq.com -d 域名 --manual --preferred-challenges dns <span class="se">\
+</span><span class="se"></span>        --manual-auth-hook <span class="s2">&#34;/root/TopALiDns -method updateCerbot&#34;</span> -n --manual-public-ip-logging-ok  
+	<span class="k">fi</span>
+<span class="o">}</span>
+
+sleep_stop<span class="o">(){</span>
+	<span class="nv">process</span><span class="o">=</span><span class="sb">`</span>ps -ef <span class="p">|</span> grep start_sleep.sh <span class="p">|</span> grep -v grep <span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+	<span class="nb">kill</span> -15 <span class="nv">$process</span>
+	<span class="nb">kill</span> -18 <span class="nv">$process</span>
+	<span class="nb">exit</span>
+<span class="o">}</span>
+
+<span class="c1">#RENEW_DAEMON守护脚本</span>
+RENEW_DAEMON<span class="o">(){</span>
+    <span class="nb">echo</span> <span class="s1">&#39;RENEW_DAEMON&#39;</span>
+	<span class="k">while</span> :
+	<span class="k">do</span>
+        <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGTERM
+        <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGINT
+
+        <span class="nb">echo</span> <span class="s1">&#39;RENEW_DAEMON&#39;</span>
+        certbot renew  --manual --preferred-challenges dns  --manual-auth-hook <span class="s2">&#34;/root/cerbot/TopALiDns -method updateCerbot&#34;</span>
+        chmod +x  /root/start_sleep.sh
+        /root/start_sleep.sh <span class="si">${</span><span class="nv">SLEEPTIME</span><span class="si">}</span> <span class="p">&amp;</span>
+        <span class="nb">wait</span> <span class="nv">$!</span>
+	<span class="k">done</span>
+<span class="o">}</span>
+
+<span class="nb">echo</span> <span class="s1">&#39;开始INIT_CERBOT&#39;</span>
+INIT_GET_CERBORT
+RENEW_DAEMON
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">graph TD
+    A[Start] --&gt; B{是否有申请好的证书};
+    B --&gt;|Yes| C[进入renew证书];
+    D --&gt; F[申请证书]
+    F --&gt; C;
+    B ----&gt;|No| D[进入申请证书];
+    C --&gt;G[进入循环续签证书];
+    G --&gt;|循环| G;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+        <br />
+        <div>
+            
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/" title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xiaozhuzhu</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+<script>
+    
+
+    const mermaidKeywords = [
+        "graph TD",
+        "graph TB",
+        "graph BT",
+        "graph RL",
+        "graph LR",
+        "sequenceDiagram",
+        "gantt",
+        "classDiagram",
+        "gitGraph",
+        "erDiagram",
+        "journey"
+    ];
+    console.log("-----")
+    Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
+        
+        var graphDefinition = el.innerText;
+
+
+        for (const keyword of mermaidKeywords) {
+            if (graphDefinition.startsWith(keyword)) {
+                
+                
+                el.className = "mermaid";
+                console.log(graphDefinition)
+                var edgePathStyle  = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+            
+                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+
+                graphDefinition = graphDefinition +"\n"+edgePathStyle
+                graphDefinition = graphDefinition +"\n"+defaultStyle
+             
+                el.innerHTML =graphDefinition;
+                el.align = "center";
+                el.setAttribute("data-lang", "mermaid")
+                
+            }
+        }
+
+
+    })
+</script>
+<style>
+
+    .mermaid svg {
+        display: block;
+        margin: auto;
+    }
+
+
+</style></div>
+</body>
+
+</html>

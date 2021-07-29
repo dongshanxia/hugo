@@ -22,7 +22,11 @@
 <link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
 <link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
 <link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
-<link rel="stylesheet" type="text/css" href="/hugo/css/main.css"></head>
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css">
+
+
+
+</head>
 
 <div>
 
@@ -260,7 +264,7 @@ menuentry <span class="s1">&#39;Test this media &amp; install CentOS 7&#39;</spa
     </article>
 </div><footer id="footer" class="footer">
     <div class="social-links">
-        <a href="http://our.dongshanxia.top:38888/"  title="gitlab">
+        <a href="http://our.dongshanxia.top:38888/" title="gitlab">
             <svg class="icon iconfont" aria-hidden="true">
                 <use xlink:href="#icon-gitlab"></use>
             </svg>
@@ -285,7 +289,72 @@ menuentry <span class="s1">&#39;Test this media &amp; install CentOS 7&#39;</spa
     </div>
 </footer>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+<script>
+    
+
+    const mermaidKeywords = [
+        "graph TD",
+        "graph TB",
+        "graph BT",
+        "graph RL",
+        "graph LR",
+        "sequenceDiagram",
+        "gantt",
+        "classDiagram",
+        "gitGraph",
+        "erDiagram",
+        "journey"
+    ];
+    console.log("-----")
+    Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
+        
+        var graphDefinition = el.innerText;
+
+
+        for (const keyword of mermaidKeywords) {
+            if (graphDefinition.startsWith(keyword)) {
+                
+                
+                el.className = "mermaid";
+                console.log(graphDefinition)
+                var edgePathStyle  = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+            
+                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+
+                graphDefinition = graphDefinition +"\n"+edgePathStyle
+                graphDefinition = graphDefinition +"\n"+defaultStyle
+             
+                el.innerHTML =graphDefinition;
+                el.align = "center";
+                el.setAttribute("data-lang", "mermaid")
+                
+            }
+        }
+
+
+    })
+</script>
+<style>
+
+    .mermaid svg {
+        display: block;
+        margin: auto;
+    }
+
+
+</style></div>
 </body>
 
 </html>

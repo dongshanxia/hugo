@@ -556,6 +556,7 @@
     color: #75715e
 }
 
+
 :root {
     --body-background: #f5f5fa;
     --accent-color: #34495e;
@@ -2171,3 +2172,4 @@ a.link:hover {
 .section-title a {
     color: var(--body-text-color)
 }
+
