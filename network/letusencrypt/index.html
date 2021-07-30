@@ -182,9 +182,28 @@ CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列�
 <p>通过这个脚本  完成一下操作</p>
 </li>
 <li>
-<p>| 主机记录 | 记录类型 | 解析线路 | 记录值 | TTL  | 状态 |
-|:&mdash;&mdash;: |: &mdash;&mdash;&ndash; :| :&mdash;&mdash;-: | :&mdash;-: | :&mdash;-: | :&mdash;-: |
-| _acme-challenge | TXT | 默认 | CERTBOT_VALIDATION | 10分钟 | 正常 |</p>
+<table>
+<thead>
+<tr>
+<th>主机记录</th>
+<th>记录类型</th>
+<th>解析线路</th>
+<th>记录值</th>
+<th>TTL</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_acme-challenge</td>
+<td>TXT</td>
+<td>默认</td>
+<td>CERTBOT_VALIDATION</td>
+<td>10分钟</td>
+<td>正常</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>通过域名服务商 提供的API 完成 添加或者更新  DNS的解析</p>
