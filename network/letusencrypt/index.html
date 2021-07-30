@@ -236,9 +236,7 @@ CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列�
 </ul>
 <h2 id="5额外需要封装">5.额外需要封装</h2>
 <h3 id="51封装docker化">5.1封装docker化</h3>
-<ul>
-<li>
-<p>dockerFile</p>
+<h4 id="dockerfile">dockerFile</h4>
 <ul>
 <li>
 <div class="highlight"><div class="chroma">
@@ -272,9 +270,7 @@ CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列�
 <p>最主要是基于debian</p>
 </li>
 </ul>
-</li>
-<li>
-<p>start_certbot.sh</p>
+<h4 id="start_certbotsh">start_certbot.sh</h4>
 <ul>
 <li>
 <div class="highlight"><div class="chroma">
@@ -331,9 +327,9 @@ INIT_GET_CERBORT<span class="o">(){</span>
 	<span class="nv">Config_Count</span><span class="o">=</span><span class="sb">`</span>ls <span class="si">${</span><span class="nv">CERRBOT_CONFIG</span><span class="si">}</span> <span class="p">|</span>wc -l<span class="sb">`</span>
 	<span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">Config_Count</span><span class="si">}</span><span class="s2">&#34;</span> -ge <span class="m">1</span> <span class="o">]]</span>
 	<span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&#34;证书已经安装不需要再次申请&#34;</span>
+      <span class="nb">echo</span> <span class="s2">&#34;证书已经安装不需要再次申请&#34;</span>
 	<span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">&#34;证书没有 需要重新申请&#34;</span>
+      <span class="nb">echo</span> <span class="s2">&#34;证书没有 需要重新申请&#34;</span>
         certbot certonly --agree-tos  --server https://acme-v02.api.letsencrypt.org/directory <span class="se">\
 </span><span class="se"></span>        -m 邮箱@qq.com -d 域名 --manual --preferred-challenges dns <span class="se">\
 </span><span class="se"></span>        --manual-auth-hook <span class="s2">&#34;/root/TopALiDns -method updateCerbot&#34;</span> -n --manual-public-ip-logging-ok  
@@ -352,14 +348,14 @@ RENEW_DAEMON<span class="o">(){</span>
     <span class="nb">echo</span> <span class="s1">&#39;RENEW_DAEMON&#39;</span>
 	<span class="k">while</span> :
 	<span class="k">do</span>
-        <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGTERM
-        <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGINT
+      <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGTERM
+      <span class="nb">trap</span> <span class="s1">&#39;sleep_stop&#39;</span> SIGINT
 
-        <span class="nb">echo</span> <span class="s1">&#39;RENEW_DAEMON&#39;</span>
-        certbot renew  --manual --preferred-challenges dns  --manual-auth-hook <span class="s2">&#34;/root/cerbot/TopALiDns -method updateCerbot&#34;</span>
-        chmod +x  /root/start_sleep.sh
-        /root/start_sleep.sh <span class="si">${</span><span class="nv">SLEEPTIME</span><span class="si">}</span> <span class="p">&amp;</span>
-        <span class="nb">wait</span> <span class="nv">$!</span>
+      <span class="nb">echo</span> <span class="s1">&#39;RENEW_DAEMON&#39;</span>
+      certbot renew  --manual --preferred-challenges dns  --manual-auth-hook <span class="s2">&#34;/root/cerbot/TopALiDns -method updateCerbot&#34;</span>
+      chmod +x  /root/start_sleep.sh
+      /root/start_sleep.sh <span class="si">${</span><span class="nv">SLEEPTIME</span><span class="si">}</span> <span class="p">&amp;</span>
+      <span class="nb">wait</span> <span class="nv">$!</span>
 	<span class="k">done</span>
 <span class="o">}</span>
 
@@ -370,6 +366,9 @@ RENEW_DAEMON
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>脚本功能解释</p>
+</li>
 <li>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -388,15 +387,61 @@ RENEW_DAEMON
     B --&gt;|Yes| C[进入renew证书];
     D --&gt; F[申请证书]
     F --&gt; C;
-    B ----&gt;|No| D[进入申请证书];
-    C --&gt;G[进入循环续签证书];
-    G --&gt;|循环| G;
+  B ----&gt;|No| D[进入申请证书];
+  C --&gt;G[进入循环续签证书];
+  G --&gt;|循环 sleep| G;
 </code></pre></td></tr></table>
 </div>
 </div></li>
-<li></li>
 </ul>
-</li>
+<h4 id="docker-composeyml">docker-compose.yml</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># 在工作目录下创建 docker-compose.yml 文件，编辑以下内容</span><span class="w">
+</span><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">nexus</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker.nexus.registry:5000/docker/certbot:1.0</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">certbot</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="m">10.168.2.70</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span><span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l">/root</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">profile=&#34;&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/nginx/cert:/etc/letsencrypt/live</span><span class="w">
+</span><span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;json-file&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10m&#34;</span><span class="w">
+</span><span class="w">        </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;5&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
         <br />
@@ -494,6 +539,14 @@ RENEW_DAEMON
     .mermaid svg {
         display: block;
         margin: auto;
+    }
+    .post >td,th{
+        border:1px solid #F00;
+        text-align: center;
+    }
+    .post td{
+        border:1px solid #F00;
+        text-align: center;
     }
 
 
