@@ -6,22 +6,22 @@
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 06 Aug 2021 12:25:18 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 15:42:05 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>network</title>
+      <link>http://127.0.0.1:1313/hugo/categories/network/</link>
+      <pubDate>Mon, 09 Aug 2021 15:42:05 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/categories/network/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>linux</title>
       <link>http://127.0.0.1:1313/hugo/categories/linux/</link>
       <pubDate>Fri, 06 Aug 2021 12:25:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>network</title>
-      <link>http://127.0.0.1:1313/hugo/categories/network/</link>
-      <pubDate>Thu, 29 Jul 2021 10:15:04 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/categories/network/</guid>
       <description></description>
     </item>
     
