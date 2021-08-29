@@ -6,7 +6,24 @@
     <description>Recent content in 未标签 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Jul 2021 12:05:58 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 17:04:59 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dongshanxia</title>
+      <link>http://127.0.0.1:1313/hugo/about/dongshanxia/</link>
+      <pubDate>Sun, 29 Aug 2021 17:04:59 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/about/dongshanxia/</guid>
+      <description>个人介绍  出生: 1995.04 住址: 杭州市滨江区 电话: 13395753926 邮箱: 984801940@qq.com   教育背景    时间 学校 专业     2014.09-2018.07 洛阳理工学院 计算机科学与技术    掌握技能   严格遵守Java开发规范，有良好的面向对象的业务分析能力，代码书写简洁，力求完美开发。
+  熟练运用Spring，SpringMVC，Springboot，Spring Cloud等Spring全家桶系列框架。
+  熟练掌握MySql，PostgreSQL, Redis等数据库和mybatis，mybatisPlus，jdbc等持久层开发技术.
+  熟练使用fastDFS，Cloudreve等文件存储服务技术，了解OSS对象存储服务技术。
+  熟练使用zookeeper , hadoop , hbase , Elasticsearch，kerbors等技术工具进行开发。
+  精通使用kafka，kafka调优，spark,spark调优等大数据技术。
+  熟练使用maven项目版本，打包和依赖管理工具
+  熟练使用linux操作系统，网络配置，shell脚本 (grep , sed , awk）
+  熟练使用docker镜像的分层，docker-compose和docker命令简单使用</description>
+    </item>
+    
     <item>
       <title>Picgo</title>
       <link>http://127.0.0.1:1313/hugo/other/picgo/</link>
