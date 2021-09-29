@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vim</title>
+    <title>Pve</title>
 
 
 
@@ -68,36 +68,29 @@
             
         
 
-        <h2 id="deepin-vim">deepin-vim</h2>
-<h4 id="针对用户">针对用户</h4>
-<ul>
-<li>下载需要的包 到 家目录</li>
-</ul>
+        <h3 id="查看集群资源状况">查看集群资源状况  </h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">wget --no-check-certificate https://raw.githubusercontent.com/vim/vim/master/runtime/vimrc_example.vim -O ~/.vimrc
+<pre class="chroma"><code class="language-shell" data-lang="shell">pvesh get /cluster/resources
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="针对全局用户">针对全局用户</h4>
-<ol>
-<li>找到vim的  全局配置路径：</li>
-</ol>
-<ul>
-<li>执行vim然后输入:echo $VIMRUNTIME</li>
-</ul>
-<ol start="2">
-<li>修改默认配置文件：sudo vim $VIMRUNTIME/defaults.vim</li>
-<li>具体可以修改的文件的功能 可以用下面的</li>
-<li>保存文件完成修改：
-<ul>
-<li>:wq</li>
-</ul>
-</li>
-</ol>
-<h4 id="可以修改的配置">可以修改的配置</h4>
+</div><h3 id="取得虚拟机当前状态">取得虚拟机当前状态</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pvesh get /nodes/&lt;节点id&gt;/qemu/&lt;虚拟机id&gt;/status/current
+
+pvesh get /nodes/pve/qemu/100/status/current
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭虚拟机">关闭虚拟机</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -113,31 +106,62 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#设置语法高亮</span>
-<span class="nb">echo</span> <span class="s1">&#39;syntax on&#39;</span> &gt;&gt; ~/.vimrc
+<pre class="chroma"><code class="language-shell" data-lang="shell">pvesh create /nodes/&lt;节点id&gt;/qemu/&lt;虚拟机id&gt;/status/stop
 
-<span class="c1">#开启行号显示【标准方式】或上面的【简写方式】也可以</span>
-<span class="nb">echo</span> <span class="s1">&#39;set number&#39;</span> &gt;&gt; ~/.vimrc
-<span class="c1">#开启行号显示【简写方式】或下面的【标准方式】也可以</span>
-<span class="nb">echo</span> <span class="s1">&#39;set nu&#39;</span> &gt;&gt; ~/.vimrc
 
-<span class="c1">#开启拼写检查</span>
-<span class="nb">echo</span> <span class="s1">&#39;set spell&#39;</span> &gt;&gt; ~/.vimrc
 
-<span class="c1">#重点：关闭鼠标模式</span>
-<span class="nb">echo</span> <span class="s1">&#39;set mouse=&#34;&#34;&#39;</span> &gt;&gt; ~/.vimrc
+pvesh create /nodes/pve/qemu/990/status/start
+
+pvesh create /nodes/pve/qemu/176/status/start
+pvesh create /nodes/pve/qemu/255/status/start
+pvesh create /nodes/pve/qemu/201/status/start
+pvesh create /nodes/pve/qemu/100/status/start
+pvesh create /nodes/pve/qemu/399/status/start
+pvesh create /nodes/pve/qemu/103/status/start
+pvesh create /nodes/pve/qemu/101/status/start
+pvesh create /nodes/pve/qemu/174/status/start
+pvesh create /nodes/pve/qemu/104/status/start
+pvesh create /nodes/pve/qemu/777/status/start
+pvesh create /nodes/pve/qemu/102/status/start
+pvesh create /nodes/pve/qemu/999/status/start
+pvesh create /nodes/pve/qemu/173/status/start
+
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="挂载img文件">挂载img文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">qm importdisk <span class="m">990</span> /var/lib/vz/template/iso/openwrt-gdq-v9-1_2021_-x86-64-generic-squashfs-uefi.img ssd-1000
+</code></pre></td></tr></table>
 </div>
+</div><h3 id="挂载物理磁盘">挂载物理磁盘</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">qm set 虚拟机id号
+qm set 999 -sata1 ata-MM0500EBKAE_9XF1FG4J
+</code></pre></td></tr></table>
+</div>
+</div><p>https://192.168.1.4:8006/pve-docs/api-viewer/index.html</p>
+
         <br />
         <div>
             
-                <a href="http://127.0.0.1:1313/hugo/linux/pve/">前一页</a>
-            
-            
-                <a href="http://127.0.0.1:1313/hugo/linux/pve/">后一页</a>
             
         </div>
     </article>
