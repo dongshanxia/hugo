@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mssql安装</title>
+
+
+
+
+
+
+
+
+<script src="/hugo/js/iconfont.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/idea.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/other/syntax.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/body.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/main.css">
+
+
+
+</head>
+
+<div>
+
+<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="logo-wrapper">
+        <a href="/" class="logo">标题<i
+                    style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
+    </div>
+
+    <nav class="site-navbar">
+        <ul id="menu" class="menu">
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/categories/">博文</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-item-link" href="/hugo/about/">关于</a>
+                </li>
+            
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+<div id="post" class="post">
+    <article>
+        
+            
+        
+
+        <h2 id="mssql的-部署步骤">mssql的 部署步骤</h2>
+<h4 id="下载地址">下载地址:</h4>
+<ul>
+<li>http://192.168.30.65:8080/share.cgi?ssid=04ojgsE</li>
+</ul>
+<h4 id="导入镜像">导入镜像</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker load &lt; mssql_1.tar
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="查看是否倒入成功">查看是否倒入成功</h3>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker images | grep mssql
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-10-12/9-42-9-image-20211012094208679.png" alt="image-20211012094208679"></p>
+</li>
+</ul>
+<h3 id="启动命令">启动命令</h3>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker container run --restart<span class="o">=</span>always --name mssql -p 31433:31433
+          -v /docker/software/MSSQL/data:/var/opt/mssql/data/
+          -v /docker/software/MSSQL/log:/var/opt/mssql/log/
+          -v /docker/software/MSSQL/config:/var/opt/mssql/config
+          -d  docker.nexus.registry:5000/docker/MSSQL:1.0
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>docker-compose 文件</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">version: &#34;3&#34;
+services:
+  MSSQL:
+    image: docker.nexus.registry:5000/docker/MSSQL:1.0
+    container_name: MSSQL
+    hostname: 10.168.2.82
+    restart: always
+    privileged: true
+    working_dir: /root
+    environment:
+      - profile=&#34;&#34;
+    volumes:
+      - /docker/software/MSSQL/data:/var/opt/mssql/data
+      - /docker/software/MSSQL/log:/var/opt/mssql/log
+      - /docker/software/MSSQL/config:/var/opt/mssql/config
+    expose:
+      - &#34;22&#34;
+      - &#34;3306&#34;
+    ports:
+      - &#34;34522:22&#34;
+    network_mode: &#34;bridge&#34;  
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="数据库配置说明">数据库配置说明</h3>
+<ul>
+<li>帐号密码
+<ul>
+<li>帐号: SA</li>
+<li>密码:top123-DONGSHANXIA</li>
+</ul>
+</li>
+<li>帐号密码
+<ul>
+<li>帐号:root</li>
+<li>密码:root123-DONGSHANXIA</li>
+</ul>
+</li>
+</ul>
+
+        <br />
+        <div>
+            
+                <a href="http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/">前一页</a>
+            
+            
+                <a href="http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/">后一页</a>
+            
+        </div>
+    </article>
+</div><footer id="footer" class="footer">
+    <div class="social-links">
+        <a href="http://our.dongshanxia.top:38888/" title="gitlab">
+            <svg class="icon iconfont" aria-hidden="true">
+                <use xlink:href="#icon-gitlab"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="copyright">
+
+
+
+
+  <span class="copyright-year">
+    ©
+    2021 -
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dongshanxia,xiaozhuzhu,ggball</span>
+    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备18008055号</a></span>
+  </span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+<script>
+    
+
+    const mermaidKeywords = [
+        "graph TD",
+        "graph TB",
+        "graph BT",
+        "graph RL",
+        "graph LR",
+        "sequenceDiagram",
+        "gantt",
+        "classDiagram",
+        "gitGraph",
+        "erDiagram",
+        "journey"
+    ];
+    console.log("-----")
+    Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
+        
+        var graphDefinition = el.innerText;
+
+
+        for (const keyword of mermaidKeywords) {
+            if (graphDefinition.startsWith(keyword)) {
+                
+                
+                el.className = "mermaid";
+                console.log(graphDefinition)
+                var edgePathStyle  = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+            
+                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+
+                graphDefinition = graphDefinition +"\n"+edgePathStyle
+                graphDefinition = graphDefinition +"\n"+defaultStyle
+             
+                el.innerHTML =graphDefinition;
+                el.align = "center";
+                el.setAttribute("data-lang", "mermaid")
+                
+            }
+        }
+
+
+    })
+</script>
+<style>
+
+    .mermaid svg {
+        display: block;
+        margin: auto;
+    }
+    .post >td,th{
+        border:1px solid #F00;
+        text-align: center;
+    }
+    .post td{
+        border:1px solid #F00;
+        text-align: center;
+    }
+
+
+</style></div>
+</body>
+
+</html>
