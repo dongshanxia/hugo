@@ -6,7 +6,16 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Oct 2021 10:35:56 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Oct 2021 16:25:10 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>http://127.0.0.1:1313/hugo/test/test/</link>
+      <pubDate>Mon, 18 Oct 2021 16:25:10 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/test/test/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Oracle安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
