@@ -13,8 +13,8 @@
       <pubDate>Tue, 12 Oct 2021 10:35:56 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
-      <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d docker.nexus.registry:5000/docker/oracle:1.0     docker-compose 文件
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  version: &amp;#34;3&amp;#34; services: oracle: image: docker.</description>
+      <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  version: &amp;#34;3&amp;#34; services: oracle: image: registory.</description>
     </item>
     
     <item>
@@ -23,8 +23,8 @@
       <pubDate>Tue, 12 Oct 2021 10:35:46 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
-      <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d docker.nexus.registry:5000/docker/MSSQL:1.0     docker-compose 文件
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  version: &amp;#34;3&amp;#34; services: MSSQL: image: docker.</description>
+      <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  version: &amp;#34;3&amp;#34; services: MSSQL: image: registory.</description>
     </item>
     
     <item>

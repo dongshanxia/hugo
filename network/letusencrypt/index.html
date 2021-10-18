@@ -272,7 +272,7 @@ CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列�
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">FROM docker.nexus.registry:5000/docker/debian:2.6</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">FROM registory.dongshanxia.top:35000/docker/debian:2.6</span><span class="w">
 </span><span class="w"></span><span class="l">ENV CERRBOT_DIR=/etc/letsencrypt/</span><span class="w">
 </span><span class="w"></span><span class="l">ENV CERRBOT_CONFIG=$CERRBOT_DIR/live</span><span class="w">
 </span><span class="w"></span><span class="l">ENV SLEEPTIME=600  </span><span class="w"> </span><span class="c">## renew的查询的间隔时间</span><span class="w">
@@ -443,7 +443,7 @@ RENEW_DAEMON
 </span><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">nexus</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker.nexus.registry:5000/docker/certbot:1.0</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registory.dongshanxia.top:35000/docker/certbot:1.0</span><span class="w">
 </span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">certbot</span><span class="w">
 </span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="m">10.168.2.70</span><span class="w">
 </span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">

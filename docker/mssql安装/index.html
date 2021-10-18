@@ -118,7 +118,7 @@
           -v /docker/software/MSSQL/data:/var/opt/mssql/data/
           -v /docker/software/MSSQL/log:/var/opt/mssql/log/
           -v /docker/software/MSSQL/config:/var/opt/mssql/config
-          -d  docker.nexus.registry:5000/docker/MSSQL:1.0
+          -d  registory.dongshanxia.top:35000/docker/MSSQL:1.0
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -148,13 +148,12 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">version: &#34;3&#34;
 services:
   MSSQL:
-    image: docker.nexus.registry:5000/docker/MSSQL:1.0
+    image: registory.dongshanxia.top:35000/docker/MSSQL:1.0
     container_name: MSSQL
     hostname: 10.168.2.82
     restart: always
@@ -167,10 +166,9 @@ services:
       - /docker/software/MSSQL/log:/var/opt/mssql/log
       - /docker/software/MSSQL/config:/var/opt/mssql/config
     expose:
-      - &#34;22&#34;
-      - &#34;3306&#34;
+      - &#34;31433&#34;
     ports:
-      - &#34;34522:22&#34;
+      - &#34;31433:31433&#34;
     network_mode: &#34;bridge&#34;  
 </code></pre></td></tr></table>
 </div>
