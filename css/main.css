@@ -680,81 +680,41 @@
     margin-right: auto
 }
 
+/* 至少1024的时候*/
 @media (min-width: 812px) {
     .container.extended {
-        max-width: 800px
+        max-width: 80%
     }
 
-    .container.extended .left-sidebar {
+    .main {
+        width: 75%
+    }
+    .container.extended .right-sidebar {
         width: 25%
     }
 }
 
-/*@media (min-width: 1024px) {*/
-    /*.container.extended {*/
-        /*max-width: 972px*/
-    /*}*/
-
-    /*.container.extended .right-sidebar {*/
-        /*width: 25%*/
-    /*}*/
-/*}*/
-
-@media (max-width: 1024px) {
-    .container.extended {
-        max-width: 400px
-    }
-
-    .container.extended .left-sidebar {
-        width: 20%
-    }
-
-    .right-sidebar {
+@media (max-width: 812px) {
+    .main {
         display:none
     }
 }
 
-@media (min-width: 1920px) {
-    .container.extended {
-        max-width: 1536px
-    }
+/*@media (max-width: 1024px) {*/
+    /*.container.extended {*/
+        /*max-width: 70%*/
+    /*}*/
 
-    .container.extended .right-sidebar {
-        width: 15%
-    }
-}
+    /*.container.extended .right-sidebar {*/
+        /*width: 100%*/
+    /*}*/
+/*}*/
 
-@media (min-width: 812px) {
-    .container.compact {
-        max-width: 800px
-    }
 
-    .container.compact .left-sidebar {
-        width: 25%
-    }
-}
 
-@media (min-width: 1024px) {
-    .container.compact {
-        max-width: 972px
-    }
-}
 
-@media (min-width: 1519px) {
-    .container.compact {
-        max-width: 1050px
-    }
 
-    .container.compact .left-sidebar {
-        width: 20%
-    }
-}
 
-@media (min-width: 1920px) {
-    .container.compact {
-        max-width: 1300px
-    }
-}
 
 .flex {
     display: flex;
