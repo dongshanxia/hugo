@@ -608,7 +608,7 @@
 
 @media (max-width: 1920px) {
     :root {
-        --card-padding: 25px
+        --card-padding: 20px
     }
 }
 
@@ -925,7 +925,7 @@ template {
     display: none
 }
 
-/*!* Hamburgers
+/*/* Hamburgers
 * @description Tasty CSS-animated hamburgers
 * @author Jonathan Suh @jonsuh
 * @site https://jonsuh.com/hamburgers
@@ -1833,13 +1833,20 @@ body {
     color: var(--card-text-color-secondary)
 }
 
+
+
 .article-content blockquote {
     position: relative;
     margin: 1.5em 0;
     border-left: var(--blockquote-border-size) solid var(--card-separator-color);
     padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
+    /*padding-top: calc(var(--card-padding) - var(--blockquote-border-size));*/
+    /*padding-left: calc(var(--card-padding) - var(--blockquote-border-size));*/
+    /*padding-right: calc(var(--card-padding) - var(--blockquote-border-size));*/
+    /*padding-bottom: calc(var(--card-padding) - var(--blockquote-border-size));*/
     background-color: var(--blockquote-background-color)
 }
+
 
 .article-content hr {
     width: 100px;

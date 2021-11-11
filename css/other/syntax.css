@@ -111,6 +111,7 @@
 .highlight>.chroma .lntd:last-child pre {
     margin: 0;
     padding: 30px 10px 10px;
+    width: auto;
 }
 .highlight>.chroma .lntd {
     line-height: 1em;
