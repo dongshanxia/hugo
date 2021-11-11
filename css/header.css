@@ -21,6 +21,8 @@
 }
 
 
+
+
 .logo-wrapper {
     float: left;
 }
@@ -75,4 +77,8 @@ a {
 
 a {
     background-color: transparent;
+}
+
+p{
+    margin: 0;
 }
