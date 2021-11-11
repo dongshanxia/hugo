@@ -1,0 +1,48 @@
+#tab-of-content-area{
+    float: right;
+    position: relative;
+    right: 24px;
+    top: -70px;
+    display: none;
+}
+
+#TableOfContents{
+    position: fixed;
+    border-radius: 4px;
+    right:50px;
+    top:8px;
+    display: inline-block;
+    width: max-content;
+    width:-webkit-max-content;
+    width:-moz-max-content;
+    max-width: 600px;
+    padding: 10px 20px 10px 20px;
+    background-color: #515151e1;
+    border: 1px solid rgba(81, 81, 81, 0.1);
+    z-index: 99;
+}
+
+#TableOfContents ul{
+    font-size: 16px;
+    color: #fff;
+}
+
+#TableOfContents ul a{
+    color: inherit;
+}
+
+#TableOfContents ul ul{
+    padding-left: 20px;
+    font-size: 14px;
+    color:#ddd;
+}
+
+#TableOfContents li{
+    padding: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+#tab-of-content-button{
+    float: right;
+}

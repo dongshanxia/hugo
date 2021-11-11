@@ -23,6 +23,7 @@
 <link rel="stylesheet" type="text/css" href="/hugo/css/header.css">
 <link rel="stylesheet" type="text/css" href="/hugo/css/footer.css">
 <link rel="stylesheet" type="text/css" href="/hugo/css/main.css">
+<link rel="stylesheet" type="text/css" href="/hugo/css/tab-of-contents.css">
 
 
 
@@ -30,7 +31,7 @@
 
 <div>
 
-<div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
     <div class="logo-wrapper">
         <a href="/" class="logo">标题<i
                     style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
@@ -63,12 +64,12 @@
 
 
 <div id="post" class="post">
-    <article>
-        
-            
-        
+            <article>
+                
+                
+                
 
-        <h2 id="httpd访问网络配置httpd_can_network_connect">httpd访问网络配置httpd_can_network_connect</h2>
+                <h2 id="httpd访问网络配置httpd_can_network_connect">httpd访问网络配置httpd_can_network_connect</h2>
 <p>检查网络访问的配置</p>
 <p>getsebool -a | grep httpd_can_network_connect</p>
 <p>如结果如下</p>
@@ -79,17 +80,17 @@
 <p>写入配置文件的命令，重启后保留</p>
 <p>setsebool -P httpd_can_network_connect 1</p>
 
-        <br />
-        <div>
-            
-                <a href="http://127.0.0.1:1313/hugo/linux/crontab/">前一页</a>
-            
-            
-                <a href="http://127.0.0.1:1313/hugo/linux/crontab/">后一页</a>
-            
-        </div>
-    </article>
-</div><footer id="footer" class="footer">
+                <br/>
+                <div>
+                    
+                        <a href="http://127.0.0.1:1313/hugo/linux/crontab/">前一页</a>
+                    
+                    
+                        <a href="http://127.0.0.1:1313/hugo/linux/crontab/">后一页</a>
+                    
+                </div>
+            </article>
+        </div><footer id="footer" class="footer">
     <div class="social-links">
         <a href="http://our.dongshanxia.top:38888/" target="view_window" title="gitlab">
             <svg class="icon iconfont" aria-hidden="true">
@@ -293,7 +294,28 @@
     }
 
 
-</style></div>
-</body>
+</style>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#httpd访问网络配置httpd_can_network_connect">httpd访问网络配置httpd_can_network_connect</a>
+      <ul>
+        <li><a href="#selinux命令临时配置重启后失效">SELinux命令，临时配置，重启后失效</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+    
+
+
+
+
+
+
+
+    
+
+</div>
+    </body>
 
 </html>

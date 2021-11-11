@@ -26,7 +26,7 @@
 会显示+以及脚本中的内容(执行的部分，没执行的不显示)
 set -xv（脚本中所有的内容都显示，包括没执行的部分）
 查看端口号 netstat -lnp|grep 8080
-查找某个文件 1 2  ## 寻找某个文件 find . -name &amp;#34;*.tar&amp;#34;   软连接 1  ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf   查询服务详情 1  journalctl -u 服务名   </description>
+查找某个文件 1 2  ## 寻找某个文件 find . -name &amp;#34;*.tar&amp;#34;   软连接 1  ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf   查询服务详情 1  journalctl -u 服务名   5</description>
     </item>
     
   </channel>
