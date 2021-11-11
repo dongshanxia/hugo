@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vim</title>
+    <title>安装es</title>
 
 
 
@@ -27,25 +28,10 @@
 
 
 </head>
-<body>
 
+<div>
 
-
-
-
-
-
-    
-    
-    
-    
-    
-
-
-
-
-
-<header id="header" class="header">
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel"><header id="header" class="header">
     <div class="logo-wrapper">
         <a href="/" class="logo">标题<i
                     style="font-size: 14px; font-family: 'Microsoft YaHei',SimSun; margin-left: 16px ;">只是为了演示</i></a>
@@ -77,230 +63,843 @@
 
 
 
-<div class="container main-container flex on-phone--column extended ">
-    <main class="main full-width">
-        <h3 class="section-title">Section</h3>
-
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">1 pages</h3>
-                <h1 class="section-term">vim</h1>
-            </div>
-        </div>
-
-        <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <header class="article-category">
-                                    
-                                        <a href="/hugo/categories/linux/" >
-                                            linux
-                                        </a>
-                                    
-                                </header>
-                                <h2 class="article-title">
-                                    <a href="/hugo/linux/deepin/vim/">Vim</a>
-                                </h2>
-                                <h3 class="article-subtitle">
-                                    统计 67 预计读完 1 分钟
-                                </h3>
-                                <footer class="article-time">
-                                    <time class="article-time--published">2021-08-06 12:25:18 &#43;0800 CST</time>
-                                </footer>
-                            </div>
-                        </header>
-                    </article>
-                
-        </section></main>
-
-
-    <aside class="sidebar right-sidebar sticky">
-
-        
-            
+<div id="post" class="post">
+            <article class="article-content">
                 
                 
                 
-                
-            
-        <section class="widget tagCloud">
 
-    <div class="tagCloud-tags">
-        
-            
-        
+                <h2 id="硬件服务器">硬件服务器</h2>
+<ul>
+<li>10.168.2.87</li>
+<li>10.168.2.88</li>
+<li>10.168.2.89</li>
+</ul>
+<h2 id="1环境准备-每台都需要做">1.环境准备 (每台都需要做)</h2>
+<h3 id="11创建用户root用户操作">1.1创建用户(root用户操作)</h3>
+<ul>
+<li>useradd top</li>
+</ul>
+<h3 id="12-修改用户密码root用户操作">1.2 修改用户密码(root用户操作)</h3>
+<ul>
+<li>passwd top</li>
+</ul>
+<h3 id="13-赋予用户sudo权限root用户操作">1.3 赋予用户sudo权限(root用户操作)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">chmod -v u+w /etc/sudoers
+sed -i <span class="s1">&#39;s#.*top.*##g&#39;</span> /etc/sudoers
+sed -i <span class="s1">&#39;s#root.*ALL=(ALL).*ALL#root  ALL=(ALL)  ALL \ntop   ALL=(ALL)  ALL#g&#39;</span> /etc/sudoers
+chmod -v u-w /etc/sudoers
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="14-安全limits文件限制">1.4 安全limits文件限制</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vim  /etc/security/limits.conf
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>最后几行加上  需要增加的部分</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">* soft nofile 65536
+* hard nofile 65536
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="15-系统文件限制">1.5 系统文件限制</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vim  /etc/sysctl.conf  <span class="o">(</span>最后几行加上<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>最后几行加上  需要增加的部分</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">vm.max_map_count=655360
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>sysctl -p</li>
+</ul>
+<h4 id="16-重启">1.6 重启</h4>
+<ul>
+<li>reboot</li>
+</ul>
+<h2 id="2节点上传安装包">2.节点上传安装包</h2>
+<h3 id="21建立es环境目录">2.1建立es环境目录</h3>
+<ul>
+<li>mkdir -p /home/top/</li>
+</ul>
+<h3 id="22上传一个安装包到此目录下">2.2上传一个安装包到此目录下：</h3>
+<ul>
+<li>elasticsearch-7.3.2-linux-x86_64.tar.gz</li>
+<li>ls</li>
+</ul>
+<blockquote>
+<p>[top@localhost ~]$ ls /home/top/ | grep gz
+elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
+</blockquote>
+<h2 id="3es安装">3.ES安装</h2>
+<h3 id="31-解压es安装包">3.1 解压ES安装包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">tar -xzvf elasticsearch-7.3.2-linux-x86_64.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="32-创建数据目录日志目录">3.2 创建数据目录、日志目录</h3>
+<ul>
+<li>
+<p>mkdir /home/top/elasticsearch-7.3.2/data -p</p>
+</li>
+<li>
+<p>mkdir /home/top/elasticsearch-7.3.2/logs -p</p>
+</li>
+</ul>
+<h3 id="33分发配置及安装目录">3.3分发配置及安装目录</h3>
+<ul>
+<li>
+<p>scp -r  /home/top/elasticsearch-7.3.2 10.168.2.88:/home/top/</p>
+</li>
+<li>
+<p>scp -r  /home/top/elasticsearch-7.3.2 10.168.2.87:/home/top/</p>
+</li>
+</ul>
+<h2 id="4-es节点配置">4. ES节点配置</h2>
+<ul>
+<li>
+<p>10.168.2.89 (master)</p>
+</li>
+<li>
+<p>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
+</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
+</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
+</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
+</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-master</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#node.attr.rack: r1</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Paths ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
+</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
+</span><span class="w"></span><span class="c"># limit.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set the bind address to a specific IP (IPv4 or IPv6):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="m">10.168.2.89</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set a custom port for HTTP:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
+</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
+</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;10.168.2.89:9300&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;10.168.2.88:9300&#34;</span><span class="p">,</span><span class="s2">&#34;10.168.2.87:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;10.168.2.89:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Gateway -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Block initial recovery after a full cluster restart until N nodes are started:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#gateway.recover_after_nodes: 3</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the gateway module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># 是否允许作为主节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="c"># # 是否保存数据</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ml</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.remote.connect</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>10.168.2.88 (node)</p>
+</li>
+</ul>
+<ul>
+<li>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
+</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
+</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
+</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
+</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-node2</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#node.attr.rack: r1</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Paths ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
+</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
+</span><span class="w"></span><span class="c"># limit.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set the bind address to a specific IP (IPv4 or IPv6):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="m">10.168.2.88</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set a custom port for HTTP:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
+</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
+</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;10.168.2.89:9300&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;10.168.2.88:9300&#34;</span><span class="p">,</span><span class="s2">&#34;10.168.2.87:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;es-master:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Gateway -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Block initial recovery after a full cluster restart until N nodes are started:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#gateway.recover_after_nodes: 3</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the gateway module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># 是否允许作为主节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="c"># # 是否保存数据</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ml</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.remote.connect</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>10.168.2.87 (node)</li>
+</ul>
+<ul>
+<li>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
+</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
+</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
+</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
+</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-node1</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#node.attr.rack: r1</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Paths ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
+</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
+</span><span class="w"></span><span class="c"># limit.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set the bind address to a specific IP (IPv4 or IPv6):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="m">10.168.2.87</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Set a custom port for HTTP:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
+</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
+</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;10.168.2.89:9300&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;10.168.2.88:9300&#34;</span><span class="p">,</span><span class="s2">&#34;10.168.2.87:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;es-master:9300&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Gateway -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Block initial recovery after a full cluster restart until N nodes are started:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#gateway.recover_after_nodes: 3</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># For more information, consult the gateway module documentation.</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># 是否允许作为主节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="c"># # 是否保存数据</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ml</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.remote.connect</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-启动es集群">5. 启动es集群</h2>
+<ul>
+<li>此操作需要在各个节点上运行</li>
+</ul>
+<blockquote>
+<p>/home/top/elasticsearch-7.3.2/bin/elasticsearch -d</p>
+</blockquote>
+<h2 id="6-检测是否启动完成集群">6. 检测是否启动完成集群</h2>
+<blockquote>
+<ul>
+<li>[top@localhost ~]$ curl -X GET &lsquo;http://10.168.2.89:9200/&rsquo;<br>
+{
+&ldquo;name&rdquo; : &ldquo;es-master&rdquo;,
+&ldquo;cluster_name&rdquo; : &ldquo;es&rdquo;,
+&ldquo;cluster_uuid&rdquo; : &ldquo;toSHcOD8S7uWDUPaJSefPQ&rdquo;,
+&ldquo;version&rdquo; : {
+&ldquo;number&rdquo; : &ldquo;7.3.2&rdquo;,
+&ldquo;build_flavor&rdquo; : &ldquo;default&rdquo;,
+&ldquo;build_type&rdquo; : &ldquo;tar&rdquo;,
+&ldquo;build_hash&rdquo; : &ldquo;1c1faf1&rdquo;,
+&ldquo;build_date&rdquo; : &ldquo;2019-09-06T14:40:30.409026Z&rdquo;,
+&ldquo;build_snapshot&rdquo; : false,
+&ldquo;lucene_version&rdquo; : &ldquo;8.1.0&rdquo;,
+&ldquo;minimum_wire_compatibility_version&rdquo; : &ldquo;6.8.0&rdquo;,
+&ldquo;minimum_index_compatibility_version&rdquo; : &ldquo;6.0.0-beta1&rdquo;
+},
+&ldquo;tagline&rdquo; : &ldquo;You Know, for Search&rdquo;
+}</li>
+</ul>
+</blockquote>
+<h2 id="7-其他">7. 其他</h2>
+<h4 id="根据当前机器的大小修改分配给es的内存">根据当前机器的大小修改分配给es的内存</h4>
+<ul>
+<li>文件位置：vim /home/top/elasticsearch-7.3.2/config/jvm.options</li>
+</ul>
+<blockquote>
+<p>-Xms1g =&gt;修改成想要的内存数<br>
+-Xmx1g =&gt;修改成想要的内存数</p>
+</blockquote>
 
-    </div>
-
-</section>
-
-<section class="widget archives">
-
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
-            
-                
-                <a href="/hugo/categories/docker/">
-                    <span class="year">docker</span>
+                <br/>
+                <div>
                     
-                </a>
-            
-                
-                <a href="/hugo/categories/gitlab/">
-                    <span class="year">gitlab</span>
                     
-                </a>
-            
-                
-                <a href="/hugo/categories/go/">
-                    <span class="year">go</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/java/">
-                    <span class="year">java</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/linux/">
-                    <span class="year">linux</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/network/">
-                    <span class="year">network</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/test/">
-                    <span class="year">test</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/%E5%AE%89%E8%A3%85/">
-                    <span class="year">安装</span>
-                    
-                </a>
-            
-                
-                <a href="/hugo/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">
-                    <span class="year">未分类</span>
-                    
-                </a>
-            
-        </div>
-    </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
-        
-            
-        
-        
-            
-            <a href="/hugo/tags/certbot/" class="font_size_1">
-                certbot
-            </a>
-        
-            
-            <a href="/hugo/tags/db/" class="font_size_1">
-                DB
-            </a>
-        
-            
-            <a href="/hugo/tags/es/" class="font_size_1">
-                es
-            </a>
-        
-            
-            <a href="/hugo/tags/http/" class="font_size_1">
-                http
-            </a>
-        
-            
-            <a href="/hugo/tags/https/" class="font_size_1">
-                https
-            </a>
-        
-            
-            <a href="/hugo/tags/install/" class="font_size_2">
-                install
-            </a>
-        
-            
-            <a href="/hugo/tags/linux/" class="font_size_2">
-                linux
-            </a>
-        
-            
-            <a href="/hugo/tags/skywalking/" class="font_size_5">
-                skywalking
-            </a>
-        
-            
-            <a href="/hugo/tags/ssh/" class="font_size_1">
-                ssh
-            </a>
-        
-            
-            <a href="/hugo/tags/tar/" class="font_size_1">
-                tar
-            </a>
-        
-            
-            <a href="/hugo/tags/vim/" class="font_size_1">
-                vim
-            </a>
-        
-            
-            <a href="/hugo/tags/zerotier/" class="font_size_1">
-                zerotier
-            </a>
-        
-            
-            <a href="/hugo/tags/%E5%88%86%E5%8C%BA/" class="font_size_1">
-                分区
-            </a>
-        
-            
-            <a href="/hugo/tags/%E5%AE%89%E8%A3%85/" class="font_size_3">
-                安装
-            </a>
-        
-            
-            <a href="/hugo/tags/%E5%AE%9A%E6%97%B6/" class="font_size_1">
-                定时
-            </a>
-        
-            
-            <a href="/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/" class="font_size_5">
-                未标签
-            </a>
-        
-            
-            <a href="/hugo/tags/%E7%A3%81%E7%9B%98/" class="font_size_1">
-                磁盘
-            </a>
-        
-            
-            <a href="/hugo/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="font_size_1">
-                虚拟机
-            </a>
-        
-    </div>
-
-</section></aside>
-
-
-</div><footer id="footer" class="footer">
+                </div>
+            </article>
+        </div><footer id="footer" class="footer">
     <div class="social-links">
         <a href="http://our.dongshanxia.top:38888/" target="view_window" title="gitlab">
             <svg class="icon iconfont" aria-hidden="true">
@@ -504,5 +1103,53 @@
     }
 
 
-</style></body>
+</style>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#硬件服务器">硬件服务器</a></li>
+    <li><a href="#1环境准备-每台都需要做">1.环境准备 (每台都需要做)</a>
+      <ul>
+        <li><a href="#11创建用户root用户操作">1.1创建用户(root用户操作)</a></li>
+        <li><a href="#12-修改用户密码root用户操作">1.2 修改用户密码(root用户操作)</a></li>
+        <li><a href="#13-赋予用户sudo权限root用户操作">1.3 赋予用户sudo权限(root用户操作)</a></li>
+        <li><a href="#14-安全limits文件限制">1.4 安全limits文件限制</a></li>
+      </ul>
+    </li>
+    <li><a href="#2节点上传安装包">2.节点上传安装包</a>
+      <ul>
+        <li><a href="#21建立es环境目录">2.1建立es环境目录</a></li>
+        <li><a href="#22上传一个安装包到此目录下">2.2上传一个安装包到此目录下：</a></li>
+      </ul>
+    </li>
+    <li><a href="#3es安装">3.ES安装</a>
+      <ul>
+        <li><a href="#31-解压es安装包">3.1 解压ES安装包</a></li>
+        <li><a href="#32-创建数据目录日志目录">3.2 创建数据目录、日志目录</a></li>
+        <li><a href="#33分发配置及安装目录">3.3分发配置及安装目录</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-es节点配置">4. ES节点配置</a></li>
+    <li><a href="#5-启动es集群">5. 启动es集群</a></li>
+    <li><a href="#6-检测是否启动完成集群">6. 检测是否启动完成集群</a></li>
+    <li><a href="#7-其他">7. 其他</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+    
+
+
+
+
+
+
+
+    
+
+</div>
+    </body>
+
 </html>
