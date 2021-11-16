@@ -1815,7 +1815,8 @@ body {
 }
 
 .article-content > p {
-    margin: 1.5em 0
+    margin: 1.5em 1.0em 1.0em 2.4em;
+
 }
 
 .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {

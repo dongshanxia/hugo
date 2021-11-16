@@ -163,10 +163,10 @@ chmod -v u-w /etc/sudoers
 <blockquote>
 <p>最后几行加上  需要增加的部分(最后几行加上)</p>
 </blockquote>
-<h3 id="16">1.6</h3>
+<h3 id="16-载入指定配置">1.6 载入指定配置</h3>
 <ul>
 <li>
-<p>载入指定配置</p>
+<p>修改文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -187,163 +187,204 @@ vm.max_map_count <span class="o">=</span> <span class="m">655360</span>
 <p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-11-11/20-56-43-image-20211111205714215.png" alt="image-20211111205714215"></p>
 <h3 id="17-重启">1.7 重启</h3>
 <ul>
-<li>reboot</li>
-</ul>
-<h2 id="2节点上传安装包">2.节点上传安装包</h2>
-<h3 id="21建立es环境目录">2.1建立es环境目录</h3>
-<ul>
-<li>mkdir -p /home/top/</li>
-</ul>
-<h3 id="22上传一个安装包到此目录下">2.2上传一个安装包到此目录下：</h3>
-<ul>
-<li>elasticsearch-7.3.2-linux-x86_64.tar.gz</li>
-<li>ls</li>
-</ul>
-<blockquote>
-<p>[top@localhost ~]$ ls /home/top/ | grep gz
-elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
-</blockquote>
-<h2 id="3es安装">3.ES安装</h2>
-<h3 id="31-解压es安装包">3.1 解压ES安装包</h3>
+<li>
+<p>执行命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tar -xzvf elasticsearch-7.3.2-linux-x86_64.tar.gz
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo reboot
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="32-创建数据目录日志目录">3.2 创建数据目录、日志目录</h3>
+</div></li>
+</ul>
+<h2 id="2es安装参考">2.Es安装参考</h2>
+<p><a href="https://www.elastic.co/cn/downloads/elasticsearch">官网下载地址</a></p>
+<h3 id="21-下载安装包">2.1 下载安装包：</h3>
 <ul>
 <li>
-<p>mkdir /home/top/elasticsearch-7.3.2/data -p</p>
-</li>
+<p>执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/es
+<span class="nb">cd</span> /home/top/es
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.2-linux-x86_64.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="3es安装">3.ES安装</h2>
+<h3 id="31-解压es安装包">3.1 解压ES安装包</h3>
+<ul>
 <li>
-<p>mkdir /home/top/elasticsearch-7.3.2/logs -p</p>
-</li>
+<p>执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /home/top/es
+tar -xzvf elasticsearch-7.15.2-linux-x86_64.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="32-创建数据目录日志目录">3.2 创建数据目录、日志目录</h3>
+<ul>
+<li>
+<p>执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/es/data -p
+mkdir /home/top/es/logs -p
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <h3 id="33分发配置及安装目录">3.3分发配置及安装目录</h3>
 <ul>
 <li>
-<p>scp -r  /home/top/elasticsearch-7.3.2 10.168.2.88:/home/top/</p>
-</li>
+<p>执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">scp -r  /home/top/es u86:/home/top/        
+scp -r  /home/top/es u87:/home/top/
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p>scp -r  /home/top/elasticsearch-7.3.2 10.168.2.87:/home/top/</p>
-</li>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">scp -r  /home/top/es top@10.168.2.86:/home/top/
+scp -r  /home/top/es top@10.168.2.87:/home/top/
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <h2 id="4-es节点配置">4. ES节点配置</h2>
 <ul>
 <li>
-<p>10.168.2.89 (master)</p>
+<p>10.168.2.85 (master)</p>
 </li>
 <li>
-<p>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</p>
+<p>cat /home/top/es/elasticsearch-7.15.2/config/elasticsearch.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
@@ -378,11 +419,11 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/data</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/logs</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -438,15 +479,6 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 </span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># 是否允许作为主节点</span><span class="w">
-</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="c"># # 是否保存数据</span><span class="w">
-</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">node.ml</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.remote.connect</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
 </span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
@@ -458,7 +490,7 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 </li>
 </ul>
 <ul>
-<li>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</li>
+<li>cat /home/top/elasticsearch-7.15.2/config/elasticsearch.yml</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -600,11 +632,11 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/data</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/logs</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -678,7 +710,7 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 <li>10.168.2.87 (node)</li>
 </ul>
 <ul>
-<li>cat /home/top/elasticsearch-7.3.2/config/elasticsearch.yml</li>
+<li>cat /home/top/elasticsearch-7.15.2/config/elasticsearch.yml</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -820,11 +852,11 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/data</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/data</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.3.2/logs</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/elasticsearch-7.15.2/logs</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -899,7 +931,7 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 <li>此操作需要在各个节点上运行</li>
 </ul>
 <blockquote>
-<p>/home/top/elasticsearch-7.3.2/bin/elasticsearch -d</p>
+<p>/home/top/elasticsearch-7.15.2/bin/elasticsearch -d</p>
 </blockquote>
 <h2 id="6-检测是否启动完成集群">6. 检测是否启动完成集群</h2>
 <blockquote>
@@ -910,7 +942,7 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 &ldquo;cluster_name&rdquo; : &ldquo;es&rdquo;,
 &ldquo;cluster_uuid&rdquo; : &ldquo;toSHcOD8S7uWDUPaJSefPQ&rdquo;,
 &ldquo;version&rdquo; : {
-&ldquo;number&rdquo; : &ldquo;7.3.2&rdquo;,
+&ldquo;number&rdquo; : &ldquo;7.15.2&rdquo;,
 &ldquo;build_flavor&rdquo; : &ldquo;default&rdquo;,
 &ldquo;build_type&rdquo; : &ldquo;tar&rdquo;,
 &ldquo;build_hash&rdquo; : &ldquo;1c1faf1&rdquo;,
@@ -927,7 +959,7 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
 <h2 id="7-其他">7. 其他</h2>
 <h4 id="根据当前机器的大小修改分配给es的内存">根据当前机器的大小修改分配给es的内存</h4>
 <ul>
-<li>文件位置：vim /home/top/elasticsearch-7.3.2/config/jvm.options</li>
+<li>文件位置：vim /home/top/elasticsearch-7.15.2/config/jvm.options</li>
 </ul>
 <blockquote>
 <p>-Xms1g =&gt;修改成想要的内存数<br>
@@ -1158,14 +1190,13 @@ elasticsearch-7.3.2-linux-x86_64.tar.gz</p>
         <li><a href="#13-赋予用户sudo权限root用户操作">1.3 赋予用户sudo权限(root用户操作)</a></li>
         <li><a href="#14-安全limits文件限制">1.4 安全limits文件限制</a></li>
         <li><a href="#15-系统文件限制">1.5 系统文件限制</a></li>
-        <li><a href="#16">1.6</a></li>
+        <li><a href="#16-载入指定配置">1.6 载入指定配置</a></li>
         <li><a href="#17-重启">1.7 重启</a></li>
       </ul>
     </li>
-    <li><a href="#2节点上传安装包">2.节点上传安装包</a>
+    <li><a href="#2es安装参考">2.Es安装参考</a>
       <ul>
-        <li><a href="#21建立es环境目录">2.1建立es环境目录</a></li>
-        <li><a href="#22上传一个安装包到此目录下">2.2上传一个安装包到此目录下：</a></li>
+        <li><a href="#21-下载安装包">2.1 下载安装包：</a></li>
       </ul>
     </li>
     <li><a href="#3es安装">3.ES安装</a>
