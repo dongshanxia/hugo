@@ -6,7 +6,34 @@
     <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Nov 2021 10:25:11 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Nov 2021 11:09:21 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>es</title>
+      <link>http://127.0.0.1:1313/hugo/tags/es/</link>
+      <pubDate>Thu, 18 Nov 2021 11:09:21 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/tags/es/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>安装</title>
+      <link>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 18 Nov 2021 11:09:21 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>插件</title>
+      <link>http://127.0.0.1:1313/hugo/tags/%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Thu, 18 Nov 2021 11:09:21 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/tags/%E6%8F%92%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>未标签</title>
       <link>http://127.0.0.1:1313/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/</link>
@@ -17,29 +44,11 @@
     </item>
     
     <item>
-      <title>es</title>
-      <link>http://127.0.0.1:1313/hugo/tags/es/</link>
-      <pubDate>Thu, 11 Nov 2021 19:13:45 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/tags/es/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>mssql</title>
       <link>http://127.0.0.1:1313/hugo/tags/mssql/</link>
       <pubDate>Wed, 20 Oct 2021 17:51:31 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/tags/mssql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>安装</title>
-      <link>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 12 Oct 2021 10:35:56 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</guid>
       <description></description>
     </item>
     
