@@ -69,7 +69,11 @@
                 
                 
 
-                <h2 id="硬件服务器">硬件服务器</h2>
+                <h2 id="警告">警告</h2>
+<ul>
+<li>es 最好不要 7.10.2 之后的版本   推荐用opensearch-1.1.0</li>
+</ul>
+<h2 id="硬件服务器">硬件服务器</h2>
 <ul>
 <li>10.168.2.87</li>
 <li>10.168.2.88</li>
@@ -214,7 +218,7 @@ vm.max_map_count <span class="o">=</span> <span class="m">655360</span>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/es
 <span class="nb">cd</span> /home/top/es
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.2-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-linux-x86_64.tar.gz
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -231,7 +235,7 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.2-l
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /home/top/es
-tar -xzvf elasticsearch-7.15.2-linux-x86_64.tar.gz
+tar -xzvf elasticsearch-7.10.2-linux-x86_64.tar.gz
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -287,7 +291,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 <p>10.168.2.85 (master)</p>
 </li>
 <li>
-<p>cat /home/top/es/elasticsearch-7.15.2/config/elasticsearch.yml</p>
+<p>cat /home/top/es/elasticsearch-7.10.2/config/elasticsearch.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -496,7 +500,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </li>
 </ul>
 <ul>
-<li>cat /home/top/elasticsearch-7.15.2/config/elasticsearch.yml</li>
+<li>cat /home/top/elasticsearch-7.10.2/config/elasticsearch.yml</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -704,7 +708,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 <li>10.168.2.87 (node)</li>
 </ul>
 <ul>
-<li>cat /home/top/elasticsearch-7.15.2/config/elasticsearch.yml</li>
+<li>cat /home/top/elasticsearch-7.10.2/config/elasticsearch.yml</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -917,7 +921,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">/home/top/es/elasticsearch-7.15.2/bin/elasticsearch -d -p /home/top/es/pid &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">/home/top/es/elasticsearch-7.10.2/bin/elasticsearch -d -p /home/top/es/pid &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="6-检测是否启动完成集群">6. 检测是否启动完成集群</h2>
@@ -932,7 +936,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 &ldquo;cluster_name&rdquo;: &ldquo;es-top&rdquo;,
 &ldquo;cluster_uuid&rdquo;: &ldquo;v7M5HemdSvmFjVPhEAlhig&rdquo;,
 &ldquo;version&rdquo;: {
-&ldquo;number&rdquo;: &ldquo;7.15.2&rdquo;,
+&ldquo;number&rdquo;: &ldquo;7.10.2&rdquo;,
 &ldquo;build_flavor&rdquo;: &ldquo;default&rdquo;,
 &ldquo;build_type&rdquo;: &ldquo;tar&rdquo;,
 &ldquo;build_hash&rdquo;: &ldquo;93d5a7f6192e8a1a12e154a2b81bf6fa7309da0c&rdquo;,
@@ -952,7 +956,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </ul>
 <h4 id="根据当前机器的大小修改分配给es的内存">根据当前机器的大小修改分配给es的内存</h4>
 <ul>
-<li>文件位置：vim /home/top/es/elasticsearch-7.15.2/config/jvm.options</li>
+<li>文件位置：vim /home/top/es/elasticsearch-7.10.2/config/jvm.options</li>
 </ul>
 <blockquote>
 <p>-Xms1g =&gt;修改成想要的内存数<br>
@@ -1179,6 +1183,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#警告">警告</a></li>
     <li><a href="#硬件服务器">硬件服务器</a></li>
     <li><a href="#1环境准备-每台都需要做">1.环境准备 (每台都需要做)</a>
       <ul>
