@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>任务 on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/%E4%BB%BB%E5%8A%A1/</link>
+    <description>Recent content in 任务 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 22 Nov 2021 17:51:23 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E4%BB%BB%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zh</title>
+      <link>http://127.0.0.1:1313/hugo/about/zh/</link>
+      <pubDate>Mon, 22 Nov 2021 17:51:23 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/about/zh/</guid>
+      <description>hugo入门
+ git hugo vscodium  markdown的图片 解决 2. picgo gitea(免费图床) typora+picgo+gitea 或者 vscodium+picgo+gitea</description>
+    </item>
+    
+  </channel>
+</rss>
