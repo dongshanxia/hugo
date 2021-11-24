@@ -2,19 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://127.0.0.1:1313/hugo/categories/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/cluster/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/linux/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/pve/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/pve/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/linux/pve/pve%E5%B4%A9%E6%BA%83/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
+    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/java/</loc>
+    <lastmod>2021-11-24T10:27:57+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/java/</loc>
+    <lastmod>2021-11-24T10:27:57+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</loc>
+    <lastmod>2021-11-24T10:27:57+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/tomcat/</loc>
+    <lastmod>2021-11-24T10:27:57+08:00</lastmod>
+  </url><url>
     <loc>http://127.0.0.1:1313/hugo/about/</loc>
     <lastmod>2021-11-22T17:51:23+08:00</lastmod>
   </url><url>
-    <loc>http://127.0.0.1:1313/hugo/categories/</loc>
-    <lastmod>2021-11-22T17:51:23+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/</loc>
-    <lastmod>2021-11-22T17:51:23+08:00</lastmod>
-  </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/study/</loc>
-    <lastmod>2021-11-22T17:51:23+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
     <lastmod>2021-11-22T17:51:23+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/about/zh/</loc>
@@ -60,9 +87,6 @@
     <lastmod>2021-11-16T10:25:11+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/linux/</loc>
-    <lastmod>2021-11-16T10:25:11+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/linux/</loc>
     <lastmod>2021-11-16T10:25:11+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/</loc>
@@ -113,7 +137,7 @@
     <loc>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-10-12T10:35:46+08:00</lastmod>
   </url><url>
-    <loc>http://127.0.0.1:1313/hugo/linux/pve/</loc>
+    <loc>http://127.0.0.1:1313/hugo/linux/pve/pve/</loc>
     <lastmod>2021-09-29T14:12:45+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
@@ -151,12 +175,6 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/network/letusencrypt/</loc>
     <lastmod>2021-07-29T10:15:04+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/categories/java/</loc>
-    <lastmod>2021-07-27T14:34:21+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/java/</loc>
-    <lastmod>2021-07-27T14:34:21+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/skywalking/</loc>
     <lastmod>2021-07-27T14:34:21+08:00</lastmod>
