@@ -69,10 +69,8 @@
                 
                 
 
-                <blockquote>
-</blockquote>
-<h1 id="springcloud--springgateway-解决get请求传参为特殊字符导致400无法通过网关转发的问题">SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</h1>
-<h4 id="场景">场景:</h4>
+                <h1 id="springcloud--springgateway-解决get请求传参为特殊字符导致400无法通过网关转发的问题">SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</h1>
+<h3 id="场景">场景:</h3>
 <p>公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -82,16 +80,16 @@
 <pre class="chroma"><code class="language-apl" data-lang="apl"><span class="nv">localhost</span><span class="bp">:</span><span class="m">10001</span><span class="na">/</span><span class="nv">verify</span><span class="na">/</span><span class="nv">compreport</span><span class="na">/</span><span class="nv">month</span><span class="o">?</span><span class="nv">data</span><span class="o">=</span><span class="kt">{</span><span class="s2">&#34;compRefOwid&#34;</span><span class="bp">:</span><span class="s2">&#34;1448487922485252098&#34;</span><span class="o">,</span> <span class="s2">&#34;yhMonth&#34;</span><span class="bp">:</span><span class="s2">&#34;2021-10&#34;</span><span class="kt">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="原因">原因：</h4>
+</div><h3 id="原因">原因：</h3>
 <p>Tomcat的新版本中增加了一个新特性，就是严格按照 RFC 3986规范进行访问解析，而 RFC 3986规范定义了Url中只允许包含英文字母（a-zA-Z）、数字（0-9）、-_.~4个特殊字符以及所有保留字符(RFC3986中指定了以下字符为保留字符：! * ’ ( ) ; : @ &amp; = + $ , / ? # [ ])。</p>
-<h4 id="解决方案选择">解决方案选择：</h4>
+<h3 id="解决方案选择">解决方案选择：</h3>
 <ol>
 <li>前端请求时encode特殊字段(算了，不能因为自己的原因加大前端工作量)</li>
 <li>改用post请求(emmm没有办法的办法,看着难受就是想要改了)</li>
 <li>改Tomcat配置文件(由于是springboot项目，内嵌了tomcat，不方便修改，好吧就是我比较菜)</li>
 <li>在后端代码层面解决这个问题</li>
 </ol>
-<h4 id="解决方法">解决方法：</h4>
+<h3 id="解决方法">解决方法：</h3>
 <p>其他服务：由于使用的是内嵌的tomcat，网上常见的
 <a href="https://blog.csdn.net/Ovo_ing/article/details/105506614?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.no_search_link&amp;spm=1001.2101.3001.4242.1">解决spring boot请求包含非法字符问题 The valid characters are defined in RFC 7230 and RFC 3986 错误</a>
 配置TomcatServletWebServerFactory的方式使用时会导致两个TomcatServletWebServerFactory使springboot项目报错Unable to start ServletWebServerApplicationContext due to multiple ServletWebServerFactory beans而无法启动。而使用yml配置的方式也无法生效。</p>
@@ -389,7 +387,7 @@
 
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="验证">验证：</h4>
+</div><h3 id="验证">验证：</h3>
 <p><img src="https://img-blog.csdnimg.cn/c2f5e51c405543a384185896a973cab1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAQXRvbWljeW8=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
 
                 <br/>
@@ -610,7 +608,11 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#场景">场景:</a></li>
+        <li><a href="#原因">原因：</a></li>
+        <li><a href="#解决方案选择">解决方案选择：</a></li>
+        <li><a href="#解决方法">解决方法：</a></li>
+        <li><a href="#验证">验证：</a></li>
       </ul>
     </li>
   </ul>
