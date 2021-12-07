@@ -19,6 +19,8 @@
     padding: 10px 20px 10px 20px;
     background-color: #515151e1;
     border: 1px solid rgba(81, 81, 81, 0.1);
+    overflow:auto;
+    height: 750px;
     z-index: 99;
 }
 
@@ -43,6 +45,4 @@
     overflow: hidden;
     text-overflow:ellipsis;
 }
-#tab-of-content-button{
-    float: right;
-}
+

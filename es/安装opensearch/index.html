@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>安装es</title>
+    <title>安装opensearch</title>
 
 
 
@@ -216,15 +216,15 @@ vm.max_map_count <span class="o">=</span> <span class="m">655360</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/es
-<span class="nb">cd</span> /home/top/es
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-linux-x86_64.tar.gz
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/opensearch
+<span class="nb">cd</span> /home/top/opensearch
+wget http://10.168.2.60:35000/opensearch-1.1.0-linux-x64.tar.gz
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<h2 id="3es安装">3.ES安装</h2>
-<h3 id="31-解压es安装包">3.1 解压ES安装包</h3>
+<h2 id="3opens安装">3.OpenS安装</h2>
+<h3 id="31-解压opens安装包">3.1 解压OpenS安装包</h3>
 <ul>
 <li>
 <p>执行命令</p>
@@ -234,8 +234,8 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-l
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /home/top/es
-tar -xzvf elasticsearch-7.10.2-linux-x86_64.tar.gz
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /home/top/opensearch
+tar -xzvf opensearch-1.1.0-linux-x64.tar.gz
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -250,13 +250,13 @@ tar -xzvf elasticsearch-7.10.2-linux-x86_64.tar.gz
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/es/data -p
-mkdir /home/top/es/logs -p
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/top/opensearch/data -p
+mkdir /home/top/opensearch/logs -p
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<h3 id="33分发配置及安装目录">3.3分发配置及安装目录</h3>
+<h3 id="33-删除安装包">3.3 删除安装包</h3>
 <ul>
 <li>
 <p>执行命令</p>
@@ -266,8 +266,24 @@ mkdir /home/top/es/logs -p
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp -r  /home/top/es u86:/home/top/        
-scp -r  /home/top/es u87:/home/top/
+<pre class="chroma"><code class="language-shell" data-lang="shell">rm -rf opensearch-1.1.0-linux-x64.tar.gz
+ln -s opensearch-1.1.0/ opensearch
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="34分发配置及安装目录">3.4分发配置及安装目录</h3>
+<ul>
+<li>
+<p>执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">rsync -avl /home/top/opensearch u86:/home/top 
+rsync -avl /home/top/opensearch u87:/home/top
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -279,19 +295,17 @@ scp -r  /home/top/es u87:/home/top/
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp -r  /home/top/es top@10.168.2.86:/home/top/
-scp -r  /home/top/es top@10.168.2.87:/home/top/
+<pre class="chroma"><code class="language-shell" data-lang="shell">rsync -avl /home/top/opensearch top@10.168.2.86:/home/top/
+rsync -avl /home/top/opensearch top@10.168.2.87:/home/top/
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<h2 id="4-es节点配置">4. ES节点配置</h2>
+<h2 id="4-opens节点配置">4. OpenS节点配置</h2>
+<h3 id="41-opensearch-master10168285-">4.1、 opensearch-master(10.168.2.85 )</h3>
 <ul>
 <li>
-<p>10.168.2.85 (master)</p>
-</li>
-<li>
-<p>cat /home/top/es/elasticsearch-7.10.2/config/elasticsearch.yml</p>
+<p>cat /home/top/opensearch/opensearch/config/opensearch.yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -333,90 +347,22 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="lnt">37
 </span><span class="lnt">38
 </span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
-</span><span class="lnt">87
-</span><span class="lnt">88
-</span><span class="lnt">89
-</span><span class="lnt">90
-</span><span class="lnt">91
-</span><span class="lnt">92
-</span><span class="lnt">93
-</span><span class="lnt">94
-</span><span class="lnt">95
-</span><span class="lnt">96
-</span><span class="lnt">97
-</span><span class="lnt">98
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
-</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
-</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
-</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
-</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
-</span><span class="w"></span><span class="c"># 集群名字</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-top</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-cluster</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
-</span><span class="w"></span><span class="c"># 描述节点名字</span><span class="w">
-</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">node85</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-master</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c">#专用的主节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 不是子节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 不是摄取节点 (通道)</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -426,79 +372,27 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/data</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/data</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/logs</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
-</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
-</span><span class="w"></span><span class="c"># limit.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch is only accessible on localhost. Set a different</span><span class="w">
-</span><span class="w"></span><span class="c"># address here to expose this node on the network:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/logs</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#将集群绑定到特定的 IP 地址</span><span class="w">
 </span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="l">node85</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch listens for HTTP traffic on the first free port it</span><span class="w">
-</span><span class="w"></span><span class="c"># finds starting at 9200. Set a specific HTTP port here:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
-</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
-</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
-</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;node86&#34;</span><span class="p">,</span><span class="s2">&#34;node87&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c">##  7.15 没有个配置了</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.data</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ingest</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.master</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ml</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.remote_cluster_client</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.transform</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.voting_only</span><span class="w">
-</span><span class="w"></span><span class="c">## 需要用 https://www.elastic.co/guide/en/elasticsearch/reference/7.15/modules-node.html#node-roles</span><span class="w">
+</span><span class="w"></span><span class="c">#为集群配置发现主机</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node86&#34;</span><span class="p">,</span><span class="s2">&#34;node87&#34;</span><span class="p">,</span><span class="s2">&#34;node88&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-master</span><span class="w">
+</span><span class="w"></span><span class="c">#禁用安全</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins.security.disabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#discovery.type: cluster</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>10.168.2.86 (node)</p>
-</li>
 </ul>
+<h3 id="42opensearch-d1-10168286">4.2、opensearch-d1 (10.168.2.86)</h3>
 <ul>
 <li>cat /home/top/elasticsearch-7.10.2/config/elasticsearch.yml</li>
 </ul>
@@ -543,90 +437,24 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="lnt">37
 </span><span class="lnt">38
 </span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
-</span><span class="lnt">87
-</span><span class="lnt">88
-</span><span class="lnt">89
-</span><span class="lnt">90
-</span><span class="lnt">91
-</span><span class="lnt">92
-</span><span class="lnt">93
-</span><span class="lnt">94
-</span><span class="lnt">95
-</span><span class="lnt">96
-</span><span class="lnt">97
-</span><span class="lnt">98
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
-</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
-</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
-</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
-</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
-</span><span class="w"></span><span class="c"># 集群名字</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-top</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-cluster</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
-</span><span class="w"></span><span class="c"># 描述节点名字</span><span class="w">
-</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">node86</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-d1</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -636,77 +464,23 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/data</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/data</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/logs</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
-</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
-</span><span class="w"></span><span class="c"># limit.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch is only accessible on localhost. Set a different</span><span class="w">
-</span><span class="w"></span><span class="c"># address here to expose this node on the network:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/logs</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#将集群绑定到特定的 IP 地址</span><span class="w">
 </span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="l">node86</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch listens for HTTP traffic on the first free port it</span><span class="w">
-</span><span class="w"></span><span class="c"># finds starting at 9200. Set a specific HTTP port here:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
-</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
-</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
-</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
-</span><span class="w"></span><span class="c"># 配置两个重要的发现和集群形成设置，以便集群中的节点可以相互发现并选举一个主节点</span><span class="w">
-</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85:9300&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;node86:9300&#34;</span><span class="p">,</span><span class="s2">&#34;node87:9300&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
-</span><span class="w"></span><span class="c"># 明确列出应在第一次选举中计算其选票的主合格节点</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c">##  7.15 没有个配置了</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.data</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ingest</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.master</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ml</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.remote_cluster_client</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.transform</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.voting_only</span><span class="w">
-</span><span class="w"></span><span class="c">## 需要用 https://www.elastic.co/guide/en/elasticsearch/reference/7.15/modules-node.html#node-roles</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#为集群配置发现主机</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">,</span><span class="s2">&#34;node87&#34;</span><span class="p">,</span><span class="s2">&#34;node88&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-master</span><span class="w">
+</span><span class="w"></span><span class="c">#禁用安全</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins.security.disabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>10.168.2.87 (node)</li>
-</ul>
+</div><h3 id="43opensearch-d210168287">4.3、opensearch-d2（10.168.2.87）</h3>
 <ul>
 <li>cat /home/top/elasticsearch-7.10.2/config/elasticsearch.yml</li>
 </ul>
@@ -752,89 +526,24 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="lnt">38
 </span><span class="lnt">39
 </span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
-</span><span class="lnt">87
-</span><span class="lnt">88
-</span><span class="lnt">89
-</span><span class="lnt">90
-</span><span class="lnt">91
-</span><span class="lnt">92
-</span><span class="lnt">93
-</span><span class="lnt">94
-</span><span class="lnt">95
-</span><span class="lnt">96
-</span><span class="lnt">97
-</span><span class="lnt">98
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># ======================== Elasticsearch Configuration =========================</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span><span class="w">
-</span><span class="w"></span><span class="c">#       Before you set out to tweak and tune the configuration, make sure you</span><span class="w">
-</span><span class="w"></span><span class="c">#       understand what are you trying to accomplish and the consequences.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># The primary way of configuring a node is via this file. This template lists</span><span class="w">
-</span><span class="w"></span><span class="c"># the most important settings you may want to configure for a production cluster.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Please consult the documentation for further information on configuration options:</span><span class="w">
-</span><span class="w"></span><span class="c"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
-</span><span class="w"></span><span class="c"># 集群名字</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">es-top</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-cluster</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
-</span><span class="w"></span><span class="c"># 描述节点名字</span><span class="w">
-</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">node87</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-d2</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Add custom attributes to the node:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
@@ -844,75 +553,104 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/data</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/data</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
 </span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
 </span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/es/logs</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ----------------------------------- Memory -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Lock the memory on startup:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#bootstrap.memory_lock: true</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Make sure that the heap size is set to about half the memory available</span><span class="w">
-</span><span class="w"></span><span class="c"># on the system and that the owner of the process is allowed to use this</span><span class="w">
-</span><span class="w"></span><span class="c"># limit.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Elasticsearch performs poorly when the system is swapping the memory.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Network -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch is only accessible on localhost. Set a different</span><span class="w">
-</span><span class="w"></span><span class="c"># address here to expose this node on the network:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/logs</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#将集群绑定到特定的 IP 地址</span><span class="w">
 </span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="l">node87</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># By default Elasticsearch listens for HTTP traffic on the first free port it</span><span class="w">
-</span><span class="w"></span><span class="c"># finds starting at 9200. Set a specific HTTP port here:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="nt">http.port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
-</span><span class="w"></span><span class="c"># tcp端口</span><span class="w">
-</span><span class="w"></span><span class="nt">transport.tcp.port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the network module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># --------------------------------- Discovery ----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Pass an initial list of hosts to perform discovery when this node is started:</span><span class="w">
-</span><span class="w"></span><span class="c"># The default list of hosts is [&#34;127.0.0.1&#34;, &#34;[::1]&#34;]</span><span class="w">
-</span><span class="w"></span><span class="c"># 配置两个重要的发现和集群形成设置，以便集群中的节点可以相互发现并选举一个主节点</span><span class="w">
-</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85:9300&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;node86:9300&#34;</span><span class="p">,</span><span class="s2">&#34;node87:9300&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Bootstrap the cluster using an initial set of master-eligible nodes:</span><span class="w">
-</span><span class="w"></span><span class="c"># 明确列出应在第一次选举中计算其选票的主合格节点</span><span class="w">
-</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># For more information, consult the discovery and cluster formation module documentation.</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># ---------------------------------- Various -----------------------------------</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c"># Require explicit names when deleting indices:</span><span class="w">
-</span><span class="w"></span><span class="c">#</span><span class="w">
-</span><span class="w"></span><span class="c">#action.destructive_requires_name: true</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c">##  7.15 没有个配置了</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.data</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ingest</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.master</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.ml</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.remote_cluster_client</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.transform</span><span class="w">
-</span><span class="w"></span><span class="c">#  node.voting_only</span><span class="w">
-</span><span class="w"></span><span class="c">## 需要用 https://www.elastic.co/guide/en/elasticsearch/reference/7.15/modules-node.html#node-roles</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># # 跨域</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">http.cors.allow-origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#为集群配置发现主机</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;node86&#34;</span><span class="p">,</span><span class="s2">&#34;node88&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-master</span><span class="w">
+</span><span class="w"></span><span class="c">#禁用安全</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins.security.disabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="5-启动es集群">5. 启动es集群</h2>
+</div><h3 id="44opensearch-c1-10168288">4.4、opensearch-c1 (10.168.2.88)</h3>
+<ul>
+<li>cat /home/top/elasticsearch-7.10.2/config/elasticsearch.yml</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ---------------------------------- Cluster -----------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for your cluster:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-cluster</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># ------------------------------------ Node ------------------------------------</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Use a descriptive name for the node:</span><span class="w">
+</span><span class="w"></span><span class="c"># 协调节点</span><span class="w">
+</span><span class="w"></span><span class="nt">node.name</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-c1</span><span class="w">
+</span><span class="w"></span><span class="nt">node.master</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">node.data</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">node.ingest</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to directory where to store the data (separate multiple locations by comma):</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.data</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/data</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># Path to log files:</span><span class="w">
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="nt">path.logs</span><span class="p">:</span><span class="w"> </span><span class="l">/home/top/opensearch/logs</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#将集群绑定到特定的 IP 地址</span><span class="w">
+</span><span class="w"></span><span class="nt">network.host</span><span class="p">:</span><span class="w"> </span><span class="l">node88</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#为集群配置发现主机</span><span class="w">
+</span><span class="w"></span><span class="nt">discovery.seed_hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;node85&#34;</span><span class="p">,</span><span class="s2">&#34;node86&#34;</span><span class="p">,</span><span class="s2">&#34;node87&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">cluster.initial_master_nodes</span><span class="p">:</span><span class="w"> </span><span class="l">opensearch-master</span><span class="w">
+</span><span class="w"></span><span class="c">#禁用安全</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins.security.disabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-启动opens集群">5. 启动OpenS集群</h2>
 <ul>
 <li>此操作需要在各个节点上运行</li>
 </ul>
@@ -921,7 +659,7 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">/home/top/es/elasticsearch-7.10.2/bin/elasticsearch -d -p /home/top/es/pid &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">/home/top/opensearch/opensearch/bin/opensearch -d -p /home/top/opensearch/pid &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="6-检测是否启动完成集群">6. 检测是否启动完成集群</h2>
@@ -966,10 +704,6 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
                 <br/>
                 <div>
                     
-                        <a href="http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/">前一页</a>
-                    
-                    
-                        <a href="http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/">后一页</a>
                     
                 </div>
             </article>
@@ -1201,15 +935,23 @@ scp -r  /home/top/es top@10.168.2.87:/home/top/
         <li><a href="#21-下载安装包">2.1 下载安装包：</a></li>
       </ul>
     </li>
-    <li><a href="#3es安装">3.ES安装</a>
+    <li><a href="#3opens安装">3.OpenS安装</a>
       <ul>
-        <li><a href="#31-解压es安装包">3.1 解压ES安装包</a></li>
+        <li><a href="#31-解压opens安装包">3.1 解压OpenS安装包</a></li>
         <li><a href="#32-创建数据目录日志目录">3.2 创建数据目录、日志目录</a></li>
-        <li><a href="#33分发配置及安装目录">3.3分发配置及安装目录</a></li>
+        <li><a href="#33-删除安装包">3.3 删除安装包</a></li>
+        <li><a href="#34分发配置及安装目录">3.4分发配置及安装目录</a></li>
       </ul>
     </li>
-    <li><a href="#4-es节点配置">4. ES节点配置</a></li>
-    <li><a href="#5-启动es集群">5. 启动es集群</a></li>
+    <li><a href="#4-opens节点配置">4. OpenS节点配置</a>
+      <ul>
+        <li><a href="#41-opensearch-master10168285-">4.1、 opensearch-master(10.168.2.85 )</a></li>
+        <li><a href="#42opensearch-d1-10168286">4.2、opensearch-d1 (10.168.2.86)</a></li>
+        <li><a href="#43opensearch-d210168287">4.3、opensearch-d2（10.168.2.87）</a></li>
+        <li><a href="#44opensearch-c1-10168288">4.4、opensearch-c1 (10.168.2.88)</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-启动opens集群">5. 启动OpenS集群</a></li>
     <li><a href="#6-检测是否启动完成集群">6. 检测是否启动完成集群</a>
       <ul>
         <li></li>

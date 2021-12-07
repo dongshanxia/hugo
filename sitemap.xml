@@ -3,15 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://127.0.0.1:1313/hugo/categories/</loc>
-    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/es/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/es/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/opensearch/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</loc>
+    <lastmod>2021-11-30T19:13:45+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/cluster/</loc>
     <lastmod>2021-11-24T10:46:51+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/</loc>
-    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/</loc>
     <lastmod>2021-11-24T10:46:51+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/pve/</loc>
@@ -21,9 +39,6 @@
     <lastmod>2021-11-24T10:46:51+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/pve/pve%E5%B4%A9%E6%BA%83/</loc>
-    <lastmod>2021-11-24T10:46:51+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
     <lastmod>2021-11-24T10:46:51+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/java/</loc>
@@ -65,15 +80,6 @@
     <loc>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-11-22T09:53:29+08:00</lastmod>
   </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2021-11-22T09:53:29+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/es/</loc>
-    <lastmod>2021-11-18T11:09:21+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/es/</loc>
-    <lastmod>2021-11-18T11:09:21+08:00</lastmod>
-  </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/es/</loc>
     <lastmod>2021-11-18T11:09:21+08:00</lastmod>
   </url><url>
@@ -92,13 +98,7 @@
     <loc>http://127.0.0.1:1313/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/</loc>
     <lastmod>2021-11-16T10:25:11+08:00</lastmod>
   </url><url>
-    <loc>http://127.0.0.1:1313/hugo/categories/opensearch/</loc>
-    <lastmod>2021-11-11T19:13:45+08:00</lastmod>
-  </url><url>
     <loc>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</loc>
-    <lastmod>2021-11-11T19:13:45+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</loc>
     <lastmod>2021-11-11T19:13:45+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/docker/</loc>
