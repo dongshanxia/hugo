@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mybatis拦截器执行原理</title>
+    <title>mybatis拦截器执行过程</title>
 
 
 
@@ -69,7 +69,8 @@
                 
                 
 
-                <p>mybatis的拦截器本人平时也很少用到，没了解之前，也只是知道运用到了动态代理用来增强方法的功能，但是不了解其中的原理。为了更好的使用mybatis，这次，我记录下我所了解的mybatis的原理，本文不一定完全正确，可能有理解不到位的地方。</p>
+                <p>m[toc]</p>
+<p>mybatis的拦截器本人平时也很少用到，没了解之前，也只是知道运用到了动态代理用来增强方法的功能，但是不了解其中的原理。为了更好的使用mybatis，这次，我记录下我所了解的mybatis的原理，本文不一定完全正确，可能有理解不到位的地方。</p>
 <h2 id="1使用mybatis的拦截器">1、使用mybatis的拦截器</h2>
 <p>像平常使用mybatis框架时，如果哪句sql报错了，我们可以通过控制台或日志打印的sql去查看sql的问题，但是如果sql有太多的参数，其实是很不方便的，自己还得手动去把一个一个参数给设置上，有些浪费时间，这时候就可以利用mybatis的拦截器去帮我们把参数给设置上。</p>
 <blockquote>
