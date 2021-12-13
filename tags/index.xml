@@ -6,7 +6,25 @@
     <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Dec 2021 12:19:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 16:35:41 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>oracle</title>
+      <link>http://127.0.0.1:1313/hugo/tags/oracle/</link>
+      <pubDate>Mon, 13 Dec 2021 16:35:41 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/tags/oracle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leak</title>
+      <link>http://127.0.0.1:1313/hugo/tags/leak/</link>
+      <pubDate>Fri, 10 Dec 2021 16:35:26 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/tags/leak/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>mybatis</title>
       <link>http://127.0.0.1:1313/hugo/tags/mybatis/</link>

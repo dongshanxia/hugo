@@ -6,11 +6,20 @@
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Dec 2021 12:19:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 16:35:41 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>db</title>
+      <link>http://127.0.0.1:1313/hugo/categories/db/</link>
+      <pubDate>Mon, 13 Dec 2021 16:35:41 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/categories/db/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>java</title>
       <link>http://127.0.0.1:1313/hugo/categories/java/</link>
-      <pubDate>Wed, 08 Dec 2021 12:19:57 +0800</pubDate>
+      <pubDate>Fri, 10 Dec 2021 16:35:26 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/categories/java/</guid>
       <description></description>
@@ -76,15 +85,6 @@
       <pubDate>Thu, 11 Nov 2021 17:25:04 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/categories/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>db</title>
-      <link>http://127.0.0.1:1313/hugo/categories/db/</link>
-      <pubDate>Wed, 20 Oct 2021 17:51:31 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/categories/db/</guid>
       <description></description>
     </item>
     
