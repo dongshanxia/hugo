@@ -70,7 +70,245 @@
                 
 
                 <h2 id="常见hive语句">常见hive语句</h2>
-<h3 id="创建hive库">创建hive库</h3>
+<h3 id="1创建hive库">1、创建hive库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">hive_oracle</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2选择库">2、选择库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">use</span><span class="w"> </span><span class="n">hive_oracle</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3创建数据库">3、创建数据库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">hive_oracle</span><span class="p">.</span><span class="n">xcb_oracle_hive_end_dt</span><span class="o">`</span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="o">`</span><span class="n">xcb_id</span><span class="o">`</span><span class="w"> </span><span class="nb">bigint</span><span class="p">,</span><span class="w"> 
+</span><span class="w">  </span><span class="o">`</span><span class="n">xcb_number</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w"> 
+</span><span class="w">  </span><span class="o">`</span><span class="n">xcb_timestamp</span><span class="o">`</span><span class="w"> </span><span class="k">timestamp</span><span class="p">,</span><span class="w"> 
+</span><span class="w">  </span><span class="o">`</span><span class="n">xcb_varchar2</span><span class="o">`</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">PARTITIONED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">(</span><span class="w"> 
+</span><span class="w">  </span><span class="o">`</span><span class="n">ds</span><span class="o">`</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4简单查询">4、简单查询</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="err">（原来有数据的一张表）</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-40-31-image-20211214154046316.png" alt="image-20211214154046316"></p>
+<h3 id="5时间函数">5、时间函数</h3>
+<ul>
+<li>to_date</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">to_date</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-47-17-image-20211214154725488.png" alt="image-20211214154725488"></p>
+<ul>
+<li>from_unixtime  (这个不行)   &mdash;- select from_unixtime(1323308943,’yyyyMMdd’);</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>unix_timestamp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-54-3-image-20211214155415436.png" alt="image-20211214155415436"></p>
+</li>
+<li>
+<p>year 返回日期中的年</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">year</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-59-43-image-20211214155950842.png" alt="image-20211214155950842"></p>
+</li>
+<li>
+<p>month 返回日期中的月份</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">month</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-2-5-image-20211214160221219.png" alt="image-20211214160221219"></p>
+</li>
+<li>
+<p>day：返回日期中的天</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">day</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-10-3-image-20211214161011441.png" alt="image-20211214161011441"></p>
+</li>
+<li>
+<p>hour：返回日期中的小时</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">hour</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-11-8-image-20211214161124084.png" alt="image-20211214161124084"></p>
+</li>
+<li>
+<p>minute：返回日期中的分钟</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">minute</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-12-52-image-20211214161259839.png" alt="image-20211214161259839"></p>
+</li>
+<li>
+<p>second：返回日期中的秒</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">second</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-13-45-image-20211214161401332.png" alt="image-20211214161401332"></p>
+</li>
+<li>
+<p>weekofyear：返回日期在当前周数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">weekofyear</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-15-17-image-20211214161525157.png" alt="image-20211214161525157"></p>
+</li>
+<li>
+<p>datediff：返回开始日期减去结束日期的天数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;2021-12-09&#39;</span><span class="p">,</span><span class="s1">&#39;2021-12-14&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-18-7-image-20211214161822514.png" alt="image-20211214161822514"></p>
+</li>
+<li>
+<p>date_sub：返回日期前n天的日期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">date_sub</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-37-31-image-20211214163739034.png" alt="image-20211214163739034"></p>
+</li>
+<li>
+<p>date_add：返回日期后n天的日期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">date_add</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/17-6-8-image-20211214170616062.png" alt="image-20211214170616062"></p>
+</li>
+<li>
+<p>特殊组合</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">),</span><span class="s1">&#39;yyyy-MM-dd hh:mm:ss&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/17-10-52-image-20211214171058188.png" alt="image-20211214171058188"></p>
+</li>
+</ul>
+<h3 id="6特殊起飞">6、特殊起飞</h3>
+<ul>
+<li>
+<p>复制一张表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">INSERT INTO xcb_oracle_hive_end_dt partition(ds=2012) 
+select 
+t.xcb_id,t.xcb_number,from_unixtime(unix_timestamp(t.xcb_timestamp),&#39;yyyy-MM-dd hh:mm:ss&#39;),t.xcb_varchar2
+from xcb_oracle_hive_base_dt t;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 
                 <br/>
                 <div>
@@ -290,7 +528,12 @@
   <ul>
     <li><a href="#常见hive语句">常见hive语句</a>
       <ul>
-        <li><a href="#创建hive库">创建hive库</a></li>
+        <li><a href="#1创建hive库">1、创建hive库</a></li>
+        <li><a href="#2选择库">2、选择库</a></li>
+        <li><a href="#3创建数据库">3、创建数据库</a></li>
+        <li><a href="#4简单查询">4、简单查询</a></li>
+        <li><a href="#5时间函数">5、时间函数</a></li>
+        <li><a href="#6特殊起飞">6、特殊起飞</a></li>
       </ul>
     </li>
   </ul>

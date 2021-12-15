@@ -13,7 +13,10 @@
       <pubDate>Mon, 13 Dec 2021 20:52:41 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/hive/</guid>
-      <description>常见hive语句 创建hive库 </description>
+      <description>常见hive语句 1、创建hive库 1  createdatabasehive_oracle;  2、选择库 1  usehive_oracle  3、创建数据库 1 2 3 4 5 6 7  CREATETABLE`hive_oracle.xcb_oracle_hive_end_dt`(`xcb_id`bigint,`xcb_number`int,`xcb_timestamp`timestamp,`xcb_varchar2`string)PARTITIONEDBY(`ds`string)  4、简单查询 1  select*fromxcb_oracle_hive_base_dt;（原来有数据的一张表）  5、时间函数  to_date  1  selectxcb_id,to_date(xcb_timestamp)fromxcb_oracle_hive_base_dt;   from_unixtime (这个不行) &amp;mdash;- select from_unixtime(1323308943,’yyyyMMdd’);  1  selectxcb_id,from_unixtime(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    unix_timestamp
+1  selectxcb_id,unix_timestamp(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    year 返回日期中的年
+1  selectxcb_id,year(xcb_timestamp)fromxcb_oracle_hive_base_dt;    month 返回日期中的月份
+1  selectxcb_id,month(xcb_timestamp)fromxcb_oracle_hive_base_dt;    day：返回日期中的天</description>
     </item>
     
   </channel>
