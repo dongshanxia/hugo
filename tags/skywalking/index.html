@@ -644,14 +644,18 @@
                 
                 el.className = "mermaid";
                 console.log(graphDefinition)
-                var edgePathStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathStyle = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathsStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
                 var markerStyle = "classDef marker stroke:#e8e8e8,stroke-width:2px;"
+                var markerEndStyle = "classDef markerEnd stroke:#e8e8e8,stroke-width:2px;"
                 var nodeStyle = "classDef node stroke:#e8e8e8,stroke-width:2px;"
                 
                 var defaultStyle = "classDef default fill:#f9f,stroke-width:4px;"
 
                 graphDefinition = graphDefinition + "\n" + edgePathStyle
+                graphDefinition = graphDefinition + "\n" + edgePathsStyle
                 graphDefinition = graphDefinition + "\n" + markerStyle
+                graphDefinition = graphDefinition + "\n" + markerEndStyle
                 graphDefinition = graphDefinition + "\n" + nodeStyle
                 graphDefinition = graphDefinition + "\n" + defaultStyle
                 
