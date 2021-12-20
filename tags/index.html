@@ -83,12 +83,31 @@
 
         <div class="section-card">
             <div class="section-details">
-                <h3 class="section-count">29 pages</h3>
+                <h3 class="section-count">30 pages</h3>
                 <h1 class="section-term">Tags</h1>
             </div>
         </div>
 
         <section class="article-list">
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/tags/blog/">blog</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 0 预计读完 0 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2021-12-20 17:08:30 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
                 
                     <article class="has-image">
                         <header class="article-header">
@@ -261,25 +280,6 @@
                         </header>
                     </article>
                 
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <header class="article-category">
-                                    
-                                </header>
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/%E4%BB%BB%E5%8A%A1/">任务</a>
-                                </h2>
-                                <h3 class="article-subtitle">
-                                    统计 0 预计读完 0 分钟
-                                </h3>
-                                <footer class="article-time">
-                                    <time class="article-time--published">2021-11-22 17:51:23 &#43;0800 CST</time>
-                                </footer>
-                            </div>
-                        </header>
-                    </article>
-                
         </section>
     <nav class='pagination'>
         
@@ -324,6 +324,12 @@
     <h2 class="widget-title section-title">分类</h2>
     <div class="widget-archive--list">
         <div class="archives-year">
+            
+                
+                <a href="/hugo/categories/blog/">
+                    <span class="year">blog</span>
+                    
+                </a>
             
                 
                 <a href="/hugo/categories/db/">
@@ -417,6 +423,11 @@
         
             
         
+        
+            
+            <a href="/hugo/tags/blog/" class="font_size_1">
+                blog
+            </a>
         
             
             <a href="/hugo/tags/certbot/" class="font_size_1">
@@ -698,50 +709,41 @@
 </svg>
 
 
-
-
-
-
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <script>
     
 
     const mermaidKeywords = [
-        "graph TD",
-        "graph TB",
-        "graph BT",
-        "graph RL",
-        "graph LR",
+        "graph",
         "sequenceDiagram",
         "gantt",
         "classDiagram",
         "gitGraph",
         "erDiagram",
-        "journey"
+        "journey",
+        "flowchart"
     ];
     console.log("-----")
     Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
         
         var graphDefinition = el.innerText;
 
-
         for (const keyword of mermaidKeywords) {
-            if (graphDefinition.startsWith(keyword)) {
+            if (graphDefinition.trim().startsWith(keyword)) {
                 
                 
                 el.className = "mermaid";
                 console.log(graphDefinition)
-                var edgePathStyle = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
+                var markerStyle = "classDef marker stroke:#e8e8e8,stroke-width:2px;"
+                var nodeStyle = "classDef node stroke:#e8e8e8,stroke-width:2px;"
                 
-                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+                var defaultStyle = "classDef default fill:#f9f,stroke-width:4px;"
 
                 graphDefinition = graphDefinition + "\n" + edgePathStyle
+                graphDefinition = graphDefinition + "\n" + markerStyle
+                graphDefinition = graphDefinition + "\n" + nodeStyle
                 graphDefinition = graphDefinition + "\n" + defaultStyle
                 
                 el.innerHTML = graphDefinition;

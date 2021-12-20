@@ -6,7 +6,16 @@
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Dec 2021 20:52:41 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Dec 2021 17:08:30 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blog</title>
+      <link>http://127.0.0.1:1313/hugo/categories/blog/</link>
+      <pubDate>Mon, 20 Dec 2021 17:08:30 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/categories/blog/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>db</title>
       <link>http://127.0.0.1:1313/hugo/categories/db/</link>

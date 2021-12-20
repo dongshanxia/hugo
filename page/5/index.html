@@ -78,6 +78,26 @@
                         <div class="article-details">
                             <header class="article-category">
                                 
+                                    <a href="/hugo/categories/go/" >
+                                        go
+                                    </a>
+                                
+                            </header>
+                            <h2 class="article-title">
+                                <a href="/hugo/go/go_install/">Go_install</a>
+                            </h2>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                2021-06-04 统计 23 预计读完 1 分钟
+                            </h7>
+                        </div>
+                    </header>
+                </article>
+            
+                <article class="has-image">
+                    <header class="article-header">
+                        <div class="article-details">
+                            <header class="article-category">
+                                
                                     <a href="/hugo/categories/linux/" >
                                         linux
                                     </a>
@@ -145,6 +165,12 @@
     <h2 class="widget-title section-title">分类</h2>
     <div class="widget-archive--list">
         <div class="archives-year">
+            
+                
+                <a href="/hugo/categories/blog/">
+                    <span class="year">blog</span>
+                    
+                </a>
             
                 
                 <a href="/hugo/categories/db/">
@@ -238,6 +264,11 @@
         
             
         
+        
+            
+            <a href="/hugo/tags/blog/" class="font_size_1">
+                blog
+            </a>
         
             
             <a href="/hugo/tags/certbot/" class="font_size_1">
@@ -522,50 +553,41 @@
 </svg>
 
 
-
-
-
-
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <script>
     
 
     const mermaidKeywords = [
-        "graph TD",
-        "graph TB",
-        "graph BT",
-        "graph RL",
-        "graph LR",
+        "graph",
         "sequenceDiagram",
         "gantt",
         "classDiagram",
         "gitGraph",
         "erDiagram",
-        "journey"
+        "journey",
+        "flowchart"
     ];
     console.log("-----")
     Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
         
         var graphDefinition = el.innerText;
 
-
         for (const keyword of mermaidKeywords) {
-            if (graphDefinition.startsWith(keyword)) {
+            if (graphDefinition.trim().startsWith(keyword)) {
                 
                 
                 el.className = "mermaid";
                 console.log(graphDefinition)
-                var edgePathStyle = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
+                var markerStyle = "classDef marker stroke:#e8e8e8,stroke-width:2px;"
+                var nodeStyle = "classDef node stroke:#e8e8e8,stroke-width:2px;"
                 
-                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+                var defaultStyle = "classDef default fill:#f9f,stroke-width:4px;"
 
                 graphDefinition = graphDefinition + "\n" + edgePathStyle
+                graphDefinition = graphDefinition + "\n" + markerStyle
+                graphDefinition = graphDefinition + "\n" + nodeStyle
                 graphDefinition = graphDefinition + "\n" + defaultStyle
                 
                 el.innerHTML = graphDefinition;

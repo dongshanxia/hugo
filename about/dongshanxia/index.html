@@ -295,7 +295,6 @@
 </span><span class="lnt">22
 </span><span class="lnt">23
 </span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">  graph TD
@@ -322,7 +321,7 @@
       C--&gt;V[oracle-base]
       V--&gt;W[oracle]
       C--&gt;X[hugo]
-```5</code></pre></td></tr></table>
+</code></pre></td></tr></table>
 </div>
 </div>
                 <br/>
@@ -465,50 +464,41 @@
 </svg>
 
 
-
-
-
-
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <script>
     
 
     const mermaidKeywords = [
-        "graph TD",
-        "graph TB",
-        "graph BT",
-        "graph RL",
-        "graph LR",
+        "graph",
         "sequenceDiagram",
         "gantt",
         "classDiagram",
         "gitGraph",
         "erDiagram",
-        "journey"
+        "journey",
+        "flowchart"
     ];
     console.log("-----")
     Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
         
         var graphDefinition = el.innerText;
 
-
         for (const keyword of mermaidKeywords) {
-            if (graphDefinition.startsWith(keyword)) {
+            if (graphDefinition.trim().startsWith(keyword)) {
                 
                 
                 el.className = "mermaid";
                 console.log(graphDefinition)
-                var edgePathStyle = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
+                var markerStyle = "classDef marker stroke:#e8e8e8,stroke-width:2px;"
+                var nodeStyle = "classDef node stroke:#e8e8e8,stroke-width:2px;"
                 
-                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+                var defaultStyle = "classDef default fill:#f9f,stroke-width:4px;"
 
                 graphDefinition = graphDefinition + "\n" + edgePathStyle
+                graphDefinition = graphDefinition + "\n" + markerStyle
+                graphDefinition = graphDefinition + "\n" + nodeStyle
                 graphDefinition = graphDefinition + "\n" + defaultStyle
                 
                 el.innerHTML = graphDefinition;

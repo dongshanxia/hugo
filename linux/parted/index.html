@@ -385,50 +385,41 @@ Number  Start   End     Size    File system  Name         标志
 </svg>
 
 
-
-
-
-
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <script>
     
 
     const mermaidKeywords = [
-        "graph TD",
-        "graph TB",
-        "graph BT",
-        "graph RL",
-        "graph LR",
+        "graph",
         "sequenceDiagram",
         "gantt",
         "classDiagram",
         "gitGraph",
         "erDiagram",
-        "journey"
+        "journey",
+        "flowchart"
     ];
     console.log("-----")
     Array.from(document.getElementsByClassName('language-fallback')).forEach(el => {
         
         var graphDefinition = el.innerText;
 
-
         for (const keyword of mermaidKeywords) {
-            if (graphDefinition.startsWith(keyword)) {
+            if (graphDefinition.trim().startsWith(keyword)) {
                 
                 
                 el.className = "mermaid";
                 console.log(graphDefinition)
-                var edgePathStyle = "classDef edgePath stroke:#e8e8e8,stroke-width:2px;"
+                var edgePathStyle = "classDef edgePaths stroke:#e8e8e8,stroke-width:2px;"
+                var markerStyle = "classDef marker stroke:#e8e8e8,stroke-width:2px;"
+                var nodeStyle = "classDef node stroke:#e8e8e8,stroke-width:2px;"
                 
-                var defaultStyle = "classDef default fill:#f9f,stroke:#333,stroke-width:4px;"
+                var defaultStyle = "classDef default fill:#f9f,stroke-width:4px;"
 
                 graphDefinition = graphDefinition + "\n" + edgePathStyle
+                graphDefinition = graphDefinition + "\n" + markerStyle
+                graphDefinition = graphDefinition + "\n" + nodeStyle
                 graphDefinition = graphDefinition + "\n" + defaultStyle
                 
                 el.innerHTML = graphDefinition;

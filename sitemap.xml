@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://127.0.0.1:1313/hugo/about/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/about/blog/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/blog/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/blog/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/</loc>
-    <lastmod>2021-12-13T20:52:41+08:00</lastmod>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
+    <lastmod>2021-12-20T17:08:30+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/db/</loc>
     <lastmod>2021-12-13T20:52:41+08:00</lastmod>
@@ -15,12 +33,6 @@
     <lastmod>2021-12-13T20:52:41+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/hive/</loc>
-    <lastmod>2021-12-13T20:52:41+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/</loc>
-    <lastmod>2021-12-13T20:52:41+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
     <lastmod>2021-12-13T20:52:41+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/db/oracle/</loc>
@@ -91,9 +103,6 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/tomcat/</loc>
     <lastmod>2021-11-24T10:27:57+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/about/</loc>
-    <lastmod>2021-11-22T17:51:23+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/study/</loc>
     <lastmod>2021-11-22T17:51:23+08:00</lastmod>
