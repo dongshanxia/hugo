@@ -38,11 +38,12 @@
                name="search" autocomplete="off"/>
     </div>
     <h3 id="search-tip" style="color: #ffffcc;text-align: center;display: none;">搜索中，请稍后 ...</h3>
-    <div id="result" class="article-list"></div>
-    <div id="page" style="display: none;">
-        <button id="prePage" class="prePage" onclick="prePage()" style="display: none;">上</button>
-        <button id="nextPage" class="nextPage" onclick="nextPage()" style="display: none;">下</button>
+    <div id="page" class="page" style="display: none;">
+        <button id="prePage" class="prePage" onclick="prePage()" style="visibility:hidden;">上</button>
+        <button id="nextPage" class="nextPage" onclick="nextPage()" style="visibility:hidden;">下</button>
     </div>
+    <div id="result" class="search-article-list article-list"></div>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -72,9 +73,7 @@
     function search() {
         console.log("进入搜索")
         key = document.getElementById("search-key").value;
-        if (key === "") {
-            return;
-        }
+
         console.log(key)
         
 
@@ -152,14 +151,15 @@
 
                 if (sumPage > currentPage){
                     $("#page").css("display","inline-block")
-                    $("#nextPage").css("display","inline-block")
+                    $("#nextPage").css("visibility","visible")
                 }else {
-                    $("#nextPage").css("display","none")
+                    $("#nextPage").css("visibility","hidden")
                 }
                 if (currentPage >1) {
-                    $("#prePage").css("display","inline-block")
+                    $("#prePage").css("visibility","visible")
+
                 }else {
-                    $("#prePage").css("display","none")
+                    $("#prePage").css("visibility","hidden")
                 }
 
 
@@ -201,15 +201,17 @@
         border-radius: 4px;
         left: 5%;
         right: 5%;
-        top: 100px;
-        display: none;
+        top: 5%;
+        display: inline-block;
         width: 90%;
          
         padding: 20px 25px 20px 25px;
         background-color: #515151e1;
-        border: 1px solid rgba(81, 81, 81, 0.1);
+        background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
         overflow: auto;
-        height: 750px;
+        height: 90%;
         z-index: 99;
     }
 
@@ -218,9 +220,78 @@
         position: relative;
         width: 100%;
     }
+    .page{
+        margin-top: 1%;
+    }
+    .prePage,.nextPage{
+        border-radius: 60%;
+    }
 
     .aa-input-container span, .aa-input-container input {
         width: inherit;
+    }
+
+    .search-article-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        --search-margin:2%
+    }
+
+
+    .search-article-list article:not(:last-of-type) {
+        margin-bottom: 1px;
+
+    }
+
+    .search-article-list article {
+        margin-top: 2%;
+        margin-bottom: 1px;
+        margin-left: 0.5%;
+    }
+
+
+
+    .search-article-list article:nth-child(1) {
+        margin-top: 1%;
+        margin-bottom: 1px;
+    }
+    .search-article-list article:nth-child(2) {
+        margin-top: 1%;
+        margin-bottom: 1px;
+    }
+    .search-article-list article:nth-child(3) {
+        margin-top: 1%;
+        margin-bottom: 1px;
+    }
+    .search-article-list article:nth-child(4) {
+        margin-top: 1%;
+        margin-bottom: 1px;
+    }
+
+
+    .search-article-list article {
+        margin-top: 2%;
+        margin-bottom: 1px;
+    }
+
+    .article-title,.article-subtitle{
+        text-align: center;
+    }
+
+    .search-article-list article:nth-child(4n+1){
+        margin-left: 2%;
+        margin-right: var(--search-margin);
+
+    }
+    .search-article-list article:nth-child(4n+2),article:nth-child(4n+3),article:nth-child(4n+0){
+        margin-left: var(--search-margin);
+        margin-right: var(--search-margin);
+    }
+
+
+    .search-article-list article {
+        width: 21%;
     }
 
     .search-key {
@@ -232,7 +303,7 @@
         transition: .2s;
         font-family: "Montserrat", sans-serif;
         box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
-        font-size: 11px;
+        font-size: 4pt;
         box-sizing: border-box;
         color: #333;
         -webkit-appearance: none;
