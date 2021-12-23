@@ -113,12 +113,11 @@
             url: " https://hugo.dongshanxia.top:35000/api/v2/openSearch?name="+key+"&num="+currentPage,
             dataType: "json",
             success: function (data) {
-                console.log(data)
-                console.log(data.time)
-                console.log(data.status)
-                console.log(data.data)
+                
+                
+                
+                
                 var redata = data.data
-
                 var page = redata.page
                 var sumPage = page.sumPage  
 
@@ -129,10 +128,10 @@
                     return
                 }
                 for (const item of redata.data) {
-                    console.log(item)
+                   
 
                     
-                    https:
+                    
 
                     $("#result").append(`
                         <article class="has-image">
