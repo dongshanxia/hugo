@@ -467,5 +467,14 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
 查找某个文件 1 2  ## 寻找某个文件 find . -name &amp;#34;*.tar&amp;#34;   软连接 1  ln -s /data/mysql3306/config/my.cnf /etc/mysql/my.cnf   查询服务详情 1  journalctl -u 服务名   5</description>
     </item>
     
+    <item>
+      <title>搜索功能</title>
+      <link>http://127.0.0.1:1313/hugo/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/search/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

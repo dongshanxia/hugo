@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tests</title>
+<html>
 
 
 
@@ -26,13 +21,151 @@
 
 
 
-</head>
 <body>
+         <div class="searchOut" id="searchOut">
+    <div class="container">
+        <button class="delete" onclick="tornOff()">X</button>
+    </div>
+    <div class="aa-input-container" id="aa-input-container">
+        <input type="search" id="search-key" class="search-key" placeholder="请输入搜索内容..."
+               name="search" autocomplete="off"/>
+    </div>
+    <h3 id="search-tip" style="color: #ffffcc;text-align: center;display: none;">搜索中，请稍后 ...</h3>
+    <div id="result" class="article-list"></div>
+    <div id="page" style="display: none;">
+        <button id="prePage" class="prePage" onclick="prePage()" style="display: none;">上</button>
+        <button id="nextPage" class="nextPage" onclick="nextPage()" style="display: none;">下</button>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        document.onkeydown = function (ev) {
+            var event = ev || event
+            if (event.keyCode == 13) {
+                search()
+            }
+        }
+    }
+    var currentPage = 1;
+
+    function tornOff() {
+        document.getElementById("searchOut").style.display = "none";
+    }
+
+    function prePage() {
+        currentPage = currentPage -1
+        search()
+    }
+    function nextPage() {
+        currentPage = currentPage +1
+        search()
+    }
+
+    function search() {
+        console.log("进入搜索")
+        key = document.getElementById("search-key").value;
+        if (key === "") {
+            return;
+        }
+        console.log(key)
+        
+
+        document.getElementById("search-tip").innerText = "搜索中，请稍后 ...";
+        document.getElementById("search-tip").style.display = "block";
+
+
+        var el = document.getElementById('result');
+        var childs = el.childNodes;
+        for (var i = childs.length - 1; i >= 0; i--) {
+            el.removeChild(childs[i]);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $.ajax({
+            type: "GET",
+            url: " http://10.168.2.82:36667/api/v2/openSearch?name="+key+"&num="+currentPage,
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                console.log(data.time)
+                console.log(data.status)
+                console.log(data.data)
+                var redata = data.data
+
+                var page = redata.page
+                var sumPage = page.sumPage  
+
+
+                if (sumPage == 0)
+                {
+                    document.getElementById("search-tip").innerText = "搜索完成没有数据";
+                    return
+                }
+                for (const item of redata.data) {
+                    console.log(item)
+
+                    
+
+
+                    $("#result").append(`
+                        <article class="has-image">
+                            <header class="article-header">
+                            <div class="article-details">
+
+                            <h2 class="article-title">
+                            <a href=`+item.url+`>`+item.name+`</a>
+                            </h2>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
+                            2021-12-20 统计 26 预计读完 1 分钟
+                        </h7>
+                        </div>
+                        </header>
+                        </article>
+                     `)
+                }
+
+                if (sumPage > currentPage){
+                    $("#page").css("display","inline-block")
+                    $("#nextPage").css("display","inline-block")
+                }else {
+                    $("#nextPage").css("display","none")
+                }
+                if (currentPage >1) {
+                    $("#prePage").css("display","inline-block")
+                }else {
+                    $("#prePage").css("display","none")
+                }
 
 
 
 
-
+                document.getElementById("search-tip").style.display = "none";
+            },
+            error: function (jqXHR) {
+                console.log("Error: " + jqXHR.status);
+            }
+        });
+    }
 
 
     
@@ -40,6 +173,69 @@
     
     
     
+    
+    
+</script>
+
+
+<style>
+
+    .delete {
+
+        border-radius: 60%;
+        position: absolute;
+        top: -2px;
+        right: 2px;
+        color: black;
+        display: inline-block;
+    }
+
+    .searchOut {
+        position: fixed;
+        border-radius: 4px;
+        left: 5%;
+        right: 5%;
+        top: 100px;
+        display: none;
+        width: 90%;
+         
+        padding: 20px 25px 20px 25px;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow: auto;
+        height: 750px;
+        z-index: 99;
+    }
+
+    .aa-input-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+    }
+
+    .aa-input-container span, .aa-input-container input {
+        width: inherit;
+    }
+
+    .search-key {
+        width: 300px;
+        padding: 12px 28px 12px 12px;
+        border: 2px solid #e4e4e4;
+        border-radius: 4px;
+        -webkit-transition: .2s;
+        transition: .2s;
+        font-family: "Montserrat", sans-serif;
+        box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+        font-size: 11px;
+        box-sizing: border-box;
+        color: #333;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+
+</style>
 
 
 
@@ -66,15 +262,27 @@
                     <a class="menu-item-link" href="/hugo/about/">关于</a>
                 </li>
             
-
+            <li class="menu-item">
+                <a class="menu-item-link" onclick="turnon()">搜索</a>
+            </li>
         </ul>
     </nav>
 </header>
 
 
+<script>
+    function turnon() {
+        document.getElementById("searchOut").style.display="inline-block";
+    }
+</script>
 
 
 
+
+
+
+
+<div id="content">
 
 
 <div class="container main-container flex on-phone--column extended ">
@@ -116,28 +324,7 @@
         </section></main>
 
 
-    <aside class="sidebar right-sidebar sticky">
-
-        
-            
-                
-                
-                
-                
-            
-        <section class="widget tagCloud">
-
-    <div class="tagCloud-tags">
-        
-            
-        
-
-    </div>
-
-</section>
-
-<section class="widget archives">
-
+    <aside class="sidebar right-sidebar sticky"><section class="widget archives">
     <h2 class="widget-title section-title">分类</h2>
     <div class="widget-archive--list">
         <div class="archives-year">
@@ -396,7 +583,9 @@
 </section></aside>
 
 
-</div><footer id="footer" class="footer">
+</div>
+
+        </div><footer id="footer" class="footer">
     <div class="social-links">
         <a href="http://our.dongshanxia.top:38888/" target="view_window" title="gitlab">
             <svg class="icon iconfont" aria-hidden="true">

@@ -52,10 +52,19 @@
                     <a class="menu-item-link" href="/hugo/about/">关于</a>
                 </li>
             
-
+            <li class="menu-item">
+                <a class="menu-item-link" onclick="turnon()">搜索</a>
+            </li>
         </ul>
     </nav>
 </header>
+
+
+<script>
+    function turnon() {
+        document.getElementById("searchOut").style.display="inline-block";
+    }
+</script>
 
 
 
@@ -65,9 +74,7 @@
 
 <div id="post" class="post">
             <article class="article-content">
-                
-                
-                
+
 
                 <h2 id="mybatis的缓存">mybatis的缓存</h2>
 <p>首先来看下mybatis对缓存的规范，规范嘛就是定义的接口啦。</p>

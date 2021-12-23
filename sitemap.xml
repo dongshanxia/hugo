@@ -307,5 +307,8 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/tar/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/search/</loc>
+    <priority>0.1</priority>
   </url>
 </urlset>

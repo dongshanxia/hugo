@@ -52,10 +52,19 @@
                     <a class="menu-item-link" href="/hugo/about/">关于</a>
                 </li>
             
-
+            <li class="menu-item">
+                <a class="menu-item-link" onclick="turnon()">搜索</a>
+            </li>
         </ul>
     </nav>
 </header>
+
+
+<script>
+    function turnon() {
+        document.getElementById("searchOut").style.display="inline-block";
+    }
+</script>
 
 
 
@@ -65,9 +74,7 @@
 
 <div id="post" class="post">
             <article class="article-content">
-                
-                
-                
+
 
                 <blockquote>
 <p>之前使用agent，我们需要每起一个应用都cp一份agent文件，因为应用名称实在agen.config中配置的，为了避免这么麻烦，可以利用配置覆盖，使用同一个agent文件达到不同配置的目的</p>

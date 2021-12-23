@@ -52,10 +52,19 @@
                     <a class="menu-item-link" href="/hugo/about/">关于</a>
                 </li>
             
-
+            <li class="menu-item">
+                <a class="menu-item-link" onclick="turnon()">搜索</a>
+            </li>
         </ul>
     </nav>
 </header>
+
+
+<script>
+    function turnon() {
+        document.getElementById("searchOut").style.display="inline-block";
+    }
+</script>
 
 
 
@@ -65,9 +74,7 @@
 
 <div id="post" class="post">
             <article class="article-content">
-                
-                
-                
+
 
                 <p>m[toc]</p>
 <p>mybatis的拦截器本人平时也很少用到，没了解之前，也只是知道运用到了动态代理用来增强方法的功能，但是不了解其中的原理。为了更好的使用mybatis，这次，我记录下我所了解的mybatis的原理，本文不一定完全正确，可能有理解不到位的地方。</p>
