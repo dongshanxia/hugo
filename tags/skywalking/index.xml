@@ -23,10 +23,10 @@
     
     <item>
       <title>SkyWalking搭配springboot应用(三)</title>
-      <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89-/</link>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
       <pubDate>Tue, 13 Jul 2021 16:27:57 +0800</pubDate>
       
-      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89-/</guid>
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
       <description>上传springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
  </description>
     </item>
