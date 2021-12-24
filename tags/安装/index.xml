@@ -6,11 +6,11 @@
     <description>Recent content in 安装 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 24 Dec 2021 14:33:14 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Dec 2021 14:34:17 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Es Ik</title>
       <link>http://127.0.0.1:1313/hugo/es/es-ik/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/es-ik/</guid>
       <description>es-server-ik 1.前提  有一个完美运行的 es集群 es的home 假设为 /eshome eshome=/home/top/es/elasticsearch-7.15.2(隔壁那份es安装文档的对应目录) 每一台es节点都需要执行哦  2.上传ik安装包  把ik 安装包放在可供 es下载的地址 这边直接node60机器的nginx地址 可以直接用github地址的 地址  3.安装ik 1  /$eshome/elasticsearch-plugin install http://10.168.2.60:35000/elasticsearch-analysis-ik-7.15.2.zip   重启ES  stop  1  ps -ef | grep elasticsearch |grep UTF-8| grep -v grep | awk &amp;#39;{print $2}&amp;#39;|xargs kill -9    start  1  /$eshome/bin/elasticsearch -d   </description>
@@ -19,7 +19,7 @@
     <item>
       <title>Go_install</title>
       <link>http://127.0.0.1:1313/hugo/go/go_install/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/go/go_install/</guid>
       <description>go 安装 1.下载地址  https://golang.google.cn/dl/  2.linux安装 1  tar -C /usr/local -xzf go.*.linux-amd64.tar.gz   3. 配置环境变量 1 2  export GO_HOME=/usr/local/go export PATH=$GO_HOME/bin:$PATH   4.生效环境变量 1  source 环境变量文件   </description>
@@ -28,7 +28,7 @@
     <item>
       <title>Mssql安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
       <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
@@ -38,7 +38,7 @@
     <item>
       <title>Oracle安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
       <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件
@@ -48,7 +48,7 @@
     <item>
       <title>Vmware安装</title>
       <link>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</guid>
       <description>linux安装VMware Workstation16 1.安装包  VMware-Workstation-Full-16.2.1-18811642.x86_64 下载地址  2.密钥  　ZF3R0-FHED2-M80TY-8QYGC-NPKYF +　YF390-0HF8P-M81RQ-2DXQE-M2UT6 +　ZF71R-DMX85-08DQY-8YMNC-PPHV8 如果不行 自行百度  3.赋予权限  chmod 777 VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  4.开始安装  sudo ./VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  5.后续安装  安装界面 跟windows的差不多 类似 (后续补充)  </description>
@@ -57,7 +57,7 @@
     <item>
       <title>安装es</title>
       <link>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</guid>
       <description>警告  es 最好不要 7.10.2 之后的版本 推荐用opensearch-1.1.0  硬件服务器  10.168.2.87 10.168.2.88 10.168.2.89  1.环境准备 (每台都需要做) 1.1创建用户(root用户操作)  useradd top  1.2 修改用户密码(root用户操作)  passwd top  1.3 赋予用户sudo权限(root用户操作)   修改命令
@@ -68,7 +68,7 @@
     <item>
       <title>安装opensearch</title>
       <link>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</link>
-      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:34:17 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</guid>
       <description>说明  基于Elasticsearch7.10.2 的 opensearch-1.1.0  硬件服务器  10.168.2.87 10.168.2.88 10.168.2.89  1.环境准备 (每台都需要做) 1.1创建用户(root用户操作)  useradd top  1.2 修改用户密码(root用户操作)  passwd top  1.3 赋予用户sudo权限(root用户操作)   修改命令
