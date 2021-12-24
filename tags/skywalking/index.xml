@@ -6,11 +6,11 @@
     <description>Recent content in skywalking on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 24 Dec 2021 11:49:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/skywalking/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Dec 2021 14:33:14 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/skywalking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SkyWalking搭建(一)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
-      <pubDate>Fri, 24 Dec 2021 11:49:33 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控 [toc]
@@ -24,7 +24,7 @@
     <item>
       <title>SkyWalking搭配springboot应用(三)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
-      <pubDate>Fri, 24 Dec 2021 11:49:33 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
       <description>上传springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
@@ -32,9 +32,19 @@
     </item>
     
     <item>
+      <title>SkyWalking搭配springboot应用三</title>
+      <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
+      <description>上springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
+ </description>
+    </item>
+    
+    <item>
       <title>SkyWalking监控mysql(四)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</link>
-      <pubDate>Fri, 24 Dec 2021 11:49:33 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</guid>
       <description>  准备以mysql为数据库的springboot应用
@@ -47,7 +57,7 @@
     <item>
       <title>SkyWalking配合tomcat使用(二)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</link>
-      <pubDate>Fri, 24 Dec 2021 11:49:33 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</guid>
       <description>上传tomcat至服务器 1 2  #下载tomcat8 https://tomcat.apache.org/download-80.cgi   修改tomcat配置 1 2 3 4  # 端口修改8081 vim /opt/software/apache-tomcat-8.5.68/conf/server.xml # 修改tomcat启动方式 在加catalina.sh最上面！ CATALINA_OPTS=&amp;#34;$CATALINA_OPTS-javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&amp;#34;; export CATALINA_OPTS   上传springMvc的war包 1  cd /opt/software/apache-tomcat-8.5.68/webapps/   启动tomcat 1  ./opt/software/apache-tomcat-8.5.68/bin/startup.sh    请求一下项目 sky-walking-ui就有记录了！
@@ -57,7 +67,7 @@
     <item>
       <title>SkyWalking配置覆盖(五)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/</link>
-      <pubDate>Fri, 24 Dec 2021 11:49:33 +0800</pubDate>
+      <pubDate>Fri, 24 Dec 2021 14:33:14 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/</guid>
       <description>之前使用agent，我们需要每起一个应用都cp一份agent文件，因为应用名称实在agen.config中配置的，为了避免这么麻烦，可以利用配置覆盖，使用同一个agent文件达到不同配置的目的
