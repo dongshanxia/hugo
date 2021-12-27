@@ -362,6 +362,7 @@
 <div id="content">
     <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
         <div id="post" class="post">
+
             <article class="article-content">
                 <h2 id="说明">说明</h2>
 <ul>
@@ -995,15 +996,6 @@ rsync -avl /home/top/opensearch top@10.168.2.87:/home/top/
 -Xmx1g =&gt;修改成想要的内存数</p>
 </blockquote>
 
-                <br/>
-                <div>
-                    
-                        <a href="/hugo/es/%E5%AE%89%E8%A3%85es/">前一页</a>
-                    
-                    
-                        <a href="/hugo/es/%E5%AE%89%E8%A3%85es/">后一页</a>
-                    
-                </div>
             </article>
         </div>
 
@@ -1057,7 +1049,49 @@ rsync -avl /home/top/opensearch top@10.168.2.87:/home/top/
 
 
 
-</div>
+<div class="pageOut">
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href="/hugo/es/%E5%AE%89%E8%A3%85es/">
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
         </div><footer id="footer" class="footer">
     <div class="social-links">

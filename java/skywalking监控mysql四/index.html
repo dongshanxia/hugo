@@ -362,6 +362,7 @@
 <div id="content">
     <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
         <div id="post" class="post">
+
             <article class="article-content">
                 <ol>
 <li>
@@ -394,15 +395,6 @@
 <p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210627151604286.png" alt="image-20210627151604286"></p>
 <p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210627151613636.png" alt="image-20210627151613636"></p>
 
-                <br/>
-                <div>
-                    
-                        <a href="/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/">前一页</a>
-                    
-                    
-                        <a href="/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/">后一页</a>
-                    
-                </div>
             </article>
         </div>
 
@@ -413,7 +405,55 @@
 
 
 
-</div>
+<div class="pageOut">
+            
+                <div class="pageTop">
+                    <a class="" href="/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/">
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href="/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/">
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
         </div><footer id="footer" class="footer">
     <div class="social-links">

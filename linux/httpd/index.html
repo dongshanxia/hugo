@@ -362,6 +362,7 @@
 <div id="content">
     <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
         <div id="post" class="post">
+
             <article class="article-content">
                 <h2 id="httpd访问网络配置httpd_can_network_connect">httpd访问网络配置httpd_can_network_connect</h2>
 <p>检查网络访问的配置</p>
@@ -374,15 +375,6 @@
 <p>写入配置文件的命令，重启后保留</p>
 <p>setsebool -P httpd_can_network_connect 1</p>
 
-                <br/>
-                <div>
-                    
-                        <a href="/hugo/linux/date%E5%91%BD%E4%BB%A4/">前一页</a>
-                    
-                    
-                        <a href="/hugo/linux/date%E5%91%BD%E4%BB%A4/">后一页</a>
-                    
-                </div>
             </article>
         </div>
 
@@ -401,7 +393,55 @@
 
 
 
-</div>
+<div class="pageOut">
+            
+                <div class="pageTop">
+                    <a class="" href="/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/">
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href="/hugo/linux/date%E5%91%BD%E4%BB%A4/">
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
         </div><footer id="footer" class="footer">
     <div class="social-links">

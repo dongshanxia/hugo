@@ -362,6 +362,7 @@
 <div id="content">
     <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
         <div id="post" class="post">
+
             <article class="article-content">
                 <h1 id="springcloud--springgateway-解决get请求传参为特殊字符导致400无法通过网关转发的问题">SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</h1>
 <h3 id="场景">场景:</h3>
@@ -684,15 +685,6 @@
 </div><h3 id="验证">验证：</h3>
 <p><img src="https://img-blog.csdnimg.cn/c2f5e51c405543a384185896a973cab1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAQXRvbWljeW8=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
 
-                <br/>
-                <div>
-                    
-                        <a href="/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/">前一页</a>
-                    
-                    
-                        <a href="/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/">后一页</a>
-                    
-                </div>
             </article>
         </div>
 
@@ -715,7 +707,49 @@
 
 
 
-</div>
+<div class="pageOut">
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href="/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/">
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
         </div><footer id="footer" class="footer">
     <div class="social-links">
