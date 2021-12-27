@@ -6,11 +6,11 @@
     <description>Recent content in tomcat on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Dec 2021 14:37:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/tomcat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 14:41:25 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/tomcat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SpringCloud &#43; SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</title>
       <link>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
-      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:41:25 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
       <description>SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题 场景: 公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：

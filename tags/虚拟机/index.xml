@@ -6,11 +6,11 @@
     <description>Recent content in 虚拟机 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Dec 2021 14:37:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 14:41:25 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pve</title>
       <link>http://127.0.0.1:1313/hugo/linux/pve/pve/</link>
-      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:41:25 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/pve/pve/</guid>
       <description>查看集群资源状况  1  pvesh get /cluster/resources   取得虚拟机当前状态 1 2 3  pvesh get /nodes/&amp;lt;节点id&amp;gt;/qemu/&amp;lt;虚拟机id&amp;gt;/status/current pvesh get /nodes/pve/qemu/100/status/current   关闭虚拟机 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  pvesh create /nodes/&amp;lt;节点id&amp;gt;/qemu/&amp;lt;虚拟机id&amp;gt;/status/stop pvesh create /nodes/pve/qemu/990/status/start pvesh create /nodes/pve/qemu/176/status/start pvesh create /nodes/pve/qemu/255/status/start pvesh create /nodes/pve/qemu/201/status/start pvesh create /nodes/pve/qemu/100/status/start pvesh create /nodes/pve/qemu/399/status/start pvesh create /nodes/pve/qemu/103/status/start pvesh create /nodes/pve/qemu/101/status/start pvesh create /nodes/pve/qemu/174/status/start pvesh create /nodes/pve/qemu/104/status/start pvesh create /nodes/pve/qemu/777/status/start pvesh create /nodes/pve/qemu/102/status/start pvesh create /nodes/pve/qemu/173/status/start   挂载img文件 1  qm importdisk 990 /var/lib/vz/template/iso/openwrt-gdq-v9-1_2021_-x86-64-generic-squashfs-uefi.</description>
