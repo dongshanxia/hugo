@@ -6,11 +6,11 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Dec 2021 14:29:25 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 14:37:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog</title>
       <link>http://127.0.0.1:1313/hugo/about/blog/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/blog/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14  flowchart TB A[git-client]&amp;lt;--&amp;gt;B[git-server-gitea] B--&amp;gt;C[drone] C--&amp;gt;D[github] C--&amp;gt;vercel D--&amp;gt;netlify C--go-OS-Client--&amp;gt;E[openSearch] F[blogweb] &amp;lt;----&amp;gt; G[go-blogserver] E&amp;lt;--正在实现--&amp;gt;G   </description>
@@ -19,7 +19,7 @@
     <item>
       <title>Crontab</title>
       <link>http://127.0.0.1:1313/hugo/linux/crontab/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/crontab/</guid>
       <description>crontab  查看 crontab -l 编辑  crontab -e   如何配置  1 2 3 4 5 6 7 8  * * * * * - - - - - | | | | | | | | | +----- 星期中星期几 (0 - 6) (星期天 为0) | | | +---------- 月份 (1 - 12) | | +--------------- 一个月中的第几天 (1 - 31) | +-------------------- 小时 (0 - 23) +------------------------- 分钟 (0 - 59)     例子</description>
@@ -28,7 +28,7 @@
     <item>
       <title>Date命令</title>
       <link>http://127.0.0.1:1313/hugo/linux/date%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/date%E5%91%BD%E4%BB%A4/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  #!/usr/bin/env bash  year=`date +&amp;#34;%Y&amp;#34;` month=`date +&amp;#34;%-m&amp;#34;` day=`date +&amp;#34;%-d&amp;#34;` hour=`date +&amp;#34;%-H&amp;#34;` minute=`date +&amp;#34;%-M&amp;#34;` second=`date +&amp;#34;%-S&amp;#34;` week=`date +&amp;#34;%-w&amp;#34;` numWeek=`date +&amp;#34;%-W&amp;#34;` echo &amp;#34;year: &amp;#34;${year} echo &amp;#34;month: &amp;#34;${month} echo &amp;#34;day: &amp;#34;${day} echo &amp;#34;hour: &amp;#34;${hour} echo &amp;#34;minute: &amp;#34;${minute} echo &amp;#34;second: &amp;#34;${second} echo &amp;#34;week: &amp;#34;${week} echo &amp;#34;numWeek:&amp;#34;${numWeek} val=`expr ${numWeek} % 4` echo ${val}   </description>
@@ -37,7 +37,7 @@
     <item>
       <title>Docker清理</title>
       <link>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</guid>
       <description>列出无用的卷 1  docker volume ls -qf dangling=true   清理无用的卷 1  docker volume rm $(docker volume ls -qf dangling=true)   清除推出的容器 1  docker rm $(docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39;)   清除none的 镜像 1  docker rmi $(docker images | grep &amp;#34;&amp;lt;none&amp;gt;&amp;#34; | awk &amp;#39;{print $3}&amp;#39;)   </description>
@@ -46,7 +46,7 @@
     <item>
       <title>Dongshanxia</title>
       <link>http://127.0.0.1:1313/hugo/about/dongshanxia/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/dongshanxia/</guid>
       <description>个人介绍  出生: 1995.04 住址: 杭州市滨江区 电话: 13395753926 邮箱: 984801940@qq.com  教育背景    时间 学校 专业     2014.09-2018.07 洛阳理工学院 计算机科学与技术    掌握技能  严格遵守Java开发规范，有良好的面向对象的业务分析能力，代码书写简洁，力求完美开发。 了解jvm 以及 几种常见的jvm的垃圾回收机制 熟练运用Spring和ioc的加载过程 熟练掌握MySql，了解mysql的索引 精通使用kafka，kafka调优，spark,spark调优等大数据技术。 熟练使用SpringMVC，Springboot，Spring Cloud等Spring全家桶系列框架。 熟练使用 PostgreSQL, Redis等数据库和mybatis，mybatisPlus，jdbc等持久层开发技术. 熟练使用fastDFS，Cloudreve等文件存储服务技术。 熟练使用zookeeper , hadoop , hbase , Elasticsearch，Kerboros等技术工具进行开发。 熟练使用maven项目版本，打包和依赖管理工具 熟练使用linux操作系统，网络配置，shell脚本 (grep , sed , awk） 熟练使用docker镜像的分层，docker-compose和docker命令简单使用 熟练使用gitlab和gitlab_ci简单使用 熟悉k8s（正在学习） 熟练使用netty, netty-websock 熟悉Nginx等web服务器。 熟练使用idea，Eclipse开发工具和Git，SVN版本控制工具。 了解go,用go语言写leetcode 会使用异地组网 (蒲公英,zerotier) 博客地址 (见其它补充)  工作经历 杭州合韬科技有限公司  职位: java开发工程师 时间: 2018-03 ~~ 2021-5 职责:  负责公司项目数据接入，分析，入库； Spark , Kafka , Zookeeper集群的维护； Java依赖第三方包的版本进行管理；    浙江火眼金睛数据科技有限公司  职位: 大数据开发工程师 时间: 2021-5 ~~ 2021-8 职责:  负责数据接入和分析   实际事情  安装服务器 维护服务器    项目经历 公安预警系统(西湖指挥中心 六翮凌风)  项目时间:  2018年7月-2020年9月   项目描述:  通过netty,mq,定时任务同步数据库，汇聚到kafka里面，在通过spark 进行规则预警，实时预警推向kafka,数据统计，基础数据入库，redis数据相关性进行分发。(公安具体业务性属于保密信息无法展开)   项目结构  接入层：netty ,ftp,kafka； 分析层：spark； 数据层：MySQL,hbase, PostgreSQL,redis,hadoop。 持久层：MyBatis,jdbc, hbaseUtil； 业务层：Spring 控制层：SpringMVC、Spring SecurityOauth2； 展示层：vue,jsp   负责模块:  前端接入：netty接收tcp和udp的数据，转发ftp数据推向kafka，转发mq数据推向kafka； s三台Kafa集群：kafka topic的基本维护，kafka集群的搭建与基本维护； 15台spark集群：spark程序 分析3W/s左右数据量 预警统计: 对设备的状态及数据量维护。    数据资源中心系统（类似百度网盘的功能)  项目时间:  2020年9月-2021年5月   项目描述:  每个系统都是有一个文件存储和管理的地方，为了解决文件存储 采用了hdfs的文件存储方式，搜索采用了Elasticsearch 进行搜索.</description>
@@ -55,7 +55,7 @@
     <item>
       <title>Es Ik</title>
       <link>http://127.0.0.1:1313/hugo/es/es-ik/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/es-ik/</guid>
       <description>es-server-ik 1.前提  有一个完美运行的 es集群 es的home 假设为 /eshome eshome=/home/top/es/elasticsearch-7.15.2(隔壁那份es安装文档的对应目录) 每一台es节点都需要执行哦  2.上传ik安装包  把ik 安装包放在可供 es下载的地址 这边直接node60机器的nginx地址 可以直接用github地址的 地址  3.安装ik 1  /$eshome/elasticsearch-plugin install http://10.168.2.60:35000/elasticsearch-analysis-ik-7.15.2.zip   重启ES  stop  1  ps -ef | grep elasticsearch |grep UTF-8| grep -v grep | awk &amp;#39;{print $2}&amp;#39;|xargs kill -9    start  1  /$eshome/bin/elasticsearch -d   </description>
@@ -64,7 +64,7 @@
     <item>
       <title>Gitlab</title>
       <link>http://127.0.0.1:1313/hugo/git/gitlab/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/git/gitlab/</guid>
       <description>gitlab docker-compose  配置文件  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  # 在工作目录下创建 docker-compose.yml 文件，编辑以下内容version:&amp;#34;3&amp;#34;services:gitlab:image:&amp;#39;gitlab/gitlab-ce:latest&amp;#39;restart:alwayscontainer_name:gitlabports:- &amp;#39;80:80&amp;#39;volumes:- &amp;#39;/docker/software/gitlab/config:/etc/gitlab&amp;#39;- &amp;#39;/docker/software/gitlab/logs:/var/log/gitlab&amp;#39;- &amp;#39;/docker/software/gitlab/data:/var/opt/gitlab&amp;#39;environment:TZ:&amp;#39;Asia/Shanghai&amp;#39;GITLAB_OMNIBUS_CONFIG:|external_url &amp;#39;http://127.0.0.1:80&amp;#39;# Add any other gitlab.rb configuration here, each on its own linegitlab_rails[&amp;#39;gitlab_ssh_host&amp;#39;] = &amp;#39;127.0.0.1&amp;#39;# gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;] = 26013   初始密码  1 2  /docker/software/gitlab/config/initial_root_password 查找(docker 挂载出来的路径)   </description>
@@ -73,7 +73,7 @@
     <item>
       <title>Go_install</title>
       <link>http://127.0.0.1:1313/hugo/go/go_install/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/go/go_install/</guid>
       <description>go 安装 1.下载地址  https://golang.google.cn/dl/  2.linux安装 1  tar -C /usr/local -xzf go.*.linux-amd64.tar.gz   3. 配置环境变量 1 2  export GO_HOME=/usr/local/go export PATH=$GO_HOME/bin:$PATH   4.生效环境变量 1  source 环境变量文件   </description>
@@ -82,7 +82,7 @@
     <item>
       <title>Hive</title>
       <link>http://127.0.0.1:1313/hugo/db/hive/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/hive/</guid>
       <description>常见hive语句 1、创建hive库 1  createdatabasehive_oracle;  2、选择库 1  usehive_oracle  3、创建数据库 1 2 3 4 5 6 7  CREATETABLE`hive_oracle.xcb_oracle_hive_end_dt`(`xcb_id`bigint,`xcb_number`int,`xcb_timestamp`timestamp,`xcb_varchar2`string)PARTITIONEDBY(`ds`string)  4、简单查询 1  select*fromxcb_oracle_hive_base_dt;（原来有数据的一张表）  5、时间函数  to_date  1  selectxcb_id,to_date(xcb_timestamp)fromxcb_oracle_hive_base_dt;   from_unixtime (这个不行) &amp;mdash;- select from_unixtime(1323308943,’yyyyMMdd’);  1  selectxcb_id,from_unixtime(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    unix_timestamp
@@ -94,7 +94,7 @@
     <item>
       <title>Httpd</title>
       <link>http://127.0.0.1:1313/hugo/linux/httpd/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/httpd/</guid>
       <description>httpd访问网络配置httpd_can_network_connect 检查网络访问的配置
@@ -110,7 +110,7 @@ setsebool -P httpd_can_network_connect 1</description>
     <item>
       <title>java日志体系</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</guid>
       <description>java日志体系 常用日志框架
@@ -129,7 +129,7 @@ Constructor对象在LogFactory对象里，然后继续执行tryImplementation、
     <item>
       <title>Leak</title>
       <link>http://127.0.0.1:1313/hugo/java/leak/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/leak/</guid>
       <description>漏洞之 Apache log4j2   版本: 2.0到 2.14.1
@@ -140,7 +140,7 @@ Constructor对象在LogFactory对象里，然后继续执行tryImplementation、
     <item>
       <title>LetusEncrypt</title>
       <link>http://127.0.0.1:1313/hugo/network/letusencrypt/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/network/letusencrypt/</guid>
       <description>1.http与https  简单的说:  https = http+ssl(安全访问) https 比较安全    2.Let&amp;rsquo;s Encrypt  想要 https 就是购买证书 在 Let&amp;rsquo;s Encrypt可以免费申请证书 官网  3.Certbot  Let&amp;rsquo;s Encrypt 官网提供的服务端的API 但是 作为使用者 还是别去研究API 官网有很多语言的客户端的 (java,go) 官网要推荐的客户端 cerbot  4.开启 Certbot 之旅  好像有多种模式 ,多种插件 (多条岔路容易错误) 无插件 certbot 完成对SSL证书的 申请和续约  4.1 准备环境  系统 debian (debian:buster-slim) 需要能连接互联网 会用apt命令  4.2 安装certbot  更新 apt 源索引 apt update 安装 certbot  apt install certbot    4.</description>
@@ -149,7 +149,7 @@ Constructor对象在LogFactory对象里，然后继续执行tryImplementation、
     <item>
       <title>linux好玩的</title>
       <link>http://127.0.0.1:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/linux%E5%A5%BD%E7%8E%A9%E7%9A%84/</guid>
       <description>linux 好玩 压缩  tar -zcvf soft.tar.gz /soft/ /dir /dir  解压  tar -zxvf /soft.tar.gz -C /  查看版本  cat /etc/issue 查看版本  shell脚本的运行方式 1.set -x 或set xtrace
@@ -162,7 +162,7 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
     <item>
       <title>Mssql</title>
       <link>http://127.0.0.1:1313/hugo/db/mssql/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mssql/</guid>
       <description>中文问题相关 ALTER DATABASE test COLLATE Chinese_PRC_CI_AS</description>
@@ -171,7 +171,7 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
     <item>
       <title>Mssql安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
       <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
@@ -181,7 +181,7 @@ set -xv（脚本中所有的内容都显示，包括没执行的部分）
     <item>
       <title>mybatis拦截器执行过程</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</guid>
       <description>m[toc]
@@ -194,7 +194,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>mybatis核心组件</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  sequenceDiagram participant SqlSession participant Excutor participant StatementHandler participant parameterHandler participant ResultSetHandler participant TypeHandler participant ResultSet participant JDBC SqlSession-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;StatementHandler: StatementHandler--&amp;gt;&amp;gt;parameterHandler: StatementHandler--&amp;gt;&amp;gt;JDBC: parameterHandler--&amp;gt;&amp;gt;TypeHandler: parameterHandler-&amp;gt;&amp;gt;JDBC: JDBC-&amp;gt;&amp;gt;ResultSet: ResultSet--&amp;gt;&amp;gt;TypeHandler: ResultSet--&amp;gt;&amp;gt;ResultSetHandler: TypeHandler--&amp;gt;&amp;gt;ResultSetHandler: ResultSetHandler-&amp;gt;&amp;gt;StatementHandler: StatementHandler-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;SqlSession: Note left of SqlSession: asa   1 2 3 4  flowchart TD subgraph configuration mappedStatement1 --&amp;gt; mappedStatement2 end   configuration:</description>
@@ -203,7 +203,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>mybati缓存了解</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</guid>
       <description>mybatis的缓存 首先来看下mybatis对缓存的规范，规范嘛就是定义的接口啦。
@@ -214,7 +214,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Oracle</title>
       <link>http://127.0.0.1:1313/hugo/db/oracle/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/oracle/</guid>
       <description>时间字段分析  timestamp 精确到秒后面6位 date 精确到秒  </description>
@@ -223,7 +223,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Oracle安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
       <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件
@@ -233,7 +233,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Parted</title>
       <link>http://127.0.0.1:1313/hugo/linux/parted/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/parted/</guid>
       <description>parted 规划分区   进入某个磁盘的分区
@@ -247,7 +247,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Picgo</title>
       <link>http://127.0.0.1:1313/hugo/other/picgo/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/other/picgo/</guid>
       <description>picgo  地址 : /home/zhu/software/node/node-v14.15.0-linux-x64/bin 文件内容  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  #!/usr/bin/env /home/zhu/software/node/node-v14.15.0-linux-x64/bin/node const path = require(&amp;#39;path&amp;#39;) const minimist = require(&amp;#39;minimist&amp;#39;) const argv = minimist(process.argv.slice(2)) let configPath = argv.c || argv.config || &amp;#39;&amp;#39; if (configPath !== true &amp;amp;&amp;amp; configPath !== &amp;#39;&amp;#39;) { configPath = path.resolve(configPath) } else { configPath = &amp;#39;&amp;#39; } const PicGo = require(&amp;#39;.</description>
@@ -256,7 +256,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Pve</title>
       <link>http://127.0.0.1:1313/hugo/linux/pve/pve/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/pve/pve/</guid>
       <description>查看集群资源状况  1  pvesh get /cluster/resources   取得虚拟机当前状态 1 2 3  pvesh get /nodes/&amp;lt;节点id&amp;gt;/qemu/&amp;lt;虚拟机id&amp;gt;/status/current pvesh get /nodes/pve/qemu/100/status/current   关闭虚拟机 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  pvesh create /nodes/&amp;lt;节点id&amp;gt;/qemu/&amp;lt;虚拟机id&amp;gt;/status/stop pvesh create /nodes/pve/qemu/990/status/start pvesh create /nodes/pve/qemu/176/status/start pvesh create /nodes/pve/qemu/255/status/start pvesh create /nodes/pve/qemu/201/status/start pvesh create /nodes/pve/qemu/100/status/start pvesh create /nodes/pve/qemu/399/status/start pvesh create /nodes/pve/qemu/103/status/start pvesh create /nodes/pve/qemu/101/status/start pvesh create /nodes/pve/qemu/174/status/start pvesh create /nodes/pve/qemu/104/status/start pvesh create /nodes/pve/qemu/777/status/start pvesh create /nodes/pve/qemu/102/status/start pvesh create /nodes/pve/qemu/173/status/start   挂载img文件 1  qm importdisk 990 /var/lib/vz/template/iso/openwrt-gdq-v9-1_2021_-x86-64-generic-squashfs-uefi.</description>
@@ -265,7 +265,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Pve崩溃</title>
       <link>http://127.0.0.1:1313/hugo/linux/pve/pve%E5%B4%A9%E6%BA%83/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/pve/pve%E5%B4%A9%E6%BA%83/</guid>
       <description>pve 故障 1.pve 集群崩溃  cluster not ready - no quorum? (500)  1、隔离节点上停止 pve-cluster 服务 1 2  systemctl stop pve-cluster.service systemctl stop corosync.service   2、上一步执行成功后，执行将待隔离节点的集群文件系统设置为本地模式的命令 1  pmxcfs -l   3、上一步执行成功后，执行删除 corosync 配置文件的命令 1 2  rm /etc/pve/corosync.conf rm -rf /etc/corosync/*   4、前3步都执行成功后，执行重新启动集群文件系统服务的命令 1 2  killall pmxcfs systemctl start pve-cluster.service   5、删除故障节点node文件 1 2 3  cd /etc/pve/nodes ls rm -rf /etc/pve/nodes/pvepc #改成故障节点对应路径   </description>
@@ -274,7 +274,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>Readme</title>
       <link>http://127.0.0.1:1313/hugo/about/readme/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/readme/</guid>
       <description>环境准备  需要有hugo的环境  下载项目 hugo地址
@@ -284,7 +284,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking搭建(一)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控 [toc]
@@ -298,7 +298,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking搭配springboot应用(三)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
       <description>上传springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
@@ -308,7 +308,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking监控mysql(四)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</guid>
       <description>  准备以mysql为数据库的springboot应用
@@ -321,7 +321,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking配合tomcat使用(二)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</guid>
       <description>上传tomcat至服务器 1 2  #下载tomcat8 https://tomcat.apache.org/download-80.cgi   修改tomcat配置 1 2 3 4  # 端口修改8081 vim /opt/software/apache-tomcat-8.5.68/conf/server.xml # 修改tomcat启动方式 在加catalina.sh最上面！ CATALINA_OPTS=&amp;#34;$CATALINA_OPTS-javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&amp;#34;; export CATALINA_OPTS   上传springMvc的war包 1  cd /opt/software/apache-tomcat-8.5.68/webapps/   启动tomcat 1  ./opt/software/apache-tomcat-8.5.68/bin/startup.sh    请求一下项目 sky-walking-ui就有记录了！
@@ -331,7 +331,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking配置覆盖(五)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/</guid>
       <description>之前使用agent，我们需要每起一个应用都cp一份agent文件，因为应用名称实在agen.config中配置的，为了避免这么麻烦，可以利用配置覆盖，使用同一个agent文件达到不同配置的目的
@@ -353,7 +353,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>SpringCloud &#43; SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</title>
       <link>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
       <description>SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题 场景: 公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：
@@ -365,7 +365,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>Ssh</title>
       <link>http://127.0.0.1:1313/hugo/linux/ssh/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/ssh/</guid>
       <description>生成公钥和私钥 1  ssh-keygen -t ed25519 -C &amp;#34;984801940@qq.com&amp;#34;    后面第一个设置名字 后面设置访问密码 （免密当然就是这个）  </description>
@@ -374,7 +374,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>Vim</title>
       <link>http://127.0.0.1:1313/hugo/linux/deepin/vim/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/deepin/vim/</guid>
       <description>deepin-vim 针对用户  下载需要的包 到 家目录  1  wget --no-check-certificate https://raw.githubusercontent.com/vim/vim/master/runtime/vimrc_example.vim -O ~/.vimrc   针对全局用户  找到vim的 全局配置路径：   执行vim然后输入:echo $VIMRUNTIME  修改默认配置文件：sudo vim $VIMRUNTIME/defaults.vim 具体可以修改的文件的功能 可以用下面的 保存文件完成修改：  :wq    可以修改的配置 1 2 3 4 5 6 7 8 9 10 11 12 13  #设置语法高亮 echo &amp;#39;syntax on&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启行号显示【标准方式】或上面的【简写方式】也可以 echo &amp;#39;set number&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启行号显示【简写方式】或下面的【标准方式】也可以 echo &amp;#39;set nu&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启拼写检查 echo &amp;#39;set spell&amp;#39; &amp;gt;&amp;gt; ~/.</description>
@@ -383,7 +383,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>Vmware安装</title>
       <link>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</guid>
       <description>linux安装VMware Workstation16 1.安装包  VMware-Workstation-Full-16.2.1-18811642.x86_64 下载地址  2.密钥  　ZF3R0-FHED2-M80TY-8QYGC-NPKYF +　YF390-0HF8P-M81RQ-2DXQE-M2UT6 +　ZF71R-DMX85-08DQY-8YMNC-PPHV8 如果不行 自行百度  3.赋予权限  chmod 777 VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  4.开始安装  sudo ./VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  5.后续安装  安装界面 跟windows的差不多 类似 (后续补充)  </description>
@@ -392,7 +392,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>Zerotier</title>
       <link>http://127.0.0.1:1313/hugo/network/zerotier/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/network/zerotier/</guid>
       <description>zerotier centos7安装zerotier  安装  curl -s https://install.zerotier.com/ | sudo bash   加入网络  sudo zerotier-cli join NetworkID   查看网络信息  zerotier-cli info    </description>
@@ -401,7 +401,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>Zh</title>
       <link>http://127.0.0.1:1313/hugo/about/zh/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/zh/</guid>
       <description>1. hugo入门  git hugo vscodium  2. markdown的图片 解决  picgo gitea(免费图床) typora+picgo+gitea 或者 vscodium+picgo+gitea  3. gitea 创建帐号 [地址：][https://gitea.dongshanxia.top:35000/]
@@ -411,7 +411,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>安装es</title>
       <link>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</guid>
       <description>警告  es 最好不要 7.10.2 之后的版本 推荐用opensearch-1.1.0  硬件服务器  10.168.2.87 10.168.2.88 10.168.2.89  1.环境准备 (每台都需要做) 1.1创建用户(root用户操作)  useradd top  1.2 修改用户密码(root用户操作)  passwd top  1.3 赋予用户sudo权限(root用户操作)   修改命令
@@ -422,7 +422,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>安装opensearch</title>
       <link>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85opensearch/</guid>
       <description>说明  基于Elasticsearch7.10.2 的 opensearch-1.1.0  硬件服务器  10.168.2.87 10.168.2.88 10.168.2.89  1.环境准备 (每台都需要做) 1.1创建用户(root用户操作)  useradd top  1.2 修改用户密码(root用户操作)  passwd top  1.3 赋予用户sudo权限(root用户操作)   修改命令
@@ -433,7 +433,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>定制化iso</title>
       <link>http://127.0.0.1:1313/hugo/linux/%E5%AE%9A%E5%88%B6%E5%8C%96iso/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/%E5%AE%9A%E5%88%B6%E5%8C%96iso/</guid>
       <description>定制化iso 1、准备环境 1.1 安装需要的包 1  yum install createrepo mkisofs isomd5sum squashfs-tools   1.2 创建需要的目录 1 2  mkdir /opt/centos mkdir /opt/old   1.3 上传基础安装包 1 2  网上下载：CentOS-7-x86_64-Minimal-1708.iso 上传到 /opt/   1.4 挂载 1  mount /opt/CentOS-7-x86_64-Minimal-1708.iso /opt/old/   1.5 复制相关文件 1 2 3 4 5  cp -r /opt/old/* /opt/centos/ cp /opt/old/.discinfo /opt/centos/ cp /opt/old/.treeinfo /opt/centos/ cp /root/anaconda-ks.cfg /opt/centos/isolinux/base-ks.cfg chmod +w /opt/centos/isolinux/base-ks.cfg   1.</description>
@@ -442,7 +442,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>搜索功能</title>
       <link>http://127.0.0.1:1313/hugo/search/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/search/</guid>
       <description>叟起来</description>
@@ -451,7 +451,7 @@ java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalk
     <item>
       <title>离线安装mysql</title>
       <link>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</link>
-      <pubDate>Mon, 27 Dec 2021 14:29:25 +0800</pubDate>
+      <pubDate>Mon, 27 Dec 2021 14:37:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</guid>
       <description>离线安装mysql
