@@ -6,11 +6,11 @@
     <description>Recent content in go on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Dec 2021 15:26:47 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Dec 2021 15:35:53 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go_install</title>
       <link>http://127.0.0.1:1313/hugo/go/go_install/</link>
-      <pubDate>Mon, 27 Dec 2021 15:26:47 +0800</pubDate>
+      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/go/go_install/</guid>
       <description>go 安装 1.下载地址  https://golang.google.cn/dl/  2.linux安装 1  tar -C /usr/local -xzf go.*.linux-amd64.tar.gz   3. 配置环境变量 1 2  export GO_HOME=/usr/local/go export PATH=$GO_HOME/bin:$PATH   4.生效环境变量 1  source 环境变量文件   </description>
