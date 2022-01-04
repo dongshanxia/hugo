@@ -6,11 +6,11 @@
     <description>Recent content in config on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jan 2022 17:15:08 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/config/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 17:29:51 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/config/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Config</title>
       <link>http://127.0.0.1:1313/hugo/docker/config/</link>
-      <pubDate>Tue, 04 Jan 2022 17:15:08 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:29:51 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/config/</guid>
       <description>docker run启动    设置类型 Description     shared 任何挂载了此目录的容器都会双向和宿主机实时更新,作用范围当前目录,不包括子目录   slave 任何挂载了此目录的容器都会收到实时更新,更新是单向的; 宿主机到容器,作用范围当前目录,不包括子目录   private 任何挂载了此目录的容器都不会收到实时更新   rshared 同 shared, 作用范围也包括子目录   rslave 同 slave, 作用范围也包括子目录   rprivate 同 private, 作用范围也包括子目录    </description>
