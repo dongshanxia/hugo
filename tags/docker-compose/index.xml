@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker-compose on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/docker-compose/</link>
+    <description>Recent content in docker-compose on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 Jan 2022 19:09:02 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Compose安装</title>
+      <link>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 04 Jan 2022 19:09:02 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</guid>
+      <description>docker-compose安装步骤 1.下载 url: https://github.com/docker/compose/releases 备用地址：192.168.1.9:8080/share.cgi?ssid=05dGVzz
+2.上传 sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+3.安装 sudo chmod +x /usr/local/bin/docker-compose</description>
+    </item>
+    
+  </channel>
+</rss>
