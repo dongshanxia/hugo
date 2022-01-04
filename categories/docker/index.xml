@@ -6,11 +6,11 @@
     <description>Recent content in docker on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 Dec 2021 15:35:53 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 17:10:34 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker清理</title>
       <link>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</guid>
       <description>列出无用的卷 1  docker volume ls -qf dangling=true   清理无用的卷 1  docker volume rm $(docker volume ls -qf dangling=true)   清除推出的容器 1  docker rm $(docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39;)   清除none的 镜像 1  docker rmi $(docker images | grep &amp;#34;&amp;lt;none&amp;gt;&amp;#34; | awk &amp;#39;{print $3}&amp;#39;)   </description>
@@ -19,7 +19,7 @@
     <item>
       <title>Mssql安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
       <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
@@ -29,7 +29,7 @@
     <item>
       <title>Oracle安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
       <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件

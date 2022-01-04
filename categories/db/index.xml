@@ -6,11 +6,11 @@
     <description>Recent content in db on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 Dec 2021 15:35:53 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/db/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 17:10:34 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/db/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hive</title>
       <link>http://127.0.0.1:1313/hugo/db/hive/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/hive/</guid>
       <description>常见hive语句 1、创建hive库 1  createdatabasehive_oracle;  2、选择库 1  usehive_oracle  3、创建数据库 1 2 3 4 5 6 7  CREATETABLE`hive_oracle.xcb_oracle_hive_end_dt`(`xcb_id`bigint,`xcb_number`int,`xcb_timestamp`timestamp,`xcb_varchar2`string)PARTITIONEDBY(`ds`string)  4、简单查询 1  select*fromxcb_oracle_hive_base_dt;（原来有数据的一张表）  5、时间函数  to_date  1  selectxcb_id,to_date(xcb_timestamp)fromxcb_oracle_hive_base_dt;   from_unixtime (这个不行) &amp;mdash;- select from_unixtime(1323308943,’yyyyMMdd’);  1  selectxcb_id,from_unixtime(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    unix_timestamp
@@ -22,7 +22,7 @@
     <item>
       <title>Mssql</title>
       <link>http://127.0.0.1:1313/hugo/db/mssql/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mssql/</guid>
       <description>中文问题相关 ALTER DATABASE test COLLATE Chinese_PRC_CI_AS</description>
@@ -31,7 +31,7 @@
     <item>
       <title>Oracle</title>
       <link>http://127.0.0.1:1313/hugo/db/oracle/</link>
-      <pubDate>Fri, 31 Dec 2021 15:35:53 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:10:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/oracle/</guid>
       <description>时间字段分析  timestamp 精确到秒后面6位 date 精确到秒  </description>
