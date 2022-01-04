@@ -6,11 +6,11 @@
     <description>Recent content in leak on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jan 2022 17:29:51 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/leak/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 17:42:04 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/leak/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leak</title>
       <link>http://127.0.0.1:1313/hugo/java/leak/</link>
-      <pubDate>Tue, 04 Jan 2022 17:29:51 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:42:04 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/leak/</guid>
       <description>漏洞之 Apache log4j2   版本: 2.0到 2.14.1
