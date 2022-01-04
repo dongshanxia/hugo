@@ -368,7 +368,245 @@
         <div id="post" class="post">
 
             <article class="article-content">
-                <h3 id="docker-run启动">docker run启动</h3>
+                <h2 id="daemonjson">daemon.json</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"> <span class="p">{</span>
+ <span class="nt">&#34;api-cors-header&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span> 
+ <span class="nt">&#34;authorization-plugins&#34;</span><span class="p">:[],</span>
+ <span class="nt">&#34;bip&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;bridge&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;cgroup-parent&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;cluster-store&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;cluster-store-opts&#34;</span><span class="p">:{},</span>
+ <span class="nt">&#34;cluster-advertise&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;debug&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="err">#启用debug的模式，启用后，可以看到很多的启动信息。默认false</span>
+ <span class="nt">&#34;default-gateway&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;default-gateway-v6&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;default-runtime&#34;</span><span class="p">:</span><span class="s2">&#34;runc&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;default-ulimits&#34;</span><span class="p">:{},</span>
+ <span class="nt">&#34;disable-legacy-registry&#34;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;dns&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;192.168.1.1&#34;</span><span class="p">],</span> <span class="err">#</span> <span class="err">设定容器DNS的地址，在容器的</span> <span class="err">/etc/resolv.conf文件中可查看。</span>
+ <span class="nt">&#34;dns-opts&#34;</span><span class="p">:</span> <span class="p">[],</span>  <span class="err">#</span> <span class="err">容器</span> <span class="err">/etc/resolv.conf</span> <span class="err">文件，其他设置</span>
+ <span class="nt">&#34;dns-search&#34;</span><span class="p">:</span> <span class="p">[],</span>  <span class="err">#</span> <span class="err">设定容器的搜索域，当设定搜索域为</span> <span class="err">.example.com</span> <span class="err">时，在搜索一个名为</span> <span class="err">host</span> <span class="err">的</span> <span class="err">主机时，DNS不仅搜索host，还会搜索host.example.com</span> <span class="err">。注意：如果不设置，</span> <span class="err">Docker</span> <span class="err">会默认用主机上的</span> <span class="err">/etc/resolv.conf</span> <span class="err">来配置容器。</span>
+<span class="nt">&#34;exec-opts&#34;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="nt">&#34;exec-root&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;fixed-cidr&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;fixed-cidr-v6&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;graph&#34;</span><span class="p">:</span><span class="s2">&#34;/var/lib/docker&#34;</span><span class="p">,</span><span class="err">＃已废弃，使用data-root代替,这个主要看docker的版本</span>
+ <span class="nt">&#34;data-root&#34;</span><span class="p">:</span><span class="s2">&#34;/var/lib/docker&#34;</span><span class="p">,</span><span class="err">＃Docker运行时使用的根路径,根路径下的内容稍后介绍，默认/var/lib/docker</span>
+ <span class="nt">&#34;group&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span><span class="err">#Unix套接字的属组,仅指/var/run/docker.sock</span>
+ <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[],</span>  <span class="err">#设置容器hosts</span>
+ <span class="nt">&#34;icc&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;insecure-registries&#34;</span><span class="p">:</span> <span class="p">[],</span> <span class="err">#配置docker的私库地址</span>
+ <span class="nt">&#34;ip&#34;</span><span class="p">:</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;iptables&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;ipv6&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;ip-forward&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="err">#默认true,</span> <span class="err">启用</span> <span class="err">net.ipv4.ip_forward</span> <span class="err">,进入容器后使用</span> <span class="err">sysctl</span> <span class="err">-a</span> <span class="err">|</span> <span class="err">grepnet.ipv4.ip_forward</span> <span class="err">查看</span>
+ <span class="nt">&#34;ip-masq&#34;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;labels&#34;</span><span class="p">:[</span><span class="s2">&#34;nodeName=node-121&#34;</span><span class="p">],</span> <span class="err">#</span> <span class="err">docker主机的标签，很实用的功能,例如定义：–label</span> <span class="err">nodeName=host-121</span>
+ <span class="nt">&#34;live-restore&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="nt">&#34;log-driver&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;log-level&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;log-opts&#34;</span><span class="p">:</span> <span class="p">{},</span>
+ <span class="nt">&#34;max-concurrent-downloads&#34;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+ <span class="nt">&#34;max-concurrent-uploads&#34;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+ <span class="nt">&#34;mtu&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="nt">&#34;oom-score-adjust&#34;</span><span class="p">:</span><span class="mi">-500</span><span class="p">,</span>
+ <span class="nt">&#34;pidfile&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>  <span class="err">#Docker守护进程的PID文件</span>
+ <span class="nt">&#34;raw-logs&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:[</span><span class="s2">&#34;xxxx&#34;</span><span class="p">],</span> <span class="err">#镜像加速的地址，增加后在</span> <span class="err">docker</span> <span class="err">info中可查看。</span>
+ <span class="nt">&#34;runtimes&#34;</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nt">&#34;runc&#34;</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;runc&#34;</span>
+ <span class="p">},</span>
+ <span class="nt">&#34;custom&#34;</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nt">&#34;path&#34;</span><span class="p">:</span><span class="s2">&#34;/usr/local/bin/my-runc-replacement&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;runtimeArgs&#34;</span><span class="p">:</span> <span class="p">[</span>
+ <span class="s2">&#34;--debug&#34;</span>
+ <span class="p">]</span>
+ <span class="p">}</span>
+ <span class="p">},</span>
+ <span class="nt">&#34;selinux-enabled&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="err">#默认</span> <span class="err">false，启用selinux支持</span>
+ <span class="nt">&#34;storage-driver&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;storage-opts&#34;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="nt">&#34;swarm-default-advertise-addr&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;tls&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="err">#默认</span> <span class="err">false,</span> <span class="err">启动TLS认证开关</span>
+ <span class="nt">&#34;tlscacert&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span><span class="err">#默认</span> <span class="err">~/.docker/ca.pem，通过CA认证过的的certificate文件路径</span>
+ <span class="nt">&#34;tlscert&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>   <span class="err">#默认</span> <span class="err">~/.docker/cert.pem</span> <span class="err">，TLS的certificate文件路径</span>
+ <span class="nt">&#34;tlskey&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>  <span class="err">#默认~/.docker/key.pem，TLS的key文件路径</span>
+ <span class="nt">&#34;tlsverify&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="err">#默认false，使用TLS并做后台进程与客户端通讯的验证</span>
+ <span class="nt">&#34;userland-proxy&#34;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&#34;userns-remap&#34;</span><span class="p">:</span><span class="s2">&#34;&#34;</span>
+ <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>daemon.json  小例子</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json">
+<span class="p">{</span>
+  <span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;http://docker.mirrors.ustc.edu.cn&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;log-driver&#34;</span><span class="p">:</span><span class="s2">&#34;json-file&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;log-opts&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;max-size&#34;</span><span class="p">:</span><span class="s2">&#34;500m&#34;</span><span class="p">,</span> <span class="nt">&#34;max-file&#34;</span><span class="p">:</span><span class="s2">&#34;3&#34;</span><span class="p">},</span>
+  <span class="nt">&#34;data-root&#34;</span><span class="p">:</span><span class="s2">&#34;/docker/libdocker&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>后续启动命令</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">vim /etc/docker/daemon.json
+systemctl daemon-reload
+systemctl restart docker
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">{
+</span><span class="s">  &#34;registry-mirrors&#34;: [&#34;https://.com&#34;]
+</span><span class="s">}
+</span><span class="s">EOF</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>可以修改的</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">
+sed -i <span class="s1">&#39;s#ExecStart.*#ExecStart=/usr/bin/dockerd  -H fd:// --containerd=/run/containerd/containerd.sock -g /docker/libdocker #g&#39;</span> /usr/lib/systemd/system/docker.service
+
+</code></pre></td></tr></table>
+</div>
+</div><p>{
+&ldquo;registry-mirrors&rdquo;: [&ldquo;http://docker.mirrors.ustc.edu.cn&rdquo;],
+&ldquo;log-driver&rdquo;:&ldquo;json-file&rdquo;,
+&ldquo;log-opts&rdquo;: {&ldquo;max-size&rdquo;:&ldquo;500m&rdquo;, &ldquo;max-file&rdquo;:&ldquo;3&rdquo;},
+&ldquo;data-root&rdquo;:&quot;/docker/libdocker&quot;
+}</p>
+<p>vim /etc/docker/daemon.json</p>
+<p>systemctl daemon-reload</p>
+<p>systemctl restart docker</p>
+<p>sed -i &rsquo;s#ExecStart.*#ExecStart=/usr/bin/dockerd  -H fd:// &ndash;containerd=/run/containerd/containerd.sock -g /docker/libdocker #g' /usr/lib/systemd/system/docker.service</p>
+<p>sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json &laquo;-&lsquo;EOF&rsquo;
+{
+&ldquo;registry-mirrors&rdquo;: [&ldquo;https://k19o1tfu.mirror.aliyuncs.com&rdquo;]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker</p>
+<h3 id="docker-run启动">docker run启动</h3>
 <table>
 <thead>
 <tr>
@@ -411,7 +649,7 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#daemonjson">daemon.json</a>
       <ul>
         <li><a href="#docker-run启动">docker run启动</a></li>
       </ul>
