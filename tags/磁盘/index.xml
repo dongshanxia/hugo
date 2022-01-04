@@ -6,11 +6,11 @@
     <description>Recent content in 磁盘 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jan 2022 20:41:32 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E7%A3%81%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 20:49:43 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E7%A3%81%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parted</title>
       <link>http://127.0.0.1:1313/hugo/linux/parted/</link>
-      <pubDate>Tue, 04 Jan 2022 20:41:32 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 20:49:43 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/parted/</guid>
       <description>parted 规划分区   进入某个磁盘的分区
