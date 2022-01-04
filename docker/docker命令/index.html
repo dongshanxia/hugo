@@ -480,7 +480,42 @@ docker images <span class="p">|</span> awk <span class="s1">&#39;{printf &#34;%s
 
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="docker-run启动">docker run启动</h2>
+<table>
+<thead>
+<tr>
+<th>设置类型</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shared</code></td>
+<td>任何挂载了此目录的容器都会双向和宿主机实时更新,作用范围当前目录,不包括子目录</td>
+</tr>
+<tr>
+<td><code>slave</code></td>
+<td>任何挂载了此目录的容器都会收到实时更新,更新是单向的; 宿主机到容器,作用范围当前目录,不包括子目录</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>任何挂载了此目录的容器都不会收到实时更新</td>
+</tr>
+<tr>
+<td><code>rshared</code></td>
+<td>同 shared, 作用范围也包括子目录</td>
+</tr>
+<tr>
+<td><code>rslave</code></td>
+<td>同 slave, 作用范围也包括子目录</td>
+</tr>
+<tr>
+<td><code>rprivate</code></td>
+<td>同 private, 作用范围也包括子目录</td>
+</tr>
+</tbody>
+</table>
+
             </article>
         </div>
 
@@ -498,6 +533,7 @@ docker images <span class="p">|</span> awk <span class="s1">&#39;{printf &#34;%s
     <li><a href="#退出">退出</a></li>
     <li><a href="#查日志">查日志</a></li>
     <li><a href="#删除容器-镜像">删除容器 镜像</a></li>
+    <li><a href="#docker-run启动">docker run启动</a></li>
   </ul>
 </nav>
 

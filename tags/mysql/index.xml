@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/mysql/</link>
+    <description>Recent content in mysql on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 Jan 2022 20:41:32 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql安装</title>
+      <link>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 04 Jan 2022 20:41:32 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</guid>
+      <description>docker-mysql安装部署文档 [TOC]
+一、前置条件 1.1 前置环境  docker 环境 docker ps 必须可以用 docker-compose -version 必须可以用  1.2 安装包名 [docker-mysql_5.7.24_2020_8_27.tar]
+1.3 升级服务器 ​	需要搭建 maven的机器
+1.4 升级操作用户 ​	用户名 拥有docker权限的用户 （cjpt,alarm 都可以）
+1.5 安装路径 ​	路径：/home/cjpt/temp/
+1.6 升级涉及到的服务    服务名称 升级前版本号 升级后版本号     mysql  2.16.6    1.7 升级功能说明 docker-nexus 镜像
+二、安装步骤 2.1 安装升级包 1 2 3 4  #### 进入安装目录 cd /home/cjpt/temp/ #### 进入安装目录 docker load &amp;lt; mysql.</description>
+    </item>
+    
+  </channel>
+</rss>
