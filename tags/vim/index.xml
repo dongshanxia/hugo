@@ -6,11 +6,11 @@
     <description>Recent content in vim on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jan 2022 19:09:02 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 19:11:35 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vim</title>
       <link>http://127.0.0.1:1313/hugo/linux/deepin/vim/</link>
-      <pubDate>Tue, 04 Jan 2022 19:09:02 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 19:11:35 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/deepin/vim/</guid>
       <description>deepin-vim 针对用户  下载需要的包 到 家目录  1  wget --no-check-certificate https://raw.githubusercontent.com/vim/vim/master/runtime/vimrc_example.vim -O ~/.vimrc   针对全局用户  找到vim的 全局配置路径：   执行vim然后输入:echo $VIMRUNTIME  修改默认配置文件：sudo vim $VIMRUNTIME/defaults.vim 具体可以修改的文件的功能 可以用下面的 保存文件完成修改：  :wq    可以修改的配置 1 2 3 4 5 6 7 8 9 10 11 12 13  #设置语法高亮 echo &amp;#39;syntax on&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启行号显示【标准方式】或上面的【简写方式】也可以 echo &amp;#39;set number&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启行号显示【简写方式】或下面的【标准方式】也可以 echo &amp;#39;set nu&amp;#39; &amp;gt;&amp;gt; ~/.vimrc #开启拼写检查 echo &amp;#39;set spell&amp;#39; &amp;gt;&amp;gt; ~/.</description>
