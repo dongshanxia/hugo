@@ -6,11 +6,11 @@
     <description>Recent content in Bigdata on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 05 Jan 2022 14:56:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/bigdata/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 15:23:32 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/bigdata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kafka</title>
       <link>http://127.0.0.1:1313/hugo/bigdata/kafka/</link>
-      <pubDate>Wed, 05 Jan 2022 14:56:33 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 15:23:32 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/bigdata/kafka/</guid>
       <description>kafka命令总结 topic的相关操作 创建topic   创建一个叫做“test”的topic，它只有二个分区，一个副本
@@ -21,7 +21,7 @@
     <item>
       <title>README</title>
       <link>http://127.0.0.1:1313/hugo/bigdata/hadoop/readme/</link>
-      <pubDate>Wed, 05 Jan 2022 14:56:33 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 15:23:32 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/bigdata/hadoop/readme/</guid>
       <description>hadoop 相关技术  获取某个application的 日志  1  yarn logs -applicationId application_1593492224442_0003 &amp;gt;./yarn.log   ./hadoop jar ../share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.1.jar pi 5 10</description>

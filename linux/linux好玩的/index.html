@@ -416,6 +416,15 @@ find . -name <span class="s2">&#34;*.tar&#34;</span>
 <pre class="chroma"><code class="language-shell" data-lang="shell"> journalctl -u 服务名
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="同步">同步</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">rsync -avl /docker/software/MSSQL/  /home/data/mssql
+</code></pre></td></tr></table>
+</div>
 </div>
             </article>
         </div>
@@ -432,6 +441,7 @@ find . -name <span class="s2">&#34;*.tar&#34;</span>
     <li><a href="#查找某个文件">查找某个文件</a></li>
     <li><a href="#软连接">软连接</a></li>
     <li><a href="#查询服务详情">查询服务详情</a></li>
+    <li><a href="#同步">同步</a></li>
   </ul>
 </nav>
 
