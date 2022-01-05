@@ -578,10 +578,10 @@ CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列�
 </span><span class="w"></span><span class="l">ENV SLEEPTIME=600  </span><span class="w"> </span><span class="c">## renew的查询的间隔时间</span><span class="w">
 </span><span class="w"></span><span class="c">## certbot</span><span class="w">
 </span><span class="w"></span><span class="l">RUN top_install_packages certbot </span><span class="w"> </span><span class="c">## 安装certbot</span><span class="w">
-</span><span class="w"></span><span class="l">COPY start_certbot.sh /root/start_certbot.sh   </span><span class="w">
+</span><span class="w"></span><span class="l">shell   </span><span class="w">
 </span><span class="w"></span><span class="l">COPY TopALiDns /root/TopALiDns   </span><span class="w"> </span><span class="c">## 更新ali dns的脚本</span><span class="w">
-</span><span class="w"></span><span class="l">COPY start_sleep.sh /root/start_sleep.sh  </span><span class="w"> </span><span class="c">## 睡眠脚本</span><span class="w">
-</span><span class="w"></span><span class="l">CMD [&#34;/bin/bash&#34;,&#34;/root/start_certbot.sh&#34;]</span><span class="w">
+</span><span class="w"></span><span class="l">shell</span><span class="w">
+</span><span class="w"></span><span class="l">shell</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div></li>

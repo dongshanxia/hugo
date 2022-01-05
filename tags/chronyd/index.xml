@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chronyd on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/chronyd/</link>
+    <description>Recent content in Chronyd on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 05 Jan 2022 14:56:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/chronyd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chronyd</title>
+      <link>http://127.0.0.1:1313/hugo/install/chronyd/</link>
+      <pubDate>Wed, 05 Jan 2022 14:56:33 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/install/chronyd/</guid>
+      <description>Chronyd chronyd是一个同步系统时钟的守护进程。
+从Centos7开始默认安装时钟同步服务chronyd，而不是ntpd。
+1 2 3  # dnf -y install chronyd # eccho &amp;#39;server ntp1.aliyun.com iburst&amp;#39; &amp;gt;&amp;gt; /etc/chrony.conf # systemctl enable chronyd.service &amp;amp;&amp;amp; systemctl start chronyd.service   Chronyc chronyc is a command-line interface program which can be used to monitor chronyd’s performance and to change various operating parameters whilst it is running.
+1 2 3 4 5 6 7 8 9 10 11 12  # chronyc sources -v .</description>
+    </item>
+    
+  </channel>
+</rss>

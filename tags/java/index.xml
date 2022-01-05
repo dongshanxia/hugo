@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/java/</link>
+    <description>Recent content in java on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 05 Jan 2022 14:56:33 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jar简易自检程序</title>
+      <link>http://127.0.0.1:1313/hugo/linux/shell/jar%E7%AE%80%E6%98%93%E8%87%AA%E6%A3%80%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Wed, 05 Jan 2022 14:56:33 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/linux/shell/jar%E7%AE%80%E6%98%93%E8%87%AA%E6%A3%80%E7%A8%8B%E5%BA%8F/</guid>
+      <description>jar 简易自检程序  脚本  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63  #!/bin/sh #line=&amp;#39;cat .</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://127.0.0.1:1313/hugo/java/java/</link>
+      <pubDate>Wed, 05 Jan 2022 14:56:33 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/java/</guid>
+      <description>java杂相关 strace
+一、java命令 debug 命令 1  -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8089   jvm jstat 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  jstat -gc 12698 1s 30 参数说明：S0C：第一个幸存区的大小 S1C：第二个幸存区的大小 S0U：第一个幸存区的使用大小 S1U：第二个幸存区的使用大小 EC：伊甸园区的大小 EU：伊甸园区的使用大小 OC：老年代大小 OU：老年代使用大小 MC：方法区大小 MU：方法区使用大小 CCSC:压缩类空间大小 CCSU:压缩类空间使用大小 YGC：年轻代垃圾回收次数 YGCT：年轻代垃圾回收消耗时间 FGC：老年代垃圾回收次数 FGCT：老年代垃圾回收消耗时间 GCT：垃圾回收消耗总时间   java的keytool keytool相关命令 需要补充 1 2 3 4 5 6 7 8 9 10 11  keytool -genkeypair \ -alias test-jwt \ -validity 3650 \ -keyalg RSA \ -dname &amp;#34;CN=jwt,OU=jtw,O=jtw,L=zurich,S=zurich,C=CH&amp;#34; \ -keypass test123 \ -keystore test-jwt.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1639,13 +1639,13 @@ hljs.registerLanguage("bash", (() => {
             begin: /\$\(\(/,
             end: /\)\)/, contains: [{begin: /\d+#[0-9a-f]+/, className: "number"}, s.NUMBER_MODE, n]
         }, r = s.SHEBANG({
-            binary: "(fish|bash|zsh|sh|csh|ksh|tcsh|dash|scsh)", relevance: 10
+            binary: "(fish|bash|zsh|shell|csh|ksh|tcsh|dash|scsh)", relevance: 10
         }), l = {
             className: "function", begin: /\w[\w\d_]*\s*\(\s*\)\s*\{/, returnBegin: !0,
             contains: [s.inherit(s.TITLE_MODE, {begin: /\w[\w\d_]*/})], relevance: 0
         };
         return {
-            name: "Bash", aliases: ["sh", "zsh"], keywords: {
+            name: "Bash", aliases: ["shell", "zsh"], keywords: {
                 $pattern: /\b[a-z._-]+\b/,
                 keyword: "if then else elif fi for while in do done case esac function",
                 literal: "true false",
