@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>typora on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/typora/</link>
+    <description>Recent content in typora on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 05 Jan 2022 10:09:01 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typora</title>
+      <link>http://127.0.0.1:1313/hugo/software/typora/</link>
+      <pubDate>Wed, 05 Jan 2022 10:09:01 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/software/typora/</guid>
+      <description>typora 图片问题 [toc]
+一.typora 困惑  本身typora 可以 复制粘贴 图片 进行显示图片 做笔记 如果你把这个markdown源文件发送给你的小伙伴的时候他不能看见    ../AppData/Roaming/Typora/typora-user-images/image-20200607174432319.png 这个是下面这张图片的地址
+是相对地址 只有你自己能够访问 无法分享
+   https://xxx.xxx.com:port/markdown/img/2020-06-07/174524_d0306553f4.png 像这样地址 你的小伙子就可以访问喽  先把图片放到网上 然后把访问地址 填写到图片信息中 （这种方案太麻烦了，比较费时费事，轻松解决方案请看下面）  二、 typora 与picGo 结合 解决图片方案 1. 下载picGO  地址： https://github.com/Molunerfinn/PicGo/releases 请下载对应的版本   2. 安装picGo   下载的 picGo安装包   双击进行安装   选择安装位置 点击安装   安装完成 运行   设置picgo
+  进行插件设置 且下载需要的插件 （额外的插件可以进行官网查询：）</description>
+    </item>
+    
+  </channel>
+</rss>
