@@ -641,7 +641,173 @@ sudo systemctl restart docker</p>
 </tr>
 </tbody>
 </table>
-
+<ul>
+<li>相关例子</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"> docker run -d <span class="se">\
+</span><span class="se"></span>  -it <span class="se">\
+</span><span class="se"></span>  --name devtest <span class="se">\
+</span><span class="se"></span>  --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&#34;</span>/target,target<span class="o">=</span>/app <span class="se">\
+</span><span class="se"></span>  --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&#34;</span>/target,target<span class="o">=</span>/app2,readonly,bind-propagation<span class="o">=</span>rslave <span class="se">\
+</span><span class="se"></span>  nginx:latest
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">bind</span><span class="w">
+</span><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">./</span><span class="w">
+</span><span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l">/app</span><span class="w">
+</span><span class="w">        </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">        </span><span class="nt">bind</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">propagation</span><span class="p">:</span><span class="w"> </span><span class="l">rslave</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">bind</span><span class="w">
+</span><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">./deploy/php.ini</span><span class="w">
+</span><span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l">/opt/bitnami/php/conf/php.ini</span><span class="w">
+</span><span class="w">        </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">        </span><span class="nt">bind</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">propagation</span><span class="p">:</span><span class="w"> </span><span class="l">rslave</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>实际使用的例子</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># 在工作目录下创建 docker-compose.yml 文件，编辑以下内容</span><span class="w">
+</span><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">nginx</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker.nexus.registry:5000/docker/nginx</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span><span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l">/root</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">profile=&#34;&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="l">/docker/software/nginx/log:/root/docker/nginx/log</span><span class="w">
+</span><span class="w">        </span>- <span class="l">/docker/software/nginx/config:/root/docker/nginx/config</span><span class="w">
+</span><span class="w"></span><span class="c">#        - /data/img:/root/static/img</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">bind</span><span class="w">
+</span><span class="w">          </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">/data/img</span><span class="w">
+</span><span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l">/root/static/img</span><span class="w">
+</span><span class="w">          </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">          </span><span class="nt">bind</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">propagation</span><span class="p">:</span><span class="w"> </span><span class="l">rslave</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;22&#34;</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;10099&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;34722:22&#34;</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;48899:10099&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">#https://gitee.com/dongshanxia/img/raw/master/img/2022-01-06/11-47-33-image-20220106114827986.png</span><span class="w">
+</span><span class="w"></span><span class="c">#https://img.dongshanxia.top:35000/img/2022-01-06/11-47-33-image-20220106114827986.png</span><span class="w">
+</span><span class="w"></span><span class="c">#    ports:</span><span class="w">
+</span><span class="w"></span><span class="c">#      - &#34;19998:19998/tcp&#34;</span><span class="w">
+</span><span class="w">      
+</span><span class="w"></span><span class="c">#  gillab:</span><span class="w">
+</span><span class="w"></span><span class="c">#    image: gillab_label_manager_image</span><span class="w">
+</span><span class="w"></span><span class="c">#    restart: always</span><span class="w">
+</span><span class="w"></span><span class="c">#    entrypoint: tail -f /dev/null</span><span class="w">
+</span><span class="w"></span><span class="c">#    working_dir: /home</span><span class="w">
+</span><span class="w"></span><span class="c">#    env_file:</span><span class="w">
+</span><span class="w"></span><span class="c">#       - ./.env</span><span class="w">
+</span><span class="w"></span><span class="c">#    volumes:</span><span class="w">
+</span><span class="w"></span><span class="c">#       - ./gillab_label_manager_image:/home/gillab_label_manager_image</span><span class="w">
+</span><span class="w"></span><span class="c">#       - /etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w"></span><span class="c">#    ports:</span><span class="w">
+</span><span class="w"></span><span class="c">#      - &#34;8086:8086/tcp&#34;</span><span class="w">
+</span><span class="w"></span><span class="c"># extra_hosts:</span><span class="w">
+</span><span class="w"></span><span class="c"># - &#34;somehost:162.242.195.82&#34;</span><span class="w">
+</span><span class="w"></span><span class="c"># - &#34;otherhost:50.31.209.229&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w">     
+</span></code></pre></td></tr></table>
+</div>
+</div>
             </article>
         </div>
 
