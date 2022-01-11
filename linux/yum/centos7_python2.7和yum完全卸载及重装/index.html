@@ -131,18 +131,18 @@
 
                     
                     
-
+                   var url =  item.url.substr(1);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
                             <div class="article-details">
-"/hugo/linux/yum/centos7_python2.7%E5%92%8Cyum%E5%AE%8C%E5%85%A8%E5%8D%B8%E8%BD%BD%E5%8F%8A%E9%87%8D%E8%A3%85/"
- null 
-"http://127.0.0.1:1313/hugo/linux/yum/centos7_python2.7%E5%92%8Cyum%E5%AE%8C%E5%85%A8%E5%8D%B8%E8%BD%BD%E5%8F%8A%E9%87%8D%E8%A3%85/"
-"/hugo/linux/yum/centos7_python2.7%E5%92%8Cyum%E5%AE%8C%E5%85%A8%E5%8D%B8%E8%BD%BD%E5%8F%8A%E9%87%8D%E8%A3%85/"
-"/hugo/"
+
+
+
+
+
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/" +item.url+`/ >`+item.name+`</a>
+                            <a href=`+ "/hugo/" +url+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟

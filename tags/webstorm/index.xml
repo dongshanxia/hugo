@@ -6,11 +6,11 @@
     <description>Recent content in webstorm on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Jan 2022 21:01:11 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/webstorm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jan 2022 21:08:22 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/webstorm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Webstorm</title>
       <link>http://127.0.0.1:1313/hugo/software/webstorm/</link>
-      <pubDate>Tue, 11 Jan 2022 21:01:11 +0800</pubDate>
+      <pubDate>Tue, 11 Jan 2022 21:08:22 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/software/webstorm/</guid>
       <description>webstorm 设置合集 不自动打开项目 File → Setting → Appearance &amp;amp; Behavior → System Settings取消勾选Reopen last project on startup</description>

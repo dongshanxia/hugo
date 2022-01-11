@@ -6,11 +6,11 @@
     <description>Recent content in jenkins on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Jan 2022 21:01:11 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jan 2022 21:08:22 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jenkins</title>
       <link>http://127.0.0.1:1313/hugo/software/jenkins/</link>
-      <pubDate>Tue, 11 Jan 2022 21:01:11 +0800</pubDate>
+      <pubDate>Tue, 11 Jan 2022 21:08:22 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/software/jenkins/</guid>
       <description>jenkins 说明文档 1. 彻底修改更新源 1 2 3 4 5  修改源 sed -i &amp;#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&amp;#39; /root/.jenkins/updates/default.json 修改搜索 sed -i &amp;#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&amp;#39; /root/.jenkins/updates/default.json   2. 启动命令 1  nohup java -jar jenkins.war JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/ --httpPort=8081 &amp;gt; jenkin.log 2&amp;gt;&amp;amp;1 &amp;amp;   3.常用插件 1 2 3 4 5 6  Localization: Chinese (Simplified) 中文 Maven Integration maven的插件 Git client GitBlit Git git的插件 Subversion svn插件   </description>

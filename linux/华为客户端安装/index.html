@@ -131,18 +131,18 @@
 
                     
                     
-
+                   var url =  item.url.substr(1);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
                             <div class="article-details">
-"/hugo/linux/%E5%8D%8E%E4%B8%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85/"
- null 
-"http://127.0.0.1:1313/hugo/linux/%E5%8D%8E%E4%B8%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85/"
-"/hugo/linux/%E5%8D%8E%E4%B8%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85/"
-"/hugo/"
+
+
+
+
+
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/" +item.url+`/ >`+item.name+`</a>
+                            <a href=`+ "/hugo/" +url+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
