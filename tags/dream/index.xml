@@ -6,11 +6,11 @@
     <description>Recent content in dream on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Jan 2022 21:08:22 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/dream/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jan 2022 22:29:19 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/dream/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021</title>
       <link>http://127.0.0.1:1313/hugo/about/dream/2021/</link>
-      <pubDate>Tue, 11 Jan 2022 21:08:22 +0800</pubDate>
+      <pubDate>Tue, 11 Jan 2022 22:29:19 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/dream/2021/</guid>
       <description>任务:  1.gitlab服务器备份 （1天一备份 （保留30份） 一周大备份一次 永久保存） 2.nexus备份 （7天备份一次（保留4分），1个月一次（永久保存）） 3.drone 镜像镜像自动更新 4.pve的基本操作命令 5.博客与gitee 打通 (无法自动更新) 6.图片服务器与gitee 形成双边备份和获取 （无法自动更新所以不搞了） 7.了解gitee的图床 8.创建picgo的镜像 9.编写goserver 接受图片 返回图片地址 10.制作golang镜像 11.结合picgo的镜像 与 原来上传结合 + gitee的图床上传 (用api替代了) 12.编写go 接收img 保存到本地 并转发文件到gitee 返回gitee访问地址到客户端 13.openwrt 配置 v2ray 14.win10 通过openwrt 连接到互联网 15.搭建jellyfin 影视中心 (需要先有电影) 16.创建三台稳定的虚拟机 85 86 87 17.在稳定的三台虚拟机上搭建opensearch(ES) 18.把hugo博客内容与ES打通 19.postman请求 ES内容 20.了解clash 一种代理 21.ddns 需要自定义域名 与本地绑定 22.搭建稳定版的mysql 让外面不能访问 修改密码(现在不需要) 23.搭建gitea ssl 24.搭建drone 25.搭建drone-runner 26.测试push 27.搭建稳定版的pgsql 外网不能访问 28.nginx 配置 docker group pull 和push分开 29.</description>
@@ -19,10 +19,37 @@
     <item>
       <title>2022</title>
       <link>http://127.0.0.1:1313/hugo/about/dream/2022/</link>
-      <pubDate>Tue, 11 Jan 2022 21:08:22 +0800</pubDate>
+      <pubDate>Tue, 11 Jan 2022 22:29:19 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/dream/2022/</guid>
       <description>一月  1.展示多少信息给前端 （如何跟hug结合） 2.完成darwio的研究 看看是否能私有化部署 3.deepin安装第三方安卓应用操作步骤  二月 </description>
+    </item>
+    
+    <item>
+      <title>nginx-modules</title>
+      <link>http://127.0.0.1:1313/hugo/about/dream/nginx-modules/</link>
+      <pubDate>Tue, 11 Jan 2022 22:29:19 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/about/dream/nginx-modules/</guid>
+      <description>nginx-modules nginx-rtmp-module 直播推流
+mail_ssl_module 为邮件代理服务器使用SSL / TLS协议提供了必要的支持
+stream_realip_module 将客户端地址和端口更改为在PROXY协议报头(1.11.4)中发送的地址和端口
+http_addition_module 在响应之前或者之后追加文本内容,比如想在站点底部追加一个js或者css,可以使用这个模块来实现
+http_auth_request_module 对敏感路径下的内容进行访问限制(通过auth_request来进行的权限限制)
+http_dav_module 对WebDav协议的支持。 WebDAV 工作组的目标是,设计一个协议,它提供基于万维网的分布式创作和版本控制
+http_flv_module 直播推流
+http_gunzip_module 过滤模块,这个模块为那些不支持gzip模块的客户端解压缩gzip格式相应的相应
+http_gzip_static_module 预读gzip功能
+http_mp4_module 为MP4文件提供伪流式服务器端支持
+http_random_index_module nginx的客户端的状态
+http_realip_module 当本机的nginx)处于一个反向代理的后端时获取到真实的用户IP
+http_secure_link_module 实现下载防盗链
+http_slice_module 是一个分割请求转换成子请求,每个返回一定范围内响应的滤波器。该过滤器提供了更有效的大响应缓存。
+http_ssl_module 支持https
+http_stub_status_module Nginx性能统计
+http_sub_module nginx服务器端给客户端,也就是在reponse的时候,对http的内容进行替换
+http_v2_module 提供了一种用于支持HTTP / 2,并且取代的ngx_http_spdy_module模块
+stream_ssl_preread_module 允许提取所述信息的ClientHello而不终止SSL / TLS</description>
     </item>
     
   </channel>
