@@ -9,7 +9,7 @@
 #TableOfContents{
     position: fixed;
     border-radius: 4px;
-    right:20px;
+    left:90%;
     top:115px;
     display: inline-block;
     width: max-content;

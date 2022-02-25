@@ -426,6 +426,309 @@
 <p>保证 k8s的节点的ip 相互之间能ping (无需 NAT 映射、无安全组或防火墙隔离)</p>
 </li>
 </ul>
+<h3 id="15-关闭selinux">1.5 关闭selinux</h3>
+<ul>
+<li>
+<p>setenforce 0</p>
+<p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2022-02-07/9-54-45-image-20220207095455556.png" alt="image-20220207095455556"></p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">屏蔽
+setenforce <span class="m">0</span>
+
+永久屏蔽
+sed -i <span class="s1">&#39;s/SELINUX=enforcing/SELINUX=disabled/g&#39;</span> /etc/selinux/config
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="16-关闭-swap">1.6 关闭 swap</h3>
+<ul>
+<li>
+<p>swapoff -a</p>
+<p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2022-02-07/10-45-21-image-20220207104531349.png" alt="image-20220207104531349"></p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 复制原来的磁盘的加载</span>
+yes <span class="p">|</span> cp /etc/fstab /etc/fstab_bak
+<span class="c1"># 磁盘加载 屏蔽swap的加载</span>
+cat /etc/fstab_bak <span class="p">|</span>grep -v swap &gt; /etc/fstab
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="17-修改sysctlconf">1.7 修改sysctl.conf</h3>
+<ul>
+<li>
+<p>文件地址：/etc/sysctl.conf</p>
+</li>
+<li>
+<p>文件内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">net.ipv4.ip_forward = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.all.forwarding = 1
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sysctl 生效
+sysctl -p
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="2-docker配置修改">2. docker配置修改</h2>
+<ul>
+<li>
+<p>文件地址：/etc/docker/daemon.json</p>
+</li>
+<li>
+<p>文件内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;insecure-registries&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;docker.nexus.re
+</span><span class="s2">                          gistry:5000&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;http://docker.mirrors.ustc.edu.cn&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;exec-opts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;native.cgroupdriver=systemd&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;log-driver&#34;</span><span class="p">:</span> <span class="s2">&#34;json-file&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;log-opts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;max-size&#34;</span><span class="p">:</span> <span class="s2">&#34;100m&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;max-file&#34;</span><span class="p">:</span><span class="s2">&#34;3&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;data-root&#34;</span><span class="p">:</span><span class="s2">&#34;/docker/libdocker&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;storage-driver&#34;</span><span class="p">:</span> <span class="s2">&#34;overlay2&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;storage-opts&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;overlay2.override_kernel_check=true&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;dns&#34;</span><span class="p">:[</span><span class="s2">&#34;10.168.2.1&#34;</span><span class="p">,</span><span class="s2">&#34;1141.114.114.114&#34;</span><span class="p">,</span><span class="s2">&#34;8.8.8.8&#34;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## 使docker的修改生效</span>
+systemctl daemon-reload
+systemctl <span class="nb">enable</span> docker
+systemctl restart docker
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="3-部分配置软件安装">3. 部分配置软件安装</h2>
+<h3 id="31-安装nfs-相关">3.1 安装nfs 相关</h3>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum install -y nfs-utils
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="32-安装wget">3.2 安装wget</h3>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum install -y wget
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="4-安装k8s相关服务和管理工具">4. 安装k8s相关服务和管理工具</h2>
+<h3 id="41-移除原先安装k8s">4.1 移除原先安装k8s</h3>
+<ul>
+<li>
+<p>命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum remove -y kubelet kubeadm kubectl
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="42-安装kubeletkubeadmkubectl">4.2 安装kubelet,kubeadm,kubectl</h3>
+<ul>
+<li>
+<p>安装yum源 (国外源)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">cat <span class="s">&lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+</span><span class="s">[kubernetes]
+</span><span class="s">name=Kubernetes
+</span><span class="s">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+</span><span class="s">enabled=1
+</span><span class="s">gpgcheck=1
+</span><span class="s">repo_gpgcheck=1
+</span><span class="s">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+</span><span class="s">EOF</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>安装国内源 （阿里源）  yum 只要一个可用的就可以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">cat <span class="s">&lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+</span><span class="s">[kubernetes]
+</span><span class="s">name=Kubernetes
+</span><span class="s">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+</span><span class="s">enabled=1
+</span><span class="s">gpgcheck=1
+</span><span class="s">repo_gpgcheck=1
+</span><span class="s">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+</span><span class="s">EOF</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>安装 kubelet kubeadm kubectl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum install -y kubelet-1.23.1 kubeadm-1.23.1 kubectl-1.23.1
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置 服务自启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl <span class="nb">enable</span> kubelet 
+systemctl start kubelet
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>docker 重启启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl daemon-reload
+systemctl restart docker
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="5-下载需要的k8s-镜像">5. 下载需要的k8s 镜像</h2>
+<h3 id="51-检测需要下载的镜像">5.1 检测需要下载的镜像</h3>
+<ul>
+<li>
+<p>命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">kubeadm config images list
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 
             </article>
         </div>
@@ -440,6 +743,27 @@
         <li><a href="#12--检查hostname">1.2  检查hostname</a></li>
         <li><a href="#13-检查cpu的信息">1.3 检查CPU的信息</a></li>
         <li><a href="#14-检查网卡信息">1.4 检查网卡信息</a></li>
+        <li><a href="#15-关闭selinux">1.5 关闭selinux</a></li>
+        <li><a href="#16-关闭-swap">1.6 关闭 swap</a></li>
+        <li><a href="#17-修改sysctlconf">1.7 修改sysctl.conf</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-docker配置修改">2. docker配置修改</a></li>
+    <li><a href="#3-部分配置软件安装">3. 部分配置软件安装</a>
+      <ul>
+        <li><a href="#31-安装nfs-相关">3.1 安装nfs 相关</a></li>
+        <li><a href="#32-安装wget">3.2 安装wget</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-安装k8s相关服务和管理工具">4. 安装k8s相关服务和管理工具</a>
+      <ul>
+        <li><a href="#41-移除原先安装k8s">4.1 移除原先安装k8s</a></li>
+        <li><a href="#42-安装kubeletkubeadmkubectl">4.2 安装kubelet,kubeadm,kubectl</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-下载需要的k8s-镜像">5. 下载需要的k8s 镜像</a>
+      <ul>
+        <li><a href="#51-检测需要下载的镜像">5.1 检测需要下载的镜像</a></li>
       </ul>
     </li>
   </ul>

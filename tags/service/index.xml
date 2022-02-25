@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>service on My New Hugo Site</title>
+    <link>http://127.0.0.1:1313/hugo/tags/service/</link>
+    <description>Recent content in service on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 25 Feb 2022 18:33:15 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/service/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Service</title>
+      <link>http://127.0.0.1:1313/hugo/linux/service/</link>
+      <pubDate>Fri, 25 Feb 2022 18:33:15 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/linux/service/</guid>
+      <description>linux的Service之旅 1.service 服务权限  systemd有系统和用户区分；  系统（/user/lib/systemd/system/） 用户（/etc/lib/systemd/user/）     一般系统管理员手工创建的单元文件建议存放在/etc/systemd/system/目录下面。
+ 2.Service 文件说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14  [Unit] Description=nginx - high performance web server Documentation=http://nginx.org/en/docs/ After=network.target remote-fs.target nss-lookup.target [Service] Type=forking PIDFile=/run/nginx.pid ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf ExecReload=/bin/kill -s HUP $MAINPID ExecStop=/bin/kill -s QUIT $MAINPID PrivateTmp=true [Install] WantedBy=multi-user.target    Unit  Description: 服务的简单描述 Documentation：服务的操作文档地址 Before: 定义启动顺序  Before=xxx.</description>
+    </item>
+    
+  </channel>
+</rss>

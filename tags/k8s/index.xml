@@ -6,11 +6,11 @@
     <description>Recent content in k8s on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 21 Jan 2022 09:41:22 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Feb 2022 18:33:15 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/docker/k8s/</link>
-      <pubDate>Fri, 21 Jan 2022 09:41:22 +0800</pubDate>
+      <pubDate>Fri, 25 Feb 2022 18:33:15 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/k8s/</guid>
       <description>获取节点和服务版本信息 kubectl get nodes
@@ -30,7 +30,7 @@
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/install/k8s/</link>
-      <pubDate>Fri, 21 Jan 2022 09:41:22 +0800</pubDate>
+      <pubDate>Fri, 25 Feb 2022 18:33:15 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/k8s/</guid>
       <description>k8s 安装 1. 安装前装备 1.1 检查 centos 1  cat /etc/redhat-releas   1.2 检查hostname   此处hostname的输出将会是该机器在K8s 集群中的名字
@@ -40,7 +40,7 @@
   可以得知图中 默认的网卡为eth0
   ip address (相关命令)
   保证 k8s的节点的ip 相互之间能ping (无需 NAT 映射、无安全组或防火墙隔离)
-  </description>
+  1.</description>
     </item>
     
   </channel>
