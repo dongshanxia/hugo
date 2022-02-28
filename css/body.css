@@ -31,8 +31,25 @@ body {
 
 .container {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
 }
+
+
+.post {
+    width: 90%;
+    margin: 0 5%;
+}
+
+.post-left{
+    width: 5%;
+
+}
+
+
+.display-none{
+    display: none;
+}
+
 
 table {
     border-collapse: collapse;
