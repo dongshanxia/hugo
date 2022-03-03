@@ -6,11 +6,11 @@
     <description>Recent content in 定时 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Feb 2022 13:34:11 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%AE%9A%E6%97%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Mar 2022 16:28:07 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%AE%9A%E6%97%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Crontab</title>
       <link>http://127.0.0.1:1313/hugo/linux/crontab/</link>
-      <pubDate>Mon, 28 Feb 2022 13:34:11 +0800</pubDate>
+      <pubDate>Thu, 03 Mar 2022 16:28:07 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/crontab/</guid>
       <description>crontab  查看 crontab -l 编辑  crontab -e   如何配置  1 2 3 4 5 6 7 8  * * * * * - - - - - | | | | | | | | | +----- 星期中星期几 (0 - 6) (星期天 为0) | | | +---------- 月份 (1 - 12) | | +--------------- 一个月中的第几天 (1 - 31) | +-------------------- 小时 (0 - 23) +------------------------- 分钟 (0 - 59)     例子</description>
