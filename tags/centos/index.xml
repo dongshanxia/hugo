@@ -6,11 +6,11 @@
     <description>Recent content in centos on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 03 Mar 2022 16:28:07 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Mar 2022 17:04:52 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kernel</title>
       <link>http://127.0.0.1:1313/hugo/install/kernel/</link>
-      <pubDate>Thu, 03 Mar 2022 16:28:07 +0800</pubDate>
+      <pubDate>Thu, 03 Mar 2022 17:04:52 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/kernel/</guid>
       <description>centos7 更新内核 在 CentOS 7 上启用 ELRepo 仓库 1 2  rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm   查询可下载的内核包 1  yum --disablerepo=&amp;#34;*&amp;#34; --enablerepo=&amp;#34;elrepo-kernel&amp;#34; list available   安装 1  yum --enablerepo=elrepo-kernel install kernel-ml   查看是否安装成功 1  rpm -qa |grep kernel   </description>
