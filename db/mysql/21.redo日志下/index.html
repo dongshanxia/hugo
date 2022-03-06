@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SkyWalking配合tomcat使用(二)</title>
+    <title>redo日志（下）</title>
 
 
 
@@ -368,57 +368,72 @@
 
         <div id="post" class="post">
             <article class="article-content">
-                <h2 id="上传tomcat至服务器">上传tomcat至服务器</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#下载tomcat8</span>
-https://tomcat.apache.org/download-80.cgi
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="修改tomcat配置">修改tomcat配置</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 端口修改8081</span>
-vim /opt/software/apache-tomcat-8.5.68/conf/server.xml 
-<span class="c1"># 修改tomcat启动方式 在加catalina.sh最上面！</span>
-<span class="nv">CATALINA_OPTS</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$CATALINA_OPTS</span><span class="s2"> -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&#34;</span><span class="p">;</span> <span class="nb">export</span> CATALINA_OPTS
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616200449175.png" alt="image-20210616200449175"></p>
-<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616203544573.png" alt="image-20210616203544573"></p>
-<h2 id="上传springmvc的war包">上传springMvc的war包</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd /opt/software/apache-tomcat-8.5.68/webapps/
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616200634086.png" alt="image-20210616200634086"></p>
-<h2 id="启动tomcat">启动tomcat</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">./opt/software/apache-tomcat-8.5.68/bin/startup.sh
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>请求一下项目 sky-walking-ui就有记录了！</p>
+                <h2 id="redo-log的刷盘时机">redo log的刷盘时机</h2>
+<ul>
+<li>log buffer 空间不足时（大概一半左右）</li>
+<li>事务提交时</li>
+<li>后台线程不停的刷刷刷（大概每秒刷一次）</li>
+<li>正常关闭服务器时</li>
+<li>做所谓的 checkpoint</li>
+</ul>
+<h2 id="redo日志文件组">redo日志文件组</h2>
+<p>磁盘上的 redo 日志文件不只一个，而是以一个 日志文件组 的形式出现的</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220302114025504.png" alt="image-20220302114025504"></p>
+<p>MySQL 的数据目录（使用 SHOW VARIABLES LIKE &lsquo;datadir&rsquo; 查看）下默认有两个名为 <code>ib_logfile0</code> 和<code>ib_logfile1</code>的文件， <code>log buffer </code>中的日志默认情况下就是刷新到这两个磁盘文件中。如果我们对默认的redo 日志文件不满意，可以通过下边几个启动参数来调节：</p>
+<p><strong>innodb_log_group_home_dir</strong></p>
+<p><em>该参数指定了 redo 日志文件所在的目录，默认值就是当前的数据目录。</em></p>
+<p><strong>innodb_log_file_size</strong></p>
+<p><em>该参数指定了每个 redo 日志文件的大小，在 MySQL 5.7.21 这个版本中的默认值为 48MB</em></p>
+<p><strong>innodb_log_files_in_group</strong></p>
+<p><em>该参数指定 redo 日志文件的个数，默认值为2，最大值为100。</em></p>
+<p><strong>总共的 redo 日志文件大小其实就是： innodb_log_file_size × innodb_log_files_in_group 。</strong></p>
+<h2 id="redo日志文件格式">redo日志文件格式</h2>
+<p>我们前边说过 log buffer 本质上是一片连续的内存空间，被划分成了若干个 512 字节大小的 block 。<strong>将logbuffer中的redo日志刷新到磁盘的本质就是把block的镜像写入日志文件中</strong>，所以 redo 日志文件其实也是由若干个 512 字节大小的block组成。redo 日志文件组中的每个文件大小都一样，格式也一样，都是由两部分组成：</p>
+<ul>
+<li>前2048个字节，也就是前4个block是用来存储一些管理信息的。</li>
+<li>从第2048字节往后是用来存储 log buffer 中的block镜像的。</li>
+</ul>
+<blockquote>
+<p>所以每次一开始写都是重ib_logfile的2048字节处开始写</p>
 </blockquote>
-<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20210616204008401.png" alt="image-20210616204008401"></p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220302115109895.png" alt="image-20220302115109895"></p>
+<h3 id="解释ib_logfile的前4个block">解释ib_logfile的前4个block</h3>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220302115350722.png" alt="image-20220302115350722"></p>
+<h4 id="log-file-header">log file header</h4>
+<p>描述redo日志文件的整体信息。</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220302115538544.png" alt="image-20220302115538544"></p>
+<p>包括以下属性（有印象就好）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">长度（单位：字节）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LOG_HEADER_FORMAT</td>
+<td style="text-align:left">4</td>
+<td>redo 日志的版本，在 MySQL 5.7.21 中该值永远为1</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>LOG_HEADER_START_LSN</strong></td>
+<td style="text-align:left">8</td>
+<td><strong>标记本 redo 日志文件开始的LSN值，也就是文件偏移量为204字节初对应的LSN值（关于什么是LSN我们稍后再看哈，看不懂的先忽略）。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">LOG_HEADER_CREATOR</td>
+<td style="text-align:left">32</td>
+<td>一个字符串，标记本 redo 日志文件的创建者是谁。正常运行时该值为 MySQL 的版本号，比如： &ldquo;MySQL 5.7.21&rdquo; ，使用mysqlbackup 命令创建的 redo 日志文件的该值为 &ldquo;ibbackup&rdquo; 和创建时间。</td>
+</tr>
+<tr>
+<td style="text-align:left">LOG_BLOCK_CHECKSUM</td>
+<td style="text-align:left">4</td>
+<td>本block的校验值，所有block都有，我们不关心</td>
+</tr>
+</tbody>
+</table>
 
             </article>
         </div>
@@ -432,10 +447,13 @@ vim /opt/software/apache-tomcat-8.5.68/conf/server.xml
     <div id="table-of-contents">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#上传tomcat至服务器">上传tomcat至服务器</a></li>
-    <li><a href="#修改tomcat配置">修改tomcat配置</a></li>
-    <li><a href="#上传springmvc的war包">上传springMvc的war包</a></li>
-    <li><a href="#启动tomcat">启动tomcat</a></li>
+    <li><a href="#redo-log的刷盘时机">redo log的刷盘时机</a></li>
+    <li><a href="#redo日志文件组">redo日志文件组</a></li>
+    <li><a href="#redo日志文件格式">redo日志文件格式</a>
+      <ul>
+        <li><a href="#解释ib_logfile的前4个block">解释ib_logfile的前4个block</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -540,7 +558,7 @@ vim /opt/software/apache-tomcat-8.5.68/conf/server.xml
 <div class="pageOut">
             
                 <div class="pageTop">
-                    <a class="" href="/hugo/java/skywalking%E9%85%8D%E7%BD%AE%E8%A6%86%E7%9B%96%E4%BA%94/">
+                    <a class="" href="/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/">
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -548,7 +566,7 @@ vim /opt/software/apache-tomcat-8.5.68/conf/server.xml
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href="/hugo/java/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/">
+                    <a class="" href="/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/">
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

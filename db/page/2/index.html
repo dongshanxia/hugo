@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SkyWalking配置覆盖(五)</title>
+    <title>Dbs</title>
 
 
 
@@ -364,349 +364,724 @@
 
 
 <div id="content">
-    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
-
-        <div id="post" class="post">
-            <article class="article-content">
-                <blockquote>
-<p>之前使用agent，我们需要每起一个应用都cp一份agent文件，因为应用名称实在agen.config中配置的，为了避免这么麻烦，可以利用配置覆盖，使用同一个agent文件达到不同配置的目的</p>
-</blockquote>
-<h1 id="配置覆盖">配置覆盖</h1>
-<p>默认情况下，SkyWalking为agent提供了<code>agent.config</code>配置文件。</p>
-<h2 id="配置覆盖意味着用户可以通过系统属性或agent选项覆盖配置文件中的配置">配置覆盖意味着用户可以通过系统属性或agent选项覆盖配置文件中的配置。</h2>
-<h2 id="description-skywalking配置覆盖">title: &ldquo;skywalking配置覆盖&rdquo;
-date: 2021-07-13T16:27:57+08:00
-draft: false
-author: &ldquo;ggball&rdquo;
-tags: [&ldquo;skywalking&rdquo;]
-categories: [&ldquo;java&rdquo;]
-description: &ldquo;skywalking配置覆盖&rdquo;</h2>
-<h2 id="系统属性">系统属性</h2>
-<p>使用 <code>skywalking.</code> + 配置文件中的配置名 作为系统属性的配置名来覆盖配置文件中的值。</p>
-<ul>
-<li>
-<p>为什么需要这个前缀？</p>
-<p>因为agent系统属性是和目标应用共享的，加前缀是为了避免冲突。</p>
-</li>
-<li>
-<p>例子</p>
-<p>通过下面的系统属性覆盖<code>agent.application_code</code>。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-Dskywalking.agent.application_code=31200
-</code></pre></td></tr></table>
-</div>
-</div><p>实际案例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">-Dskywalking.agent.service_name<span class="o">=</span>skywalking_mysql
-<span class="c1">#实际语句</span>
-java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar <span class="se">\
-</span><span class="se"></span>-Dskywalking.agent.service_name<span class="o">=</span>skywalking_mysql <span class="se">\
-</span><span class="se"></span>/opt/jar/mysql-boot.jar 
-
-</code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-<p>java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar<br>
--Dskywalking.agent.service_name=transaction1<br>
-/opt/jar/transaction1.jar<br>
-&ndash;PROFILE=test<br>
-&ndash;server.port=8002 &amp;</p>
-<p>java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar -jar<br>
--Dskywalking.agent.service_name=transaction2<br>
-/opt/jar/transaction2.jar<br>
-&ndash;PROFILE=test<br>
-&ndash;server.port=8003 &amp;</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">
 
 
-## agent选项
+<div class="container main-container flex on-phone--column extended ">
+    <main class="main full-width">
+        <h3 class="section-title">Section</h3>
 
-在JVM参数的agent路径后面添加选项。
-
-</code></pre></td></tr></table>
-</div>
-</div><p>-javaagent:/path/to/skywalking-agent.jar=[option1]=[value1],[option2]=[value2]</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">
-- 例子 
-
-  通过下面的配置覆盖`agent.application_code``logging.level`。
-
-</code></pre></td></tr></table>
-</div>
-</div><p>-javaagent:/path/to/skywalking-agent.jar=agent.application_code=31200,logging.level=debug</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">
-- 特殊字符
-
-  如果在选项或选项值中有分隔符(`,`或者`=`)，应该用引号包起来。
-
-</code></pre></td></tr></table>
-</div>
-</div><p>-javaagent:/path/to/skywalking-agent.jar=agent.ignore_suffix='.jpg,.jpeg'</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">
-## 系统环境变量
-- 例子 
-
-  通过下面的配置覆盖`agent.application_code`和`logging.level`。
-
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="the-service-name-in-ui">The service name in UI</h1>
-<p>agent.service_name=${SW_AGENT_NAME:Your_ApplicationName}</p>
-<h1 id="logging-level">Logging level</h1>
-<p>logging.level=${SW_LOGGING_LEVEL:INFO}</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">
-如果 `SW_AGENT_NAME ` 环境变量在你的操作系统中已存在，并且，它的值为 `skywalking-agent-demo`，那么这里的`agent.service_name`的值将会被覆写为
-`skywalking-agent-demo`, 否则, 它将会被设置成 `Your_ApplicationName`。
-
-另外，占位符嵌套也是支持的，比如 `${SW_AGENT_NAME:${ANOTHER_AGENT_NAME:Your_ApplicationName}}`。
-在这种情况下，如果 `SW_AGENT_NAME ` 环境变量不存在，但是 ```ANOTHER_AGENT_NAME``` 环境变量存在，并且它的值为 `skywalking-agent-demo`, 
-那么这里的`agent.service_name`的值将会被覆写为`skywalking-agent-demo`, 否则, 它将会被设置成 `Your_ApplicationName`。
-
-## 覆盖优先级
-
-agent选项 &gt; 系统属性(-D) &gt; 系统环境变量 &gt; 配置文件 
-</code></pre></td></tr></table>
-</div>
-</div>
-            </article>
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">19 pages</h3>
+                <h1 class="section-term">Dbs</h1>
+            </div>
         </div>
 
-
-<div class="button-container">
-    <div class="catalog-button">
-        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
-        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
-    </div>
-    <div id="table-of-contents">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#配置覆盖意味着用户可以通过系统属性或agent选项覆盖配置文件中的配置">配置覆盖意味着用户可以通过系统属性或agent选项覆盖配置文件中的配置。</a></li>
-    <li><a href="#description-skywalking配置覆盖">title: &ldquo;skywalking配置覆盖&rdquo;
-date: 2021-07-13T16:27:57+08:00
-draft: false
-author: &ldquo;ggball&rdquo;
-tags: [&ldquo;skywalking&rdquo;]
-categories: [&ldquo;java&rdquo;]
-description: &ldquo;skywalking配置覆盖&rdquo;</a></li>
-    <li><a href="#系统属性">系统属性</a></li>
-  </ul>
-</nav>
-    </div>
-
-</div>
-<script>
-    function click_open() {
-        console.log("打开")
-        $('#table-of-contents').show()
-        $('#close').show()
-        $('#open').hide()
-
-    }
-    function click_close() {
-        console.log("关闭")
-        $('#table-of-contents').hide()
-        $('#open').show()
-        $('#close').hide()
-    }
-</script>
-
-
-<style>
-    .button-container{
-        position: fixed;
-        border-radius: 4px;
-        right: 2%;
-        top: 12%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-         
-        background-color: #515151e1;
-        opacity: 0.8;
-        border: 6px solid rgba(255, 255, 81, 0.5);
-        z-index: 99;
-        align-items: flex-end;
-    }
-    .div-inline-block{
-        display: inline-block;
-    }
-    .catalog-button{
-    }
-
-    #tab-of-content-area{
-        float: right;
-        position: relative;
-        right: 24px;
-        top: -70px;
-        display: none;
-    }
-
-    #TableOfContents{
-        border-radius: 4px;
-        left:85%;
-        top:115px;
-        display: inline-block;
-        width: max-content;
-        width:-webkit-max-content;
-        width:-moz-max-content;
-        max-width: 600px;
-        padding: 0;
-        background-color: #515151e1;
-        border: 1px solid rgba(81, 81, 81, 0.1);
-        overflow:auto;
-        height: 750px;
-    }
-
-    #TableOfContents::-webkit-scrollbar {
-        display: none;
-    }
-
-    #TableOfContents ul{
-        font-size: 16px;
-        color: #fff;
-        padding: 10px;
-    }
-
-    #TableOfContents ul a{
-        color: inherit;
-    }
-
-    #TableOfContents ul ul{
-        padding-left: 20px;
-        font-size: 14px;
-        color:#ddd;
-    }
-
-    #TableOfContents li{
-        padding: 5px 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow:ellipsis;
-    }
-
-
-</style>
-
-
-
-
-<div class="pageOut">
+        <section class="article-list">
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/19.mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/">mysql事务</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 128 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.227 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/00.mysql%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">mysql思维导图</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 176 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.223 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/10.mysql%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9/">mysql系统配置与启动选项</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 75 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.223 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/oracle/">Oracle</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 5 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.228 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/pgsql/">Pgsql</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 16 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.228 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/">redo日志（上）</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 258 预计读完 2 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.227 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/21.redo%E6%97%A5%E5%BF%97%E4%B8%8B/">redo日志（下）</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 111 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.227 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/">字符集和比较规则</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 89 预计读完 1 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.224 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <header class="article-category">
+                                    
+                                        <a href="/hugo/categories/db/" >
+                                            db
+                                        </a>
+                                    
+                                </header>
+                                <h2 class="article-title">
+                                    <a href="/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/">重新认识mysql</a>
+                                </h2>
+                                <h3 class="article-subtitle">
+                                    统计 237 预计读完 2 分钟
+                                </h3>
+                                <footer class="article-time">
+                                    <time class="article-time--published">2022-03-06 15:56:25.223 &#43;0800 CST</time>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                
+        </section>
+    <nav class='pagination'>
+        
             
-                <div class="pageTop">
-                    <a class="" href="/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/">
-                        <button class="buttonStyle">上</button>
-                    </a>
-                </div>
+                <a class='page-link' href='/hugo/db/'>1</a>
             
-            <div class="pagePiddle"></div>
+        
             
-                <div class="pageBottom">
-                    <a class="" href="/hugo/java/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/">
-                        <button class="buttonStyle">下</button>
-                    </a>
-                </div>
+                <span class='page-link current'>2</span>
+            
+        
+    </nav>
+</main>
+
+
+    <aside class="sidebar right-sidebar sticky"><section class="widget archives">
+    <h2 class="widget-title section-title">分类</h2>
+    <div class="widget-archive--list">
+        <div class="archives-year">
+            
+                
+                <a href="/hugo/categories/blog/">
+                    <span class="year">blog</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/cwz/">
+                    <span class="year">cwz</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/db/">
+                    <span class="year">db</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/docker/">
+                    <span class="year">docker</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/dream/">
+                    <span class="year">dream</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/es/">
+                    <span class="year">es</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/gitlab/">
+                    <span class="year">gitlab</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/go/">
+                    <span class="year">go</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/hadoop/">
+                    <span class="year">hadoop</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/install/">
+                    <span class="year">install</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/java/">
+                    <span class="year">java</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/kafka/">
+                    <span class="year">kafka</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/linux/">
+                    <span class="year">linux</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/my/">
+                    <span class="year">my</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/network/">
+                    <span class="year">network</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/opensearch/">
+                    <span class="year">OpenSearch</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/pve/">
+                    <span class="year">pve</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/shell/">
+                    <span class="year">shell</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/software/">
+                    <span class="year">software</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/study/">
+                    <span class="year">study</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/vue/">
+                    <span class="year">vue</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/windows/">
+                    <span class="year">windows</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/yum/">
+                    <span class="year">yum</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/zookeeper/">
+                    <span class="year">zookeeper</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/zxq/">
+                    <span class="year">zxq</span>
+                    
+                </a>
+            
+                
+                <a href="/hugo/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">
+                    <span class="year">未分类</span>
+                    
+                </a>
             
         </div>
     </div>
+</section><section class="widget tagCloud">
+    <h2 class="widget-title section-title">Tags</h2>
+    <div class="tagCloud-tags">
+        
+            
+        
+        
+            
+            <a href="/hugo/tags/linux/" class="font_size_13">
+                linux
+            </a>
+        
+            
+            <a href="/hugo/tags/ago/" class="font_size_1">
+                ago
+            </a>
+        
+            
+            <a href="/hugo/tags/blog/" class="font_size_1">
+                blog
+            </a>
+        
+            
+            <a href="/hugo/tags/centos/" class="font_size_1">
+                centos
+            </a>
+        
+            
+            <a href="/hugo/tags/centos7/" class="font_size_1">
+                centos7
+            </a>
+        
+            
+            <a href="/hugo/tags/certbot/" class="font_size_1">
+                certbot
+            </a>
+        
+            
+            <a href="/hugo/tags/chronyd/" class="font_size_1">
+                Chronyd
+            </a>
+        
+            
+            <a href="/hugo/tags/cluster/" class="font_size_1">
+                cluster
+            </a>
+        
+            
+            <a href="/hugo/tags/config/" class="font_size_1">
+                config
+            </a>
+        
+            
+            <a href="/hugo/tags/db/" class="font_size_1">
+                DB
+            </a>
+        
+            
+            <a href="/hugo/tags/docker/" class="font_size_4">
+                docker
+            </a>
+        
+            
+            <a href="/hugo/tags/docker-compose/" class="font_size_2">
+                docker-compose
+            </a>
+        
+            
+            <a href="/hugo/tags/dockerfile/" class="font_size_1">
+                dockerfile
+            </a>
+        
+            
+            <a href="/hugo/tags/dream/" class="font_size_4">
+                dream
+            </a>
+        
+            
+            <a href="/hugo/tags/es/" class="font_size_3">
+                es
+            </a>
+        
+            
+            <a href="/hugo/tags/hive/" class="font_size_1">
+                hive
+            </a>
+        
+            
+            <a href="/hugo/tags/http/" class="font_size_1">
+                http
+            </a>
+        
+            
+            <a href="/hugo/tags/https/" class="font_size_1">
+                https
+            </a>
+        
+            
+            <a href="/hugo/tags/idea/" class="font_size_1">
+                idea
+            </a>
+        
+            
+            <a href="/hugo/tags/install/" class="font_size_2">
+                install
+            </a>
+        
+            
+            <a href="/hugo/tags/java/" class="font_size_2">
+                java
+            </a>
+        
+            
+            <a href="/hugo/tags/jenkins/" class="font_size_1">
+                jenkins
+            </a>
+        
+            
+            <a href="/hugo/tags/k8s/" class="font_size_2">
+                k8s
+            </a>
+        
+            
+            <a href="/hugo/tags/kafka/" class="font_size_2">
+                kafka
+            </a>
+        
+            
+            <a href="/hugo/tags/leak/" class="font_size_1">
+                leak
+            </a>
+        
+            
+            <a href="/hugo/tags/linux/" class="font_size_4">
+                linux
+            </a>
+        
+            
+            <a href="/hugo/tags/markdown/" class="font_size_1">
+                markdown
+            </a>
+        
+            
+            <a href="/hugo/tags/mssql/" class="font_size_1">
+                mssql
+            </a>
+        
+            
+            <a href="/hugo/tags/mybatis/" class="font_size_4">
+                mybatis
+            </a>
+        
+            
+            <a href="/hugo/tags/mysql/" class="font_size_17">
+                mysql
+            </a>
+        
+            
+            <a href="/hugo/tags/npm%E5%AE%89%E8%A3%85/" class="font_size_1">
+                npm安装
+            </a>
+        
+            
+            <a href="/hugo/tags/oracle/" class="font_size_1">
+                oracle
+            </a>
+        
+            
+            <a href="/hugo/tags/pgsql/" class="font_size_2">
+                pgsql
+            </a>
+        
+            
+            <a href="/hugo/tags/photoshop/" class="font_size_1">
+                photoshop
+            </a>
+        
+            
+            <a href="/hugo/tags/pve/" class="font_size_1">
+                pve
+            </a>
+        
+            
+            <a href="/hugo/tags/redis/" class="font_size_3">
+                redis
+            </a>
+        
+            
+            <a href="/hugo/tags/service/" class="font_size_1">
+                service
+            </a>
+        
+            
+            <a href="/hugo/tags/shell/" class="font_size_3">
+                shell
+            </a>
+        
+            
+            <a href="/hugo/tags/skywalking/" class="font_size_4">
+                skywalking
+            </a>
+        
+            
+            <a href="/hugo/tags/ssh/" class="font_size_1">
+                ssh
+            </a>
+        
+            
+            <a href="/hugo/tags/start/" class="font_size_1">
+                start
+            </a>
+        
+            
+            <a href="/hugo/tags/tar/" class="font_size_1">
+                tar
+            </a>
+        
+            
+            <a href="/hugo/tags/tomcat/" class="font_size_2">
+                tomcat
+            </a>
+        
+            
+            <a href="/hugo/tags/typora/" class="font_size_1">
+                typora
+            </a>
+        
+            
+            <a href="/hugo/tags/vim/" class="font_size_1">
+                vim
+            </a>
+        
+            
+            <a href="/hugo/tags/vmware/" class="font_size_1">
+                VMware
+            </a>
+        
+            
+            <a href="/hugo/tags/webstorm/" class="font_size_1">
+                webstorm
+            </a>
+        
+            
+            <a href="/hugo/tags/windows/" class="font_size_1">
+                windows
+            </a>
+        
+            
+            <a href="/hugo/tags/zerotier/" class="font_size_1">
+                zerotier
+            </a>
+        
+            
+            <a href="/hugo/tags/zookeeper/" class="font_size_1">
+                zookeeper
+            </a>
+        
+            
+            <a href="/hugo/tags/%E4%BB%BB%E5%8A%A1/" class="font_size_1">
+                任务
+            </a>
+        
+            
+            <a href="/hugo/tags/%E5%88%86%E5%8C%BA/" class="font_size_1">
+                分区
+            </a>
+        
+            
+            <a href="/hugo/tags/%E5%AE%89%E8%A3%85/" class="font_size_7">
+                安装
+            </a>
+        
+            
+            <a href="/hugo/tags/%E5%AE%9A%E6%97%B6/" class="font_size_1">
+                定时
+            </a>
+        
+            
+            <a href="/hugo/tags/%E6%8F%92%E4%BB%B6/" class="font_size_1">
+                插件
+            </a>
+        
+            
+            <a href="/hugo/tags/%E6%9C%AA%E6%A0%87%E7%AD%BE/" class="font_size_6">
+                未标签
+            </a>
+        
+            
+            <a href="/hugo/tags/%E6%9D%82/" class="font_size_2">
+                杂
+            </a>
+        
+            
+            <a href="/hugo/tags/%E7%A3%81%E7%9B%98/" class="font_size_1">
+                磁盘
+            </a>
+        
+            
+            <a href="/hugo/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="font_size_1">
+                虚拟机
+            </a>
+        
+            
+            <a href="/hugo/tags/%E8%B7%AF%E7%94%B1/" class="font_size_1">
+                路由
+            </a>
+        
+            
+            <a href="/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" class="font_size_1">
+                面试题整理
+            </a>
+        
+    </div>
 
-    <style>
-        .pageTop,.pagePiddle,.pageBottom{
-            width: 100%;
-        }
-        .pagePiddle{
-            height: 1em;
-        }
+</section></aside>
 
-        .buttonStyle{
-            border-radius: 60%;
-        }
 
-        .pageOut {
-            position: fixed;
-            border-radius: 4px;
-            left: 2%;
-            top: 14%;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-             
-            background-color: #515151e1;
-            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
-            opacity: 0.8;
-            border: 6px solid rgba(255, 255, 81, 0.5);
-
-            z-index: 99;
-        }
-    </style>
-
+</div>
 
         </div><footer id="footer" class="footer">
     <div class="copyright">

@@ -6,11 +6,114 @@
     <description>Recent content in mysql on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 03 Mar 2022 17:04:52 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 15:56:25 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>B&#43;树索引的由来</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/14.b&#43;%E6%A0%91%E7%B4%A2%E5%BC%95%E7%9A%84%E7%94%B1%E6%9D%A5/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/14.b&#43;%E6%A0%91%E7%B4%A2%E5%BC%95%E7%9A%84%E7%94%B1%E6%9D%A5/</guid>
+      <description>B+树索引的由来 从前面讲的InnoDB数据页结构，特别是页目录，我们可以了解到，记录在页里面是以单链表的形式存在，而页与页之间构成了双向链表。
+那么我们应该采取什么样的方式来更高效查询数据呢？
+1.我们先来假设不了解什么是索引，我们会怎么查找？ 比如根据主键条件搜索，可以再页目录中用二分查找查到属于那条记录
+如果是非主键列呢，因为在数据页中并没有对非主键列建立所谓的 页目录，可能要一个一个按顺序找，知道找到匹配的记录
+2.如果在很多页中查找？ 大部分情况下我们表中存放的记录都是非常多的，需要好多的数据页来存储这些记录。在很多页中查找记录的话可以分为两个步骤：
+  定位到记录所在的页。
+  从所在的页内中查找相应的记录。
+在没有索引的情况下，不论是根据主键列或者其他列的值进行查找，由于我们并不能快速的定位到记录所在的页，所以只能从第一个页沿着双向链表一直往下找，在每一个页中根据我们刚刚唠叨过的查找方式去查找指定的记录。因为要遍历所有的数据页，所以这种方式显然是超级耗时的，如果一个表有一亿条记录，使用这种方式去查找记录那要等到猴年马月才能等到查找结果。所以祖国和人民都在期盼一种能高效完成搜索的方法， 索引 同志就要亮相登台了。
+  B+树索引 我们现在就遇到了个难题，在一个数据页里面根据主键查询记录，可以很快的查询出来，但是数据库的数据会越来越多，数据页也会越来越多，页与页之间现在没有办法根据主键查到记录属于哪个页？
+要是能像一个数据页里面根据二分法查记录就好，咦！没错，就是这个思路！
+设计InnoDB的大叔，给多个数据页分配了各自的目录，方便查找到某个数据页，比如下面
+ 就像一本字典，大部分装着对单词的解释（数据页），前面一部分是目录（存放目录项记录的数据页），都占据着书本的空间，但是起到方便查找的作用
+ 从图中可以看出来，我们新分配了一个编号为 30 的页来专门存储 目录项记录 。这里再次强调一遍 目录项记录和普通的 用户记录 的不同点：
+ 目录项记录 的 record_type 值是1，而普通用户记录的 record_type 值是0。 目录项记录 只有主键值和页的编号两个列，而普通的用户记录的列是用户自己定义的，可能包含很多列，另外还有 InnoDB 自己添加的隐藏列。 还记得我们之前在唠叨记录头信息的时候说过一个叫 min_rec_mask 的属性么，只有在存储 目录项记录 的页中的主键值最小的 目录项记录 的 min_rec_mask 值为 1 ，其他别的记录的 min_rec_mask 值都是 0 。  除了上述几点外，这两者就没啥差别了，它们用的是一样的数据页（页面类型都是 0x45BF ，这个属性在 File Header 中，忘了的话可以翻到前边的文章看），页的组成结构也是一样一样的（就是我们前边介绍过的7个部分），都会为主键值生成 Page Directory （页目录），从而在按照主键值进行查找时可以使用二分法来加快查询速度。现在以查找主键为 20 的记录为例，根据某个主键值去查找记录的步骤就可以大致拆分成下边两步：</description>
+    </item>
+    
+    <item>
+      <title>EXPLAIN 语句输出的各个列解释</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/17.explain-%E8%AF%AD%E5%8F%A5%E8%BE%93%E5%87%BA%E7%9A%84%E5%90%84%E4%B8%AA%E5%88%97%E8%A7%A3%E9%87%8A/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/17.explain-%E8%AF%AD%E5%8F%A5%E8%BE%93%E5%87%BA%E7%9A%84%E5%90%84%E4%B8%AA%E5%88%97%E8%A7%A3%E9%87%8A/</guid>
+      <description>EXPLAIN 语句输出的各个列解释    列名 描述     id 在一个大的查询语句中每个 SELECT 关键字都对应一个唯一的 id   select_type SELECT 关键字对应的那个查询的类型   table 表名   partitions 匹配的分区信息   type 针对单表的访问方法   possible_keys 可能用到的索引   key 实际上使用的索引   key_len 实际使用到的索引长度   ref 当使用索引列等值查询时，与索引列进行等值匹配的对象信息   rows 预估的需要读取的记录条数   filtered 某个表经过搜索条件过滤后剩余记录条数的百分比   Extra 一些额外的信息    select_type 每一个 SELECT 关键字代表的小查询都定义了一个称之为 select_type 的属性，意思是我们 只要知道了某个小查询的 select_type 属性，就知道了这个小查询在整个大查询中扮演了一个什么角色</description>
+    </item>
+    
+    <item>
+      <title>explain之访问方法</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/16.explain%E4%B9%8B%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/16.explain%E4%B9%8B%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95/</guid>
+      <description>MySQL 执行查询语句的方式称之为 访问方法 或者 访问类型
+ 访问方法 const：通过主键或者唯一二级索引列与常数的等值比较来定位一条记录。意思是常数级别的，代价是可以忽略不计的。不过这种 const 访问方法只能在主键
+列或者唯一二级索引列和一个常数进行等值比较时才有效，如果主键或者唯一二级索引是由多个列构成的话，索引中的每一个列都需要与常数进行等值比较，
+这个const 访问方法才有效（这是因为只有该索引中全部列都采用等值比较才可以定位唯一的一条记录）。
+ 对于唯一二级索引来说，查询该列为 NULL 值的情况比较特殊，比如这样：
+SELECT * FROM single_table WHERE key2 IS NULL;
+因为唯一二级索引列并不限制 NULL 值的数量，所以上述语句可能访问到多条记录，也就是说 上边这个语句不可以使用 const 访问方法来执行
+ ref：搜索条件为二级索引列与常数等值比较来定位多条记录，采用二级索引来执行查询的访问方法
+ref_or_null： 当对普通二级索引进行等值匹配查询，该索引列的值也可以是 NULL 值时，那么对该表的访问方法就可能是ref_or_null
+range： 利用索引进行范围匹配的访问方法。
+index：
+看下边这个查询：
+1  SELECT key_part1, key_part2, key_part3 FROM single_table WHERE key_part2 = &amp;#39;abc&amp;#39;;   由于 key_part2 并不是联合索引 idx_key_part 最左索引列，所以我们无法使用 ref 或者 range 访问方法来执行这个语句。但是这个查询符合下边这两个条件：
+ 它的查询列表只有3个列： key_part1 , key_part2 , key_part3 ，而索引 idx_key_part 又包含这三个列。 搜索条件中只有 key_part2 列。这个列也包含在索引 idx_key_part 中。  也就是说我们可以直接通过遍历 idx_key_part 索引的叶子节点的记录来比较 key_part2 = &amp;lsquo;abc&amp;rsquo; 这个条件是否成立，把匹配成功的二级索引记录的 key_part1 ,</description>
+    </item>
+    
+    <item>
+      <title>InnoDB数据页结构</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/13.innodb%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/13.innodb%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84/</guid>
+      <description>InnoDB数据页结构 [toc]
+不同类型页 InnoDB存储引擎为了出于不同的存储目的设计多种类型的页，比如
+存放表空间头部信息的页，存放 Insert Buffer信息的页，存放 INODE 信息的页，存放 undo 日志信息的页等等等等
+其中这次重点介绍：存放数据表中记录的那种类型的页，官方称这种存放记录的页为索引（ INDEX ）页
+数据页结构 InnoDB 数据页的存储空间大致被划分成了 7 个部分
+   名称 中文名 占用空间大小 简单描述     File Header 文件头部 38字节 页的一些通用信息   Page Header 页面头部 56字节 数据页专有的一些信息   Infimum + Supremum 最小记录和最大记录 26字节 两个虚拟的行记录   User Records 用户记录 不确定 实际存储行记录内容   Free Space 空闲空间 不确定 页中尚未使用的空间   Page Directory 页面目录 不确定 页中的某些记录的相对位置   File Trailer 文件尾部 8字节 校验页是否完整    记录在页中的储存 在页的7个组成部分中，我们自己存储的记录会按照我们指定的 行格式 存储到 User Records 部分。但是在一开始生成页的时候，其实并没有 User Records 这个部分，每当我们插入一条记录，都会从 Free Space 部分，也就是尚未使用的存储空间中申请一个记录大小的空间划分到 User Records 部分，当 Free Space 部分的空间全部被 User Records 部分替代掉之后，也就意味着这个页使用完了，如果还有新的记录插入的话，就需要去申请新的页了，这个过程的图示如下：</description>
+    </item>
+    
+    <item>
+      <title>InnoDB的BufferPool</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/18.mysql%E4%B9%8Binnodb%E7%9A%84bufferpool/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/18.mysql%E4%B9%8Binnodb%E7%9A%84bufferpool/</guid>
+      <description>InnoDB的BufferPool 为什么需要缓存？ 因为存储引擎需要访问某一条记录时，是通过页作为基本单位读取到内存的，但是如果每次就因为一两条数据而把一页的数据从磁盘读取到内存有点耗费性能了，这样就多了缓存的概念，在进行完读写访问之后并不着急把该页对应的内存空间释放掉，而是将其 缓存 起来，这样将来有请求再次访问该页面时，就可以省去磁盘 IO 的开销了。
+Buffer Pool 概念 在 MySQL 服务器启动的时候就向操作系统申请了一片连续的内存，他们给这片内存起了个名，叫做 Buffer Pool （中文名是 缓冲池 ）。
+默认情况下 Buffer Pool 只有 128M 大小
+参数配置
+1 2  [server] innodb_buffer_pool_size = 268435456   内部组成 控制块 ，这些控制块包括该页所属的表空间编号、页号、缓存页在 Buffer Pool 中的地址、链表节点信息、一些锁信息以及 LSN 信息，控制块和缓存页是一一对应的，它们都被存放到 Buffer Pool 中，其中控制块被存放到 Buffer Pool的前边，缓存页被存放到 Buffer Pool 后边。
+free链表的管理 为了让存储引擎能区分，哪些缓存页被用过，哪些没有被用过，没有被用过的缓存页就用来装要被缓存的页嘛。InnoDB的大叔又给设计出了free链表，来解决这个问题。
+free链表：把所有空闲的缓存页对应的控制块作为一个节点放到一个链表中，这个链表也可以被称作 free链表。
+流程：在缓存池初始化时，大量的缓存页是都没有被使用过的，他们的控制块都会被加入到链表中（个人认为是拿到控制块的物理地址），当有缓存需要填充缓存页，那么先从free链表取一个控制块，填充控制块信息（就是该页所在的表空间、页号之类的信息），之后就是将控制块从free链表移除。
+flush链表管理 背景：当我们修改数据时，会先修改缓存池中的缓存页，而不会立即修改对应磁盘上的页，这时候缓存池的页的数据和磁盘上的页的数据不一致，这个页就成为脏页。（未来会同步这个页的数据）
+概念：脏页的控制块组成的链表
+组成
+LRU（Least Recently Used）链表管理
+概念：由于这个链表是为了 按照最近最少使用 的原则去淘汰缓存页的，所以这个链表可以被称为 LRU链表
+组成：控制块组成的链表，前一部分是热数据（young区域），后面一部分为冷数据（old区域）
+过程：只要我们使用到某个缓存页，就把该缓存页调整到 LRU链表 的头部，这样 LRU链表 尾部就是最近最少使用的缓存页喽</description>
+    </item>
+    
+    <item>
+      <title>InnoDB记录结构</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/12.innodb%E8%AE%B0%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/12.innodb%E8%AE%B0%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>InnoDB记录结构 innoDB存储引擎介绍 存储引擎的作用就是内存和磁盘打交道，负责将数据在他两之间传输，为了提高传输效率，提出了“页”的概念，也就是在一般情况下，为了减少io次数，一次最少从磁盘中读取16KB的内容到内存中，一次最少把内存中的16KB内容刷新到磁盘中。
+ 页：将数据划分为若干个页，以页作为磁盘和内存之间交互的基本单位，InnoDB中页的大小一般为 16 KB。
+ innoDB行格式 行格式：记录在磁盘上的存放方式称为行格式。
+四种行格式：Compact 、 Redundant 、Dynamic 和 Compressed 行格式。
+指定行格式命令 1 2 3 4 5 6 7 8 9 10 11  REATE TABLE 表名 (列的信息) ROW_FORMAT=行格式名称 ALTER TABLE 表名 ROW_FORMAT=行格式名称 mysql&amp;gt; CREATE TABLE record_format_demo ( -&amp;gt; c1 VARCHAR(10), -&amp;gt; c2 VARCHAR(10) NOT NULL, -&amp;gt; c3 CHAR(10), -&amp;gt; c4 VARCHAR(10) -&amp;gt; ) CHARSET=ascii ROW_FORMAT=COMPACT; Query OK, 0 rows affected (0.03 sec)   介绍InnoDB的Compact行格式 可以把记录分为记录额外信息，记录真实数据</description>
+    </item>
+    
     <item>
       <title>Mysql</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/</link>
-      <pubDate>Thu, 03 Mar 2022 17:04:52 +0800</pubDate>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/</guid>
       <description>mysql相关命令 备份哦 1  mysqldump -h 127.0.0.1 -P 3306 -u remote -p123456 --databases test &amp;gt; ./backdb.sql   </description>
@@ -19,7 +122,7 @@
     <item>
       <title>Mysql</title>
       <link>http://127.0.0.1:1313/hugo/install/mysql/</link>
-      <pubDate>Thu, 03 Mar 2022 17:04:52 +0800</pubDate>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/mysql/</guid>
       <description>mysql 相关 安装 mysql 相关   查看mariadb数据库 rpm -qa | grep mariadb
@@ -30,9 +133,52 @@
     </item>
     
     <item>
+      <title>mysql之InnoDB数据目录结构</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/15.mysql%E4%B9%8Binnodb%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/15.mysql%E4%B9%8Binnodb%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>innoDB数据目录   表目录
+  表名.frm文件（描述表结构的文件）
+  .表名ibd文件（表数据和索引文件）
+  视图名.frm文件（描述视图）
+    &amp;hellip;
+  mylSAM数据目录 表数据都存放到对应的数据库子目录下。假如 test 表使用 MyISAM 存储引擎的话，那么在它所在数据库对应的 xiaohaizi 目录下会为 test 表创建这三个文件：
+ test.frm （描述表结构的文件） test.MYD （表数据文件） test.MYI （表索引文件） 视图名.frm文件（描述视图）  文件系统对数据库的影响  数据库名称和表名称不得超过文件系统所允许的最大长度。 特殊字符的问题 文件长度受文件系统最大长度限制  MySQL系统数据库简介  mysql  这个数据库贼核心，它存储了MySQL的用户账户和权限信息，一些存储过程、事件的定义信息，一些运行过程中产生的日志信息，一些帮助信息以及时区信息等。
+ information_schema  这个数据库保存着MySQL服务器维护的所有其他数据库的信息，比如有哪些表、哪些视图、哪些触发器、哪些列、哪些索引吧啦吧啦。这些信息并不是真实的用户数据，而是一些描述性信息，有时候也称之为元数据。
+ performance_schema  这个数据库里主要保存MySQL服务器运行过程中的一些状态信息，算是对MySQL服务器的一个性能监控。包括统计最近执行了哪些语句，在执行过程的每个阶段都花费了多长时间，内存的使用情况等等信息。
+ sys  这个数据库主要是通过视图的形式把 information_schema 和 performance_schema 结合起来，让程序员可以更方便的了解MySQL服务器的一些性能信息。</description>
+    </item>
+    
+    <item>
+      <title>mysql事务</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/19.mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/19.mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</guid>
+      <description>事务 需要保证 原子性 、 隔离性 、 一致性 和 持久性 的一个或多个数据库操作称之为一个 事务
+原子性
+一致性
+​	保证一致性的努力：
+ 数据库本身能为我们保证一部分一致性需求。 更多的一致性需求需要靠写业务代码的程序员自己保证。  隔离性
+持久性
+数据从内存刷到磁盘
+事务的状态  活动的（active）  事务对应的数据库操作正在执行过程中时，我们就说该事务处在 活动的 状态。
+ 部分提交的（partially committed）  当事务中的最后一个操作执行完成，但由于操作都在内存中执行，所造成的影响并没有刷新到磁盘时，我们就说该事务处在 部分提
+交的 状态。
+ 失败的（failed）  当事务处在 活动的 或者 部分提交的 状态时，可能遇到了某些错误（数据库自身的错误、操作系统错误或者直接断电等）而无法继续
+执行，或者人为的停止当前事务的执行，我们就说该事务处在 失败的 状态。
+ 中止的（aborted）  如果事务执行了半截而变为 失败的 状态，比如我们前边唠叨的狗哥向猫爷转账的事务，当狗哥账户的钱被扣除，但是猫爷账户的钱
+没有增加时遇到了错误，从而当前事务处在了 失败的 状态，那么就需要把已经修改的狗哥账户余额调整为未转账之前的金额，换句
+话说，就是要撤销失败事务对当前数据库造成的影响。书面一点的话，我们把这个撤销的过程称之为 回滚 。当 回滚 操作执行完毕
+时，也就是数据库恢复到了执行事务之前的状态，我们就说该事务处在了 中止的 状态。
+ 提交的（committed）  当一个处在 部分提交的 状态的事务将修改过的数据都同步到磁盘上之后，我们就可以说该事务处在了 提交的 状态。</description>
+    </item>
+    
+    <item>
       <title>Mysql安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Thu, 03 Mar 2022 17:04:52 +0800</pubDate>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</guid>
       <description>docker-mysql安装部署文档 [TOC]
@@ -42,6 +188,102 @@
 1.5 安装路径 ​	路径：/home/cjpt/temp/
 1.6 升级涉及到的服务    服务名称 升级前版本号 升级后版本号     mysql  2.16.6    1.7 升级功能说明 docker-nexus 镜像
 二、安装步骤 2.1 安装升级包 1 2 3 4  #### 进入安装目录 cd /home/cjpt/temp/ #### 进入安装目录 docker load &amp;lt; mysql.</description>
+    </item>
+    
+    <item>
+      <title>mysql思维导图</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/00.mysql%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/00.mysql%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</guid>
+      <description>mysql 1. 基础知识 1. cs架构 2. 安装与启动 3. 连接过程 1. 客户端发起连接（3种，tcp,命名通道与共享内存，socket） 2. 服务端接受连接 1. 处理连接 2. 解析与优化（1.查询缓存，2.语法解析，3.查询优化） 3. 存储引擎 4. 常用引擎 1. InnoDB 2. MyISAM 2. 启动选项与变量 1. 设置mysql启动参数（就近原则） 1. 命令行和配置文件 2. 配置文件 1. 系统变量 2. 状态变量 3. 字符串比较规则 1. 什么是字符集 使用二进制的一组数据代表现实世界的字符串。 常用字符集 GBK(最多2字节),uft8（最多3字节）,utf8mb4（最多4字节） 2. 字符集比较规则 用来比较同一种字符集的字符大小 3. 字符集应用 注意：对于同一个字符串，如果编码和解码采用的不同字符集，那么结果可能会不同。 4. 四个级别的字符集和比较规则 服务器级别 数据库级别 表级别 列级别 4. InnoDB记录结构 1. InnoDB页简介 磁盘和内存数据交互的最小单位，一页=16kb。 2. InnoDB行格式 1. 简介 记录存放在磁盘上的方式成为行格式 3. 行格式分类 1. compact类型行格式 1.</description>
+    </item>
+    
+    <item>
+      <title>mysql系统配置与启动选项</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/10.mysql%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/10.mysql%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9/</guid>
+      <description>启动选项与系统变量 启动选项 长格式与短格式 在执行启动脚本时，后面可以跟启动选项，其中有长格式和短格式两种形式
+​	短格式：选项名前只加一个短划线 -
+​	长格式：选项名前加两个短划线 &amp;ndash;
+配置选项 内容格式 与在命令行中指定启动选项不同的是，配置文件中的启动选项被划分为若干个组，每个组有一个组名，用中括号[] 扩起来，像这样：
+1 2 3 4 5 6 7 8 9 10 11 12  [server] (具体的启动选项...) [mysqld] (具体的启动选项...) [mysqld_safe] (具体的启动选项...) [client] (具体的启动选项...) [mysql] (具体的启动选项...) [mysqladmin] (具体的启动选项...)   优先级 1.配置文件的优先级
+1  如果我们在多个配置文件中设置了相同的启动选项，那以最后一个配置文件中的为准   同一个配置文件中多个组的优先级  1  将以最后一个出现的组中的启动选项为准   系统变量 ​	概念：MySQL 服务器程序运行过程中会用到许多影响程序行为的变量，它们被称为 MySQL 系统变量
+​	每个系统变量都有一个默认值，我们可以使用命令行或者配置文件中的选项在启动服务器时改变一些系统变量的值。大多数的系统变量的值也可以在程序运行过程中修改，而无需停止并重新启动它。
+设置 通过命令行添加启动选项。比方说我们在启动服务器程序时用这个命令：
+1  mysqld --default-storage-engine=MyISAM --max-connections=10   通过配置文件添加启动选项。我们可以这样填写配置文件：</description>
+    </item>
+    
+    <item>
+      <title>redo日志（上）</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/</guid>
+      <description>redo日志 **作用：**记录下记录修改的信息（所在表空间，页号，修改信息），系统崩溃了的话，也可以利用redo日志恢复。
+**过程：**该事务执行过程中产生的 redo 日志刷新到磁盘。
+通用组成：
+ type ：该条 redo 日志的类型。在 MySQL 5.7.21 这个版本中，设计 InnoDB 的大叔一共为 redo 日志设计了53种不同的类型，稍后会详细介绍不同类型的 redo 日志。 space ID ：表空间ID。 page number ：页号。 data ：该条 redo 日志的具体内容。  类型：根据记录修改的字节（type字段长度）大小分类
+ MLOG_1BYTE （ type 字段对应的十进制数字为 1 ）：表示在页面的某个偏移量处写入1个字节的 redo 日志类型。 MLOG_2BYTE （ type 字段对应的十进制数字为 2 ）：表示在页面的某个偏移量处写入2个字节的 redo 日志类型。 MLOG_4BYTE （ type 字段对应的十进制数字为 4 ）：表示在页面的某个偏移量处写入4个字节的 redo 日志类型。 MLOG_8BYTE （ type 字段对应的十进制数字为 8 ）：表示在页面的某个偏移量处写入8个字节的 redo 日志类型。 MLOG_WRITE_STRING （ type 字段对应的十进制数字为 30 ）：表示在页面的某个偏移量处写入一串数据。  复杂 redo 日志类型 如果数据频繁的改动，那是不是对应的redo log也要跟着增加呢，这样岂不是和保存的数据是一个道理了，占用着和她差不多的空间，为了减少空间的消耗，提出了复杂 redo 日志类型。</description>
+    </item>
+    
+    <item>
+      <title>redo日志（下）</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/21.redo%E6%97%A5%E5%BF%97%E4%B8%8B/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/21.redo%E6%97%A5%E5%BF%97%E4%B8%8B/</guid>
+      <description>redo log的刷盘时机  log buffer 空间不足时（大概一半左右） 事务提交时 后台线程不停的刷刷刷（大概每秒刷一次） 正常关闭服务器时 做所谓的 checkpoint  redo日志文件组 磁盘上的 redo 日志文件不只一个，而是以一个 日志文件组 的形式出现的
+MySQL 的数据目录（使用 SHOW VARIABLES LIKE &amp;lsquo;datadir&amp;rsquo; 查看）下默认有两个名为 ib_logfile0 和ib_logfile1的文件， log buffer 中的日志默认情况下就是刷新到这两个磁盘文件中。如果我们对默认的redo 日志文件不满意，可以通过下边几个启动参数来调节：
+innodb_log_group_home_dir
+该参数指定了 redo 日志文件所在的目录，默认值就是当前的数据目录。
+innodb_log_file_size
+该参数指定了每个 redo 日志文件的大小，在 MySQL 5.7.21 这个版本中的默认值为 48MB
+innodb_log_files_in_group
+该参数指定 redo 日志文件的个数，默认值为2，最大值为100。
+总共的 redo 日志文件大小其实就是： innodb_log_file_size × innodb_log_files_in_group 。
+redo日志文件格式 我们前边说过 log buffer 本质上是一片连续的内存空间，被划分成了若干个 512 字节大小的 block 。将logbuffer中的redo日志刷新到磁盘的本质就是把block的镜像写入日志文件中，所以 redo 日志文件其实也是由若干个 512 字节大小的block组成。redo 日志文件组中的每个文件大小都一样，格式也一样，都是由两部分组成：
+ 前2048个字节，也就是前4个block是用来存储一些管理信息的。 从第2048字节往后是用来存储 log buffer 中的block镜像的。   所以每次一开始写都是重ib_logfile的2048字节处开始写</description>
+    </item>
+    
+    <item>
+      <title>字符集和比较规则</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</guid>
+      <description>字符集和比较规则 字符集简介 作用：为了让数据在人和计算机都能被”看的懂“。
+ 我们知道在计算机中只能存储二进制数据，那该怎么存储字符串呢？当然是建立字符与二进制数据的映射关系了，建立这个关系最起码要搞清楚两件事儿：
+ 你要把哪些字符映射成二进制数据？ 也就是界定清楚字符范围。 怎么映射？ 将一个字符映射成一个二进制数据的过程也叫做 编码 ，将一个二进制数据映射到一个字符的过程叫做 解码 。 人们抽象出一个 字符集 的概念来描述某个字符范围的编码规则。比方说我们来自定义一个名称为 xiaohaizi 的字符集，它包含的字符范围和编码规则如下： 包含字符 &amp;lsquo;a&amp;rsquo; 、 &amp;lsquo;b&amp;rsquo; 、 &amp;lsquo;A&amp;rsquo; 、 &amp;lsquo;B&amp;rsquo; 。 编码规则如下： 采用1个字节编码一个字符的形式，字符和字节的映射关系如下： &amp;lsquo;a&amp;rsquo; -&amp;gt; 00000001 (十六进制：0x01) &amp;lsquo;b&amp;rsquo; -&amp;gt; 00000010 (十六进制：0x02) &amp;lsquo;A&amp;rsquo; -&amp;gt; 00000011 (十六进制：0x03) &amp;lsquo;B&amp;rsquo; -&amp;gt; 00000100 (十六进制：0x04) 有了 xiaohaizi 字符集，我们就可以用二进制形式表示一些字符串了，下边是一些字符串用 xiaohaizi 字符集编码后的二进制表示： &amp;lsquo;bA&amp;rsquo; -&amp;gt; 0000001000000011 (十六进制：0x0203) &amp;lsquo;baB&amp;rsquo; -&amp;gt; 000000100000000100000100 (十六进制：0x020104) &amp;lsquo;cd&amp;rsquo; -&amp;gt; 无法表示，字符集xiaohaizi不包含字符&amp;rsquo;c&amp;rsquo;和&amp;rsquo;d&#39;  —— 引用《MySQL是怎么运行的》
+ 比较规则简介  将两个大小写不同的字符全都转为大写或者小写。 再比较这两个字符对应的二进制数据。  注意：同一种字符集可以有多种比较规则</description>
+    </item>
+    
+    <item>
+      <title>重新认识mysql</title>
+      <link>http://127.0.0.1:1313/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/</link>
+      <pubDate>Sun, 06 Mar 2022 15:56:25 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/</guid>
+      <description>[toc]
+mysql 的客户端和服务端结构 客户端负责接收用户的命令，并且发送给服务端
+服务端负责接收客户端的命令，并进行处理，返回给客户端
+bin目录下的可执行文件 unix环境下启动mysql server mysqld
+mysqld 这个可执行文件就代表着 MySQL 服务器程序，运行这个可执行文件就可以直接启动一个服务器进程。但这个命令不常用，我们继续往下看更牛逼的启动命令。
+mysqld_safe
+mysqld_safe 是一个启动脚本，它会间接的调用 mysqld ，而且还顺便启动了另外一个监控进程，这个监控进程在服务器进程挂了的时候，可以帮助重启它。另外，使用 mysqld_safe 启动服务器程序时，它会将服务器程序的出错信息和其他诊断信息重定向到某个文件中，产生出错日志，这样可以方便我们找出发生错误的原因。 mysql.server
+mysql.server 也是一个启动脚本，它会间接的调用 mysqld_safe ，在调用 mysql.server 时在后边指定 start参数就可以启动服务器序了，就像这样：
+mysql.server start
+需要注意的是，这个 mysql.server 文件其实是一个链接文件，它的实际文件是 ../support-files/mysql.server。我使用的 macOS 操作系统会帮我们在 bin 目录下自动创建一个指向实际文件的链接文件，如果你的操作系统没有帮你自动创建这个链接文件，那就自己 创建一个呗～ 别告诉我你不会创建链接文件，上网搜搜呗～
+另外，我们还可以使用 mysql.server 命令来关闭正在运行的服务器程序，只要把 start 参数换成 stop 就好了：
+1  mysql.server stop   mysqld_multi
+其实我们一台计算机上也可以运行多个服务器实例，也就是运行多个 MySQL 服务器进程。 mysql_multi 可执行文件可以对每一个服务器进程的启动或停止进行监控。这个命令的使用比较复杂，本书主要是为了讲清楚 MySQL 服务器和客户端运行的过程，不会对启动多个服务器程序进行过多唠叨。
+windows下启动mysql server 手动启动
+双击bin目录下mysqld文件即可
+以服务的方式启动
+有些时候需要长时间运行程序或者开机自启某些程序，这时候就需要把这个程序注册为windows服务
+1  &amp;#34;完整的可执行文件路径&amp;#34; --install [-manual] [服务名]   其中的 -manual 可以省略，加上它的话表示在 Windows 系统启动的时候不自动启动该服务，否则会自动启动。</description>
     </item>
     
   </channel>
