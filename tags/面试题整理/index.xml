@@ -6,14 +6,89 @@
     <description>Recent content in 面试题整理 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 11 Mar 2022 19:05:48 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Mar 2022 20:40:54 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4.JAVA多线程并发</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</link>
-      <pubDate>Fri, 11 Mar 2022 19:05:48 +0800</pubDate>
+      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>中设天合</title>
+      <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</link>
+      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</guid>
+      <description> redis用到的场景 为什么要用redis redis重启后缓存数据怎么办 redis的持久化 左连接、右连接、外连接、内连接的区别 spring事务的作用 spring的注解有哪些 springMVC简单实现原理 JVM中会内存泄漏吗，为什么会出现这样的情况  </description>
+    </item>
+    
+    <item>
+      <title>杭州健景</title>
+      <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</link>
+      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</guid>
+      <description> String为什么不可变更 String底层使用什么数据结构 ArrayList和LinkList的区别 HashTable为什么线程安全 HashMap用了什么数据结构 HashMap什么情况下变成红黑树的结构 线程池的核心参数 线程池的几种拒绝策略 线程池有哪几种 synchronized锁升级 单例模式应用场所 Lock锁 ReentrantLock JVM Spirng的IOC和AOP IOC的底层原理 AOP的使用场景 Spring怎么配置事务 为什么要开启事务 Spring事务的失效场景 Mysql的慢查询 如何查询mysql是否用到索引 索引下推 B+树 索引数据存在B+树的哪里 事务的四种隔离级别 事务的隔离级别能避免什么 redis缓存淘汰策略 redis的持久化 MQ ThreadLocal SpringMVC运行流程 线程安全的ArrayList是哪个  </description>
+    </item>
+    
+    <item>
+      <title>杭州微宏</title>
+      <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</link>
+      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</guid>
+      <description>openFeign的主要作用
+基于http请求，通过负载均衡获取其他服务的ip和端口执行接口
+  SpringCould中的重要组件
+注册中心、配置中心、网关、熔断器
+  mysql索引
+分为主键索引、二级索引……
+  B+树的优势
+  建索引考虑哪些方面
+索引区分度，索引失效的问题，不建冗余的索引，考虑业务是否需要频繁新增修改而查询较少的情况下不建索引
+  虽然走了索引但是还是很慢
+索引区分度低，相同数据太多
+  数据量小为什么要分成多个服务
+  微服务和单体应用如何选择
+  excel导入导出数据量比较大的话怎么考虑设计
+考虑内存，做成分段上传下载
+  synchronized 和 ReentrantLock 的区别
+两者的共同点：
+ 都是用来协调多线程对共享对象、变量的访问 都是可重入锁，同一线程可以多次获得同一个锁 都保证了可见性和互斥性  两者的不同点：
+1. ReentrantLock 显式的获得、释放锁，synchronized 隐式获得释放锁 2. ReentrantLock 可响应中断、可轮回，synchronized 是不可以响应中断的，为处理锁的 不可用性提供了更高的灵活性 3. ReentrantLock 是 API 级别的，synchronized 是 JVM 级别的 4. ReentrantLock 可以实现公平锁 5. ReentrantLock 通过 Condition 可以绑定多个条件 6.</description>
+    </item>
+    
+    <item>
+      <title>杭州重构</title>
+      <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</link>
+      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</guid>
+      <description>  springboot配置多数据源
+springboot自带，spring.datasource.数据源名称
+  springboot默认线程数
+springboot本身没有线程数，但是内嵌了tomcat，tomcat默认线程数默认为200
+  mybatis是否尝试过配置xml语言转义
+  如何查询时指定某一索引
+force index()
+  springboot和spring的区别
+Spring Boot基本上是Spring框架的扩展，它消除了设置Spring应用程序所需的复杂例行配置。
+它的目标和Spring的目标是一致的，为更快，更高效的开发生态系统铺平了道路。以下是Spring Boot中的一些功能：
+通过starter这一个依赖，以简化构建和复杂的应用程序配置。 可以直接main函数启动，嵌入式web服务器，避免了应用程序部署的复杂性，Metrics度量，Helth check健康检查和外部化配置。 尽可能的自动化配置Spring功能。
+  支持springboot自动配置的关键类是哪些
+@SpringBootConfiguration：标记当前类为配置类 @EnableAutoConfiguration：开启自动配置
+  之前用docker镜像里跑的是什么(jar还是war)
+jar
+  ⽤户⽤⼿机号登录的时候，通常需要发送验证码，怎么防⽌⽤户恶意地重复发送验证码
+  并发同时请求下载excel报表，怎么处理规划设计
+  怎么查出经销商所有的子经销商(回答递归深搜说效率太慢，除了递归还有别的做法没)
+  大量update语句怎么优化，大量insert怎么优化
+  大量update、insert语句分开运行和合并在一起运行有什么区别
+  字节流和字符流的区别
+  </description>
     </item>
     
   </channel>
