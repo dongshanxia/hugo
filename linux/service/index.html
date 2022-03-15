@@ -416,28 +416,39 @@
 <span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Unit
+</div><h3 id="21-unit">2.1 Unit</h3>
 <ul>
 <li>Description: 服务的简单描述</li>
 <li>Documentation：服务的操作文档地址</li>
 <li>Before: 定义启动顺序
 <ul>
 <li>Before=xxx.service,代表本服务在xxx.service启动之前启动</li>
+<li>与 After 相反，在启动指定的任一个模块之前，都会首先确保当前服务已经运行。</li>
 </ul>
 </li>
 <li>After: 定义启动顺序
 <ul>
 <li>After=xxx.service,代表本服务在xxx.service之后启动。</li>
+<li>与 Requires 相似，但会在后面列出的所有模块全部启动完成以后，才会启动当前的服务。</li>
 </ul>
 </li>
 <li>Requires：这个单元启动了，它需要的单元也会被启动；它需要的单元被停止了，这个单元也停止了。</li>
-<li>Wants：推荐使用。这个单元启动了，它需要的单元也会被启动；它需要的单元被停止了，对本单元没有影响。</li>
+<li>Wants：推荐使用。与 Requires 相似，但只是在被配置的这个 Unit 启动时，触发启动列出的每个 Unit 模块，而不去考虑这些模块启动是否成功</li>
+<li>BindsTo：与 Requires 相似，但是一种更强的关联。启动这个服务时会同时启动列出的所有模块，当有模块启动失败时终止当前服务。反之，只要列出的模块全部启动以后，也会自动启动当前服务。并且这些模块中有任意一个出现意外结束或重启，这个服务会跟着终止或重启。</li>
+<li>PartOf：这是一个 BindTo 作用的子集，仅在列出的任何模块失败或重启时，终止或重启当前服务，而不会随列出模块的启动而启动。</li>
+<li>OnFailure：当这个模块启动失败时，就自动启动列出的每个模块。</li>
+<li>Conflicts ： 与这个模块有冲突的模块，如果列出模块中有已经在运行的，这个服务就不能启动，反之亦然。</li>
 </ul>
-</li>
-<li>Service
+<blockquote>
+<p>上面这些配置中，除了 Description 外，都能够被添加多次。比如前面第一个例子中的After参数在一行中使用空格分隔指定所有值，也可以像第二个例子中那样使用多个After参数，在每行参数中指定一个值。</p>
+</blockquote>
+<h3 id="22-service">2.2 Service</h3>
+<blockquote>
+<p>这个段是 .service 文件独有的，也是对于服务配置最重要的部分。这部分的配置选项非常多，主要分为服务生命周期控制和服务上下文配置两个方面，下面是比较常用到的一些参数。</p>
+</blockquote>
 <ul>
-<li>Type ：服务类型
+<li>
+<p>Type ：服务类型</p>
 <ul>
 <li>simple(默认值)：systemd 认为该服务将立即启动。服务进程不会fork。 如果该服务要启动其他服务，不要使用此类型启动，除非该服务是socket激活型。</li>
 <li>forking : systemd认为当该服务进程fork，且父进程退出后服务启动成功。对于常规的守护进程（daemon），除非你确定此启动方式无法满足需求，使用此类型启动即可。使用此启动类型应同时指定 PIDFile=，以便systemd能够跟踪服务的主进程。</li>
@@ -447,25 +458,196 @@
 <li>idle: systemd会等待所有任务(Jobs)处理完成后，才开始执行idle类型的单元。除此之外，其他行为和Type=simple 类似。</li>
 </ul>
 </li>
-<li>PIDFile: pid的文件路径</li>
-<li>ExecStart: 指定启动单元的命令或者脚本，ExecStartPre和ExecStartPost节指定在ExecStart之前或者之后用户自定义执行的脚本。Type=oneshot允许指定多个希望顺序执行的用户自定义命令。</li>
-<li>ExecReload: 指定单元停止时执行的命令或者脚本。</li>
-<li>ExecStop: 指定单元停止时执行的命令或者脚本。</li>
-<li>PrivateTmp: True表示给服务分配独立的临时空间</li>
-<li>Restart: 这个选项如果被允许，服务重启的时候进程会退出，会通过systemctl命令执行清除并重启的操作。</li>
-<li>RemainAfterExit: 如果设置这个选择为真，服务会被认为是在激活状态，即使所以的进程已经退出，默认的值为假，这个选项只有在Type=oneshot时需要被配置。</li>
-</ul>
+<li>
+<p>PIDFile: pid的文件路径</p>
 </li>
-<li>Install
+<li>
+<p>ExecStart: 指定启动单元的命令或者脚本，ExecStartPre和ExecStartPost节指定在ExecStart之前或者之后用户自定义执行的脚本。Type=oneshot允许指定多个希望顺序执行的用户自定义命令。</p>
+</li>
+<li>
+<p>ExecStartPre:指定在启动执行 ExecStart 的命令前的准备工作，可以有多个，如前面第二个例子中所示，所有命令会按照文件中书写的顺序依次被执行。</p>
+</li>
+<li>
+<p>ExecStartPost:指定在启动执行 ExecStart 的命令后的收尾工作，可以有多个。</p>
+</li>
+<li>
+<p>ExecReload: 重新加载服务所需执行的主要命令。</p>
+</li>
+<li>
+<p>ExecStop: 指定单元停止时执行的命令或者脚本。</p>
+</li>
+<li>
+<p>ExecStopPost:指定在 ExecStop 命令执行后的收尾工作，可以有多个。</p>
+</li>
+<li>
+<p>TimeoutStartSec:启动服务时的等待的秒数，如果超过这个时间服务任然没有执行完所有的启动命令，则 systemd 会认为服务自动失败。这一配置对于使用 Docker 容器托管的应用十分重要，由于 Docker 第一次运行时可以能会需要从网络下载服务的镜像文件，因此造成比较严重的延时，容易被 systemd 误判为启动失败而杀死。通常对于这种服务，需要将 TimeoutStartSec 的值指定为 0，从而关闭超时检测。</p>
+</li>
+<li>
+<p>TimeoutStopSec:停止服务时的等待的秒数，如果超过这个时间服务仍然没有停止，systemd 会使用 SIGKILL 信号强行杀死服务的进程。</p>
+</li>
+<li>
+<p>PrivateTmp: True表示给服务分配独立的临时空间</p>
+</li>
+<li>
+<p>Restart: 这个选项如果被允许，服务重启的时候进程会退出，会通过systemctl命令执行清除并重启的操作;常用的值有 no，on-success，on-failure，on-abnormal，on-abort 和 always。默认值为 no，即不会自动重启服务。</p>
+<table>
+<thead>
+<tr>
+<th>服务退出原因</th>
+<th>no</th>
+<th>always</th>
+<th>on-failure</th>
+<th>on-abnormal</th>
+<th>on-abort</th>
+<th>no-success</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常退出</td>
+<td></td>
+<td>重启</td>
+<td></td>
+<td></td>
+<td></td>
+<td>重启</td>
+</tr>
+<tr>
+<td>异常退出</td>
+<td></td>
+<td>重启</td>
+<td>重启</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>启动/停止超时</td>
+<td></td>
+<td>重启</td>
+<td>重启</td>
+<td>重启</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>被异常KILL</td>
+<td></td>
+<td>重启</td>
+<td>重启</td>
+<td>重启</td>
+<td>重启</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>RestartSec:如果服务需要被重启，这个参数的值为服务被重启前的等待秒数。</p>
+</li>
+<li>
+<p>RemainAfterExit: 如果设置这个选择为true，服务会被认为是在激活状态，即使所以的进程已经退出，默认的值为false，这个选项只有在Type=oneshot时需要被配置。</p>
+</li>
+<li>
+<p>Environment:为服务添加环境变量，如前面的第一个例子中所示。</p>
+</li>
+<li>
+<p>EnvironmentFile:指定加载一个包含服务所需的环境变量列表的文件，文件中的每一行都是一个环境变量的定义。</p>
+</li>
+<li>
+<p>Nice: 服务的进程优先级，值越小优先级越高，默认为0。-20为最高优先级，19为最低优先级。</p>
+</li>
+<li>
+<p>WorkingDirectory: 指定服务的工作目录。</p>
+</li>
+<li>
+<p>RootDirectory:指定服务进程的根目录（ / 目录），如果配置了这个参数后，服务将无法访问指定目录以外的任何文件。</p>
+</li>
+<li>
+<p>User: 指定运行服务的用户，会影响服务对本地文件系统的访问权限。</p>
+</li>
+<li>
+<p>Group: 指定运行服务的用户组，会影响服务对本地文件系统的访问权限。</p>
+</li>
+<li>
+<p>LimitCPU：对应系统属性-RLIMIT_CPU:   这是对 CPU 时间量的限制，以秒为单位该过程可以消耗。当进程到达软限制，它被发送一个SIGXCPU信号。默认该信号的动作是终止进程。但是，可以捕获信号，并且处理程序可以将控制权返回给主程序。如果过程继续消耗CPU时间，会发SIGXCPU每秒一次，直到达到硬限制，此时发送SIGKILL的时间。（后一点描述Linux 行为。实现方式在处理方式上有所不同之后继续消耗 CPU 时间的进程达到软极限。需要的便携式应用程序捕捉这个信号应该执行一个有序的终止首次收到SIGXCPU时。）</p>
+</li>
+<li>
+<p>LimitAS: 对应系统属性-RLIMIT_AS: 这是进程的虚拟内存的最大大小（地址空间）。限制以字节为单位，并且是向下舍入到系统页面大小。此限制影响调用brk(2)、mmap(2)和mremap(2)失败超出此限制时的错误ENOMEM 。此外，自动堆栈扩展失败（并生成一个SIGSEGV如果没有创建备用堆栈，则终止该进程可通过sigaltstack(2)获得）。由于值是long，在长度为32 位的机器上，此限制为最多 2 GiB，或者这个资源是无限的。</p>
+</li>
+<li>
+<p>LimitCORE: 对应系统属性-RLIMIT_CORE: 这是核心文件的最大大小（参见core(5)）进程可能转储的字节。当 0 无核心转储文件被创建。当非零时，更大的转储是截断到这个大小。</p>
+</li>
+<li>
+<p>LimitDATA: 对应系统属性-RLIMIT_DATA:这是进程数据段的最大大小（初始化数据、未初始化数据和堆）。这限制以字节为单位指定，并向下舍入到系统页面大小。此限制会影响对brk(2)、sbrk(2)和（自 Linux 4.7 起）mmap(2)的调用，这些调用失败并显示遇到此软限制时的错误ENOMEM资源。</p>
+</li>
+<li>
+<p>LimitFSIZE: 对应系统属性-RLIMIT_FSIZE:这是文件的最大大小（以字节为单位）过程可能会创建。尝试将文件扩展到此之外限制导致传递SIGXFSZ信号。默认，此信号终止进程，但进程可以捕获这个信号，在这种情况下，相关系统调用（例如write(2)、truncate(2)）失败并出现错误EFBIG。</p>
+</li>
+<li>
+<p>LimitLOCKS: 对应系统属性-RLIMIT_LOCKS（Linux 2.4.0 到 2.4.24）这是对flock(2)锁的组合数量的限制此过程可能建立的fcntl (2)租约。</p>
+</li>
+<li>
+<p>LimitMEMLOCK: 对应系统属性-RLIMIT_MEMLOCK：这是可能的最大内存字节数锁定在 RAM 中。此限制实际上向下舍入到最接近系统页面大小的倍数。这个限制影响mlock(2)、mlockall(2)和mmap(2)  MAP_LOCKED手术。从 Linux 2.6.9 开始，它也会影响shmctl(2)  SHM_LOCK操作，它设置一个最大值共享内存段中的总字节数（参见shmget(2)）可能被呼叫的真实用户ID锁定过程。考虑到shmctl (2)  SHM_LOCK锁与建立的每个进程的内存锁分开通过mlock(2)、mlockall(2)和mmap(2)  MAP_LOCKED；一种进程可以在其中的每一个中将字节锁定到此限制两大类。在 2.6.9 之前的 Linux 内核中，此限制控制可以被特权锁定的内存量过程。从 Linux 2.6.9 开始，没有限制特权进程可能锁定的内存量，以及这个限制反而控制了一个内存的数量非特权进程可能会锁定。</p>
+</li>
+<li>
+<p>LimitMEMLOCK: 对应系统属性-RLIMIT_MEMLOCK（自 Linux 2.6.8 起）这是对字节数的限制为 POSIX 消息队列分配的真实用户 ID调用过程。此限制适用于mq_open(3)。用户创建的每个消息队列根据这个限制计数（直到它被删除到公式：
+从 Linux 3.5 开始：
+字节 = attr.mq_maxmsg * sizeof(struct msg_msg) +min(attr.mq_maxmsg, MQ_PRIO_MAX) * sizeof(struct posix_msg_tree_node)+
+/* 对于开销 */
+attr.mq_maxmsg * attr.mq_msgsize;
+/* 对于消息数据 */
+Linux 3.4 及更早版本：
+字节 = attr.mq_maxmsg * sizeof(struct msg_msg *) +
+/* 对于开销 */
+attr.mq_maxmsg * attr.mq_msgsize;
+/* 对于消息数据 */
+其中attr是mq_attr结构，指定为mq_open(3)的第四个参数，并且msg_msg和posix_msg_tree_node结构是内核内部的结构。
+公式中的“开销”加数占开销实现所需的字节，并确保用户不能创建无限数量的零长度消息（尽管这样的消息每条都消耗一些用于簿记开销的系统内存。</p>
+</li>
+<li>
+<p>LimitNICE: 对应系统属性-RLIMIT_NICE（自 Linux 2.6.12 起，但请参阅下面的 BUGS）这指定了进程的 nice 值的上限可以使用setpriority(2)或nice(2)引发。实际上nice 值的上限计算为20 - rlim_cur。因此，此限制的有用范围是从 1（对应一个不错的值 19）到 40（对应到一个不错的值-20）。这种不寻常的范围选择是必要的，因为不能将负数指定为资源限制值，因为它们通常具有特殊的意义。例如，RLIM_INFINITY通常是与-1 相同。有关 nice 值的更多详细信息，请参阅<a href="https://man7.org/linux/man-pages/man7/sched.7.html">附表</a>。</p>
+</li>
+<li>
+<p>LimitNOFILE: 对应系统属性-RLIMIT_NOFILE：这指定了一个比最大文件大一的值此进程可以打开的描述符编号。尝试（open(2)，pipe(2)，dup(2)等）超过这个限制产生错误EMFILE。（历史上，这个限制在 BSD 上被命名为RLIMIT_OFILE。）自 Linux 4.5 起，此限制还定义了最大值非特权进程的文件描述符数（一个没有CAP_SYS_RESOURCE能力的）可能有“在通过跨 UNIX 传递到其他进程域套接字。此限制适用于sendmsg(2)系统调用。有关更多详细信息，请参阅unix(7)。</p>
+</li>
+<li>
+<p>LimitNPROC: 对应系统属性-RLIMIT_NPROC：这是对现存进程数量的限制（或者，更多准确地说是在 Linux 上，线程）为真正的用户 ID调用过程。只要目前的人数属于该进程的真实用户 ID 的进程是大于或等于此限制，fork(2)失败错误EAGAIN。
+RLIMIT_NPROC限制不适用于以下进程有CAP_SYS_ADMIN或CAP_SYS_RESOURCE能力。</p>
+</li>
+<li>
+<p>LimitRSS: 对应系统属性-RLIMIT_RSS:这是进程驻留集的限制（以字节为单位）（驻留在 RAM 中的虚拟页面数）。这个限制仅在 Linux 2.4.x 中有效，x &lt; 30，并且有影响只调用指定MADV_WILLNEED的<a href="https://man7.org/linux/man-pages/man2/madvise.2.html">madvise(2)</a>。</p>
+</li>
+<li>
+<p>LimitRTPRIO: 对应系统属性-RLIMIT_RTPRIO（自 Linux 2.6.12 起，但请参阅 BUGS）这指定了实时优先级的上限，即可以使用sched_setscheduler(2)和sched_setparam(2)为这个进程设置。有关实时调度策略的更多详细信息，请参阅<a href="https://man7.org/linux/man-pages/man7/sched.7.html">附表</a></p>
+</li>
+<li>
+<p>LimitRTTIME: 对应系统属性-RLIMIT_RTTIME（自 Linux 2.6.25 起）这是 CPU 数量的限制（以微秒为单位）实时调度下进程调度的时间策略可以在不进行阻塞系统调用的情况下使用。出于此限制的目的，每次进程执行阻塞系统调用，计算其消耗的 CPU 时间被重置为零。CPU 时间计数不会重置，如果进程继续尝试使用 CPU 但被抢占，它的时间片到期，或者它调用sched_yield(2)。达到软限制后，进程被发送一个SIGXCPU信号。如果进程捕获或忽略此信号并继续消耗 CPU 时间，那么SIGXCPU将每秒生成一次，直到达到硬限制到达，此时进程被发送一个SIGKILL信号。此限制的预期用途是阻止失控的真实从锁定系统的时间过程。有关实时调度策略的更多详细信息，请参阅<a href="https://man7.org/linux/man-pages/man7/sched.7.html">附表</a></p>
+</li>
+<li>
+<p>LimitSIGPENDING: 对应系统属性-RLIMIT_SIGPENDING（自 Linux 2.6.8 起）这是对可能的信号数量的限制排队等待调用进程的真实用户 ID。两个都为此目的计算标准和实时信号检查这个限制。但是，限制是强制执行的仅适用于sigqueue(3)；总是可以使用kill(2)排队任何信号的一个实例已经在进程中排队。</p>
+</li>
+<li>
+<p>LimitSTACK: 对应系统属性-RLIMIT_STACK这是进程堆栈的最大大小，以字节为单位。达到此限制后，将生成SIGSEGV信号。为了处理这个信号，一个进程必须使用一个备用的信号堆栈（sigaltstack(2)）。从 Linux 2.6.23 开始，这个限制也决定了数量用于进程的命令行参数的空间和环境变量; 有关详细信息，请参阅execve(2)。</p>
+</li>
+<li>
+<p><a href="https://man7.org/linux/man-pages/man2/setrlimit.2.html#DESCRIPTION">参考文献</a></p>
+</li>
+</ul>
+<h3 id="23-install">2.3 Install</h3>
+<blockquote>
+<p>这个段中的配置与 Unit 有几分相似，但是这部分配置需要通过 systemctl enable 命令来激活，并且可以通过 systemctl disable 命令禁用。另外这部分配置的目标模块通常是特定启动级别的 .target 文件，用来使得服务在系统启动时自动运行。</p>
+</blockquote>
 <ul>
 <li>Alias：为单元提供一个空间分离的附加名字。</li>
-<li>RequiredBy：单元被允许运行需要的一系列依赖单元，RequiredBy列表从Require获得依赖信息。</li>
-<li>WantBy：单元被允许运行需要的弱依赖性单元，Wantby从Want列表获得依赖信息。</li>
-<li>Also：指出和单元一起安装或者被协助的单元。</li>
+<li>RequiredBy：单元被允许运行需要的一系列依赖单元，RequiredBy列表从Require获得依赖信息; 和前面的 Requires 作用相似，同样后面列出的不是服务所依赖的模块，而是依赖当前服务的模块。</li>
+<li>WantBy：单元被允许运行需要的弱依赖性单元，Wantby从Want列表获得依赖信息;和前面的 Wants 作用相似，只是后面列出的不是服务所依赖的模块，而是依赖当前服务的模块。</li>
+<li>Also：指出和单元一起安装或者被协助的单元;当这个服务被 enable/disable 时，将自动 enable/disable 后面列出的每个模块。</li>
 <li>DefaultInstance：实例单元的限制，这个选项指定如果单元被允许运行默认的实例。</li>
 </ul>
-</li>
-</ul>
+<blockquote>
+<p>上面的例子中使用的都是 “WantedBy=multi-user.target” 表明当系统以多用户方式（默认的运行级别）启动时，这个服务需要被自动运行。当然还需要 systemctl enable 激活这个服务以后自动运行才会生效。关于 Linux 系统启动时的运行级别，可以参看这篇文章。</p>
+</blockquote>
 <h2 id="3-服务自启">3. 服务自启</h2>
 <ul>
 <li>
@@ -546,7 +728,13 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#1service-服务权限">1.service 服务权限</a></li>
-    <li><a href="#2service-文件说明">2.Service 文件说明</a></li>
+    <li><a href="#2service-文件说明">2.Service 文件说明</a>
+      <ul>
+        <li><a href="#21-unit">2.1 Unit</a></li>
+        <li><a href="#22-service">2.2 Service</a></li>
+        <li><a href="#23-install">2.3 Install</a></li>
+      </ul>
+    </li>
     <li><a href="#3-服务自启">3. 服务自启</a></li>
     <li><a href="#4-操作服务">4. 操作服务</a></li>
   </ul>

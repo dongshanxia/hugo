@@ -6,11 +6,11 @@
     <description>Recent content in blog on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Mar 2022 20:40:54 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 10:53:29 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog</title>
       <link>http://127.0.0.1:1313/hugo/about/blog/</link>
-      <pubDate>Mon, 14 Mar 2022 20:40:54 +0800</pubDate>
+      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/blog/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14  flowchart TB A[git-client]&amp;lt;--&amp;gt;B[git-server-gitea] B--&amp;gt;C[drone] C--&amp;gt;D[github] C--&amp;gt;vercel D--&amp;gt;netlify C--go-OS-Client--&amp;gt;E[openSearch] F[blogweb] &amp;lt;----&amp;gt; G[go-blogserver] E&amp;lt;--正在实现--&amp;gt;G   </description>
