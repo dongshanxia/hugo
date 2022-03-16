@@ -6,11 +6,11 @@
     <description>Recent content in k8s on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 Mar 2022 10:53:29 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Mar 2022 13:50:09 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/docker/k8s/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/k8s/</guid>
       <description>获取节点和服务版本信息 kubectl get nodes
@@ -30,7 +30,7 @@
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/install/k8s/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/k8s/</guid>
       <description>k8s 安装 1. 安装前装备 1.1 检查 centos 1  cat /etc/redhat-releas   1.2 检查hostname   此处hostname的输出将会是该机器在K8s 集群中的名字

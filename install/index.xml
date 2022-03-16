@@ -6,11 +6,11 @@
     <description>Recent content in Installs on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 Mar 2022 10:53:29 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/install/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Mar 2022 13:50:09 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/install/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chronyd</title>
       <link>http://127.0.0.1:1313/hugo/install/chronyd/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/chronyd/</guid>
       <description>Chronyd chronyd是一个同步系统时钟的守护进程。
@@ -22,7 +22,7 @@
     <item>
       <title>Docker Compose安装</title>
       <link>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</guid>
       <description>docker-compose安装步骤 1.下载 url: https://github.com/docker/compose/releases 备用地址：192.168.1.9:8080/share.cgi?ssid=05dGVzz
@@ -33,7 +33,7 @@
     <item>
       <title>Docker安装</title>
       <link>http://127.0.0.1:1313/hugo/install/docker%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/docker%E5%AE%89%E8%A3%85/</guid>
       <description>docker安装 一、yum安装 1. 卸载原来的docker 1 2 3 4 5 6 7 8  sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine   2. 安装前置库 1 2 3  sudo yum install -y yum-utils \ device-mapper-persistent-data \ lvm2   3. 下载 docker-ce 的仓库 1 2 3  sudo yum-config-manager \ --add-repo \ https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo   https://download.docker.com/linux/centos/docker-ce.repo # 另外的 仓库地址  4.</description>
@@ -42,7 +42,7 @@
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/install/k8s/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/k8s/</guid>
       <description>k8s 安装 1. 安装前装备 1.1 检查 centos 1  cat /etc/redhat-releas   1.2 检查hostname   此处hostname的输出将会是该机器在K8s 集群中的名字
@@ -58,7 +58,7 @@
     <item>
       <title>Kafka</title>
       <link>http://127.0.0.1:1313/hugo/install/kafka/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/kafka/</guid>
       <description>kafka集群搭建 下载地址  http://kafka.apache.org/downloads.html  开始部署  进入项目前的目录 cd /home/test/ 创建项目目录 mkdir kafka 进入项目目录 cd /home/test/kafka 创建kafka消息目录，主要存放kafka消息 mkdir kafkalogs 进入项目目录 cd /home/test/kafka 上传 kafka_2.10-0.10.0.0.tgz 安装包 解压 tar zxvf kafka_2.10-0.10.0.0.tgz -C ./ cd /home/test/kafka/kafka_2.11-0.10.0.0/config 打开配置文件 vim server.properties  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  ------------------------配置文件------------------------------------- broker.id=1 /* 这是这台虚拟机上的值，在另外两台虚拟机上应该是2或者3，这个值是唯一的，每台虚拟机或者叫服务器不能相同。 */ listeners=PLAINTEXT://test01:9092 /设置本机IP和端口。我这里设置的是listeners， 也可以直接设置host.</description>
@@ -67,7 +67,7 @@
     <item>
       <title>Kernel</title>
       <link>http://127.0.0.1:1313/hugo/install/kernel/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/kernel/</guid>
       <description>centos7 更新内核 在 CentOS 7 上启用 ELRepo 仓库 1 2  rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm   查询可下载的内核包 1  yum --disablerepo=&amp;#34;*&amp;#34; --enablerepo=&amp;#34;elrepo-kernel&amp;#34; list available   安装 1  yum --enablerepo=elrepo-kernel install kernel-ml   查看是否安装成功 1  rpm -qa |grep kernel   </description>
@@ -76,7 +76,7 @@
     <item>
       <title>Mysql</title>
       <link>http://127.0.0.1:1313/hugo/install/mysql/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/mysql/</guid>
       <description>mysql 相关 安装 mysql 相关   查看mariadb数据库 rpm -qa | grep mariadb
@@ -89,7 +89,7 @@
     <item>
       <title>Navicat</title>
       <link>http://127.0.0.1:1313/hugo/install/navicat/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/navicat/</guid>
       <description>navicat安装环境 install capstone sudo apt-get install libcapstone-dev
@@ -99,7 +99,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Pgsql安装</title>
       <link>http://127.0.0.1:1313/hugo/install/pgsql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/pgsql%E5%AE%89%E8%A3%85/</guid>
       <description>centos7.8安装pgsql13 PgSql的安装 1.配置repo 1 2 3 4 5 6 7 8 9  cd /etc/yum.repos.d vim pgsql.repo ## 以下为内容 [postgresql] name=postgresql baseurl=https://mirrors.tuna.tsinghua.edu.cn/postgresql/repos/yum/13/redhat/rhel-7.8-$basearch/ enabled=1 gpgcheck=0 ## 以上为内容   2.安装pgsql 1 2 3  ## 安装pgsql yum install postgresql13 -y yum install postgresql13-server -y   3.初始化pgsql 1  /usr/pgsql-13/bin/postgresql-13-setup initdb   4.设置自动启动并且启动postgresql服务 1 2  systemctl enable postgresql-13 systemctl start postgresql-13   创建用户和数据库  切换用户  1  su - postgres    进入pgsql 控制台  1  psql    进行配置  1 2 3 4  createuserdong_userwithpassword&amp;#39;dong_passwd&amp;#39;;//创建用户createdatabasedong_dbownerdong_user;//创建数据库grantallprivilegesondatabasedong_dbtodong_user;//授权ALTERROLEdong_userWITHCREATEDB;//修改用户有创建数据库的权限   推出  1  \q  修改配置文件  文件: /var/lib/pgsql/13/data/postgresql.</description>
@@ -108,7 +108,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Redis单机版搭建</title>
       <link>http://127.0.0.1:1313/hugo/install/redis%E5%8D%95%E6%9C%BA%E7%89%88%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/redis%E5%8D%95%E6%9C%BA%E7%89%88%E6%90%AD%E5%BB%BA/</guid>
       <description>redis单机版搭建 安装环境  redis版本redis-5.0.7 虚拟机系统centos7.4 用户 root 下载地址 http://download.redis.io/releases/  安装步骤   进入安装目录
@@ -124,7 +124,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Redis安装问题</title>
       <link>http://127.0.0.1:1313/hugo/install/redis%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/redis%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</guid>
       <description>title: redis安装可能遇到的错误 date: 2020-10-29 18:05:52 permalink: /pages/1b76b7/ categories:
@@ -135,7 +135,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Redis集群搭建</title>
       <link>http://127.0.0.1:1313/hugo/install/redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid>
       <description>redis集群搭建 安装环境  redis版本redis-3.0.7 虚拟机系统centos7.4 用户 root 三台服务器：  192.168.200.128 192.168.200.129 192.168.200.130 每台服务器redis三个端口号 7000～7002    安装步骤  第一步：在三台服务器上分别安装单机版redis,安装过程见单机版reids搭建 第二步：安装ruby  yum install ruby 出现【y/n】,选y   第三步：安装rubygems组件  yum install rubygems 出现【y/n】,选y   第四步：安装ruby脚本运行使用的包  [root@redis redis-cluster]# gem install redis &amp;ndash;version 3.0.7    1 2 3 4 5 6  安装成功会出现如下提示: Successfully installed redis-3.0.7 1 gem installed Installing ri documentation for redis-3.0.7… Installing RDoc documentation for redis-3.</description>
@@ -144,7 +144,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>VirtualBox</title>
       <link>http://127.0.0.1:1313/hugo/install/virtualbox/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/virtualbox/</guid>
       <description>centos7.8 虚拟机 查看自己的内核  这个是可以安装的 内核版本 小版本也要对应  1 2 3 4 5 6 7 8  [root@localhost sdb]# rpm -qa |grep kernel kernel-3.10.0-1127.el7.x86_64 kernel-tools-libs-3.10.0-1127.el7.x86_64 kernel-headers-3.10.0-1127.19.1.el7.x86_64 kernel-devel-3.10.0-1127.19.1.el7.x86_64 kernel-devel-3.10.0-1127.el7.x86_64 abrt-addon-kerneloops-2.1.11-57.el7.centos.x86_64 kernel-tools-3.10.0-1127.el7.x86_64   添加VirtualBox安装源 1 2 3  cd /etc/yum.repos.d/ yum install wget wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo   安装 1 2  yum update yum install binutils qt gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms   记得对应版本安装 kernel  版本下表  1 2 3 4 5  kernel-3.</description>
@@ -153,7 +153,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Vmware安装</title>
       <link>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/vmware%E5%AE%89%E8%A3%85/</guid>
       <description>linux安装VMware Workstation16 1.安装包  VMware-Workstation-Full-16.2.1-18811642.x86_64 下载地址  2.密钥  　ZF3R0-FHED2-M80TY-8QYGC-NPKYF +　YF390-0HF8P-M81RQ-2DXQE-M2UT6 +　ZF71R-DMX85-08DQY-8YMNC-PPHV8 如果不行 自行百度  3.赋予权限  chmod 777 VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  4.开始安装  sudo ./VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle  5.后续安装  安装界面 跟windows的差不多 类似 (后续补充)  </description>
@@ -162,7 +162,7 @@ install keystone 1 2 3 4 5 6 7 8 9  sudo apt-get install cmake wget http://10.16
     <item>
       <title>Zookeeper</title>
       <link>http://127.0.0.1:1313/hugo/install/zookeeper/</link>
-      <pubDate>Tue, 15 Mar 2022 10:53:29 +0800</pubDate>
+      <pubDate>Wed, 16 Mar 2022 13:50:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/zookeeper/</guid>
       <description>zookeeper集群搭建 一、下载zookeeper  进入将要安装的目录 cd /home/htga/zookeeper wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz  二、解压  tar -zxvf zookeeper-3.4.14.tar.gz  三、复制配置文件名称  cd zookeeper-3.4.14/conf/ cp zoo_sample.cfg zoo.cfg  四、修改配置文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33  # The number of milliseconds of each tick tickTime=2000 # The number of ticks that the initial # synchronization phase can take initLimit=10 # The number of ticks that can pass between # sending a request and getting an acknowledgement syncLimit=5 # the directory where the snapshot is stored.</description>
