@@ -6,11 +6,11 @@
     <description>Recent content in mysql on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Mar 2022 17:44:27 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Mar 2022 14:26:05 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>B&#43;树索引的由来</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/14.b&#43;%E6%A0%91%E7%B4%A2%E5%BC%95%E7%9A%84%E7%94%B1%E6%9D%A5/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/14.b&#43;%E6%A0%91%E7%B4%A2%E5%BC%95%E7%9A%84%E7%94%B1%E6%9D%A5/</guid>
       <description>B+树索引的由来 从前面讲的InnoDB数据页结构，特别是页目录，我们可以了解到，记录在页里面是以单链表的形式存在，而页与页之间构成了双向链表。
@@ -32,7 +32,7 @@
     <item>
       <title>EXPLAIN 语句输出的各个列解释</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/17.explain-%E8%AF%AD%E5%8F%A5%E8%BE%93%E5%87%BA%E7%9A%84%E5%90%84%E4%B8%AA%E5%88%97%E8%A7%A3%E9%87%8A/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/17.explain-%E8%AF%AD%E5%8F%A5%E8%BE%93%E5%87%BA%E7%9A%84%E5%90%84%E4%B8%AA%E5%88%97%E8%A7%A3%E9%87%8A/</guid>
       <description>EXPLAIN 语句输出的各个列解释    列名 描述     id 在一个大的查询语句中每个 SELECT 关键字都对应一个唯一的 id   select_type SELECT 关键字对应的那个查询的类型   table 表名   partitions 匹配的分区信息   type 针对单表的访问方法   possible_keys 可能用到的索引   key 实际上使用的索引   key_len 实际使用到的索引长度   ref 当使用索引列等值查询时，与索引列进行等值匹配的对象信息   rows 预估的需要读取的记录条数   filtered 某个表经过搜索条件过滤后剩余记录条数的百分比   Extra 一些额外的信息    select_type 每一个 SELECT 关键字代表的小查询都定义了一个称之为 select_type 的属性，意思是我们 只要知道了某个小查询的 select_type 属性，就知道了这个小查询在整个大查询中扮演了一个什么角色</description>
@@ -41,7 +41,7 @@
     <item>
       <title>explain之访问方法</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/16.explain%E4%B9%8B%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/16.explain%E4%B9%8B%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95/</guid>
       <description>MySQL 执行查询语句的方式称之为 访问方法 或者 访问类型
@@ -63,7 +63,7 @@ index：
     <item>
       <title>InnoDB数据页结构</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/13.innodb%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/13.innodb%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84/</guid>
       <description>InnoDB数据页结构 [toc]
@@ -77,7 +77,7 @@ index：
     <item>
       <title>InnoDB的BufferPool</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/18.mysql%E4%B9%8Binnodb%E7%9A%84bufferpool/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/18.mysql%E4%B9%8Binnodb%E7%9A%84bufferpool/</guid>
       <description>InnoDB的BufferPool 为什么需要缓存？ 因为存储引擎需要访问某一条记录时，是通过页作为基本单位读取到内存的，但是如果每次就因为一两条数据而把一页的数据从磁盘读取到内存有点耗费性能了，这样就多了缓存的概念，在进行完读写访问之后并不着急把该页对应的内存空间释放掉，而是将其 缓存 起来，这样将来有请求再次访问该页面时，就可以省去磁盘 IO 的开销了。
@@ -100,7 +100,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>InnoDB记录结构</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/12.innodb%E8%AE%B0%E5%BD%95%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/12.innodb%E8%AE%B0%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
       <description>InnoDB记录结构 innoDB存储引擎介绍 存储引擎的作用就是内存和磁盘打交道，负责将数据在他两之间传输，为了提高传输效率，提出了“页”的概念，也就是在一般情况下，为了减少io次数，一次最少从磁盘中读取16KB的内容到内存中，一次最少把内存中的16KB内容刷新到磁盘中。
@@ -113,7 +113,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>Mysql</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/</guid>
       <description>mysql相关命令 备份哦 1  mysqldump -h 127.0.0.1 -P 3306 -u remote -p123456 --databases test &amp;gt; ./backdb.sql   </description>
@@ -122,7 +122,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>Mysql</title>
       <link>http://127.0.0.1:1313/hugo/install/mysql/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/mysql/</guid>
       <description>mysql 相关 安装 mysql 相关   查看mariadb数据库 rpm -qa | grep mariadb
@@ -135,7 +135,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>mysql之InnoDB数据目录结构</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/15.mysql%E4%B9%8Binnodb%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/15.mysql%E4%B9%8Binnodb%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
       <description>innoDB数据目录   表目录
@@ -153,7 +153,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>mysql事务</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/19.mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/19.mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</guid>
       <description>事务 需要保证 原子性 、 隔离性 、 一致性 和 持久性 的一个或多个数据库操作称之为一个 事务
@@ -178,7 +178,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>Mysql安装</title>
       <link>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</guid>
       <description>docker-mysql安装部署文档 [TOC]
@@ -193,7 +193,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>mysql思维导图</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/00.mysql%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/00.mysql%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</guid>
       <description>mysql 1. 基础知识 1. cs架构 2. 安装与启动 3. 连接过程 1. 客户端发起连接（3种，tcp,命名通道与共享内存，socket） 2. 服务端接受连接 1. 处理连接 2. 解析与优化（1.查询缓存，2.语法解析，3.查询优化） 3. 存储引擎 4. 常用引擎 1. InnoDB 2. MyISAM 2. 启动选项与变量 1. 设置mysql启动参数（就近原则） 1. 命令行和配置文件 2. 配置文件 1. 系统变量 2. 状态变量 3. 字符串比较规则 1. 什么是字符集 使用二进制的一组数据代表现实世界的字符串。 常用字符集 GBK(最多2字节),uft8（最多3字节）,utf8mb4（最多4字节） 2. 字符集比较规则 用来比较同一种字符集的字符大小 3. 字符集应用 注意：对于同一个字符串，如果编码和解码采用的不同字符集，那么结果可能会不同。 4. 四个级别的字符集和比较规则 服务器级别 数据库级别 表级别 列级别 4. InnoDB记录结构 1. InnoDB页简介 磁盘和内存数据交互的最小单位，一页=16kb。 2. InnoDB行格式 1. 简介 记录存放在磁盘上的方式成为行格式 3. 行格式分类 1. compact类型行格式 1.</description>
@@ -202,7 +202,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>mysql系统配置与启动选项</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/10.mysql%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/10.mysql%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9/</guid>
       <description>启动选项与系统变量 启动选项 长格式与短格式 在执行启动脚本时，后面可以跟启动选项，其中有长格式和短格式两种形式
@@ -219,7 +219,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>redo日志（上）</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/20.redo%E6%97%A5%E5%BF%97%E4%B8%8A/</guid>
       <description>redo日志 **作用：**记录下记录修改的信息（所在表空间，页号，修改信息），系统崩溃了的话，也可以利用redo日志恢复。
@@ -232,7 +232,7 @@ LRU（Least Recently Used）链表管理
     <item>
       <title>redo日志（下）</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/21.redo%E6%97%A5%E5%BF%97%E4%B8%8B/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/21.redo%E6%97%A5%E5%BF%97%E4%B8%8B/</guid>
       <description>redo log的刷盘时机  log buffer 空间不足时（大概一半左右） 事务提交时 后台线程不停的刷刷刷（大概每秒刷一次） 正常关闭服务器时 做所谓的 checkpoint  redo日志文件组 磁盘上的 redo 日志文件不只一个，而是以一个 日志文件组 的形式出现的
@@ -251,7 +251,7 @@ redo日志文件格式 我们前边说过 log buffer 本质上是一片连续的
     <item>
       <title>字符集和比较规则</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/11.%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99/</guid>
       <description>字符集和比较规则 字符集简介 作用：为了让数据在人和计算机都能被”看的懂“。
@@ -263,7 +263,7 @@ redo日志文件格式 我们前边说过 log buffer 本质上是一片连续的
     <item>
       <title>重新认识mysql</title>
       <link>http://127.0.0.1:1313/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/</link>
-      <pubDate>Wed, 16 Mar 2022 17:44:27 +0800</pubDate>
+      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/</guid>
       <description>[toc]
