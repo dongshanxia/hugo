@@ -6,11 +6,64 @@
     <description>Recent content in docker on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Jan 2022 10:51:25 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 10:22:03 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker命令</title>
+      <link>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 21 Mar 2022 10:22:03 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</guid>
+      <description>docker说明 搜索镜像  docker search 镜像名 https://hub.docker.com/  拉取镜像  docker pull NAME[:TAG] 可以-q 去除详细输出  保存镜像  docker save -o localName NAME[:TAG] docker save -o cjpt-service-alarm-user.tar cjpt-service-alarm-user:latest （） 上面的解释： 将镜像中的 镜像名为 cjpt-service-alarm-user 标签为 latest 保存到 同一目录 名为cjpt-service-alarm-user.tar  查看本地镜像  docker images   加载镜像  docker load &amp;lt; 压缩包名 docker load &amp;ndash;input 压缩包名 docker load &amp;lt; cjptjava8.tar 加载cjptjava8.tar的镜像  给镜像修改名称   docker tag imageId REPOSITORY:TAG   imageId: 镜像的id REPOSITORY：本地镜像名称 TAG: 标记</description>
+    </item>
+    
+    <item>
+      <title>Docker清理</title>
+      <link>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</link>
+      <pubDate>Mon, 21 Mar 2022 10:22:03 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</guid>
+      <description>列出无用的卷 1  docker volume ls -qf dangling=true   清理无用的卷 1  docker volume rm $(docker volume ls -qf dangling=true)   清除推出的容器 1  docker rm $(docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39;)   清除none的 镜像 1  docker rmi $(docker images | grep &amp;#34;&amp;lt;none&amp;gt;&amp;#34; | awk &amp;#39;{print $3}&amp;#39;)   </description>
+    </item>
+    
+    <item>
+      <title>Mssql安装</title>
+      <link>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 21 Mar 2022 10:22:03 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
+      <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  version: &amp;#34;3&amp;#34; services: MSSQL: image: registory.</description>
+    </item>
+    
+    <item>
+      <title>Mysql安装</title>
+      <link>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 21 Mar 2022 10:22:03 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</guid>
+      <description>docker-mysql安装部署文档 [TOC]
+一、前置条件 1.1 前置环境  docker 环境 docker ps 必须可以用 docker-compose -version 必须可以用  1.2 安装包名 [docker-mysql_5.7.24_2020_8_27.tar]
+1.3 升级服务器 ​	需要搭建 maven的机器
+1.4 升级操作用户 ​	用户名 拥有docker权限的用户 （cjpt,alarm 都可以）
+1.5 安装路径 ​	路径：/home/cjpt/temp/
+1.6 升级涉及到的服务    服务名称 升级前版本号 升级后版本号     mysql  2.16.6    1.7 升级功能说明 docker-nexus 镜像
+二、安装步骤 2.1 安装升级包 1 2 3 4  #### 进入安装目录 cd /home/cjpt/temp/ #### 进入安装目录 docker load &amp;lt; mysql.</description>
+    </item>
+    
+    <item>
+      <title>Oracle安装</title>
+      <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 21 Mar 2022 10:22:03 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
+      <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  version: &amp;#34;3&amp;#34; services: oracle: image: registory.</description>
+    </item>
+    
     <item>
       <title>K8s</title>
       <link>http://127.0.0.1:1313/hugo/docker/k8s/</link>
-      <pubDate>Thu, 20 Jan 2022 10:51:25 +0800</pubDate>
+      <pubDate>Thu, 20 Jan 2022 15:41:30 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/k8s/</guid>
       <description>获取节点和服务版本信息 kubectl get nodes
@@ -28,84 +81,31 @@
     </item>
     
     <item>
-      <title>Docker Compose</title>
-      <link>http://127.0.0.1:1313/hugo/docker/docker-compose/</link>
-      <pubDate>Tue, 04 Jan 2022 20:14:01 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/docker-compose/</guid>
-      <description>docker-compose 的相关说明 docker-compose.yml 文件说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82  # common.</description>
-    </item>
-    
-    <item>
-      <title>Mysql安装</title>
-      <link>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 04 Jan 2022 20:07:31 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/mysql%E5%AE%89%E8%A3%85/</guid>
-      <description>docker-mysql安装部署文档 [TOC]
-一、前置条件 1.1 前置环境  docker 环境 docker ps 必须可以用 docker-compose -version 必须可以用  1.2 安装包名 [docker-mysql_5.7.24_2020_8_27.tar]
-1.3 升级服务器 ​	需要搭建 maven的机器
-1.4 升级操作用户 ​	用户名 拥有docker权限的用户 （cjpt,alarm 都可以）
-1.5 安装路径 ​	路径：/home/cjpt/temp/
-1.6 升级涉及到的服务    服务名称 升级前版本号 升级后版本号     mysql  2.16.6    1.7 升级功能说明 docker-nexus 镜像
-二、安装步骤 2.1 安装升级包 1 2 3 4  #### 进入安装目录 cd /home/cjpt/temp/ #### 进入安装目录 docker load &amp;lt; mysql.</description>
-    </item>
-    
-    <item>
-      <title>Docker命令</title>
-      <link>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Tue, 04 Jan 2022 20:04:32 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</guid>
-      <description>docker说明 搜索镜像  docker search 镜像名 https://hub.docker.com/  拉取镜像  docker pull NAME[:TAG] 可以-q 去除详细输出  保存镜像  docker save -o localName NAME[:TAG] docker save -o cjpt-service-alarm-user.tar cjpt-service-alarm-user:latest （） 上面的解释： 将镜像中的 镜像名为 cjpt-service-alarm-user 标签为 latest 保存到 同一目录 名为cjpt-service-alarm-user.tar  查看本地镜像  docker images   加载镜像  docker load &amp;lt; 压缩包名 docker load &amp;ndash;input 压缩包名 docker load &amp;lt; cjptjava8.tar 加载cjptjava8.tar的镜像  给镜像修改名称   docker tag imageId REPOSITORY:TAG   imageId: 镜像的id REPOSITORY：本地镜像名称 TAG: 标记</description>
-    </item>
-    
-    <item>
-      <title>Dockerfile</title>
-      <link>http://127.0.0.1:1313/hugo/docker/dockerfile/</link>
-      <pubDate>Tue, 04 Jan 2022 19:23:09 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/dockerfile/</guid>
-      <description>dockerfile [toc]
-1.例子 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85  # 选择一个已有的os镜像作为基础 FROM docker.</description>
-    </item>
-    
-    <item>
       <title>Config</title>
       <link>http://127.0.0.1:1313/hugo/docker/config/</link>
-      <pubDate>Tue, 04 Jan 2022 17:12:47 +0800</pubDate>
+      <pubDate>Thu, 06 Jan 2022 11:52:44 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/config/</guid>
       <description>daemon.json 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68  { &amp;#34;api-cors-header&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;authorization-plugins&amp;#34;:[], &amp;#34;bip&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;bridge&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cgroup-parent&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store-opts&amp;#34;:{}, &amp;#34;cluster-advertise&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;debug&amp;#34;: true, #启用debug的模式，启用后，可以看到很多的启动信息。默认false &amp;#34;default-gateway&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-gateway-v6&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-runtime&amp;#34;:&amp;#34;runc&amp;#34;, &amp;#34;default-ulimits&amp;#34;:{}, &amp;#34;disable-legacy-registry&amp;#34;:false, &amp;#34;dns&amp;#34;: [&amp;#34;192.</description>
     </item>
     
     <item>
-      <title>Docker清理</title>
-      <link>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</link>
-      <pubDate>Thu, 11 Nov 2021 17:25:04 +0800</pubDate>
+      <title>Docker Compose</title>
+      <link>http://127.0.0.1:1313/hugo/docker/docker-compose/</link>
+      <pubDate>Tue, 04 Jan 2022 20:42:14 +0800</pubDate>
       
-      <guid>http://127.0.0.1:1313/hugo/docker/docker%E6%B8%85%E7%90%86/</guid>
-      <description>列出无用的卷 1  docker volume ls -qf dangling=true   清理无用的卷 1  docker volume rm $(docker volume ls -qf dangling=true)   清除推出的容器 1  docker rm $(docker ps -a | grep &amp;#34;Exited&amp;#34; | awk &amp;#39;{print $1}&amp;#39;)   清除none的 镜像 1  docker rmi $(docker images | grep &amp;#34;&amp;lt;none&amp;gt;&amp;#34; | awk &amp;#39;{print $3}&amp;#39;)   </description>
+      <guid>http://127.0.0.1:1313/hugo/docker/docker-compose/</guid>
+      <description>docker-compose 的相关说明 docker-compose.yml 文件说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82  # common.</description>
     </item>
     
     <item>
-      <title>Oracle安装</title>
-      <link>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 12 Oct 2021 10:35:56 +0800</pubDate>
+      <title>Dockerfile</title>
+      <link>http://127.0.0.1:1313/hugo/docker/dockerfile/</link>
+      <pubDate>Tue, 04 Jan 2022 19:24:44 +0800</pubDate>
       
-      <guid>http://127.0.0.1:1313/hugo/docker/oracle%E5%AE%89%E8%A3%85/</guid>
-      <description>oracle的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; oracle_1.tar     查看是否倒入成功   1  docker images | grep oracle     启动命令   1  docker container run --restart=always --name oracle -p 31521:1521 -e DBCA_TOTAL_MEMORY=1024 -v /docker/software/oracle/ora:/u01/app/oracle/ -d registory.dongshanxia.top:35000/docker/oracle:1.0     docker-compose 文件
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  version: &amp;#34;3&amp;#34; services: oracle: image: registory.</description>
-    </item>
-    
-    <item>
-      <title>Mssql安装</title>
-      <link>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Tue, 12 Oct 2021 10:35:46 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</guid>
-      <description>mssql的 部署步骤 下载地址:  http://192.168.30.65:8080/share.cgi?ssid=04ojgsE  导入镜像   1  docker load &amp;lt; mssql_1.tar     查看是否倒入成功   1  docker images | grep mssql       启动命令   1 2 3 4 5  docker container run --restart=always --name mssql -p 31433:31433 -v /docker/software/MSSQL/data:/var/opt/mssql/data/ -v /docker/software/MSSQL/log:/var/opt/mssql/log/ -v /docker/software/MSSQL/config:/var/opt/mssql/config -d registory.dongshanxia.top:35000/docker/MSSQL:1.0     docker-compose 文件
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  version: &amp;#34;3&amp;#34; services: MSSQL: image: registory.</description>
+      <guid>http://127.0.0.1:1313/hugo/docker/dockerfile/</guid>
+      <description>dockerfile [toc]
+1.例子 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85  # 选择一个已有的os镜像作为基础 FROM docker.</description>
     </item>
     
   </channel>
