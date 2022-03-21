@@ -4,8 +4,6 @@
   <url>
     <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/1.%E7%9B%AE%E5%BD%95/</loc>
   </url><url>
-    <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</loc>
-  </url><url>
     <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</loc>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%8B%93%E5%A2%83/</loc>
@@ -320,6 +318,9 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/software/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</loc>
     <lastmod>2022-01-05T10:14:20+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</loc>
+    <lastmod>2022-03-21T21:52:19+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/linux/yum/%E6%9B%B4%E6%8D%A2yum%E4%BB%93%E5%BA%93/</loc>
     <lastmod>2020-10-29T18:05:52+00:00</lastmod>
