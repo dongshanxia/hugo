@@ -6,11 +6,11 @@
     <description>Recent content in Nodes on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 18 Mar 2022 14:26:05 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/node/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 09:49:43 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/node/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Npm</title>
       <link>http://127.0.0.1:1313/hugo/node/npm/</link>
-      <pubDate>Fri, 18 Mar 2022 14:26:05 +0800</pubDate>
+      <pubDate>Mon, 21 Mar 2022 09:49:43 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/node/npm/</guid>
       <description>npm安装 设置软件默认安装位置 1  npm config set prefix &amp;#34;D:\Program Files\nodejs\node_global&amp;#34;   设置软件 缓存位置 1  npm config set cache &amp;#34;D:\Program Files\nodejs\node_cache&amp;#34;   设置镜像源 1  npm config set registry=http://registry.npm.taobao.org   npm 私有仓库 1、在命令行先查看 npm config get registry
