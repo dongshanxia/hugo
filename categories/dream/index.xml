@@ -13,7 +13,7 @@
       <pubDate>Fri, 31 Dec 2021 11:19:33 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/dream/xcb/2022/</guid>
-      <description>一月  1.展示多少信息给前端 （如何跟hug结合） 2.完成darwio的研究 看看是否能私有化部署 3.deepin安装第三方安卓应用操作步骤 （作废了）  二月  1.创建6台虚拟机 90 91 92 93 94 95 2.6台机器搭建k8s 3.linux的service学习 (单文件)  三月  1.看完王牌部队 2.vercel 部署有问题 k8s这个文件 没有上去 3.外网可以访问k8s集群(那个展示页面) 4.opensearch 与 linux的service 配置和结合 5.linux的service学习 (扩展功能)  四月  1.搞定win10的彻底更新秘诀 https://blog.csdn.net/jianai0602/article/details/100114828 https://blog.csdn.net/weixin_44545251/article/details/101018974 2.验证是否gitea备份时候可行 3.验证pgsql的备份是否可行 4.fcitx5什么情况 5.zerotier 配合 openwrt 完成异地组网 https://wiki.deepin.org/wiki/%E8%BE%93%E5%85%A5%E6%B3%95#fcitx.E4.BD.BF.E7.94.A8.E4.B8.8E.E5.AE.9A.E5.88.B6  </description>
+      <description>一月  1.展示多少信息给前端 （如何跟hug结合） 2.完成darwio的研究 看看是否能私有化部署 3.deepin安装第三方安卓应用操作步骤 （作废了）  二月  1.创建6台虚拟机 90 91 92 93 94 95 2.6台机器搭建k8s 3.linux的service学习 (单文件)  三月  1.看完王牌部队 2.vercel 部署有问题 k8s这个文件 没有上去 3.外网可以访问k8s集群(那个展示页面) 4.opensearch 与 linux的service 配置和结合 5.linux的service学习 (扩展功能)  四月  1.搞定win10的彻底更新秘诀 https://blog.csdn.net/jianai0602/article/details/100114828 https://blog.csdn.net/weixin_44545251/article/details/101018974 2.验证是否gitea备份时候可行 3.验证pgsql的备份是否可行 4.fcitx5什么情况 5.zerotier 配合 openwrt 完成异地 组网 https://wiki.deepin.org/wiki/%E8%BE%93%E5%85%A5%E6%B3%95#fcitx.E4.BD.BF.E7.94.A8.E4.B8.8E.E5.AE.9A.E5.88.B6  </description>
     </item>
     
     <item>
