@@ -6,11 +6,11 @@
     <description>Recent content in docker-compose on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 21 Mar 2022 09:58:05 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 20:14:01 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Compose</title>
       <link>http://127.0.0.1:1313/hugo/docker/docker-compose/</link>
-      <pubDate>Mon, 21 Mar 2022 09:58:05 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 20:14:01 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/docker-compose/</guid>
       <description>docker-compose 的相关说明 docker-compose.yml 文件说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82  # common.</description>
@@ -19,7 +19,7 @@
     <item>
       <title>Docker Compose安装</title>
       <link>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Mon, 21 Mar 2022 09:58:05 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 19:08:15 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</guid>
       <description>docker-compose安装步骤 1.下载 url: https://github.com/docker/compose/releases 备用地址：192.168.1.9:8080/share.cgi?ssid=05dGVzz
