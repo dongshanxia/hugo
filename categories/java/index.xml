@@ -6,72 +6,20 @@
     <description>Recent content in java on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 22 Mar 2022 11:02:30 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Mar 2022 11:16:18 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4.JAVA多线程并发</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>java日志体系</title>
-      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</guid>
-      <description>java日志体系 常用日志框架
- Log4j：Apache Log4j是一个基于Java的日志记录工具。它是由Ceki Gülcü首创的，现在则是Apache软件基金会的一个项目。 Log4j 2：Apache Log4j 2是Apache开发的一款Log4j的升级产品。 Commons Logging：Apache基金会所属的项目，是一套Java日志接口，之前叫Jakarta Commons Logging，后更名为Commons Logging。Apache推出了JCL（Jakarta Commons Logging），它只是定义了一套日志接口（其内部也提供一个Simple Log的简单实现），JCL也是一套接口规范，支持运行时动态加载日志组件的实现。也就是说，在应用程序代码中，只需调用Commons Logging的接口，底层实现可以是Log4j，也可以是JUL SLF4J：全称为Simple Logging Facade for Java，类似于Commons Logging，是一套简易Java日志门面，本身并无日志的实现。 Logback：是一套日志组件的实现，属于SLF4J阵营。 JUL：全称是Java Util Logging，是JDK1.4以后提供的日志实现。  mybatis日志体系 日志接口 定义了打印日志的级别
-日志实现 配置日志框架的三种方式 1. 手动指定日志框架 1.先确定日志的Constructor对象
-2.再利用Constructor对象和类名创建日志对象
-3.打印日志的功能交给其他对象
-2. 自动配置日志框架 如果不指定日志框架，mybatis也会尝试去找日志的实现
-LogFactory中有静态代码块，会率先执行里面的代码，顺序执行（MyBatis查找日志框架的顺序为SLF4J→JCL→Log4j2→Log4j→JUL→No Logging），注意这里的run不是线程的run的概念，单纯只是匿名函数，传入Runnable对象，会执行它的run方法而已
-比如会先执行第一个useSlf4jLogging 方法，如果找不到Slf4j对应的jar包，会抛出异常，但是不做任何处理，则继续执行下一个useCommonsLogging方法，如果找到了对应的jar包，会创建
-Constructor对象在LogFactory对象里，然后继续执行tryImplementation、useLog4JLogging方法，每次都会判断Constructor对象为空，如果不为空则不会执行Runnable对象的run方法，从而实现自动确定日志框架。
-3. 配置文件指定日志框架 项目启动时，会去读取mybatis配置文件，将logImpl的值set到configuration对象，如果有配置日志实现，configuration对象会在调用setLogImpl，来创建指定日志的Constructor对象
-总结 三种配置日志框架的方法，了解怎么把日志实现交给mybatis，mybatis如何设置日志框架的， 日志框架设计的很巧妙，接口和实现完全分开来，用户可以随意搭配实现。</description>
-    </item>
-    
-    <item>
-      <title>mybatis拦截器执行过程</title>
-      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</guid>
-      <description>m[toc]
-mybatis的拦截器本人平时也很少用到，没了解之前，也只是知道运用到了动态代理用来增强方法的功能，但是不了解其中的原理。为了更好的使用mybatis，这次，我记录下我所了解的mybatis的原理，本文不一定完全正确，可能有理解不到位的地方。
-1、使用mybatis的拦截器 像平常使用mybatis框架时，如果哪句sql报错了，我们可以通过控制台或日志打印的sql去查看sql的问题，但是如果sql有太多的参数，其实是很不方便的，自己还得手动去把一个一个参数给设置上，有些浪费时间，这时候就可以利用mybatis的拦截器去帮我们把参数给设置上。
- 配置步骤
- 1.创建拦截器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  @Intercepts({ @Signature(type = StatementHandler.class, method = &amp;#34;query&amp;#34;, args = {Statement.class, ResultHandler.class}), @Signature(type = StatementHandler.class, method = &amp;#34;update&amp;#34;, args = {Statement.class}), @Signature(type = StatementHandler.class, method = &amp;#34;batch&amp;#34;, args = {Statement.class}) }) public class SlowSqlInterceptor implements Interceptor { @Override public Object intercept(Invocation invocation) throws InvocationTargetException, IllegalAccessException { // 主要逻辑 拼接参数到sql，并打印  } @Override public Object plugin(Object target) { // 创建代理对象  return Plugin.</description>
-    </item>
-    
-    <item>
-      <title>mybatis核心组件</title>
-      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  sequenceDiagram participant SqlSession participant Excutor participant StatementHandler participant parameterHandler participant ResultSetHandler participant TypeHandler participant ResultSet participant JDBC SqlSession-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;StatementHandler: StatementHandler--&amp;gt;&amp;gt;parameterHandler: StatementHandler--&amp;gt;&amp;gt;JDBC: parameterHandler--&amp;gt;&amp;gt;TypeHandler: parameterHandler-&amp;gt;&amp;gt;JDBC: JDBC-&amp;gt;&amp;gt;ResultSet: ResultSet--&amp;gt;&amp;gt;TypeHandler: ResultSet--&amp;gt;&amp;gt;ResultSetHandler: TypeHandler--&amp;gt;&amp;gt;ResultSetHandler: ResultSetHandler-&amp;gt;&amp;gt;StatementHandler: StatementHandler-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;SqlSession: Note left of SqlSession: asa   1 2 3 4  flowchart TD subgraph configuration mappedStatement1 --&amp;gt; mappedStatement2 end   configuration:</description>
-    </item>
-    
-    <item>
-      <title>mybati缓存了解</title>
-      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</guid>
-      <description>mybatis的缓存 首先来看下mybatis对缓存的规范，规范嘛就是定义的接口啦。
-缓存接口 ​	Cache接口 定义了缓存的方法
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57  public interface Cache { /**获取缓存的id * @return The identifier of this cache */ String getId(); /**添加缓存 * @param key Can be any object but usually it is a {@link CacheKey} * @param value The result of a select.</description>
-    </item>
-    
-    <item>
       <title>SkyWalking搭建(一)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控 [toc]
@@ -85,7 +33,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking搭配springboot应用(三)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
       <description>上传springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
@@ -95,7 +43,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking监控mysql(四)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</guid>
       <description>  准备以mysql为数据库的springboot应用
@@ -108,7 +56,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking配合tomcat使用(二)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</guid>
       <description>上传tomcat至服务器 1 2  #下载tomcat8 https://tomcat.apache.org/download-80.cgi   修改tomcat配置 1 2 3 4  # 端口修改8081 vim /opt/software/apache-tomcat-8.5.68/conf/server.xml # 修改tomcat启动方式 在加catalina.sh最上面！ CATALINA_OPTS=&amp;#34;$CATALINA_OPTS-javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&amp;#34;; export CATALINA_OPTS   上传springMvc的war包 1  cd /opt/software/apache-tomcat-8.5.68/webapps/   启动tomcat 1  ./opt/software/apache-tomcat-8.5.68/bin/startup.sh    请求一下项目 sky-walking-ui就有记录了！
@@ -116,21 +64,9 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     </item>
     
     <item>
-      <title>SpringCloud &#43; SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</title>
-      <link>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
-      <description>SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题 场景: 公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：
-1  localhost:10001/verify/compreport/month?data={&amp;#34;compRefOwid&amp;#34;:&amp;#34;1448487922485252098&amp;#34;, &amp;#34;yhMonth&amp;#34;:&amp;#34;2021-10&amp;#34;}   原因： Tomcat的新版本中增加了一个新特性，就是严格按照 RFC 3986规范进行访问解析，而 RFC 3986规范定义了Url中只允许包含英文字母（a-zA-Z）、数字（0-9）、-_.~4个特殊字符以及所有保留字符(RFC3986中指定了以下字符为保留字符：! * ’ ( ) ; : @ &amp;amp; = + $ , / ? # [ ])。
-解决方案选择：  前端请求时encode特殊字段(算了，不能因为自己的原因加大前端工作量) 改用post请求(emmm没有办法的办法,看着难受就是想要改了) 改Tomcat配置文件(由于是springboot项目，内嵌了tomcat，不方便修改，好吧就是我比较菜) 在后端代码层面解决这个问题  解决方法： 其他服务：由于使用的是内嵌的tomcat，网上常见的 解决spring boot请求包含非法字符问题 The valid characters are defined in RFC 7230 and RFC 3986 错误 配置TomcatServletWebServerFactory的方式使用时会导致两个TomcatServletWebServerFactory使springboot项目报错Unable to start ServletWebServerApplicationContext due to multiple ServletWebServerFactory beans而无法启动。而使用yml配置的方式也无法生效。
-1 2 3 4 5 6 7 8 9  server:tomcat:relaxed-query-chars:- &amp;#34;&amp;lt;&amp;#34;- &amp;#34;&amp;gt;&amp;#34;- &amp;#34;[&amp;#34;- &amp;#34;]&amp;#34;- &amp;#34;{&amp;#34;- &amp;#34;}&amp;#34;  随后参考了继承WebServerFactoryCustomizer的方式来修改Tomcat配置</description>
-    </item>
-    
-    <item>
       <title>东方通信</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</guid>
       <description> 工单号怎么保证唯一 部署后怎么查看项目是否成功启动 跨域问题如何解决 微服务有哪些组件 gateway怎么配置匹配服务转发优先级 gateway配置服务转发需要配置哪些 权限系统怎么设计 缓存雪崩 mysql查看慢sql mysql的char和vachar的区别 mybatis的$和#的区别 除了用#以外还有别的方式防止sql注入 抽象类能用final修饰吗 Thread Local Get请求和Post请求的区别 tcp和udp的区别 Spring的IOC和AOP 反射 Docker内部有哪些组件 Docker查看镜像的命令 设计模式  </description>
@@ -139,7 +75,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>中设天合</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</guid>
       <description> redis用到的场景 为什么要用redis redis重启后缓存数据怎么办 redis的持久化 左连接、右连接、外连接、内连接的区别 spring事务的作用 spring的注解有哪些 springMVC简单实现原理 JVM中会内存泄漏吗，为什么会出现这样的情况  </description>
@@ -148,7 +84,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>思汉科技</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</guid>
       <description> 堆栈和队列的区别 Java是单继承还是多继承的 线程的六种状态 多线程Start后会立即执行吗 常用的集合 ArrayList和LinkedList的区别 项目开发的分层 Linux的命令 Linux中怎么查看Java进程 synchronized 悲观锁 可重入锁 synchronized做了哪些优化 锁是什么持有的 synchronized使用方式 mysql储存引擎 innodb数据按什么存储 innodb如果没有指定主键的话会怎么样 mysql的索引 innodb中能否指定使用hash索引 怎么优化查询慢的sql 怎么避免二次回表 Docker常用命令 vue常用模板指令 vue的生命周期 js声明变量的方式 微服务对比单体项目的区别 redis的数据结构 redis的持久化 RDB和AOF的区别 微服务服务之间用什么调用 NIO和AIO、BIO的区别 分布式事务 分布式锁 Java是引用传递还是值传递  </description>
@@ -157,7 +93,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州健景</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</guid>
       <description> String为什么不可变更 String底层使用什么数据结构 ArrayList和LinkList的区别 HashTable为什么线程安全 HashMap用了什么数据结构 HashMap什么情况下变成红黑树的结构 线程池的核心参数 线程池的几种拒绝策略 线程池有哪几种 synchronized锁升级 单例模式应用场所 Lock锁 ReentrantLock JVM Spirng的IOC和AOP IOC的底层原理 AOP的使用场景 Spring怎么配置事务 为什么要开启事务 Spring事务的失效场景 Mysql的慢查询 如何查询mysql是否用到索引 索引下推 B+树 索引数据存在B+树的哪里 事务的四种隔离级别 事务的隔离级别能避免什么 redis缓存淘汰策略 redis的持久化 MQ ThreadLocal SpringMVC运行流程 线程安全的ArrayList是哪个  </description>
@@ -166,7 +102,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州巨博</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</guid>
       <description> 工单号怎么保证唯一 常用的集合 ArrayList和LinkedList的区别 HashMap 线程的生命周期 什么情况下会产生死锁 怎么解决死锁 redis为什么速度快 redis的持久化 mysql的索引 mysql索引用在什么字段 订单号、用户id，时间(精确到天)，查当天的订单量和用户单天的订单，如何添加索引 事务的原子性 SpringGateway服务分发转发 网关模块的容错机制 tcp的三次握手和四次挥手 注解的原理 自己写过哪些功能的注解  </description>
@@ -175,7 +111,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州微宏</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</guid>
       <description>openFeign的主要作用
@@ -202,7 +138,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州润德</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</guid>
       <description> Spring的常用注解 nacos配置数据库 nacos修改配置是否实时刷新的 Spring的生命周期 Spring的IOC和AOP Spring是怎么解决依赖循环 @Autowired和@Resource的区别 SpringBoot重要的注解 为什么SpringBoot加了@SpringBootApplication可以直接启动项目 SpringBoot和SpringCloud的关系 SpringCloud的组件 有哪些中间件可以作为注册中心和配置中心 mybatis的动态标签 gateway的作用 微服务项目客户端请求到服务的整个过程 设计负载均衡的轮询和权重 mybatis配置一级缓存、二级缓存 mysql的事务 事务的隔离级别以及每种隔离级别造成的现象 nacos的心跳机制以及默认几秒请求一次 HashMap和HashTable的区别 TreeMap和HashMap的区别 HashMap初始化默认容量 HashMap的底层原理 HashMap在JDK1.7跟JDK1.8的区别，为什么要这么做 HashTable为什么线程安全 除了synchronized，还有其他的加锁方式 公平锁和非公平锁 synchronized和Lock的区别 分布式锁的实现原理 redis的持久化 AOF和RDB的区别 stream流有哪些操作以及方法 Java的八大基本数据类型 有哪些引用数据类型 redis的哨兵 redis的哨兵和主从复制之间的关系 redis的key最大能存多大数据  </description>
@@ -211,7 +147,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州重构</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</link>
-      <pubDate>Tue, 22 Mar 2022 11:02:30 +0800</pubDate>
+      <pubDate>Tue, 22 Mar 2022 11:16:18 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</guid>
       <description>  springboot配置多数据源
@@ -236,6 +172,70 @@ jar
   大量update、insert语句分开运行和合并在一起运行有什么区别
   字节流和字符流的区别
   </description>
+    </item>
+    
+    <item>
+      <title>java日志体系</title>
+      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</link>
+      <pubDate>Tue, 22 Mar 2022 11:16:17 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</guid>
+      <description>java日志体系 常用日志框架
+ Log4j：Apache Log4j是一个基于Java的日志记录工具。它是由Ceki Gülcü首创的，现在则是Apache软件基金会的一个项目。 Log4j 2：Apache Log4j 2是Apache开发的一款Log4j的升级产品。 Commons Logging：Apache基金会所属的项目，是一套Java日志接口，之前叫Jakarta Commons Logging，后更名为Commons Logging。Apache推出了JCL（Jakarta Commons Logging），它只是定义了一套日志接口（其内部也提供一个Simple Log的简单实现），JCL也是一套接口规范，支持运行时动态加载日志组件的实现。也就是说，在应用程序代码中，只需调用Commons Logging的接口，底层实现可以是Log4j，也可以是JUL SLF4J：全称为Simple Logging Facade for Java，类似于Commons Logging，是一套简易Java日志门面，本身并无日志的实现。 Logback：是一套日志组件的实现，属于SLF4J阵营。 JUL：全称是Java Util Logging，是JDK1.4以后提供的日志实现。  mybatis日志体系 日志接口 定义了打印日志的级别
+日志实现 配置日志框架的三种方式 1. 手动指定日志框架 1.先确定日志的Constructor对象
+2.再利用Constructor对象和类名创建日志对象
+3.打印日志的功能交给其他对象
+2. 自动配置日志框架 如果不指定日志框架，mybatis也会尝试去找日志的实现
+LogFactory中有静态代码块，会率先执行里面的代码，顺序执行（MyBatis查找日志框架的顺序为SLF4J→JCL→Log4j2→Log4j→JUL→No Logging），注意这里的run不是线程的run的概念，单纯只是匿名函数，传入Runnable对象，会执行它的run方法而已
+比如会先执行第一个useSlf4jLogging 方法，如果找不到Slf4j对应的jar包，会抛出异常，但是不做任何处理，则继续执行下一个useCommonsLogging方法，如果找到了对应的jar包，会创建
+Constructor对象在LogFactory对象里，然后继续执行tryImplementation、useLog4JLogging方法，每次都会判断Constructor对象为空，如果不为空则不会执行Runnable对象的run方法，从而实现自动确定日志框架。
+3. 配置文件指定日志框架 项目启动时，会去读取mybatis配置文件，将logImpl的值set到configuration对象，如果有配置日志实现，configuration对象会在调用setLogImpl，来创建指定日志的Constructor对象
+总结 三种配置日志框架的方法，了解怎么把日志实现交给mybatis，mybatis如何设置日志框架的， 日志框架设计的很巧妙，接口和实现完全分开来，用户可以随意搭配实现。</description>
+    </item>
+    
+    <item>
+      <title>mybatis拦截器执行过程</title>
+      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Tue, 22 Mar 2022 11:16:17 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</guid>
+      <description>m[toc]
+mybatis的拦截器本人平时也很少用到，没了解之前，也只是知道运用到了动态代理用来增强方法的功能，但是不了解其中的原理。为了更好的使用mybatis，这次，我记录下我所了解的mybatis的原理，本文不一定完全正确，可能有理解不到位的地方。
+1、使用mybatis的拦截器 像平常使用mybatis框架时，如果哪句sql报错了，我们可以通过控制台或日志打印的sql去查看sql的问题，但是如果sql有太多的参数，其实是很不方便的，自己还得手动去把一个一个参数给设置上，有些浪费时间，这时候就可以利用mybatis的拦截器去帮我们把参数给设置上。
+ 配置步骤
+ 1.创建拦截器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  @Intercepts({ @Signature(type = StatementHandler.class, method = &amp;#34;query&amp;#34;, args = {Statement.class, ResultHandler.class}), @Signature(type = StatementHandler.class, method = &amp;#34;update&amp;#34;, args = {Statement.class}), @Signature(type = StatementHandler.class, method = &amp;#34;batch&amp;#34;, args = {Statement.class}) }) public class SlowSqlInterceptor implements Interceptor { @Override public Object intercept(Invocation invocation) throws InvocationTargetException, IllegalAccessException { // 主要逻辑 拼接参数到sql，并打印  } @Override public Object plugin(Object target) { // 创建代理对象  return Plugin.</description>
+    </item>
+    
+    <item>
+      <title>mybatis核心组件</title>
+      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Tue, 22 Mar 2022 11:16:17 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  sequenceDiagram participant SqlSession participant Excutor participant StatementHandler participant parameterHandler participant ResultSetHandler participant TypeHandler participant ResultSet participant JDBC SqlSession-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;StatementHandler: StatementHandler--&amp;gt;&amp;gt;parameterHandler: StatementHandler--&amp;gt;&amp;gt;JDBC: parameterHandler--&amp;gt;&amp;gt;TypeHandler: parameterHandler-&amp;gt;&amp;gt;JDBC: JDBC-&amp;gt;&amp;gt;ResultSet: ResultSet--&amp;gt;&amp;gt;TypeHandler: ResultSet--&amp;gt;&amp;gt;ResultSetHandler: TypeHandler--&amp;gt;&amp;gt;ResultSetHandler: ResultSetHandler-&amp;gt;&amp;gt;StatementHandler: StatementHandler-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;SqlSession: Note left of SqlSession: asa   1 2 3 4  flowchart TD subgraph configuration mappedStatement1 --&amp;gt; mappedStatement2 end   configuration:</description>
+    </item>
+    
+    <item>
+      <title>mybati缓存了解</title>
+      <link>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</link>
+      <pubDate>Tue, 22 Mar 2022 11:16:17 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</guid>
+      <description>mybatis的缓存 首先来看下mybatis对缓存的规范，规范嘛就是定义的接口啦。
+缓存接口 ​	Cache接口 定义了缓存的方法
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57  public interface Cache { /**获取缓存的id * @return The identifier of this cache */ String getId(); /**添加缓存 * @param key Can be any object but usually it is a {@link CacheKey} * @param value The result of a select.</description>
+    </item>
+    
+    <item>
+      <title>SpringCloud &#43; SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</title>
+      <link>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
+      <pubDate>Tue, 22 Mar 2022 11:16:17 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
+      <description>SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题 场景: 公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：
+1  localhost:10001/verify/compreport/month?data={&amp;#34;compRefOwid&amp;#34;:&amp;#34;1448487922485252098&amp;#34;, &amp;#34;yhMonth&amp;#34;:&amp;#34;2021-10&amp;#34;}   原因： Tomcat的新版本中增加了一个新特性，就是严格按照 RFC 3986规范进行访问解析，而 RFC 3986规范定义了Url中只允许包含英文字母（a-zA-Z）、数字（0-9）、-_.~4个特殊字符以及所有保留字符(RFC3986中指定了以下字符为保留字符：! * ’ ( ) ; : @ &amp;amp; = + $ , / ? # [ ])。
+解决方案选择：  前端请求时encode特殊字段(算了，不能因为自己的原因加大前端工作量) 改用post请求(emmm没有办法的办法,看着难受就是想要改了) 改Tomcat配置文件(由于是springboot项目，内嵌了tomcat，不方便修改，好吧就是我比较菜) 在后端代码层面解决这个问题  解决方法： 其他服务：由于使用的是内嵌的tomcat，网上常见的 解决spring boot请求包含非法字符问题 The valid characters are defined in RFC 7230 and RFC 3986 错误 配置TomcatServletWebServerFactory的方式使用时会导致两个TomcatServletWebServerFactory使springboot项目报错Unable to start ServletWebServerApplicationContext due to multiple ServletWebServerFactory beans而无法启动。而使用yml配置的方式也无法生效。
+1 2 3 4 5 6 7 8 9  server:tomcat:relaxed-query-chars:- &amp;#34;&amp;lt;&amp;#34;- &amp;#34;&amp;gt;&amp;#34;- &amp;#34;[&amp;#34;- &amp;#34;]&amp;#34;- &amp;#34;{&amp;#34;- &amp;#34;}&amp;#34;  随后参考了继承WebServerFactoryCustomizer的方式来修改Tomcat配置</description>
     </item>
     
     <item>
