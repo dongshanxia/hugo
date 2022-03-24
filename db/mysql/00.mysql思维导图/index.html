@@ -470,42 +470,116 @@
       <ul>
         <li><a href="#1-cs架构">1. cs架构</a></li>
         <li><a href="#2-安装与启动">2. 安装与启动</a></li>
-        <li><a href="#3-连接过程">3. 连接过程</a></li>
-        <li><a href="#4-常用引擎">4. 常用引擎</a></li>
+        <li><a href="#3-连接过程">3. 连接过程</a>
+          <ul>
+            <li><a href="#1-客户端发起连接3种tcp命名通道与共享内存socket">1. 客户端发起连接（3种，tcp,命名通道与共享内存，socket）</a></li>
+            <li><a href="#2-服务端接受连接httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220208173328925png">2. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220208173328925.png">服务端接受连接</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#4-常用引擎">4. 常用引擎</a>
+          <ul>
+            <li><a href="#1-innodb">1. InnoDB</a></li>
+            <li><a href="#2-myisam">2. MyISAM</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#2-启动选项与变量">2. 启动选项与变量</a>
       <ul>
-        <li><a href="#1-设置mysql启动参数就近原则">1. 设置mysql启动参数（就近原则）</a></li>
+        <li><a href="#1-设置mysql启动参数就近原则">1. 设置mysql启动参数（就近原则）</a>
+          <ul>
+            <li><a href="#1-命令行和配置文件">1. 命令行和配置文件</a></li>
+            <li><a href="#2-配置文件">2. 配置文件</a></li>
+          </ul>
+        </li>
         <li><a href="#1-系统变量">1. 系统变量</a></li>
         <li><a href="#2-状态变量">2. 状态变量</a></li>
       </ul>
     </li>
     <li><a href="#3-字符串比较规则">3. 字符串比较规则</a>
       <ul>
-        <li><a href="#1-什么是字符集">1. 什么是字符集</a></li>
-        <li><a href="#2-字符集比较规则">2. 字符集比较规则</a></li>
-        <li><a href="#3-字符集应用">3. 字符集应用</a></li>
-        <li><a href="#4-四个级别的字符集和比较规则">4. 四个级别的字符集和比较规则</a></li>
+        <li><a href="#1-什么是字符集">1. 什么是字符集</a>
+          <ul>
+            <li><a href="#使用二进制的一组数据代表现实世界的字符串">使用二进制的一组数据代表现实世界的字符串。</a></li>
+            <li><a href="#常用字符集-gbk最多2字节uft8最多3字节utf8mb4最多4字节">常用字符集 GBK(最多2字节),uft8（最多3字节）,utf8mb4（最多4字节）</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-字符集比较规则">2. 字符集比较规则</a>
+          <ul>
+            <li><a href="#用来比较同一种字符集的字符大小">用来比较同一种字符集的字符大小</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-字符集应用">3. 字符集应用</a>
+          <ul>
+            <li><a href="#注意对于同一个字符串如果编码和解码采用的不同字符集那么结果可能会不同">注意：对于同一个字符串，如果编码和解码采用的不同字符集，那么结果可能会不同。</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-四个级别的字符集和比较规则">4. 四个级别的字符集和比较规则</a>
+          <ul>
+            <li><a href="#服务器级别">服务器级别</a></li>
+            <li><a href="#数据库级别">数据库级别</a></li>
+            <li><a href="#表级别">表级别</a></li>
+            <li><a href="#列级别">列级别</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#4-innodb记录结构">4. InnoDB记录结构</a>
       <ul>
-        <li><a href="#1-innodb页简介">1. InnoDB页简介</a></li>
-        <li><a href="#2-innodb行格式">2. InnoDB行格式</a></li>
-        <li><a href="#3-行格式分类">3. 行格式分类</a></li>
-        <li><a href="#4-行溢出">4. 行溢出</a></li>
+        <li><a href="#1-innodb页简介">1. InnoDB页简介</a>
+          <ul>
+            <li><a href="#磁盘和内存数据交互的最小单位一页16kb">磁盘和内存数据交互的最小单位，一页=16kb。</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-innodb行格式">2. InnoDB行格式</a>
+          <ul>
+            <li><a href="#1-简介">1. 简介</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-行格式分类">3. 行格式分类</a>
+          <ul>
+            <li><a href="#1-compact类型行格式">1. compact类型行格式</a></li>
+            <li><a href="#2-redundant行格式">2. redundant行格式</a></li>
+            <li><a href="#3-dynamic行格式">3. Dynamic行格式</a></li>
+            <li><a href="#3-compressed行格式">3. Compressed行格式</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-行溢出">4. 行溢出</a>
+          <ul>
+            <li><a href="#1-什么是行溢出">1. 什么是行溢出</a></li>
+            <li><a href="#2-行溢出的临界值">2. 行溢出的临界值</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#5-innodb数据页结构">5. InnoDB数据页结构</a>
       <ul>
-        <li></li>
+        <li>
+          <ul>
+            <li><a href="#1-概念存储数据的页">1. 概念：存储数据的页</a></li>
+            <li><a href="#2-数据页结构httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220213170828841png">2. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220213170828841.png">数据页结构</a></a></li>
+            <li><a href="#3-记录在数据页的数据结构">3. 记录在数据页的数据结构</a></li>
+            <li><a href="#4-根据主键在页中查找过程">4. 根据主键在页中查找过程</a></li>
+            <li><a href="#5-页与页之间的数据结构">5. 页与页之间的数据结构</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#6-mysql索引">6. mysql索引</a>
       <ul>
-        <li><a href="#1-innodb索引方案">1. InnoDB索引方案</a></li>
-        <li><a href="#2-myisam索引方案">2. MyISAM索引方案</a></li>
+        <li><a href="#1-innodb索引方案">1. InnoDB索引方案</a>
+          <ul>
+            <li><a href="#1-页分裂">1. 页分裂</a></li>
+            <li><a href="#1-前提条件下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值">1. 前提条件：<strong>下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值。</strong></a></li>
+            <li><a href="#2-索引-给数据页做目录">2. 索引 （给数据页做目录）</a></li>
+            <li><a href="#3-索引类型">3. 索引类型</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-myisam索引方案">2. MyISAM索引方案</a>
+          <ul>
+            <li><a href="#和innodb索引区别myisam的索引的子节点不存数据只存数据的行号和索引列而innodb索引的子节点是保存了索引列和主键如果是聚簇索引保存整行数据和主键">和InnoDB索引区别：MyISAM的索引的子节点不存数据，只存数据的<code>行号和索引列</code>，而InnoDB索引的子节点是保存了索引列和主键（如果是聚簇索引保存整行数据和主键）</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
