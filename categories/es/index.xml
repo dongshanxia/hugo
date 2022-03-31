@@ -6,11 +6,11 @@
     <description>Recent content in es on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Mar 2022 15:10:46 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Mar 2022 15:11:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/es/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安装es</title>
       <link>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</link>
-      <pubDate>Thu, 31 Mar 2022 15:10:46 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:11:57 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/es/%E5%AE%89%E8%A3%85es/</guid>
       <description>警告  es 最好不要 7.10.2 之后的版本 推荐用opensearch-1.1.0  硬件服务器  10.168.2.87 10.168.2.88 10.168.2.89  1.环境准备 (每台都需要做) 1.1创建用户(root用户操作)  useradd top  1.2 修改用户密码(root用户操作)  passwd top  1.3 赋予用户sudo权限(root用户操作)   修改命令
