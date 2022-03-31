@@ -417,7 +417,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="err">（原来有数据的一张表）</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-40-31-image-20211214154046316.png" alt="image-20211214154046316"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-40-31-image-20211214154046316.png" alt="image-20211214154046316"></p>
 <h3 id="5时间函数">5、时间函数</h3>
 <ul>
 <li>to_date</li>
@@ -430,7 +430,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">to_date</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-47-17-image-20211214154725488.png" alt="image-20211214154725488"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-47-17-image-20211214154725488.png" alt="image-20211214154725488"></p>
 <ul>
 <li>from_unixtime  (这个不行)   &mdash;- select from_unixtime(1323308943,’yyyyMMdd’);</li>
 </ul>
@@ -453,7 +453,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-54-3-image-20211214155415436.png" alt="image-20211214155415436"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-54-3-image-20211214155415436.png" alt="image-20211214155415436"></p>
 </li>
 <li>
 <p>year 返回日期中的年</p>
@@ -465,7 +465,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">year</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/15-59-43-image-20211214155950842.png" alt="image-20211214155950842"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-59-43-image-20211214155950842.png" alt="image-20211214155950842"></p>
 </li>
 <li>
 <p>month 返回日期中的月份</p>
@@ -477,7 +477,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">month</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-2-5-image-20211214160221219.png" alt="image-20211214160221219"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-2-5-image-20211214160221219.png" alt="image-20211214160221219"></p>
 </li>
 <li>
 <p>day：返回日期中的天</p>
@@ -489,7 +489,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">day</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-10-3-image-20211214161011441.png" alt="image-20211214161011441"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-10-3-image-20211214161011441.png" alt="image-20211214161011441"></p>
 </li>
 <li>
 <p>hour：返回日期中的小时</p>
@@ -501,7 +501,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">hour</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-11-8-image-20211214161124084.png" alt="image-20211214161124084"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-11-8-image-20211214161124084.png" alt="image-20211214161124084"></p>
 </li>
 <li>
 <p>minute：返回日期中的分钟</p>
@@ -513,7 +513,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">minute</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-12-52-image-20211214161259839.png" alt="image-20211214161259839"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-12-52-image-20211214161259839.png" alt="image-20211214161259839"></p>
 </li>
 <li>
 <p>second：返回日期中的秒</p>
@@ -525,7 +525,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="k">second</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-13-45-image-20211214161401332.png" alt="image-20211214161401332"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-13-45-image-20211214161401332.png" alt="image-20211214161401332"></p>
 </li>
 <li>
 <p>weekofyear：返回日期在当前周数</p>
@@ -537,7 +537,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">weekofyear</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-15-17-image-20211214161525157.png" alt="image-20211214161525157"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-15-17-image-20211214161525157.png" alt="image-20211214161525157"></p>
 </li>
 <li>
 <p>datediff：返回开始日期减去结束日期的天数</p>
@@ -549,7 +549,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;2021-12-09&#39;</span><span class="p">,</span><span class="s1">&#39;2021-12-14&#39;</span><span class="p">);</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-18-7-image-20211214161822514.png" alt="image-20211214161822514"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-18-7-image-20211214161822514.png" alt="image-20211214161822514"></p>
 </li>
 <li>
 <p>date_sub：返回日期前n天的日期</p>
@@ -561,7 +561,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">date_sub</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/16-37-31-image-20211214163739034.png" alt="image-20211214163739034"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-37-31-image-20211214163739034.png" alt="image-20211214163739034"></p>
 </li>
 <li>
 <p>date_add：返回日期后n天的日期</p>
@@ -573,7 +573,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">date_add</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/17-6-8-image-20211214170616062.png" alt="image-20211214170616062"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/17-6-8-image-20211214170616062.png" alt="image-20211214170616062"></p>
 </li>
 <li>
 <p>特殊组合</p>
@@ -585,7 +585,7 @@
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">xcb_id</span><span class="p">,</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="n">xcb_timestamp</span><span class="p">),</span><span class="s1">&#39;yyyy-MM-dd hh:mm:ss&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xcb_oracle_hive_base_dt</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://gitee.com/dongshanxia/img/raw/master/img/2021-12-14/17-10-52-image-20211214171058188.png" alt="image-20211214171058188"></p>
+</div><p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/17-10-52-image-20211214171058188.png" alt="image-20211214171058188"></p>
 </li>
 </ul>
 <h3 id="6特殊起飞">6、特殊起飞</h3>
@@ -735,7 +735,7 @@ from xcb_oracle_hive_base_dt t;
 <div class="pageOut">
             
                 <div class="pageTop">
-                    <a class="" href="/hugo/db/oracle/">
+                    <a class="" href="/hugo/db/mysql/">
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -743,7 +743,7 @@ from xcb_oracle_hive_base_dt t;
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href="/hugo/db/pgsql/">
+                    <a class="" href="/hugo/db/mysql/09.%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86mysql/">
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

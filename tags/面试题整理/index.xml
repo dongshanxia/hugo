@@ -6,11 +6,11 @@
     <description>Recent content in 面试题整理 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Mar 2022 09:55:39 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Mar 2022 15:04:10 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4.JAVA多线程并发</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>东方通信</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</guid>
       <description> 工单号怎么保证唯一 部署后怎么查看项目是否成功启动 跨域问题如何解决 微服务有哪些组件 gateway怎么配置匹配服务转发优先级 gateway配置服务转发需要配置哪些 权限系统怎么设计 缓存雪崩 mysql查看慢sql mysql的char和vachar的区别 mybatis的$和#的区别 除了用#以外还有别的方式防止sql注入 抽象类能用final修饰吗 Thread Local Get请求和Post请求的区别 tcp和udp的区别 Spring的IOC和AOP 反射 Docker内部有哪些组件 Docker查看镜像的命令 设计模式  </description>
@@ -28,7 +28,7 @@
     <item>
       <title>中设天合</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</guid>
       <description> redis用到的场景 为什么要用redis redis重启后缓存数据怎么办 redis的持久化 左连接、右连接、外连接、内连接的区别 spring事务的作用 spring的注解有哪些 springMVC简单实现原理 JVM中会内存泄漏吗，为什么会出现这样的情况  </description>
@@ -37,16 +37,25 @@
     <item>
       <title>思汉科技</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</guid>
       <description> 堆栈和队列的区别 Java是单继承还是多继承的 线程的六种状态 多线程Start后会立即执行吗 常用的集合 ArrayList和LinkedList的区别 项目开发的分层 Linux的命令 Linux中怎么查看Java进程 synchronized 悲观锁 可重入锁 synchronized做了哪些优化 锁是什么持有的 synchronized使用方式 mysql储存引擎 innodb数据按什么存储 innodb如果没有指定主键的话会怎么样 mysql的索引 innodb中能否指定使用hash索引 怎么优化查询慢的sql 怎么避免二次回表 Docker常用命令 vue常用模板指令 vue的生命周期 js声明变量的方式 微服务对比单体项目的区别 redis的数据结构 redis的持久化 RDB和AOF的区别 微服务服务之间用什么调用 NIO和AIO、BIO的区别 分布式事务 分布式锁 Java是引用传递还是值传递  </description>
     </item>
     
     <item>
+      <title>杭州九玩</title>
+      <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E4%B9%9D%E7%8E%A9/</link>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E4%B9%9D%E7%8E%A9/</guid>
+      <description> SpringCloud和SpringBoot的区别 用户同时请求一个功能怎么解决并发问题 io和nio的区别 nio为什么效率高 数据库连接池和jdbc的关系 数据库连接池的优势 数据库连接池的功能 HashMap的底层原理 HashMap为什么要用红黑树 反射的原理 Spring底层知道哪些 动态代理实现方式 线程的start和run的区别 如何部署项目 单向链表数据的反转实现 docker查看运行容器 docker进入容器 nacos配置实时更新 nacos配置实时更新的原理 长轮询的缺点  </description>
+    </item>
+    
+    <item>
       <title>杭州健景</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</guid>
       <description> String为什么不可变更 String底层使用什么数据结构 ArrayList和LinkList的区别 HashTable为什么线程安全 HashMap用了什么数据结构 HashMap什么情况下变成红黑树的结构 线程池的核心参数 线程池的几种拒绝策略 线程池有哪几种 synchronized锁升级 单例模式应用场所 Lock锁 ReentrantLock JVM Spirng的IOC和AOP IOC的底层原理 AOP的使用场景 Spring怎么配置事务 为什么要开启事务 Spring事务的失效场景 Mysql的慢查询 如何查询mysql是否用到索引 索引下推 B+树 索引数据存在B+树的哪里 事务的四种隔离级别 事务的隔离级别能避免什么 redis缓存淘汰策略 redis的持久化 MQ ThreadLocal SpringMVC运行流程 线程安全的ArrayList是哪个  </description>
@@ -55,7 +64,7 @@
     <item>
       <title>杭州巨博</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</guid>
       <description> 工单号怎么保证唯一 常用的集合 ArrayList和LinkedList的区别 HashMap 线程的生命周期 什么情况下会产生死锁 怎么解决死锁 redis为什么速度快 redis的持久化 mysql的索引 mysql索引用在什么字段 订单号、用户id，时间(精确到天)，查当天的订单量和用户单天的订单，如何添加索引 事务的原子性 SpringGateway服务分发转发 网关模块的容错机制 tcp的三次握手和四次挥手 注解的原理 自己写过哪些功能的注解  </description>
@@ -64,7 +73,7 @@
     <item>
       <title>杭州微宏</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</guid>
       <description>openFeign的主要作用
@@ -91,7 +100,7 @@
     <item>
       <title>杭州润德</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</guid>
       <description> Spring的常用注解 nacos配置数据库 nacos修改配置是否实时刷新的 Spring的生命周期 Spring的IOC和AOP Spring是怎么解决依赖循环 @Autowired和@Resource的区别 SpringBoot重要的注解 为什么SpringBoot加了@SpringBootApplication可以直接启动项目 SpringBoot和SpringCloud的关系 SpringCloud的组件 有哪些中间件可以作为注册中心和配置中心 mybatis的动态标签 gateway的作用 微服务项目客户端请求到服务的整个过程 设计负载均衡的轮询和权重 mybatis配置一级缓存、二级缓存 mysql的事务 事务的隔离级别以及每种隔离级别造成的现象 nacos的心跳机制以及默认几秒请求一次 HashMap和HashTable的区别 TreeMap和HashMap的区别 HashMap初始化默认容量 HashMap的底层原理 HashMap在JDK1.7跟JDK1.8的区别，为什么要这么做 HashTable为什么线程安全 除了synchronized，还有其他的加锁方式 公平锁和非公平锁 synchronized和Lock的区别 分布式锁的实现原理 redis的持久化 AOF和RDB的区别 stream流有哪些操作以及方法 Java的八大基本数据类型 有哪些引用数据类型 redis的哨兵 redis的哨兵和主从复制之间的关系 redis的key最大能存多大数据  </description>
@@ -100,7 +109,7 @@
     <item>
       <title>杭州重构</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</link>
-      <pubDate>Thu, 24 Mar 2022 09:55:39 +0800</pubDate>
+      <pubDate>Thu, 31 Mar 2022 15:04:10 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</guid>
       <description>  springboot配置多数据源
