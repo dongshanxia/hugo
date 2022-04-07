@@ -6,11 +6,11 @@
     <description>Recent content in docker-compose on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Mar 2022 15:11:57 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Apr 2022 10:15:34 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Compose安装</title>
       <link>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Thu, 31 Mar 2022 15:11:57 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/install/docker-compose%E5%AE%89%E8%A3%85/</guid>
       <description>docker-compose安装步骤 1.下载 url: https://github.com/docker/compose/releases 备用地址：192.168.1.9:8080/share.cgi?ssid=05dGVzz
