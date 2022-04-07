@@ -2,27 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://127.0.0.1:1313/hugo/categories/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/git/gitlab/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/categories/gitlab/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/git/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/install/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
-    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
-    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
-  </url><url>
     <loc>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2022-02-17T15:42:19+08:00</lastmod>
   </url><url>
@@ -31,6 +10,9 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/db/mysql/14.b&#43;%E6%A0%91%E7%B4%A2%E5%BC%95%E7%9A%84%E7%94%B1%E6%9D%A5/</loc>
     <lastmod>2022-03-06T15:52:41+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/cluster/</loc>
     <lastmod>2021-11-24T10:46:51+08:00</lastmod>
@@ -95,6 +77,9 @@
     <loc>http://127.0.0.1:1313/hugo/db/mysql/12.innodb%E8%AE%B0%E5%BD%95%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2022-03-06T15:52:41+08:00</lastmod>
   </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/install/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
+  </url><url>
     <loc>http://127.0.0.1:1313/hugo/categories/install/</loc>
     <lastmod>2022-03-31T13:55:50+08:00</lastmod>
   </url><url>
@@ -142,6 +127,9 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/docker/mssql%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-10-12T10:35:46+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/mybatis/</loc>
     <lastmod>2021-12-08T12:19:57+08:00</lastmod>
@@ -244,6 +232,9 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/start/</loc>
     <lastmod>2022-01-05T09:48:23+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/tags/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/tar/</loc>
     <lastmod>2021-05-27T10:09:53+08:00</lastmod>
@@ -376,6 +367,15 @@
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
     <lastmod>2022-03-21T21:52:19+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/git/gitlab/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/categories/gitlab/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:1313/hugo/git/</loc>
+    <lastmod>2022-04-07T16:50:38+08:00</lastmod>
   </url><url>
     <loc>http://127.0.0.1:1313/hugo/about/dream/xcb/2022/</loc>
     <lastmod>2022-04-07T10:59:55+08:00</lastmod>
