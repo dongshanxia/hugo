@@ -6,11 +6,11 @@
     <description>Recent content in java on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 07 Apr 2022 10:15:34 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Apr 2022 10:59:53 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4.JAVA多线程并发</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/4.-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>java日志体系</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%97%A5%E5%BF%97%E4%BD%93%E7%B3%BB/</guid>
       <description>java日志体系 常用日志框架
@@ -38,7 +38,7 @@ Constructor对象在LogFactory对象里，然后继续执行tryImplementation、
     <item>
       <title>mybatis拦截器执行过程</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86/</guid>
       <description>m[toc]
@@ -51,7 +51,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>mybatis核心组件</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybatis%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  sequenceDiagram participant SqlSession participant Excutor participant StatementHandler participant parameterHandler participant ResultSetHandler participant TypeHandler participant ResultSet participant JDBC SqlSession-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;StatementHandler: StatementHandler--&amp;gt;&amp;gt;parameterHandler: StatementHandler--&amp;gt;&amp;gt;JDBC: parameterHandler--&amp;gt;&amp;gt;TypeHandler: parameterHandler-&amp;gt;&amp;gt;JDBC: JDBC-&amp;gt;&amp;gt;ResultSet: ResultSet--&amp;gt;&amp;gt;TypeHandler: ResultSet--&amp;gt;&amp;gt;ResultSetHandler: TypeHandler--&amp;gt;&amp;gt;ResultSetHandler: ResultSetHandler-&amp;gt;&amp;gt;StatementHandler: StatementHandler-&amp;gt;&amp;gt;Excutor: Excutor-&amp;gt;&amp;gt;SqlSession: Note left of SqlSession: asa   1 2 3 4  flowchart TD subgraph configuration mappedStatement1 --&amp;gt; mappedStatement2 end   configuration:</description>
@@ -60,7 +60,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>mybati缓存了解</title>
       <link>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/mybatis/mybati%E7%BC%93%E5%AD%98%E4%BA%86%E8%A7%A3/</guid>
       <description>mybatis的缓存 首先来看下mybatis对缓存的规范，规范嘛就是定义的接口啦。
@@ -71,7 +71,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking搭建(一)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E5%BB%BA%E4%B8%80/</guid>
       <description>基于 docker 部署 skywalking 并实现 SpringBoot 全链路监控 [toc]
@@ -85,7 +85,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking搭配springboot应用(三)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E6%90%AD%E9%85%8Dspringboot%E5%BA%94%E7%94%A8%E4%B8%89/</guid>
       <description>上传springboot的jar包 1  cd /opt/jar   修改agent配置 1 2 3 4 5 6 7  cd /opt/software/skywalking/apache-skywalking-apm-bin mkdir /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot cp /opt/software/skywalking/apache-skywalking-apm-bin/agent/* /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot # 修改应用名称 vim /opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/config/agent.config   启动应用 1  java -javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent-mysql-boot/skywalking-agent.jar -jar /opt/jar/mysql-boot.jar    请求一下项目 sky-walking-ui就有记录了！
@@ -95,7 +95,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking监控mysql(四)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E7%9B%91%E6%8E%A7mysql%E5%9B%9B/</guid>
       <description>  准备以mysql为数据库的springboot应用
@@ -108,7 +108,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SkyWalking配合tomcat使用(二)</title>
       <link>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/skywalking/skywalking%E9%85%8D%E5%90%88tomcat%E4%BD%BF%E7%94%A8%E4%BA%8C/</guid>
       <description>上传tomcat至服务器 1 2  #下载tomcat8 https://tomcat.apache.org/download-80.cgi   修改tomcat配置 1 2 3 4  # 端口修改8081 vim /opt/software/apache-tomcat-8.5.68/conf/server.xml # 修改tomcat启动方式 在加catalina.sh最上面！ CATALINA_OPTS=&amp;#34;$CATALINA_OPTS-javaagent:/opt/software/skywalking/apache-skywalking-apm-bin/agent/skywalking-agent.jar&amp;#34;; export CATALINA_OPTS   上传springMvc的war包 1  cd /opt/software/apache-tomcat-8.5.68/webapps/   启动tomcat 1  ./opt/software/apache-tomcat-8.5.68/bin/startup.sh    请求一下项目 sky-walking-ui就有记录了！
@@ -118,7 +118,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>SpringCloud &#43; SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题</title>
       <link>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/get%E8%AF%B7%E6%B1%82%E6%97%A0%E6%B3%95%E4%BC%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
       <description>SpringCloud + SpringGateway 解决Get请求传参为特殊字符导致400无法通过网关转发的问题 场景: 公司以前的框架统一使用Post请求，传入参数为一个定义的公共类，类里面有个String类型的bean字段传入json字符串作为传参，emmm就想给他改成restful风格，在传入参数公共类无法改变的情况下，Get请求会传入特殊字符，导致400错误。例如：
@@ -130,7 +130,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>东方通信</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%9C%E6%96%B9%E9%80%9A%E4%BF%A1/</guid>
       <description> 工单号怎么保证唯一 部署后怎么查看项目是否成功启动 跨域问题如何解决 微服务有哪些组件 gateway怎么配置匹配服务转发优先级 gateway配置服务转发需要配置哪些 权限系统怎么设计 缓存雪崩 mysql查看慢sql mysql的char和vachar的区别 mybatis的$和#的区别 除了用#以外还有别的方式防止sql注入 抽象类能用final修饰吗 Thread Local Get请求和Post请求的区别 tcp和udp的区别 Spring的IOC和AOP 反射 Docker内部有哪些组件 Docker查看镜像的命令 设计模式  </description>
@@ -139,7 +139,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>中设天合</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E4%B8%AD%E8%AE%BE%E5%A4%A9%E5%90%88/</guid>
       <description> redis用到的场景 为什么要用redis redis重启后缓存数据怎么办 redis的持久化 左连接、右连接、外连接、内连接的区别 spring事务的作用 spring的注解有哪些 springMVC简单实现原理 JVM中会内存泄漏吗，为什么会出现这样的情况  </description>
@@ -148,7 +148,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>思汉科技</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%80%9D%E6%B1%89%E7%A7%91%E6%8A%80/</guid>
       <description> 堆栈和队列的区别 Java是单继承还是多继承的 线程的六种状态 多线程Start后会立即执行吗 常用的集合 ArrayList和LinkedList的区别 项目开发的分层 Linux的命令 Linux中怎么查看Java进程 synchronized 悲观锁 可重入锁 synchronized做了哪些优化 锁是什么持有的 synchronized使用方式 mysql储存引擎 innodb数据按什么存储 innodb如果没有指定主键的话会怎么样 mysql的索引 innodb中能否指定使用hash索引 怎么优化查询慢的sql 怎么避免二次回表 Docker常用命令 vue常用模板指令 vue的生命周期 js声明变量的方式 微服务对比单体项目的区别 redis的数据结构 redis的持久化 RDB和AOF的区别 微服务服务之间用什么调用 NIO和AIO、BIO的区别 分布式事务 分布式锁 Java是引用传递还是值传递  </description>
@@ -157,7 +157,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州九玩</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E4%B9%9D%E7%8E%A9/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E4%B9%9D%E7%8E%A9/</guid>
       <description> SpringCloud和SpringBoot的区别 用户同时请求一个功能怎么解决并发问题 io和nio的区别 nio为什么效率高 数据库连接池和jdbc的关系 数据库连接池的优势 数据库连接池的功能 HashMap的底层原理 HashMap为什么要用红黑树 反射的原理 Spring底层知道哪些 动态代理实现方式 线程的start和run的区别 如何部署项目 单向链表数据的反转实现 docker查看运行容器 docker进入容器 nacos配置实时更新 nacos配置实时更新的原理 长轮询的缺点  </description>
@@ -166,7 +166,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州健景</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%81%A5%E6%99%AF/</guid>
       <description> String为什么不可变更 String底层使用什么数据结构 ArrayList和LinkList的区别 HashTable为什么线程安全 HashMap用了什么数据结构 HashMap什么情况下变成红黑树的结构 线程池的核心参数 线程池的几种拒绝策略 线程池有哪几种 synchronized锁升级 单例模式应用场所 Lock锁 ReentrantLock JVM Spirng的IOC和AOP IOC的底层原理 AOP的使用场景 Spring怎么配置事务 为什么要开启事务 Spring事务的失效场景 Mysql的慢查询 如何查询mysql是否用到索引 索引下推 B+树 索引数据存在B+树的哪里 事务的四种隔离级别 事务的隔离级别能避免什么 redis缓存淘汰策略 redis的持久化 MQ ThreadLocal SpringMVC运行流程 线程安全的ArrayList是哪个  </description>
@@ -175,7 +175,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州巨博</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%B7%A8%E5%8D%9A/</guid>
       <description> 工单号怎么保证唯一 常用的集合 ArrayList和LinkedList的区别 HashMap 线程的生命周期 什么情况下会产生死锁 怎么解决死锁 redis为什么速度快 redis的持久化 mysql的索引 mysql索引用在什么字段 订单号、用户id，时间(精确到天)，查当天的订单量和用户单天的订单，如何添加索引 事务的原子性 SpringGateway服务分发转发 网关模块的容错机制 tcp的三次握手和四次挥手 注解的原理 自己写过哪些功能的注解  </description>
@@ -184,7 +184,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州微宏</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E5%BE%AE%E5%AE%8F/</guid>
       <description>openFeign的主要作用
@@ -211,7 +211,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州润德</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E6%B6%A6%E5%BE%B7/</guid>
       <description> Spring的常用注解 nacos配置数据库 nacos修改配置是否实时刷新的 Spring的生命周期 Spring的IOC和AOP Spring是怎么解决依赖循环 @Autowired和@Resource的区别 SpringBoot重要的注解 为什么SpringBoot加了@SpringBootApplication可以直接启动项目 SpringBoot和SpringCloud的关系 SpringCloud的组件 有哪些中间件可以作为注册中心和配置中心 mybatis的动态标签 gateway的作用 微服务项目客户端请求到服务的整个过程 设计负载均衡的轮询和权重 mybatis配置一级缓存、二级缓存 mysql的事务 事务的隔离级别以及每种隔离级别造成的现象 nacos的心跳机制以及默认几秒请求一次 HashMap和HashTable的区别 TreeMap和HashMap的区别 HashMap初始化默认容量 HashMap的底层原理 HashMap在JDK1.7跟JDK1.8的区别，为什么要这么做 HashTable为什么线程安全 除了synchronized，还有其他的加锁方式 公平锁和非公平锁 synchronized和Lock的区别 分布式锁的实现原理 redis的持久化 AOF和RDB的区别 stream流有哪些操作以及方法 Java的八大基本数据类型 有哪些引用数据类型 redis的哨兵 redis的哨兵和主从复制之间的关系 redis的key最大能存多大数据  </description>
@@ -220,7 +220,7 @@ mybatis的拦截器本人平时也很少用到，没了解之前，也只是知�
     <item>
       <title>杭州重构</title>
       <link>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</link>
-      <pubDate>Thu, 07 Apr 2022 10:15:34 +0800</pubDate>
+      <pubDate>Thu, 07 Apr 2022 10:59:53 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/%E6%9D%AD%E5%B7%9E%E9%87%8D%E6%9E%84/</guid>
       <description>  springboot配置多数据源
