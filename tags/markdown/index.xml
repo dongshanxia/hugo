@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>markdown on My New Hugo Site</title>
+    <title>markdown on </title>
     <link>http://127.0.0.1:1313/hugo/tags/markdown/</link>
-    <description>Recent content in markdown on My New Hugo Site</description>
+    <description>Recent content in markdown on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 05 Jan 2022 10:37:26 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 10:33:29 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown</title>
       <link>http://127.0.0.1:1313/hugo/software/markdown/</link>
-      <pubDate>Wed, 05 Jan 2022 10:37:26 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 10:33:29 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/software/markdown/</guid>
       <description>markdown学习总结 标题的使用   一级标题：使用&amp;quot;=&amp;ldquo;显示一级标题

@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>分区 on My New Hugo Site</title>
+    <title>分区 on </title>
     <link>http://127.0.0.1:1313/hugo/tags/%E5%88%86%E5%8C%BA/</link>
-    <description>Recent content in 分区 on My New Hugo Site</description>
+    <description>Recent content in 分区 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Jul 2021 16:59:24 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%88%86%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jul 2021 16:58:26 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/%E5%88%86%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parted</title>
       <link>http://127.0.0.1:1313/hugo/linux/parted/</link>
-      <pubDate>Wed, 07 Jul 2021 16:59:24 +0800</pubDate>
+      <pubDate>Wed, 07 Jul 2021 16:58:26 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/parted/</guid>
       <description>parted 规划分区   进入某个磁盘的分区
  parted /dev/sdb    新建标签类型
   mklabel
-  1 2 3 4  (parted) mklabel 新的磁盘标签类型？ gpt 警告: The existing disk label on /dev/sdb will be destroyed and all data on this disk will be lost. Do you want to continue? 是/Yes/否/No? yes       新建分区
+  (parted) mklabel 新的磁盘标签类型？ gpt 警告: The existing disk label on /dev/sdb will be destroyed and all data on this disk will be lost. Do you want to continue? 是/Yes/否/No? yes     新建分区
   mkpart
-  1 2 3 4 5  (parted) mkpart 分区名称？ []?</description>
+  (parted) mkpart 分区名称？ []? BigDataPart 文件系统类型？ [ext2]? ext4 起始点？ 1 可以输入具体的起始点（1M或者1G）1表示扇区最小的起始点 结束点？ -1 结束点一样也可以输入具体的结束点（100M或者300G）-1表示扇区最后的结束点     输出分区</description>
     </item>
     
   </channel>

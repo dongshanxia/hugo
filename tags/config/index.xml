@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>config on My New Hugo Site</title>
+    <title>config on </title>
     <link>http://127.0.0.1:1313/hugo/tags/config/</link>
-    <description>Recent content in config on My New Hugo Site</description>
+    <description>Recent content in config on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Mar 2022 13:55:50 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/config/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 17:12:47 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/config/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Config</title>
       <link>http://127.0.0.1:1313/hugo/docker/config/</link>
-      <pubDate>Thu, 31 Mar 2022 13:55:50 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 17:12:47 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/config/</guid>
-      <description>daemon.json 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68  { &amp;#34;api-cors-header&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;authorization-plugins&amp;#34;:[], &amp;#34;bip&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;bridge&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cgroup-parent&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store-opts&amp;#34;:{}, &amp;#34;cluster-advertise&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;debug&amp;#34;: true, #启用debug的模式，启用后，可以看到很多的启动信息。默认false &amp;#34;default-gateway&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-gateway-v6&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-runtime&amp;#34;:&amp;#34;runc&amp;#34;, &amp;#34;default-ulimits&amp;#34;:{}, &amp;#34;disable-legacy-registry&amp;#34;:false, &amp;#34;dns&amp;#34;: [&amp;#34;192.</description>
+      <description>daemon.json { &amp;#34;api-cors-header&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;authorization-plugins&amp;#34;:[], &amp;#34;bip&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;bridge&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cgroup-parent&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;cluster-store-opts&amp;#34;:{}, &amp;#34;cluster-advertise&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;debug&amp;#34;: true, #启用debug的模式，启用后，可以看到很多的启动信息。默认false &amp;#34;default-gateway&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-gateway-v6&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;default-runtime&amp;#34;:&amp;#34;runc&amp;#34;, &amp;#34;default-ulimits&amp;#34;:{}, &amp;#34;disable-legacy-registry&amp;#34;:false, &amp;#34;dns&amp;#34;: [&amp;#34;192.168.1.1&amp;#34;], # 设定容器DNS的地址，在容器的 /etc/resolv.conf文件中可查看。 &amp;#34;dns-opts&amp;#34;: [], # 容器 /etc/resolv.conf 文件，其他设置 &amp;#34;dns-search&amp;#34;: [], # 设定容器的搜索域，当设定搜索域为 .example.com 时，在搜索一个名为 host 的 主机时，DNS不仅搜索host，还会搜索host.example.com 。注意：如果不设置， Docker 会默认用主机上的 /etc/resolv.conf 来配置容器。 &amp;#34;exec-opts&amp;#34;: [], &amp;#34;exec-root&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;fixed-cidr&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;fixed-cidr-v6&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;graph&amp;#34;:&amp;#34;/var/lib/docker&amp;#34;,＃已废弃，使用data-root代替,这个主要看docker的版本 &amp;#34;data-root&amp;#34;:&amp;#34;/var/lib/docker&amp;#34;,＃Docker运行时使用的根路径,根路径下的内容稍后介绍，默认/var/lib/docker &amp;#34;group&amp;#34;: &amp;#34;&amp;#34;,#Unix套接字的属组,仅指/var/run/docker.sock &amp;#34;hosts&amp;#34;: [], #设置容器hosts &amp;#34;icc&amp;#34;: false, &amp;#34;insecure-registries&amp;#34;: [], #配置docker的私库地址 &amp;#34;ip&amp;#34;:&amp;#34;0.0.0.0&amp;#34;, &amp;#34;iptables&amp;#34;: false, &amp;#34;ipv6&amp;#34;: false, &amp;#34;ip-forward&amp;#34;: false, #默认true, 启用 net.</description>
     </item>
     
   </channel>

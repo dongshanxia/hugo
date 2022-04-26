@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>study on My New Hugo Site</title>
+    <title>study on </title>
     <link>http://127.0.0.1:1313/hugo/categories/study/</link>
-    <description>Recent content in study on My New Hugo Site</description>
+    <description>Recent content in study on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Dec 2021 15:03:38 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Nov 2021 17:51:23 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zh</title>
       <link>http://127.0.0.1:1313/hugo/about/zh/</link>
-      <pubDate>Tue, 07 Dec 2021 15:03:38 +0800</pubDate>
+      <pubDate>Mon, 22 Nov 2021 17:51:23 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/about/zh/</guid>
       <description>1. hugo入门  git hugo vscodium  2. markdown的图片 解决  picgo gitea(免费图床) typora+picgo+gitea 或者 vscodium+picgo+gitea  3. gitea 创建帐号 [地址：][https://gitea.dongshanxia.top:35000/]

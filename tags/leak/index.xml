@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>leak on My New Hugo Site</title>
+    <title>leak on </title>
     <link>http://127.0.0.1:1313/hugo/tags/leak/</link>
-    <description>Recent content in leak on My New Hugo Site</description>
+    <description>Recent content in leak on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 10 Dec 2021 16:52:38 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/leak/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 16:35:26 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/leak/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leak</title>
       <link>http://127.0.0.1:1313/hugo/java/leak/</link>
-      <pubDate>Fri, 10 Dec 2021 16:52:38 +0800</pubDate>
+      <pubDate>Fri, 10 Dec 2021 16:35:26 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/java/leak/</guid>
       <description>漏洞之 Apache log4j2   版本: 2.0到 2.14.1
   修改成
-  1 2 3 4 5 6  &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.logging.log4j&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;log4j-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.15.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;   </description>
+  &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.logging.log4j&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;log4j-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.15.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; </description>
     </item>
     
   </channel>

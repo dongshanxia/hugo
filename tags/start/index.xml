@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>start on My New Hugo Site</title>
+    <title>start on </title>
     <link>http://127.0.0.1:1313/hugo/tags/start/</link>
-    <description>Recent content in start on My New Hugo Site</description>
+    <description>Recent content in start on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Apr 2022 16:28:46 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/start/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 09:48:23 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/start/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vue杂</title>
       <link>http://127.0.0.1:1313/hugo/vue/vue%E6%9D%82/</link>
-      <pubDate>Tue, 26 Apr 2022 16:28:46 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 09:48:23 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/vue/vue%E6%9D%82/</guid>
       <description>Vue的学习  ##命令

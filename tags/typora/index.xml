@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>typora on My New Hugo Site</title>
+    <title>typora on </title>
     <link>http://127.0.0.1:1313/hugo/tags/typora/</link>
-    <description>Recent content in typora on My New Hugo Site</description>
+    <description>Recent content in typora on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 05 Jan 2022 10:09:48 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 10:06:39 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/typora/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Typora</title>
       <link>http://127.0.0.1:1313/hugo/software/typora/</link>
-      <pubDate>Wed, 05 Jan 2022 10:09:48 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 10:06:39 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/software/typora/</guid>
       <description>typora 图片问题 [toc]

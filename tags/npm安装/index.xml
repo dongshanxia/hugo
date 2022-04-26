@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>npm安装 on My New Hugo Site</title>
+    <title>npm安装 on </title>
     <link>http://127.0.0.1:1313/hugo/tags/npm%E5%AE%89%E8%A3%85/</link>
-    <description>Recent content in npm安装 on My New Hugo Site</description>
+    <description>Recent content in npm安装 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 05 Jan 2022 10:09:48 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/npm%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 09:47:51 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/npm%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Npm</title>
       <link>http://127.0.0.1:1313/hugo/node/npm/</link>
-      <pubDate>Wed, 05 Jan 2022 10:09:48 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 09:47:51 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/node/npm/</guid>
-      <description>npm安装 设置软件默认安装位置 1  npm config set prefix &amp;#34;D:\Program Files\nodejs\node_global&amp;#34;   设置软件 缓存位置 1  npm config set cache &amp;#34;D:\Program Files\nodejs\node_cache&amp;#34;   设置镜像源 1  npm config set registry=http://registry.npm.taobao.org   npm 私有仓库 1、在命令行先查看 npm config get registry
+      <description>npm安装 设置软件默认安装位置 npm config set prefix &amp;quot;D:\Program Files\nodejs\node_global&amp;quot; 设置软件 缓存位置 npm config set cache &amp;#34;D:\Program Files\nodejs\node_cache&amp;#34; 设置镜像源 npm config set registry=http://registry.npm.taobao.org npm 私有仓库 1、在命令行先查看 npm config get registry
 2、修改本地或者tb镜像（搭建私服教程点这里 ） 淘宝镜像npm config set registry http://registry.npm.taobao.org/或 官方镜像npm config set registry https://registry.npmjs.org/或 个人镜像npm config set registry http://10.168.2.76:38081/repository/npm-all/(这里地址自行改成自己配置的地址)
 3、验证配置镜像 npm -loglevel info install grunt</description>
     </item>

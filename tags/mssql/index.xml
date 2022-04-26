@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mssql on My New Hugo Site</title>
+    <title>mssql on </title>
     <link>http://127.0.0.1:1313/hugo/tags/mssql/</link>
-    <description>Recent content in mssql on My New Hugo Site</description>
+    <description>Recent content in mssql on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Nov 2021 11:14:50 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Oct 2021 17:51:31 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mssql</title>
       <link>http://127.0.0.1:1313/hugo/db/mssql/</link>
-      <pubDate>Tue, 16 Nov 2021 11:14:50 +0800</pubDate>
+      <pubDate>Wed, 20 Oct 2021 17:51:31 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/mssql/</guid>
       <description>中文问题相关 ALTER DATABASE test COLLATE Chinese_PRC_CI_AS</description>

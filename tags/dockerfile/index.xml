@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dockerfile on My New Hugo Site</title>
+    <title>dockerfile on </title>
     <link>http://127.0.0.1:1313/hugo/tags/dockerfile/</link>
-    <description>Recent content in dockerfile on My New Hugo Site</description>
+    <description>Recent content in dockerfile on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jan 2022 19:24:44 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 19:23:09 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dockerfile</title>
       <link>http://127.0.0.1:1313/hugo/docker/dockerfile/</link>
-      <pubDate>Tue, 04 Jan 2022 19:24:44 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 19:23:09 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/docker/dockerfile/</guid>
       <description>dockerfile [toc]
-1.例子 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85  # 选择一个已有的os镜像作为基础 FROM docker.</description>
+1.例子 # 选择一个已有的os镜像作为基础 FROM docker.io/centos:7.4.1708 # 镜像的作者 MAINTAINER xuchenbing #配置阿里的yum源,删除系统自带的yum源 RUN rm -rf /etc/yum.repos.d/CentOS7-Base-163.repo #将阿里的yum文件复制进去 COPY CentOS7-Base-163.repo /etc/yum.repos.d/CentOS7-Base-163.repo #设置亚洲时区 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;amp;&amp;amp; echo &#39;Asia/Shanghai&#39; &amp;gt;/etc/timezone #安装openssh-server RUN yum install -y openssh-server \ #修改配置 &amp;amp;&amp;amp; sed -i &#39;s/UsePAM yes/UsePAM no/g&#39; /etc/ssh/sshd_config \ #安装openssh-clients &amp;amp;&amp;amp; yum install -y openssh-clients \ #修改root密码 &amp;amp;&amp;amp; echo &amp;quot;root&amp;quot; | passwd --stdin root \ #生成密钥 &amp;amp;&amp;amp; ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key \ &amp;amp;&amp;amp; ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key \ &amp;amp;&amp;amp; ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key \ &amp;amp;&amp;amp; ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key \ #清除yum安装缓存 &amp;amp;&amp;amp; yum clean all #设置支持中文字符 RUN locale \ &amp;amp;&amp;amp; localedef -i zh_CN -c -f UTF-8 zh_CN.</description>
     </item>
     
   </channel>

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hive on My New Hugo Site</title>
+    <title>hive on </title>
     <link>http://127.0.0.1:1313/hugo/tags/hive/</link>
-    <description>Recent content in hive on My New Hugo Site</description>
+    <description>Recent content in hive on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Mar 2022 13:55:50 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/hive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Dec 2021 20:52:41 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/hive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hive</title>
       <link>http://127.0.0.1:1313/hugo/db/hive/</link>
-      <pubDate>Thu, 31 Mar 2022 13:55:50 +0800</pubDate>
+      <pubDate>Mon, 13 Dec 2021 20:52:41 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/db/hive/</guid>
-      <description>常见hive语句 1、创建hive库 1  createdatabasehive_oracle;  2、选择库 1  usehive_oracle  3、创建数据库 1 2 3 4 5 6 7  CREATETABLE`hive_oracle.xcb_oracle_hive_end_dt`(`xcb_id`bigint,`xcb_number`int,`xcb_timestamp`timestamp,`xcb_varchar2`string)PARTITIONEDBY(`ds`string)  4、简单查询 1  select*fromxcb_oracle_hive_base_dt;（原来有数据的一张表）  5、时间函数  to_date  1  selectxcb_id,to_date(xcb_timestamp)fromxcb_oracle_hive_base_dt;   from_unixtime (这个不行) &amp;mdash;- select from_unixtime(1323308943,’yyyyMMdd’);  1  selectxcb_id,from_unixtime(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    unix_timestamp
-1  selectxcb_id,unix_timestamp(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;)fromxcb_oracle_hive_base_dt;    year 返回日期中的年
-1  selectxcb_id,year(xcb_timestamp)fromxcb_oracle_hive_base_dt;    month 返回日期中的月份
-1  selectxcb_id,month(xcb_timestamp)fromxcb_oracle_hive_base_dt;    day：返回日期中的天</description>
+      <description>常见hive语句 1、创建hive库 create database hive_oracle; 2、选择库 use hive_oracle 3、创建数据库 CREATE TABLE `hive_oracle.xcb_oracle_hive_end_dt`( `xcb_id` bigint, `xcb_number` int, `xcb_timestamp` timestamp, `xcb_varchar2` string) PARTITIONED BY ( `ds` string) 4、简单查询 select * from xcb_oracle_hive_base_dt;（原来有数据的一张表） 5、时间函数  to_date  select xcb_id,to_date(xcb_timestamp) from xcb_oracle_hive_base_dt;  from_unixtime (这个不行) &amp;mdash;- select from_unixtime(1323308943,’yyyyMMdd’);  select xcb_id,from_unixtime(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;) from xcb_oracle_hive_base_dt;   unix_timestamp
+select xcb_id,unix_timestamp(xcb_timestamp,&amp;#39;yyyyMMdd&amp;#39;) from xcb_oracle_hive_base_dt;   year 返回日期中的年
+select xcb_id,year(xcb_timestamp) from xcb_oracle_hive_base_dt;   month 返回日期中的月份
+select xcb_id,month(xcb_timestamp) from xcb_oracle_hive_base_dt;   day：返回日期中的天</description>
     </item>
     
   </channel>

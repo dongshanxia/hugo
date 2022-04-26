@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Networks on My New Hugo Site</title>
+    <title>Networks on </title>
     <link>http://127.0.0.1:1313/hugo/network/</link>
-    <description>Recent content in Networks on My New Hugo Site</description>
+    <description>Recent content in Networks on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Mar 2022 13:51:06 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 15:42:05 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zerotier</title>
       <link>http://127.0.0.1:1313/hugo/network/zerotier/</link>
-      <pubDate>Wed, 16 Mar 2022 13:51:06 +0800</pubDate>
+      <pubDate>Mon, 09 Aug 2021 15:42:05 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/network/zerotier/</guid>
       <description>zerotier centos7安装zerotier  安装  curl -s https://install.zerotier.com/ | sudo bash   加入网络  sudo zerotier-cli join NetworkID   查看网络信息  zerotier-cli info    </description>
@@ -19,7 +18,7 @@
     <item>
       <title>LetusEncrypt</title>
       <link>http://127.0.0.1:1313/hugo/network/letusencrypt/</link>
-      <pubDate>Wed, 05 Jan 2022 14:57:20 +0800</pubDate>
+      <pubDate>Thu, 29 Jul 2021 10:15:04 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/network/letusencrypt/</guid>
       <description>1.http与https  简单的说:  https = http+ssl(安全访问) https 比较安全    2.Let&amp;rsquo;s Encrypt  想要 https 就是购买证书 在 Let&amp;rsquo;s Encrypt可以免费申请证书 官网  3.Certbot  Let&amp;rsquo;s Encrypt 官网提供的服务端的API 但是 作为使用者 还是别去研究API 官网有很多语言的客户端的 (java,go) 官网要推荐的客户端 cerbot  4.开启 Certbot 之旅  好像有多种模式 ,多种插件 (多条岔路容易错误) 无插件 certbot 完成对SSL证书的 申请和续约  4.1 准备环境  系统 debian (debian:buster-slim) 需要能连接互联网 会用apt命令  4.2 安装certbot  更新 apt 源索引 apt update 安装 certbot  apt install certbot    4.</description>

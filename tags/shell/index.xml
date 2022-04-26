@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>shell on My New Hugo Site</title>
+    <title>shell on </title>
     <link>http://127.0.0.1:1313/hugo/tags/shell/</link>
-    <description>Recent content in shell on My New Hugo Site</description>
+    <description>Recent content in shell on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Apr 2022 16:28:46 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/shell/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Docker命令</title>
-      <link>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Tue, 26 Apr 2022 16:28:46 +0800</pubDate>
-      
-      <guid>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</guid>
-      <description>docker说明 搜索镜像  docker search 镜像名 https://hub.docker.com/  拉取镜像  docker pull NAME[:TAG] 可以-q 去除详细输出  保存镜像  docker save -o localName NAME[:TAG] docker save -o cjpt-service-alarm-user.tar cjpt-service-alarm-user:latest （） 上面的解释： 将镜像中的 镜像名为 cjpt-service-alarm-user 标签为 latest 保存到 同一目录 名为cjpt-service-alarm-user.tar  查看本地镜像  docker images   加载镜像  docker load &amp;lt; 压缩包名 docker load &amp;ndash;input 压缩包名 docker load &amp;lt; cjptjava8.tar 加载cjptjava8.tar的镜像  给镜像修改名称   docker tag imageId REPOSITORY:TAG   imageId: 镜像的id REPOSITORY：本地镜像名称 TAG: 标记</description>
-    </item>
-    
+    <lastBuildDate>Wed, 05 Jan 2022 14:44:01 +0800</lastBuildDate><atom:link href="http://127.0.0.1:1313/hugo/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jar简易自检程序</title>
       <link>http://127.0.0.1:1313/hugo/linux/shell/jar%E7%AE%80%E6%98%93%E8%87%AA%E6%A3%80%E7%A8%8B%E5%BA%8F/</link>
-      <pubDate>Tue, 26 Apr 2022 16:28:46 +0800</pubDate>
+      <pubDate>Wed, 05 Jan 2022 14:44:01 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/linux/shell/jar%E7%AE%80%E6%98%93%E8%87%AA%E6%A3%80%E7%A8%8B%E5%BA%8F/</guid>
-      <description>jar 简易自检程序  脚本  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63  #!/bin/sh #line=&amp;#39;cat .</description>
+      <description>jar 简易自检程序  脚本  #!/bin/sh #line=&amp;#39;cat ./pid/faceKuangshi-pid&amp;#39; echo &amp;#39;自检程序开始&amp;#39; temp_pid=0; for line in `cat ./check_pid.txt` do pid_array[$temp_pid]=$(awk &amp;#39;{print}&amp;#39; $line) let temp_pid++ done echo &amp;#39;进程id:&amp;#39; echo ${pid_array[*]} temp_sh=0; for line_sh in `cat ./check_start.txt` do #cat $line_sh sh_array[$temp_sh]=$line_sh let temp_sh++ done echo &amp;#39;进程命令:&amp;#39; echo ${sh_array[*]} pid_length=${#pid_array[@]} sh_length=${#sh_array[@]} if [ $pid_length == $sh_length ];then echo &amp;#34;自检查程序开始&amp;#34; for ((i=0;i&amp;lt;$pid_length;i++)) do echo ${pid_array[$i]} #为方便检查，加了打印 ps -p ${pid_array[$i]} if [ $? -eq 0 ]; then echo &amp;#34;app 存在&amp;#34; else echo &amp;#34;app 不存在&amp;#34; ${sh_array[$i]} fi	done	else echo &amp;#39;左右边的两个程序 不一样。&amp;#39; fi #ps -p 22 #if [ $?</description>
     </item>
     
     <item>
       <title>README</title>
       <link>http://127.0.0.1:1313/hugo/bigdata/hadoop/readme/</link>
-      <pubDate>Wed, 05 Jan 2022 14:57:20 +0800</pubDate>
+      <pubDate>Tue, 04 Jan 2022 20:48:40 +0800</pubDate>
       
       <guid>http://127.0.0.1:1313/hugo/bigdata/hadoop/readme/</guid>
-      <description>hadoop 相关技术  获取某个application的 日志  1  yarn logs -applicationId application_1593492224442_0003 &amp;gt;./yarn.log   ./hadoop jar ../share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.1.jar pi 5 10</description>
+      <description>hadoop 相关技术  获取某个application的 日志  yarn logs -applicationId application_1593492224442_0003 &amp;gt;./yarn.log ./hadoop jar ../share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.1.jar pi 5 10</description>
+    </item>
+    
+    <item>
+      <title>Docker命令</title>
+      <link>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Tue, 04 Jan 2022 20:04:32 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/hugo/docker/docker%E5%91%BD%E4%BB%A4/</guid>
+      <description>docker说明 搜索镜像  docker search 镜像名 https://hub.docker.com/  拉取镜像  docker pull NAME[:TAG] 可以-q 去除详细输出  保存镜像  docker save -o localName NAME[:TAG] docker save -o cjpt-service-alarm-user.tar cjpt-service-alarm-user:latest （） 上面的解释： 将镜像中的 镜像名为 cjpt-service-alarm-user 标签为 latest 保存到 同一目录 名为cjpt-service-alarm-user.tar  查看本地镜像  docker images   加载镜像  docker load &amp;lt; 压缩包名 docker load &amp;ndash;input 压缩包名 docker load &amp;lt; cjptjava8.tar 加载cjptjava8.tar的镜像  给镜像修改名称   docker tag imageId REPOSITORY:TAG   imageId: 镜像的id REPOSITORY：本地镜像名称 TAG: 标记</description>
     </item>
     
   </channel>
