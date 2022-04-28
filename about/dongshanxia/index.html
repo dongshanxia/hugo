@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>dongshanxia</title>
     
 
 
@@ -363,369 +363,438 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h2 id="heading">个人介绍</h2>
+<ul>
+<li>出生: 1995.04</li>
+<li>住址: 杭州市滨江区</li>
+<li>电话: 13395753926</li>
+<li>邮箱:  <a href="mailto:984801940@qq.com">984801940@qq.com</a></li>
+</ul>
+<h2 id="heading-1">教育背景</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>学校</th>
+<th>专业</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2014.09-2018.07</td>
+<td>洛阳理工学院</td>
+<td>计算机科学与技术</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-2">掌握技能</h2>
+<ol>
+<li>严格遵守Java开发规范，有良好的面向对象的业务分析能力，代码书写简洁，力求完美开发。</li>
+<li>了解jvm  以及 几种常见的jvm的垃圾回收机制</li>
+<li>熟练运用Spring和ioc的加载过程</li>
+<li>熟练掌握MySql，了解mysql的索引</li>
+<li>精通使用kafka，kafka调优，spark,spark调优等大数据技术。</li>
+<li>熟练使用SpringMVC，Springboot，Spring Cloud等Spring全家桶系列框架。</li>
+<li>熟练使用 PostgreSQL, Redis等数据库和mybatis，mybatisPlus，jdbc等持久层开发技术.</li>
+<li>熟练使用fastDFS，Cloudreve等文件存储服务技术。</li>
+<li>熟练使用zookeeper , hadoop , hbase , Elasticsearch，Kerboros等技术工具进行开发。</li>
+<li>熟练使用maven项目版本，打包和依赖管理工具</li>
+<li>熟练使用linux操作系统，网络配置，shell脚本 (grep , sed , awk）</li>
+<li>熟练使用docker镜像的分层，docker-compose和docker命令简单使用</li>
+<li>熟练使用gitlab和gitlab_ci简单使用</li>
+<li>熟悉k8s（正在学习）</li>
+<li>熟练使用netty, netty-websock</li>
+<li>熟悉Nginx等web服务器。</li>
+<li>熟练使用idea，Eclipse开发工具和Git，SVN版本控制工具。</li>
+<li>了解go,用go语言写leetcode</li>
+<li>会使用异地组网 (蒲公英,zerotier)</li>
+<li>博客地址  (见其它补充)</li>
+</ol>
+<h2 id="heading-3">工作经历</h2>
+<h4 id="heading-4">杭州合韬科技有限公司</h4>
+<ul>
+<li>职位:  java开发工程师</li>
+<li>时间:  2018-03 ~~ 2021-5</li>
+<li>职责:
+<ul>
+<li>负责公司项目数据接入，分析，入库；</li>
+<li>Spark , Kafka , Zookeeper集群的维护；</li>
+<li>Java依赖第三方包的版本进行管理；</li>
+</ul>
+</li>
+</ul>
+<h4 id="heading-5">浙江火眼金睛数据科技有限公司</h4>
+<ul>
+<li>职位: 大数据开发工程师</li>
+<li>时间:  2021-5 ~~ 2021-8</li>
+<li>职责:
+<ul>
+<li>负责数据接入和分析</li>
+</ul>
+</li>
+<li>实际事情
+<ul>
+<li>安装服务器 维护服务器</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-6">项目经历</h2>
+<h3 id="-">公安预警系统(西湖指挥中心 六翮凌风)</h3>
+<ul>
+<li>项目时间:
+<ul>
+<li>2018年7月-2020年9月</li>
+</ul>
+</li>
+<li>项目描述:
+<ul>
+<li>通过netty,mq,定时任务同步数据库，汇聚到kafka里面，在通过spark 进行规则预警，实时预警推向kafka,数据统计，基础数据入库，redis数据相关性进行分发。(公安具体业务性属于保密信息无法展开)</li>
+</ul>
+</li>
+<li>项目结构
+<ul>
+<li>接入层：netty ,ftp,kafka；</li>
+<li>分析层：spark；</li>
+<li>数据层：MySQL,hbase, PostgreSQL,redis,hadoop。</li>
+<li>持久层：MyBatis,jdbc, hbaseUtil；</li>
+<li>业务层：Spring</li>
+<li>控制层：SpringMVC、Spring SecurityOauth2；</li>
+<li>展示层：vue,jsp</li>
+</ul>
+</li>
+<li>负责模块:
+<ul>
+<li>前端接入：netty接收tcp和udp的数据，转发ftp数据推向kafka，转发mq数据推向kafka；</li>
+<li>s三台Kafa集群：kafka topic的基本维护，kafka集群的搭建与基本维护；</li>
+<li>15台spark集群：spark程序 分析3W/s左右数据量</li>
+<li>预警统计: 对设备的状态及数据量维护。</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-7">数据资源中心系统（类似百度网盘的功能)</h3>
+<ul>
+<li>项目时间:
+<ul>
+<li>2020年9月-2021年5月</li>
+</ul>
+</li>
+<li>项目描述:
+<ul>
+<li>每个系统都是有一个文件存储和管理的地方，为了解决文件存储 采用了hdfs的文件存储方式，搜索采用了Elasticsearch 进行搜索.</li>
+</ul>
+</li>
+<li>项目结构
+<ul>
+<li>控制层：SpringMVC、eureka；</li>
+<li>业务层：Spring、Spring Data Redis；</li>
+<li>持久层：MyBatisPlus持久层框架，Druid连接池；</li>
+<li>数据层：MySQL，Redis,hdfs, Elasticsearch。</li>
+</ul>
+</li>
+<li>负责模块:
+<ul>
+<li>文件上传功能；</li>
+<li>部分文件根据url进行预览的功能；</li>
+<li>根据文件内容，文件名，文件相关信息进行搜索；</li>
+<li>文件可以通过分享到其它用户进行访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-8">博客系统(地址见其它补充)</h3>
+<ul>
+<li>项目时间:
+<ul>
+<li>2020年9月-2021年5月</li>
+</ul>
+</li>
+<li>项目描述:
+<ul>
+<li>记录自己知道，自己不知道的，点滴成长。</li>
+</ul>
+</li>
+<li>项目结构
+<ul>
+<li>vuepress + hugo</li>
+</ul>
+</li>
+<li>负责模块:
+<ul>
+<li>用vuepree,vue进行搭建项目或hugo，编写markdown记录笔记</li>
+<li>Markdown编写工具typora,通过picgo自定义连接web（图床）图片管理</li>
+<li>Gitlab进行代码管理，并通过cicd完成自动打包和部署</li>
+<li>通过路由器端口映射完成内网暴露端口到外面</li>
+<li>通过阿里dnsapi 完成 动态公网Ip与域名的绑定；其它补充</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-9">其它补充</h2>
+<ul>
+<li>
+<p>对接华为的 FusionInsight （kerbors，kafka，spark，hbase, MapReduce）</p>
+</li>
+<li>
+<p>对接星环 TDH（Transwarp Data Hub）平台 （zookeeper,kerbors，kafka，hdfs，search,slipstream）</p>
+</li>
+<li>
+<p>对接海康 AIcloud （ zookeeper、kafka、spark、hadoop、hbase ）</p>
+</li>
+<li>
+<p>个人使用情况：系统deepin，电脑双屏幕台式机，如果自己带有 路由器，NAS，台式机，双屏幕。</p>
+</li>
+<li>
+<p>博客地址：http://our.dongshanxia.top:56789/docs 和 <a href="https://dongshanxia.github.io/hugo/">https://dongshanxia.github.io/hugo/</a></p>
+</li>
+</ul>
+<h2 id="heading-10">自我评价</h2>
+<ul>
+<li>
+<p>乐观开朗，面对困难喜欢迎难而上，对技术难点有永不放弃的钻研精神；</p>
+</li>
+<li>
+<p>对互联网开发技术有高度的兴趣和敏感度，有较强的自主学习能力；</p>
+</li>
+<li>
+<p>善于与他人沟通，能协同作战，一起解决工作和生活中遇到的各种困难；</p>
+</li>
+<li>
+<p>严于代码，对工作积极严谨，能吃苦耐劳。</p>
+</li>
+</ul>
+<h2 id="heading-11">网络拓扑</h2>
+<p><img src="https://img.dongshanxia.top:35000/img/2021-08-29/130927_Qx71umInLx.png" alt="home-network"/></p>
+<h2 id="docker">docker拓扑</h2>
+<div class="mermaid">  graph TD
+      A[Start] --&gt; B[centos];
+      A[Start] --&gt; C[debian];
+	  C[debian] --&gt; D[ssh];
+      D[ssh]--&gt;E[git];
+      C--&gt;F[jdk]
+      F--&gt;G[maven];
+      B--&gt;H[nginx];
+      F--&gt;I[nexus];
+      F--&gt;J[zookeeper];
+      C--&gt;K[node]
+      K--&gt;L[picgo];
+      M[drone-docker]
+      N[drone-plugin-test]
+      C--&gt;O[certbot]
+      K--&gt;P[unblockneteasemusic]
+      B--&gt;Q[redis]
+      B--&gt;R[mysql]
+      S[drone-convert-pathschanged]
+      B--&gt;T[pgsql]
+      B--&gt;U[mssql]
+      C--&gt;V[oracle-base]
+      V--&gt;W[oracle]
+      C--&gt;X[hugo]
+</div><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#heading">个人介绍</a></li>
+<li>
+<a href="#heading-1">教育背景</a></li>
+<li>
+<a href="#heading-2">掌握技能</a></li>
+<li>
+<a href="#heading-3">工作经历</a><ul>
+<li>
+<ul>
+<li>
+<a href="#heading-4">杭州合韬科技有限公司</a></li>
+<li>
+<a href="#heading-5">浙江火眼金睛数据科技有限公司</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#heading-6">项目经历</a><ul>
+<li>
+<a href="#-">公安预警系统(西湖指挥中心 六翮凌风)</a></li>
+<li>
+<a href="#heading-7">数据资源中心系统（类似百度网盘的功能)</a></li>
+<li>
+<a href="#heading-8">博客系统(地址见其它补充)</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-9">其它补充</a></li>
+<li>
+<a href="#heading-10">自我评价</a></li>
+<li>
+<a href="#heading-11">网络拓扑</a></li>
+<li>
+<a href="#docker">docker拓扑</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/about/blog/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/about/dream/cwz/2022/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

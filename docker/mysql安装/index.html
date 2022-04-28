@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>mysql安装</title>
     
 
 
@@ -363,369 +363,354 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h3 id="docker-mysql">docker-mysql安装部署文档</h3>
+<p><img src="https://img.shields.io/badge/version-1.0.0-blue" alt=""/> <img src="https://img.shields.io/badge/author-%E5%BE%90%E9%99%88%E7%82%B3-red" alt=""/> <img src="https://img.shields.io/badge/create_at-2020/08/27-green" alt=""/> <img src="https://img.shields.io/badge/release_at-2020/08/27-orange" alt=""/></p>
+<p>[TOC]</p>
+<h4 id="heading">一、前置条件</h4>
+<h5 id="11-">1.1 前置环境</h5>
+<ol>
+<li>docker 环境</li>
+<li>docker ps 必须可以用</li>
+<li>docker-compose -version 必须可以用</li>
+</ol>
+<h5 id="12-">1.2 安装包名</h5>
+<p>[docker-mysql_5.7.24_2020_8_27.tar]</p>
+<h5 id="13-">1.3 升级服务器</h5>
+<p>​		需要搭建 maven的机器</p>
+<h5 id="14-">1.4 升级操作用户</h5>
+<p>​		用户名  拥有docker权限的用户 （cjpt,alarm 都可以）</p>
+<h5 id="15-">1.5 安装路径</h5>
+<p>​		路径：/home/cjpt/temp/</p>
+<h5 id="16-">1.6 升级涉及到的服务</h5>
+<table>
+<thead>
+<tr>
+<th align="left">服务名称</th>
+<th>升级前版本号</th>
+<th>升级后版本号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">mysql</td>
+<td></td>
+<td>2.16.6</td>
+</tr>
+</tbody>
+</table>
+<h5 id="17-">1.7 升级功能说明</h5>
+<p>docker-nexus 镜像</p>
+<h4 id="heading-1">二、安装步骤</h4>
+<h5 id="21-">2.1 安装升级包</h5>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>#### 进入安装目录
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>cd /home/cjpt/temp/
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>#### 进入安装目录
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>docker load &lt; mysql.tar
+</span></span></code></pre></div>
+<h5 id="22-">2.2 升级步骤</h5>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>version: &#34;3&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>services:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>  mysql:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>    image: docker-registry:5000/mysql:3.0
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>    container_name: mysql
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>    hostname: 192.168.1.64
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>    restart: always
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>    privileged: true
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>    working_dir: /root
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>    environment:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>      - profile=&#34;&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>    volumes:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>      - /docker/software/mysql/data:/data/mysql3306/data
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>      - /docker/software/mysql/log:/data/mysql3306/log 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>      - /docker/software/mysql/config:/data/mysql3306/config 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>    expose:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>      - &#34;22&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>      - &#34;3306&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>    ports:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>      - &#34;34522:22&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">21</span><span>      - &#34;3306:3306&#34;
+</span></span></code></pre></div>
+<ul>
+<li>把上面的代码  变成文件  命名为docker-composer-mysql.xml</li>
+<li>把文件放到  部署规范里面的路径   /docker/software/compose/mysql</li>
+<li>在上面路径下执行 docker-compose -f docker-compose-mysql.yml up -d</li>
+</ul>
+<h4 id="heading-2">三、升级后检查</h4>
+<h5 id="31-">3.1 服务版本号</h5>
+<table>
+<thead>
+<tr>
+<th>服务名称</th>
+<th align="center">升级前版本号</th>
+<th align="center">升级后版本号</th>
+<th align="center">是否符合预期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docker-mysql</td>
+<td align="center">3.0</td>
+<td align="center">镜像  3.5 mysql版本5.7.24</td>
+<td align="center">是</td>
+</tr>
+</tbody>
+</table>
+<h5 id="32-">3.2 页面功能</h5>
+<ol>
+<li>测试一</li>
+</ol>
+<p>docker ps</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>450b5fee4f73        docker-registry:5000/mysql:3.5       &#34;/bin/sh /root/start…&#34;   
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>27 minutes ago      Up 27 minutes       
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>0.0.0.0:3306-&gt;3306/tcp, 0.0.0.0:34522-&gt;22/tcp               mysql
+</span></span></code></pre></div>
+<p>up 表示成功</p>
+<ol start="2">
+<li>测试二</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span> docker exec -it mysql mysql -uremote -premote123-HITOTEK  (-u+用户名    -p+密码)
+</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>[root@docker-master ~]#  docker exec -it mysql mysql -uremote -premote1234-HITOTEK
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>mysql: [Warning] Using a password on the command line interface can be insecure.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>Welcome to the MySQL monitor.  Commands end with ; or \g.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>Your MySQL connection id is 2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>Server version: 5.7.31 MySQL Community Server (GPL)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>Oracle is a registered trademark of Oracle Corporation and/or its
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>affiliates. Other names may be trademarks of their respective
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>owners.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>mysql&gt; ^C
+</span></span></code></pre></div>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-08-27/164238_2fe22ec01b.png" alt="image-20200827162355697"/></p>
+<h4 id="faq">四、升级FAQ</h4>
+<p>​		这个地方描述升级可能会碰到的问题，以及解决方法</p>
+<h5 id="41-xxx">4.1 xxx服务启动问题</h5>
+<p>​	解决方式：。。。。。。。</p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<a href="#docker-mysql">docker-mysql安装部署文档</a><ul>
+<li>
+<a href="#heading">一、前置条件</a><ul>
+<li>
+<a href="#11-">1.1 前置环境</a></li>
+<li>
+<a href="#12-">1.2 安装包名</a></li>
+<li>
+<a href="#13-">1.3 升级服务器</a></li>
+<li>
+<a href="#14-">1.4 升级操作用户</a></li>
+<li>
+<a href="#15-">1.5 安装路径</a></li>
+<li>
+<a href="#16-">1.6 升级涉及到的服务</a></li>
+<li>
+<a href="#17-">1.7 升级功能说明</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-1">二、安装步骤</a><ul>
+<li>
+<a href="#21-">2.1 安装升级包</a></li>
+<li>
+<a href="#22-">2.2 升级步骤</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-2">三、升级后检查</a><ul>
+<li>
+<a href="#31-">3.1 服务版本号</a></li>
+<li>
+<a href="#32-">3.2 页面功能</a></li>
+</ul>
+</li>
+<li>
+<a href="#faq">四、升级FAQ</a><ul>
+<li>
+<a href="#41-xxx">4.1 xxx服务启动问题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/docker/mssql%e5%ae%89%e8%a3%85/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/docker/oracle%e5%ae%89%e8%a3%85/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

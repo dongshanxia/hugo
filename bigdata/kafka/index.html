@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>kafka</title>
     
 
 
@@ -363,369 +363,397 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="kafka">kafka命令总结</h1>
+<h2 id="topic">topic的相关操作</h2>
+<h3 id="topic-1">创建topic</h3>
+<ul>
+<li>
+<p>创建一个叫做“test”的topic，它只有二个分区，一个副本</p>
+</li>
+<li>
+<p>bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic test</p>
+<table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">--zookeeper</td>
+<td align="left">后面加zookeeper的地址</td>
+</tr>
+<tr>
+<td align="left">--replication-factor</td>
+<td align="left">副本数</td>
+</tr>
+<tr>
+<td align="left">--partitions</td>
+<td align="left">分区数</td>
+</tr>
+<tr>
+<td align="left">--topic</td>
+<td align="left">topic的名字</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="topic-2">删除topic</h3>
+<ul>
+<li>bin/kafka-topics.sh  --delete --zookeeper localhost:2181 --topic 【topic name】</li>
+</ul>
+<h3 id="topic-3">修改topic</h3>
+<ul>
+<li>bin/kafka-topics.sh --zookeeper localhost:2181 --alter --partitions 20 --topic test</li>
+<li>修改topic为test的分区为20</li>
+</ul>
+<h3 id="topic-4">查看topic</h3>
+<ul>
+<li>
+<p>bin/kafka-topics.sh --list --zookeeper localhost:2181</p>
+</li>
+<li>
+<p>查看集群中 topic的数量</p>
+</li>
+</ul>
+<h3 id="topic-5">查看某个topic的详细内容</h3>
+<ul>
+<li>bin/kafka-topics.sh  --describe --zookeeper localhost:2181 --topic test</li>
+</ul>
+<h2 id="heading">消费数据</h2>
+<h3 id="heading-1">消费数据相关</h3>
+<ul>
+<li>bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test  &lt;--from-beginning&gt;<br/>
+--from-beginning    从头开始</li>
+<li>bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --describe --group cjpt</li>
+<li>bin/kafka-consumer-groups.sh --group cjpt-test-htga --describe --zookeeper localhost:2181</li>
+<li>2.2版本后的</li>
+<li>bin/kafka-console-consumer.sh --bootstrap-server 192.168.1.64:9092 --from-beginning --topic test</li>
+<li>查看分区情况</li>
+<li>bin/kafka-run-class.sh kafka.tools.GetOffsetShell --topic test_topic  --time -1 --broker-list localhost:9092 --partitions 5</li>
+<li>从头开始消费</li>
+<li>bin/kafka-console-consumer.sh  --zookeeper  10.4.2.66:2181 --from-beginning --topic test  --consumer.config config/consumer.properties</li>
+</ul>
+<h3 id="heading-2">查看消费情况</h3>
+<ul>
+<li>bin/kafka-consumer-groups.sh --group testGroup --describe --bootstrap-server localhost:9092</li>
+<li>查看testGroup的消费情况的</li>
+<li>bin/kafka-consumer-groups.sh --zookeeper  10.4.2.66:2181 --describe --group test-consumer-group</li>
+</ul>
+<h3 id="heading-3">查看数据的生产情况</h3>
+<ul>
+<li>bin/kafka-console-producer.sh --broker-list docker-master:9092,docker-slave01:9092,docker-slave02:9092 --topic topic_test</li>
+</ul>
+<h2 id="heading-4">生产数据</h2>
+<ul>
+<li>bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test</li>
+</ul>
+<h2 id="kafka-1">kafka性能测试</h2>
+<h3 id="heading-5">生产性能测试</h3>
+<p>bin/kafka-producer-perf-test.sh  --producer-props bootstrap.servers=192.168.1.63:9092,192.168.1.64:9092,192.168.1.65:9092 --record-size 102400 --num-records 10000 --throughput -1 --topic test</p>
+<h3 id="heading-6">消费性能测试</h3>
+<p>bin/kafka-consumer-perf-test.sh --zookeeper 192.168.1.63:2181,192.168.1.64:2181,192.168.1.65:2181 --broker-list 192.168.1.63:9092,192.168.1.64:9092,192.168.1.65:9092 --fetch-size 1024  --messages 100000  --topic test --threads 3 --group producer_consumer</p>
+<h2 id="kafka-2">kafka权限</h2>
+<h3 id="consumer">赋Consumer权限命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-acls.sh --authorizer-properties zookeeper.connect=&lt;ZooKeeper集群IP:24002/kafka &gt; --add --allow-principal User:&lt;用户名&gt; --consumer --topic &lt;Topic名称&gt; --group &lt;消费者组名称&gt;
+</span></span></code></pre></div>
+<h3 id="producer">赋Producer权限命令，由管理员用户操作。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-acls.sh --authorizer-properties zookeeper.connect=&lt;ZooKeeper集群IP:24002/kafka &gt; --add --allow-principal User:&lt;用户名&gt; --producer --topic &lt;Topic名称&gt;
+</span></span></code></pre></div>
+<h2 id="heading-7">分区计划</h2>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>修改topic的备份数量
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>//校验是否正确
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file ./topic-test.json  --verify
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>输出信息：修改之前报这个信息，说备份数量和文本不一致(因为文本内容是要添加副本数，肯定不一致），证明文本没有问题，可以执行
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>[root@cjmaster01 kafka_2.11-0.9.0.1]# bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file ./topic-test.json  --verify
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>Status of partition reassignment:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>ERROR: Assigned replicas (0) don&#39;t match the list of replicas for reassignment (0,1) for partition [topic-test,1]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>ERROR: Assigned replicas (2) don&#39;t match the list of replicas for reassignment (1,2) for partition [topic-test,3]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>ERROR: Assigned replicas (2) don&#39;t match the list of replicas for reassignment (2,1) for partition [topic-test,0]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>ERROR: Assigned replicas (1) don&#39;t match the list of replicas for reassignment (1,2) for partition [topic-test,2]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>ERROR: Assigned replicas (1) don&#39;t match the list of replicas for reassignment (1,0) for partition [topic-test,5]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>ERROR: Assigned replicas (0) don&#39;t match the list of replicas for reassignment (1,0) for partition [topic-test,4]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>Reassignment of partition [topic-test,1] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>Reassignment of partition [topic-test,3] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>Reassignment of partition [topic-test,0] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>Reassignment of partition [topic-test,2] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>Reassignment of partition [topic-test,5] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>Reassignment of partition [topic-test,4] failed
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">22</span><span>//上边返回成功了再执行
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">23</span><span>bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file ./topic-test.json  --execute
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">25</span><span>topic-test.json文件的格式
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">26</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">27</span><span>        &#34;partitions&#34;: [{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">28</span><span>                        &#34;topic&#34;: &#34;topic-test&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">29</span><span>                        &#34;partition&#34;: 0,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">30</span><span>                        &#34;replicas&#34;: [2, 1]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">31</span><span>                },
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">32</span><span>                {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">33</span><span>                        &#34;topic&#34;: &#34;topic-test&#34;,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">34</span><span>                        &#34;partition&#34;: 1,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">35</span><span>                        &#34;replicas&#34;: [0, 1]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">36</span><span>                }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">37</span><span>	}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">38</span><span>  ],
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">39</span><span>  &#34;version&#34;: 1
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">40</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">41</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">42</span><span>
+</span></span></code></pre></div>
+<h2 id="kafka-">kafka 相关例子</h2>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-console-producer.sh \
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>--broker-list master:9092,slave01:9092,slave02:9092 \
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>--topic test
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">6</span><span>
+</span></span></code></pre></div>
+<h2 id="kafka--1">kafka 集群的注意点</h2>
+<h3 id="-kafka--zookeeperconnect-">获取到 Kafka 集群的 zookeeper.connect 信息。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>通过读取 config/server.properties 文件，获取到 Kafka 集群的 zookeeper.connect 信息。
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>为简化后续步骤的信息输入，这里 创建一个临时变量 zkUrls 保存这一信息，
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>例如:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>3. cat config/server.properties | grep  &#34;^zookeeper.connect &#34; 然后对 zkUrls 进行赋值：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>4. zkUrls=&#34; 192.168.115.11:24002,192.168.115.12:24002,192.168.115.3:24002/kafka&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>5. 创建一个 Topic，名为 testTopic： bin/kafka-topics.sh --zookeeper $zkUrls
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>--create  --topic  testTopic  --partitions 1 --replication-factor 2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>6. 查询集群中的 Topic 信息：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>bin/kafka-topics.sh --zookeeper $zkUrls --list bin/kafka-topics.sh --zookeeper $zkUrls --describe --topic testTopic
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>7. 删除 5 中创建的Topic：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>bin/kafka-topics.sh --zookeeper $zkUrls  --delete --topic  testTopic
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>8. 再次查询集群中的 Topic 信息：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>bin/kafka-topics.sh --zookeeper $zkUrls --list bin/kafka-topics.sh --zookeeper $zkUrls --describe --topic testTopic
+</span></span></code></pre></div>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#kafka">kafka命令总结</a><ul>
+<li>
+<a href="#topic">topic的相关操作</a><ul>
+<li>
+<a href="#topic-1">创建topic</a></li>
+<li>
+<a href="#topic-2">删除topic</a></li>
+<li>
+<a href="#topic-3">修改topic</a></li>
+<li>
+<a href="#topic-4">查看topic</a></li>
+<li>
+<a href="#topic-5">查看某个topic的详细内容</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading">消费数据</a><ul>
+<li>
+<a href="#heading-1">消费数据相关</a></li>
+<li>
+<a href="#heading-2">查看消费情况</a></li>
+<li>
+<a href="#heading-3">查看数据的生产情况</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-4">生产数据</a></li>
+<li>
+<a href="#kafka-1">kafka性能测试</a><ul>
+<li>
+<a href="#heading-5">生产性能测试</a></li>
+<li>
+<a href="#heading-6">消费性能测试</a></li>
+</ul>
+</li>
+<li>
+<a href="#kafka-2">kafka权限</a><ul>
+<li>
+<a href="#consumer">赋Consumer权限命令</a></li>
+<li>
+<a href="#producer">赋Producer权限命令，由管理员用户操作。</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-7">分区计划</a></li>
+<li>
+<a href="#kafka-">kafka 相关例子</a></li>
+<li>
+<a href="#kafka--1">kafka 集群的注意点</a><ul>
+<li>
+<a href="#-kafka--zookeeperconnect-">获取到 Kafka 集群的 zookeeper.connect 信息。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/bigdata/hadoop/README/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/bigdata/zookeeper/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

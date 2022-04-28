@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>14.B&#43;树索引的由来</title>
     
 
 
@@ -363,369 +363,332 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="b">B+树索引的由来</h1>
+<p>从前面讲的InnoDB数据页结构，特别是页目录，我们可以了解到，记录在页里面是以单链表的形式存在，而页与页之间构成了双向链表。</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220215000137133.png" alt="image-20220215000137133"/></p>
+<p>那么我们应该采取什么样的方式来更高效查询数据呢？</p>
+<h6 id="1"><strong>1.我们先来假设不了解什么是索引，我们会怎么查找？</strong></h6>
+<p>比如根据<strong>主键条件搜索</strong>，可以再页目录中用二分查找查到属于那条记录</p>
+<p><strong>如果是非主键列呢</strong>，因为在数据页中并没有对非主键列建立所谓的 页目录，可能要一个一个按顺序找，知道找到匹配的记录</p>
+<h6 id="2"><strong>2.如果在很多页中查找？</strong></h6>
+<p>大部分情况下我们表中存放的记录都是非常多的，需要好多的数据页来存储这些记录。在很多页中查找记录的话可以分为两个步骤：</p>
+<ol>
+<li>
+<p>定位到记录所在的页。</p>
+</li>
+<li>
+<p>从所在的页内中查找相应的记录。</p>
+<p>在没有索引的情况下，不论是根据主键列或者其他列的值进行查找，由于我们并不能快速的定位到记录所在的页，所以只能从第一个页沿着双向链表一直往下找，在每一个页中根据我们刚刚唠叨过的查找方式去查找指定的记录。因为要遍历所有的数据页，所以这种方式显然是超级耗时的，如果一个表有一亿条记录，使用这种方式去查找记录那要等到猴年马月才能等到查找结果。所以祖国和人民都在期盼一种能高效完成搜索的方法， 索引 同志就要亮相登台了。</p>
+</li>
+</ol>
+<h2 id="b-1">B+树索引</h2>
+<p>我们现在就遇到了个难题，在一个数据页里面根据主键查询记录，可以很快的查询出来，但是数据库的数据会越来越多，数据页也会越来越多，页与页之间现在没有办法根据主键查到记录属于哪个页？</p>
+<p>要是能像一个数据页里面根据二分法查记录就好，咦！没错，就是这个思路！</p>
+<p>设计InnoDB的大叔，给多个数据页分配了各自的目录，方便查找到某个数据页，比如下面</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220215002010727.png" alt="image-20220215002010727"/></p>
+<blockquote>
+<p>就像一本字典，大部分装着对单词的解释（数据页），前面一部分是目录（存放目录项记录的数据页），都占据着书本的空间，但是起到方便查找的作用</p>
+</blockquote>
+<p>从图中可以看出来，我们新分配了一个编号为 30 的页来专门存储 目录项记录 。这里再次强调一遍 目录项记录和普通的 用户记录 的不同点：</p>
+<ul>
+<li>目录项记录 的 record_type 值是1，而普通用户记录的 record_type 值是0。</li>
+<li>目录项记录 <strong>只有主键值和页的编号两个列</strong>，而普通的用户记录的列是用户自己定义的，可能包含很多列，另外还有 InnoDB 自己添加的隐藏列。</li>
+<li>还记得我们之前在唠叨记录头信息的时候说过一个叫 min_rec_mask 的属性么，只有在存储 目录项记录 的页中的主键值最小的 目录项记录 的 min_rec_mask 值为 1 ，其他别的记录的 min_rec_mask 值都是 0 。</li>
+</ul>
+<p>除了上述几点外，这两者就没啥差别了，它们用的是一样的数据页（页面类型都是 0x45BF ，这个属性在 File Header 中，忘了的话可以翻到前边的文章看），页的组成结构也是一样一样的（就是我们前边介绍过的7个部分），都会为主键值生成 Page Directory （页目录），从而在按照主键值进行查找时可以使用二分法来加快查询速度。现在以查找主键为 20 的记录为例，根据某个主键值去查找记录的步骤就可以大致拆分成下边两步：</p>
+<ol>
+<li>先到存储 目录项记录 的页，也就是页 30 中通过二分法快速定位到对应目录项，因为 12 &lt; 20 &lt; 209 ，所<br/>
+以定位到对应的记录所在的页就是 页9 。</li>
+<li>再到存储用户记录的 页9 中根据二分法快速定位到主键值为 20 的用户记录。</li>
+</ol>
+<p>虽然说 目录项记录 中只存储主键值和对应的页号，比用户记录需要的存储空间小多了，但是不论怎么说一个页只有 16KB 大小，能存放的 目录项记录 也是有限的，那如果表中的数据太多，以至于一个数据页不足以存放所有的 目录项记录 ，该咋办呢？</p>
+<p>当然是再多整一个存储 目录项记录 的页喽～ 为了大家更好的理解<strong>新分配一个 目录项记录 页的过程</strong>，我们假设一个存储 目录项记录 的页最多只能存放4条 目录项记录 （请注意是假设哦，真实情况下可以存放好多条的），所以如果此时我们再向上图中插入一条主键值为 320 的用户记录的话，那就需要分配一个新的存储 目录项记录的页喽：</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220215002403250.png" alt="image-20220215002403250"/></p>
+<p>更多记录的话，或者变成这种：</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220215002523412.png" alt="image-20220215002523412"/></p>
+<p><strong>注意：下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值。</strong></p>
+<p>实际上这种树状结构的数据，或者说一种数据结构，这就是B+树</p>
+<p>不论是存放用户记录的数据页，还是存放目录项记录的数据页，我们都把它们存放到 B+ 树这个数据结构中了，所以我们也称这些数据页为 节点 。从图中可以看出来，<strong>我们的实际用户记录其实都存放在B+树的最底层的节点上</strong>，这些节点也被称为 叶子节点 或 叶节点 ，其余用来存放 目录项 的节点称为 非叶子节点 或者 内节点 ，其中 B+ 树最上边的那个节点也称为 根节点 。</p>
+<h2 id="heading">索引分类</h2>
+<p>按照不同的排序规则分索引类型</p>
+<h3 id="heading-1">聚簇索引</h3>
+<ol>
+<li>使用记录主键值的大小进行记录和页的排序，这包括三个方面的含义：</li>
+</ol>
+<ul>
+<li><strong>页内的记录是按照主键的大小顺序排成一个单向链表</strong>。</li>
+<li>各个存放用户记录的页也是根据页中<strong>用户记录的主键大小顺序排成一个双向链表</strong>。</li>
+<li>存放目录项记录的页分为不同的层次，在同一层次中的页也是根据页中<strong>目录项记录的主键大小顺序排成一个双向链表</strong>。</li>
+</ul>
+<ol start="2">
+<li>
+<p>B+ 树的叶子节点存储的是完整的用户记录。</p>
+<p>所谓完整的用户记录，就是指这个记录中存储了所有列的值（包括隐藏列）。</p>
+<p>我们把具有这两种特性的 B+ 树称为 聚簇索引 ，<strong>所有完整的用户记录都存放在这个 聚簇索引 的叶子节点处</strong>。这种 聚簇索引 并不需要我们在 MySQL 语句中显式的使用 INDEX 语句去创建（后边会介绍索引相关的语句），InnoDB 存储引擎会自动的为我们创建聚簇索引。另外有趣的一点是，在 InnoDB 存储引擎中， 聚簇索引 就是数据的存储方式（所有的用户记录都存储在了 叶子节点 ），也就是所谓的<strong>索引即数据，数据即索引</strong>。</p>
+</li>
+</ol>
+<h3 id="heading-2">二级索引</h3>
+<p>比方说我们用 c2 列（非主键列）的大小作为数据页、页中记录的排序规则，再建一棵 B+ 树。</p>
+<p>这个 B+ 树与上边介绍的聚簇索引有<strong>几处不同</strong>：</p>
+<ol>
+<li>使用记录 c2 列的大小进行记录和页的排序，这包括三个方面的含义：</li>
+</ol>
+<ul>
+<li>页内的记录是按照 c2 列的大小顺序排成一个单向链表。</li>
+<li>各个存放用户记录的页也是根据页中记录的 c2 列大小顺序排成一个双向链表。</li>
+<li>存放目录项记录的页分为不同的层次，在同一层次中的页也是根据页中目录项记录的 c2 列大小顺序排成一个双向链表。</li>
+</ul>
+<ol start="2">
+<li>B+ 树的叶子节点存储的并不是完整的用户记录，而只是 c2列+主键 这两个列的值。<strong>目录项记录中不再是 主键+页号 的搭配，而变成了 c2列+页号 的搭配。</strong></li>
+</ol>
+<p>查询逻辑也有不同，需要先根据c2列的值，去有关c2列建的二级索引里面查所在记录的主键的值，然后再去聚簇索引查询主键所在记录，这个过程叫做回表</p>
+<h3 id="heading-3">联合索引</h3>
+<p>我们也可以同时以多个列的大小作为排序规则，也就是同时为多个列建立索引，比方说我们想让 B+ 树按照 c2和 c3 列的大小进行排序，这个包含两层含义：</p>
+<ul>
+<li>先把各个记录和页按照 c2 列进行排序。</li>
+<li>在记录的 c2 列相同的情况下，采用 c3 列进行排序</li>
+</ul>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220215004242885.png" alt="image-20220215004242885"/></p>
+<p>如图所示，我们需要注意一下几点：</p>
+<ul>
+<li>每条 目录项记录 都由 c2 、 c3 、 页号 这三个部分组成，各条记录先按照 c2 列的值进行排序，如果记录的 c2 列相同，则按照 c3 列的值进行排序。</li>
+<li>B+ 树叶子节点处的用户记录由 c2 、 c3 和主键 c1 列组成。</li>
+<li>千万要注意一点，以c2和c3列的大小为排序规则建立的B+树称为联合索引，本质上也是一个二级索引。它的意思与分别为c2和c3列分别建立索引的表述是不同的，不同点如下：</li>
+<li>建立 联合索引 只会建立如上图一样的<strong>1棵 B+ 树</strong>。</li>
+<li>为c2和c3列分别建立索引会分别以 c2 和 c3 列的大小为排序规则<strong>建立2棵 B+ 树</strong>。</li>
+</ul>
+<h2 id="mysql">MySQL中创建和删除索引的语句</h2>
+<p>我们可以在创建表的时候指定需要建立索引的单个列或者建立联合索引的多个列：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>CREATE TALBE 表名 ( 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>   各种列的信息 ··· ,  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>   [KEY|INDEX] 索引名 (需要被索引的单个列或多个列) 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>)
+</span></span></code></pre></div>
+<p>其中的 KEY 和 INDEX 是同义词，任意选用一个就可以。我们也可以在修改表结构的时候添加索引：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>ALTER TABLE 表名 ADD [INDEX|KEY] 索引名 (需要被索引的单个列或多个列);
+</span></span></code></pre></div>
+<p>也可以在修改表结构的时候删除索引：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>ALTER TABLE 表名 DROP [INDEX|KEY] 索引名;
+</span></span></code></pre></div>
+<p>比方说我们想在创建 index_demo 表的时候就为 c2 和 c3 列添加一个 联合索引 ，可以这么写建表语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>CREATE TABLE index_demo( 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>   c1 INT, 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>   c2 INT, 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>   c3 CHAR(1), 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span>   PRIMARY KEY(c1), 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">6</span><span>   INDEX idx_c2_c3 (c2, c3) 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">7</span><span>);
+</span></span></code></pre></div>
+<p>在这个建表语句中我们创建的索引名是 idx_c2_c3 ，这个名称可以随便起，不过我们还是建议以 idx_ 为前缀，后边跟着需要建立索引的列名，多个列名之间用下划线 _ 分隔开。如果我们想删除这个索引，可以这么写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>ALTER TABLE index_demo DROP INDEX idx_c2_c3;
+</span></span></code></pre></div>
+<p>总结：就是套中套，数据页根据页目录来二分查找记录，然后再给页建个目录，好听点叫索引，这样查找的顺序就是先去装有目录项的数据页查询到哪个数据页，然后数据页中，根据页目录查询记录，注意非主键条件，存在回表操作！</p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#b">B+树索引的由来</a><ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<a href="#1">1.我们先来假设不了解什么是索引，我们会怎么查找？</a></li>
+<li>
+<a href="#2">2.如果在很多页中查找？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#b-1">B+树索引</a></li>
+<li>
+<a href="#heading">索引分类</a><ul>
+<li>
+<a href="#heading-1">聚簇索引</a></li>
+<li>
+<a href="#heading-2">二级索引</a></li>
+<li>
+<a href="#heading-3">联合索引</a></li>
+</ul>
+</li>
+<li>
+<a href="#mysql">MySQL中创建和删除索引的语句</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/db/mysql/13.InnoDB%e6%95%b0%e6%8d%ae%e9%a1%b5%e7%bb%93%e6%9e%84/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/db/mysql/15.mysql%e4%b9%8bInnoDB%e6%95%b0%e6%8d%ae%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

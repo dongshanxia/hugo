@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>09.重新认识mysql</title>
     
 
 
@@ -363,369 +363,329 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<p>[toc]</p>
+<h2 id="mysql-">mysql 的客户端和服务端结构</h2>
+<p>客户端负责接收用户的命令，并且发送给服务端</p>
+<p>服务端负责接收客户端的命令，并进行处理，返回给客户端</p>
+<h2 id="bin">bin目录下的可执行文件</h2>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220208163519036.png" alt="image-20220208163519036"/></p>
+<h2 id="unixmysql-server">unix环境下启动mysql server</h2>
+<p><strong>mysqld</strong></p>
+<p>mysqld 这个可执行文件就代表着 MySQL 服务器程序，运行这个可执行文件就可以<strong>直接启动一个服务器进程</strong>。但这个命令不常用，我们继续往下看更牛逼的启动命令。</p>
+<p><strong>mysqld_safe</strong></p>
+<p>mysqld_safe 是一个启动脚本，<strong>它会间接的调用 mysqld</strong> ，而且还顺便启动了另外一个监控进程，这个监控进程在服务器进程挂了的时候，可以帮助重启它。另外，使用 mysqld_safe 启动服务器程序时，它会将服务器程序的出错信息和其他诊断信息重定向到某个文件中，产生出错日志，这样可以方便我们找出发生错误的原因。<br/>
+<strong>mysql.server</strong></p>
+<p>mysql.server 也是一个启动脚本，它会<strong>间接的调用 mysqld_safe</strong> ，在调用 mysql.server 时在后边指定 start参数就可以启动服务器序了，就像这样：</p>
+<p><strong>mysql.server start</strong></p>
+<p>需要注意的是，这个 mysql.server 文件其实是一个链接文件，它的实际文件是 ../support-files/mysql.server。我使用的 macOS 操作系统会帮我们在 bin 目录下自动创建一个指向实际文件的链接文件，如果你的操作系统没有帮你自动创建这个链接文件，那就自己 创建一个呗～ 别告诉我你不会创建链接文件，上网搜搜呗～</p>
+<p>另外，我们还可以使用 mysql.server 命令来关闭正在运行的服务器程序，只要把 start 参数换成 stop 就好了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>mysql.server stop
+</span></span></code></pre></div>
+<p><strong>mysqld_multi</strong></p>
+<p>其实我们一台计算机上也可以运行多个服务器实例，也就是运行多个 MySQL 服务器进程。 mysql_multi 可执行文件可以对每一个服务器进程的启动或停止进行监控。这个命令的使用比较复杂，本书主要是为了讲清楚 MySQL 服务器和客户端运行的过程，不会对启动多个服务器程序进行过多唠叨。</p>
+<h2 id="windowsmysql-server">windows下启动mysql server</h2>
+<p>手动启动</p>
+<p>双击bin目录下mysqld文件即可</p>
+<p>以服务的方式启动</p>
+<p>有些时候需要长时间运行程序或者开机自启某些程序，这时候就需要把这个程序注册为windows服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>&#34;完整的可执行文件路径&#34; --install [-manual] [服务名]
+</span></span></code></pre></div>
+<p>其中的 -manual 可以省略，加上它的话表示在 Windows 系统启动的时候不自动启动该服务，否则会自动启动。</p>
+<p>服务名 也可以省略，默认的服务名就是 MySQL 。比如我的 Windows 计算机上 mysqld 的完整路径是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>C:\Program Files\MySQL\MySQL Server 5.7\bin\mysqld
+</span></span></code></pre></div>
+<p>所以如果我们想把它注册为服务的话可以在命令行里这么写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>&#34;C:\Program Files\MySQL\MySQL Server 5.7\bin\mysqld&#34; --install
+</span></span></code></pre></div>
+<p>在把 mysqld 注册为 Windows 服务之后，我们就可以通过下边这个命令来启动 MySQL 服务器程序了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>net start MySQL
+</span></span></code></pre></div>
+<p>当然，如果你喜欢图形界面的话，你可以通过 Windows 的服务管理器通过用鼠标点点点的方式来启动和停止服务</p>
+<p>（作为一个程序猿，还是用黑框框吧～）。关闭这个服务也非常简单，只要把上边的 start 换成 stop 就行了，就像这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>net stop MySQL
+</span></span></code></pre></div>
+<p>启动mysql客户端</p>
+<p>bin目录下有启动脚本 mysqladmin 、 mysqldump 、 mysqlcheck 等等等等，最重要的是mysqld</p>
+<p>启动命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>mysql -h主机名 -u用户名 -p密码
+</span></span></code></pre></div>
+<blockquote>
+<p>各个参数的意义如下： |参数名|含义| |:--:|:--| | -h |表示服务器进程所在计算机的域名或者IP地址，如果服务器进程就运行在本机的话，可以省略这个参数，或者填 localhost 或者 127.0.0.1 。也可以写作 --host=主机名 的形式。| | -u |表示用户名。也可以写作 --user=用户名 的形式。| | -p |表示密码。也可以写作 --password=密码 的形式。<strong>总的说，像 h、u、p 这样名称只有一个英文字母的参数称为短形式的参数，使用时前边需要加单短划线，像 host、user、password 这样大于一个英文字母的参数称为长形式的参数，使用时前边需要加双短划线。</strong></p>
+</blockquote>
+<p>例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>mysql -hlocalhost -uroot -p123456
+</span></span></code></pre></div>
+<h2 id="heading">客户端连接服务端的过程</h2>
+<p>客户端进程向服务器进程发送请求并得到回复的过程本质上是一个<strong>进程间通信的过程</strong>。</p>
+<p>三种方式</p>
+<ul>
+<li>TCP/IP</li>
+<li>windows下使用命名管道或者共享内存</li>
+<li>unix下使用Unix域套接字文件</li>
+</ul>
+<h2 id="heading-1">服务器处理客户端请求</h2>
+<p>客户端进程向服务器进程发送一段文本（MySQL语句），服务器进程处理后再向客户端进程发送一段文本（处理结果）</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220208173328925.png" alt="image-20220208173328925"/></p>
+<ol>
+<li>
+<p>连接管理<br/>
+不管是用以上三种的哪种，mysql服务端都会开启一个线程去连接请求过来的客户端，当客户端与服务端断开连接时，连接不会立马被销毁，而是被缓存起来，待下个客户端连接使用，好处就是避免线程频繁的开启和销毁，减小对系统性能的影响</p>
+</li>
+<li>
+<p>处理链接</p>
+<ul>
+<li>查询缓存<br/>
+如果两个查询请求在任何字符上的不同（例如：<strong>空格、注释、大小写</strong>），都会导致缓存不会命中。另外，如果查询请求中包含某些系统函数、用户自定义变量和函数、一些系统表，如mysql 、information_schema、 performance_schema 数据库中的表，那这个请求就不会被缓存。以某些系统函数举例，可能同样的函数的两次调用会产生不一样的结果，比如函数 NOW ，每次调用都会产生最新的当前时间，如果在一个查询请求中调用了这个函数，那即使查询请求的文本信息都一样，那不同时间的两次查询也应该得到不同的结果，如果在第一次查询时就缓存了，那第二次查询的时候直接使用第一次查询的结果就是错误的！<br/>
+不过既然是缓存，那就有它缓存失效的时候。MySQL的缓存系统会监测涉及到的每张表，只要该表的结构或者数据被修改，如对该表使用了 INSERT 、 UPDATE 、 DELETE 、 TRUNCATE TABLE 、 ALTER TABLE 、 DROP TABLE 或 DROP DATABASE 语句，那使用该表的所有高速缓存查询都将变为无效并从高速缓存中删除！</li>
+</ul>
+<p>tips:</p>
+</li>
+</ol>
+<blockquote>
+<p>虽然查询缓存有时可以提升系统性能，但也不得不因维护这块缓存而造成一些开销，比如每次都要去查询缓存中检索，查询请求处理完需要更新查询缓存，维护该查询缓存对应的内存区域。从MySQL 5.7.20开始，不推荐使用查询缓存，并在MySQL 8.0中删除。</p>
+</blockquote>
+<ul>
+<li>语法解析<br/>
+如果查询缓存没有命中，接下来就需要进入正式的查询阶段了。因为客户端程序发送过来的请求只是一段文本而已，所以 MySQL 服务器程序首先要对<strong>这段文本做分析，判断请求的语法是否正确，然后从文本中将要查询的表、各种查询条件都提取出来放到MySQL服务器内部使用的一些数据结构上来。</strong></li>
+<li>查询优化<br/>
+现在已经获取到需要操作的表的信息，搜索条件等，但是有这些，往往执行效率不是最好的，mysql的优化程序会帮你将sql做些优化，如外连接转换为内连接、表达式简化、子查询转为连接吧啦吧啦的一堆东西</li>
+</ul>
+<ol start="3">
+<li>存储引擎</li>
+</ol>
+<p>以上的操作都还没涉及到真正操作数据，储存引擎才会真正操作数据，我们都知道数据存在表里的一行一行记录，这只是逻辑上的，实际上数据是以<strong>什么样的结构，什么样的方式</strong>存到磁盘上的，就是储存引擎该做的事。<br/>
+各种不同的存储引擎向上边的 <strong>MySQL server 层提供统一的调用接口</strong>（也就是存储引擎API），包含了几十个底层函数，像&#34;读取索引第一条内容&#34;、&#34;读取索引下一条内容&#34;、&#34;插入记录&#34;等等。</p>
+<p>常用的储存引擎</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARCHIVE</td>
+<td>用于数据存档（行被插入后不能再修改）</td>
+</tr>
+<tr>
+<td>BLACKHOLE</td>
+<td>丢弃写操作，读操作会返回空内容</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>在存储数据时，以逗号分隔各个数据项</td>
+</tr>
+<tr>
+<td>FEDERATED</td>
+<td>用来访问远程表</td>
+</tr>
+<tr>
+<td><strong>InnoDB</strong></td>
+<td>具备外键支持功能的事务存储引擎</td>
+</tr>
+<tr>
+<td>MEMORY</td>
+<td>置于内存的表</td>
+</tr>
+<tr>
+<td>MERGE</td>
+<td>用来管理多个MyISAM表构成的表集合</td>
+</tr>
+<tr>
+<td><strong>MyISAM</strong></td>
+<td>主要的非事务处理存储引擎</td>
+</tr>
+<tr>
+<td>NDBMySQL</td>
+<td>集群专用存储引擎</td>
+</tr>
+</tbody>
+</table>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#mysql-">mysql 的客户端和服务端结构</a></li>
+<li>
+<a href="#bin">bin目录下的可执行文件</a></li>
+<li>
+<a href="#unixmysql-server">unix环境下启动mysql server</a></li>
+<li>
+<a href="#windowsmysql-server">windows下启动mysql server</a></li>
+<li>
+<a href="#heading">客户端连接服务端的过程</a></li>
+<li>
+<a href="#heading-1">服务器处理客户端请求</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/db/mysql/00.mysql%e6%80%9d%e7%bb%b4%e5%af%bc%e5%9b%be/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/db/mysql/10.mysql%e7%b3%bb%e7%bb%9f%e9%85%8d%e7%bd%ae%e4%b8%8e%e5%90%af%e5%8a%a8%e9%80%89%e9%a1%b9/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

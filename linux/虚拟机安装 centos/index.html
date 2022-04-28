@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>虚拟机安装 centos</title>
     
 
 
@@ -363,369 +363,303 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="-centos">虚拟机安装 centos</h1>
+<blockquote>
+<p>路线图</p>
+<p>主机(宿主机) ---&gt; centos --&gt; docker  --&gt; docker 镜像  --&gt; docker 容器  ---  docker 服务</p>
+</blockquote>
+<h3 id="1">1.前期准备</h3>
+<ol>
+<li>一台 主机 或者一台有虚拟软件的 主机   虚拟软件(vm, oracle vm virtualBox)</li>
+<li>有centos镜像(最小化安装的centos)</li>
+</ol>
+<h3 id="2-centos">2. 下载centos镜像</h3>
+<ul>
+<li>查询下载地址 <a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></li>
+<li>下载地址: <a href="https://mirrors.tuna.tsinghua.edu.cn/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso">https://mirrors.tuna.tsinghua.edu.cn/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso</a></li>
+</ul>
+<h3 id="3-centos">3. 配置centos镜像</h3>
+<h4 id="31-">3.1 新建虚拟机信息</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064533_2uPDld0Mq7.png" alt="image-20201206144526579"/></p>
+<h4 id="32-">3.2 编辑虚拟机名称</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064554_D70ucfCM21.png" alt="image-20201206144553949"/></p>
+<h4 id="33--">3.3  配置虚拟机内存大小</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064618_3duM5WSerD.png" alt="image-20201206144617403"/></p>
+<h4 id="34---">3.4 配置虚拟硬盘  选择新建</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064631_2GWqH7lyTi.png" alt="image-20201206144630843"/></p>
+<h4 id="35-">3.5 配置虚拟硬盘文件类型</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064712_E7F5WXhI81.png" alt="image-20201206144711480"/></p>
+<h4 id="36-">3.6 配置虚拟硬盘大小</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064742_OTm49w6b6b.png" alt="image-20201206144741457"/></p>
+<h4 id="37---centos">3.7 选择虚拟硬盘  就是下载好的centos镜像</h4>
+<p><img src="/home/zhu/.config/Typora/typora-user-images/image-20201206144842477.png" alt="image-20201206144842477"/></p>
+<h5 id="371">3.7.1选择后的图</h5>
+<p><img src="/home/zhu/.config/Typora/typora-user-images/image-20201206144911286.png" alt="image-20201206144911286"/></p>
+<h3 id="4-centos7">4. 安装centos7</h3>
+<h4 id="41centos-----install--centos-7">4.1开始安装centos   选择第一个  install  centos 7</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064942_O5rZP5JGSY.png" alt="image-20201206144941384"/></p>
+<h4 id="42--">4.2 系统语言选择 选择英文</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034809_E80HOy582Y.png" alt="image-20201206145041053"/></p>
+<h4 id="43-">4.3 进去后第一个画面</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034540_3Tf7cxCX78.png" alt="image-20201213112613354"/></p>
+<h4 id="44-">4.4 配置时间和时区</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034815_04Ly1143Br.png" alt="image-20201206145109995"/></p>
+<h4 id="45-">4.5 配置硬盘分区</h4>
+<h5 id="451--">4.5.1 选中硬盘-配置硬盘分区</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034907_C2Ozg771EH.png" alt="image-20201206145148486"/></p>
+<h5 id="452-">4.5.2 配置硬盘分区之默认自动</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034930_qfDXe68441.png" alt="image-20201206145207842"/></p>
+<h5 id="453--">4.5.3 配配置硬盘分区之默认自动 结果</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/065240_YxucR6X2w3.png" alt="image-20201206145239026"/></p>
+<h5 id="454-">4.5.4 硬盘分区配置完成</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035257_xthHakcC2d.png" alt="image-20201213115255982"/></p>
+<h4 id="46-">4.6 配置网络</h4>
+<h5 id="461-">4.6.1 配置网络静态获取</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035200_O6fkFEHRSQ.png" alt="image-20201213115156130"/></p>
+<h5 id="462-">4.6.2 配置网络随着系统启动而自动脸上</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035323_22ef6i9oSa.png" alt="image-20201213115321488"/></p>
+<h5 id="463-">4.6.3 配置主机名字</h5>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035359_PL2m5SlL1N.png" alt="image-20201213115358189"/></p>
+<h4 id="47-reboot">4.7 完成可以reboot</h4>
+<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035410_fvjfL3qAm1.png" alt="image-20201213115405713"/></p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#-centos">虚拟机安装 centos</a><ul>
+<li>
+<ul>
+<li>
+<a href="#1">1.前期准备</a></li>
+<li>
+<a href="#2-centos">2. 下载centos镜像</a></li>
+<li>
+<a href="#3-centos">3. 配置centos镜像</a><ul>
+<li>
+<a href="#31-">3.1 新建虚拟机信息</a></li>
+<li>
+<a href="#32-">3.2 编辑虚拟机名称</a></li>
+<li>
+<a href="#33--">3.3  配置虚拟机内存大小</a></li>
+<li>
+<a href="#34---">3.4 配置虚拟硬盘  选择新建</a></li>
+<li>
+<a href="#35-">3.5 配置虚拟硬盘文件类型</a></li>
+<li>
+<a href="#36-">3.6 配置虚拟硬盘大小</a></li>
+<li>
+<a href="#37---centos">3.7 选择虚拟硬盘  就是下载好的centos镜像</a><ul>
+<li>
+<a href="#371">3.7.1选择后的图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#4-centos7">4. 安装centos7</a><ul>
+<li>
+<a href="#41centos-----install--centos-7">4.1开始安装centos   选择第一个  install  centos 7</a></li>
+<li>
+<a href="#42--">4.2 系统语言选择 选择英文</a></li>
+<li>
+<a href="#43-">4.3 进去后第一个画面</a></li>
+<li>
+<a href="#44-">4.4 配置时间和时区</a></li>
+<li>
+<a href="#45-">4.5 配置硬盘分区</a><ul>
+<li>
+<a href="#451--">4.5.1 选中硬盘-配置硬盘分区</a></li>
+<li>
+<a href="#452-">4.5.2 配置硬盘分区之默认自动</a></li>
+<li>
+<a href="#453--">4.5.3 配配置硬盘分区之默认自动 结果</a></li>
+<li>
+<a href="#454-">4.5.4 硬盘分区配置完成</a></li>
+</ul>
+</li>
+<li>
+<a href="#46-">4.6 配置网络</a><ul>
+<li>
+<a href="#461-">4.6.1 配置网络静态获取</a></li>
+<li>
+<a href="#462-">4.6.2 配置网络随着系统启动而自动脸上</a></li>
+<li>
+<a href="#463-">4.6.3 配置主机名字</a></li>
+</ul>
+</li>
+<li>
+<a href="#47-reboot">4.7 完成可以reboot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/linux/%e7%a6%bb%e7%ba%bf%e5%ae%89%e8%a3%85mysql/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/linux/%e9%98%b2%e7%81%ab%e5%a2%99firewalld/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

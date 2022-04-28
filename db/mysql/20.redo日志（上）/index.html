@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>20.redo日志（上）</title>
     
 
 
@@ -363,369 +363,267 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h2 id="redo">redo日志</h2>
+<p>**作用：**记录下记录修改的信息（所在表空间，页号，修改信息），系统崩溃了的话，也可以利用redo日志恢复。</p>
+<p>**过程：**该事务执行过程中产生的 redo 日志刷新到磁盘。</p>
+<p><strong>通用组成：</strong></p>
+<ul>
+<li>type ：该条 redo 日志的类型。在 MySQL 5.7.21 这个版本中，设计 InnoDB 的大叔一共为 redo 日志设计了53种不同的类型，稍后会详细介绍不同类型的 redo 日志。</li>
+<li>space ID ：表空间ID。</li>
+<li>page number ：页号。</li>
+<li>data ：该条 redo 日志的具体内容。</li>
+</ul>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220225100731337.png" alt="image-20220225100731337"/></p>
+<p>类型：根据记录修改的字节（type字段长度）大小分类</p>
+<ul>
+<li>MLOG_1BYTE （ type 字段对应的十进制数字为 1 ）：表示在页面的某个偏移量处写入1个字节的 redo 日志类型。</li>
+<li>MLOG_2BYTE （ type 字段对应的十进制数字为 2 ）：表示在页面的某个偏移量处写入2个字节的 redo 日志类型。</li>
+<li>MLOG_4BYTE （ type 字段对应的十进制数字为 4 ）：表示在页面的某个偏移量处写入4个字节的 redo 日志类型。</li>
+<li>MLOG_8BYTE （ type 字段对应的十进制数字为 8 ）：表示在页面的某个偏移量处写入8个字节的 redo 日志类型。</li>
+<li>MLOG_WRITE_STRING （ type 字段对应的十进制数字为 30 ）：表示在页面的某个偏移量处写入一串数据。</li>
+</ul>
+<h3 id="-redo-">复杂 redo 日志类型</h3>
+<p>如果数据频繁的改动，那是不是对应的redo log也要跟着增加呢，这样岂不是和保存的数据是一个道理了，占用着和她差不多的空间，为了减少空间的消耗，提出了复杂 redo 日志类型。</p>
+<p>比如，MLOG_COMP_LIST_START_DELETE（范围删除的开始）和MLOG_COMP_LIST_END_DELETE（范围删除的结束）类型的redo日志</p>
+<p>当我们要删除id=1 到id=15之间的日志，按照之前的redo日志的记录方式，是不是要保存15条对应记录的修改，而现在我们可以使用两条redo日志，分别记录范围删除的开头和结尾，这样就大大缩减了redo日志的条数。</p>
+<p>执行DDL语句时，存储引擎做的操作有很多，比如插入一条数据，数据页中的page header,page directory要修改，如果超页也得容量了，页还需要分裂，目录页和数据页之间的指针也要修改，等等操作。所以我们可以知道把一条记录插入到一个页面时需要更改的地方非常多。看下类型为 MLOG_COMP_REC_INSERT 的 redo 日志的结构（有印象就行）</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220225112439998.png" alt="image-20220225112439998"/></p>
+<p><strong>记住：redo日志会把事务在执行过程中对数据库所做的所有修改都记录下来，在之后系统奔溃重启后可以把事务所做的任何修改都恢复出来。</strong></p>
+<p>保证写入redo日志的原子性，特别是插入操作会引起多条redo日志的插入</p>
+<h3 id="mini-transaction">Mini-Transaction的概念</h3>
+<p>一次记录的增删改操作，都会伴随着多条redo日志插入，为了更有效率的插入redo日志，InnoDB的大叔将多条redo日志分为多个分组，每个分组都是不可分割的。</p>
+<p>如何确定每个分组是否完整写入成功呢</p>
+<p>在每组redo日志中的最后一条 redo 日志后边加上一条特殊类型的 redo 日志，该类型名称为 MLOG_MULTI_REC_END</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301152643956.png" alt="image-20220301152643956"/></p>
+<p>这样在系统奔溃重启进行恢复时，只有当解析到类型为 MLOG_MULTI_REC_END 的 redo 日志，才认为解析到了一组完整的 redo 日志，才会进行恢复。<strong>否则的话直接放弃前边解析到的 redo 日志</strong>。（很像网络传输包，判断结束标志位）</p>
+<h3 id="heading">事务的全貌</h3>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301152932818.png" alt="image-20220301152932818"/></p>
+<h3 id="redo-log-">redo log 写入过程</h3>
+<p>为了让redo log更有效率地写入磁盘，mysql服务器会为其开辟一片连续的buffer pool，先写入buffer pool 再找合适时机将缓存的数据写入磁盘。</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301154525389.png" alt="image-20220301154525389"/></p>
+<blockquote>
+<p>我们可以通过启动参数 innodb_log_buffer_size 来指定 log buffer 的大小，在 MySQL 5.7.21 这个版本中，该启动参数的默认值为 16MB 。</p>
+</blockquote>
+<h2 id="redo-log-block">redo log block</h2>
+<p>buffer pool 是由多个 redo log block组成</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301154156508.png" alt="image-20220301154156508"/></p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220304090936041.png" alt=""/></p>
+<h3 id="redo-log-block-1">redo log block组成部分</h3>
+<ul>
+<li>
+<p>log block body：真正的 redo 日志都是存储到占用 496 字节大小的 log block body 中，</p>
+</li>
+<li>
+<p>log block header：存储的是一些管理信息。</p>
+</li>
+<li>
+<p>log block trailer ：LOG_BLOCK_CHECKSUM属性的意思如下：表示block的校验值，用于正确性校验，我们暂时不关心它。</p>
+</li>
+</ul>
+<h2 id="redolog-buffer">redo日志写入log buffer</h2>
+<p>InnoDB 的大叔特意提供了一个称之为 buf_free 的全局变量，该变量指明后续写入的 redo 日志应该写入到 log buffer 中的哪个位置</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301155957554.png" alt="image-20220301155957554"/></p>
+<p>我们前边说过一个 mtr 执行过程中可能产生若干条 redo 日志，<strong>这些 redo 日志是一个不可分割的组</strong>，所以其实并不是每生成一条 redo 日志，就将其插入到 log buffer 中，而是每个 mtr 运行过程中产生的日志先暂时存到一个地方，当该 mtr 结束的时候，将过程中产生的一组 redo 日志再全部复制到 log buffer 中。我们现在假设有两个名为 T1 、 T2 的事务，每个事务都包含2个 mtr ，我们给这几个 mtr 命名一下：</p>
+<ul>
+<li>事务 T1 的两个 mtr 分别称为 mtr_T1_1 和 mtr_T1_2 。</li>
+<li>事务 T2 的两个 mtr 分别称为 mtr_T2_1 和 mtr_T2_2 。</li>
+</ul>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301160112031.png" alt="image-20220301160112031"/></p>
+<p>不同的事务可能是并发执行的，所以 T1 、 T2 之间的 mtr 可能是交替执行的。每当一个 mtr 执行完成时，伴随该 mtr 生成的一组 redo 日志就需要被复制到 log buffer 中，也就是说不同事务的 mtr 可能是交替写入 log buffer 的，我们画个示意图（为了美观，我们把一个 mtr 中产生的所有的 redo 日志当作一个整体来画）：</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220301160325344.png" alt="image-20220301160325344"/></p>
+<p>从示意图中我们可以看出来，不同的 mtr 产生的一组 redo 日志占用的存储空间可能不一样，有的 mtr 产生的redo 日志量很少，比如 mtr_t1_1 、 mtr_t2_1 就被放到同一个block中存储，有的 mtr 产生的 redo 日志量非常大，比如 mtr_t1_2 产生的 redo 日志甚至占用了3个block来存储。</p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#redo">redo日志</a><ul>
+<li>
+<a href="#-redo-">复杂 redo 日志类型</a></li>
+<li>
+<a href="#mini-transaction">Mini-Transaction的概念</a></li>
+<li>
+<a href="#heading">事务的全貌</a></li>
+<li>
+<a href="#redo-log-">redo log 写入过程</a></li>
+</ul>
+</li>
+<li>
+<a href="#redo-log-block">redo log block</a><ul>
+<li>
+<a href="#redo-log-block-1">redo log block组成部分</a></li>
+</ul>
+</li>
+<li>
+<a href="#redolog-buffer">redo日志写入log buffer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/db/mysql/19.mysql%e4%b9%8b%e4%ba%8b%e5%8a%a1/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/db/mysql/21.redo%e6%97%a5%e5%bf%97%ef%bc%88%e4%b8%8b%ef%bc%89/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

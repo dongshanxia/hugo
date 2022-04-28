@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>linux信号</title>
     
 
 
@@ -363,369 +363,251 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<p>SIGHUP     终止进程     终端线路挂断[喝小酒的网摘]http://blog.hehehehehe.cn/a/16999.htm<br/>
+SIGINT     终止进程     中断进程<br/>
+SIGQUIT   建立CORE文件终止进程，并且生成core文件<br/>
+SIGILL   建立CORE文件       非法指令<br/>
+SIGTRAP   建立CORE文件       跟踪自陷<br/>
+SIGBUS   建立CORE文件       总线错误<br/>
+SIGSEGV   建立CORE文件       段非法错误<br/>
+SIGFPE   建立CORE文件       浮点异常<br/>
+SIGIOT   建立CORE文件       执行I/O自陷<br/>
+SIGKILL   终止进程     杀死进程<br/>
+SIGPIPE   终止进程     向一个没有读进程的管道写数据<br/>
+SIGALARM   终止进程     计时器到时<br/>
+SIGTERM   终止进程     软件终止信号<br/>
+SIGSTOP   停止进程     非终端来的停止信号<br/>
+SIGTSTP   停止进程     终端来的停止信号<br/>
+SIGCONT   忽略信号     继续执行一个停止的进程<br/>
+SIGURG   忽略信号     I/O紧急信号<br/>
+SIGIO     忽略信号     描述符上可以进行I/O<br/>
+SIGCHLD   忽略信号     当子进程停止或退出时通知父进程<br/>
+SIGTTOU   停止进程     后台进程写终端<br/>
+SIGTTIN   停止进程     后台进程读终端<br/>
+SIGXGPU   终止进程     CPU时限超时<br/>
+SIGXFSZ   终止进程     文件长度过长<br/>
+SIGWINCH   忽略信号     窗口大小发生变化<br/>
+SIGPROF   终止进程     统计分布图用计时器到时<br/>
+SIGUSR1   终止进程     用户定义信号1<br/>
+SIGUSR2   终止进程     用户定义信号2<br/>
+SIGVTALRM 终止进程     虚拟计时器到时</p>
+<ol>
+<li>SIGHUP 本信号在用户终端连接(正常或非正常)结束时发出, 通常是在终端的控<br/>
+制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端<br/>
+不再关联.</li>
+<li>SIGINT 程序终止(interrupt)信号, 在用户键入INTR字符(通常是Ctrl-C)时发出</li>
+<li>SIGQUIT 和SIGINT类似, 但由QUIT字符(通常是Ctrl-)来控制. 进程在因收到<br/>
+SIGQUIT退出时会产生core文件, 在这个意义上类似于一个程序错误信<br/>
+号.</li>
+<li>SIGILL 执行了非法指令. 通常是因为可执行文件本身出现错误, 或者试图执行<br/>
+数据段. 堆栈溢出时也有可能产生这个信号.</li>
+<li>SIGTRAP 由断点指令或其它trap指令产生. 由debugger使用.</li>
+<li>SIGABRT 程序自己发现错误并调用abort时产生.</li>
+<li>SIGIOT 在PDP-11上由iot指令产生, 在其它机器上和SIGABRT一样.</li>
+<li>SIGBUS 非法地址, 包括内存地址对齐(alignment)出错. eg: 访问一个四个字长<br/>
+的整数, 但其地址不是4的倍数.</li>
+<li>SIGFPE 在发生致命的算术运算错误时发出. 不仅包括浮点运算错误, 还包括溢<br/>
+出及除数为0等其它所有的算术的错误.</li>
+<li>SIGKILL 用来立即结束程序的运行. 本信号不能被阻塞, 处理和忽略.</li>
+<li>SIGUSR1 留给用户使用</li>
+<li>SIGSEGV 试图访问未分配给自己的内存, 或试图往没有写权限的内存地址写数据.</li>
+<li>SIGUSR2 留给用户使用</li>
+<li>SIGPIPE Broken pipe</li>
+<li>SIGALRM 时钟定时信号, 计算的是实际的时间或时钟时间. alarm函数使用该<br/>
+信号.</li>
+<li>SIGTERM 程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和<br/>
+处理. 通常用来要求程序自己正常退出. shell命令kill缺省产生这<br/>
+个信号.</li>
+<li>SIGCHLD 子进程结束时, 父进程会收到这个信号.</li>
+<li>SIGCONT 让一个停止(stopped)的进程继续执行. 本信号不能被阻塞. 可以用<br/>
+一个handler来让程序在由stopped状态变为继续执行时完成特定的<br/>
+工作. 例如, 重新显示提示符</li>
+<li>SIGSTOP 停止(stopped)进程的执行. 注意它和terminate以及interrupt的区别:<br/>
+该进程还未结束, 只是暂停执行. 本信号不能被阻塞, 处理或忽略.</li>
+<li>SIGTSTP 停止进程的运行, 但该信号可以被处理和忽略. 用户键入SUSP字符时<br/>
+(通常是Ctrl-Z)发出这个信号</li>
+<li>SIGTTIN 当后台作业要从用户终端读数据时, 该作业中的所有进程会收到SIGTTIN<br/>
+信号. 缺省时这些进程会停止执行.</li>
+<li>SIGTTOU 类似于SIGTTIN, 但在写终端(或修改终端模式)时收到.</li>
+<li>SIGURG 有&#34;紧急&#34;数据或out-of-band数据到达socket时产生.</li>
+<li>SIGXCPU 超过CPU时间资源限制. 这个限制可以由getrlimit/setrlimit来读取/<br/>
+改变</li>
+<li>SIGXFSZ 超过文件大小资源限制.</li>
+<li>SIGVTALRM 虚拟时钟信号. 类似于SIGALRM, 但是计算的是该进程占用的CPU时间.</li>
+<li>SIGPROF 类似于SIGALRM/SIGVTALRM, 但包括该进程用的CPU时间以及系统调用的<br/>
+时间.</li>
+<li>SIGWINCH 窗口大小改变时发出.</li>
+<li>SIGIO 文件描述符准备就绪, 可以开始进行输入/输出操作.</li>
+<li>SIGPWR Power failure</li>
+</ol>
+<p>有 两个信号可以停止进程:SIGTERM和SIGKILL。 SIGTERM比较友好，进程能捕捉这个信号，根据您的需要来关闭程序。在关闭程序之前，您可以结束打开的记录文件和完成正在做的任务。在某些情况下，假 如进程正在进行作业而且不能中断，那么进程可以忽略这个SIGTERM信号。</p>
+<p>对于SIGKILL信号，进程是不能忽略的。这是一个 “我不管您在做什么,立刻停止”的信号。假如您发送SIGKILL信号给进程，Linux就将进程停止在那里。</p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/linux/linux%e4%b8%bb%e6%9c%ba%e5%90%8d/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/linux/linux%e5%a5%bd%e7%8e%a9%e7%9a%84/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

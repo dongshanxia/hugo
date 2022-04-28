@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>17.EXPLAIN 语句输出的各个列解释</title>
     
 
 
@@ -363,369 +363,366 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="explain-">EXPLAIN 语句输出的各个列解释</h1>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>在一个大的查询语句中每个 SELECT 关键字都对应一个唯一的 id</td>
+</tr>
+<tr>
+<td>select_type</td>
+<td>SELECT 关键字对应的那个查询的类型</td>
+</tr>
+<tr>
+<td>table</td>
+<td>表名</td>
+</tr>
+<tr>
+<td>partitions</td>
+<td>匹配的分区信息</td>
+</tr>
+<tr>
+<td>type</td>
+<td>针对单表的访问方法</td>
+</tr>
+<tr>
+<td>possible_keys</td>
+<td>可能用到的索引</td>
+</tr>
+<tr>
+<td>key</td>
+<td>实际上使用的索引</td>
+</tr>
+<tr>
+<td>key_len</td>
+<td>实际使用到的索引长度</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>当使用索引列等值查询时，与索引列进行等值匹配的对象信息</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>预估的需要读取的记录条数</td>
+</tr>
+<tr>
+<td>filtered</td>
+<td>某个表经过搜索条件过滤后剩余记录条数的百分比</td>
+</tr>
+<tr>
+<td>Extra</td>
+<td>一些额外的信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="select-type">select_type</h2>
+<p>每一个 SELECT 关键字代表的小查询都定义了一个称之为 select_type 的属性，意思是我们<br/>
+只要知道了某个小查询的 select_type 属性，就知道了这个小查询在整个大查询中扮演了一个什么角色</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220223091837507.png" alt="image-20220223091837507"/></p>
+<h3 id="simple">SIMPLE</h3>
+<p>查询语句中不包含 UNION 或者子查询的查询都算作是 SIMPLE 类型，连接查询也算是 SIMPLE 类型。</p>
+<h3 id="primary">PRIMARY</h3>
+<p>对于包含 UNION 、 UNION ALL 或者子查询的大查询来说，它是由几个小查询组成的，其中最左边的那个查询<br/>
+的 select_type 值就是 PRIMARY</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220222112249591.png" alt="image-20220222112249591"/></p>
+<h3 id="union">UNION</h3>
+<p>对于包含 UNION 或者 UNION ALL 的大查询来说，它是由几个小查询组成的，其中除了最左边的那个小查询以<br/>
+外，其余的小查询的 select_type 值就是 UNION</p>
+<h3 id="union-result">UNION RESULT</h3>
+<p>MySQL 选择使用临时表来完成 UNION 查询的去重工作，针对该临时表的查询的 select_type 就是 UNION<br/>
+RESULT ，例子上边有，就不赘述了。</p>
+<h3 id="subquery">SUBQUERY</h3>
+<p>如果包含子查询的查询语句不能够转为对应的 semi-join 的形式，并且该子查询是不相关子查询，并且查询优化器决定采用将该子查</p>
+<p>询物化的方案来执行该子查询时，该子查询的第一个 SELECT 关键字代表的那个查询的 select_type 就是 SUBQUERY</p>
+<h3 id="dependent-subquery">DEPENDENT SUBQUERY</h3>
+<p>如果包含子查询的查询语句不能够转为对应的 semi-join 的形式，并且该子查询是相关子查询，则该子查询<br/>
+的第一个 SELECT 关键字代表的那个查询的 select_type 就是 DEPENDENT SUBQUERY</p>
+<h3 id="dependent-union">DEPENDENT UNION</h3>
+<p>在包含 UNION 或者 UNION ALL 的大查询中，如果各个小查询都依赖于外层查询的话，那除了最左边的那个小查询之外，其余的小查询的 select_type 的值就是 DEPENDENT UNION</p>
+<h3 id="derived">DERIVED</h3>
+<p>对于采用物化的方式执行的包含派生表的查询，该派生表对应的子查询的 select_type 就是 DERIVED</p>
+<h3 id="materialized">MATERIALIZED</h3>
+<p>当查询优化器在执行包含子查询的语句时，选择将子查询物化之后与外层查询进行连接查询时，该子查询对应的 select_type 属性就是 MATERIALIZED</p>
+<h3 id="uncacheable-subquery">UNCACHEABLE SUBQUERY</h3>
+<p>不常用，就不多唠叨了。</p>
+<h3 id="uncacheable-union">UNCACHEABLE UNION</h3>
+<p>不常用，就不多唠叨了。</p>
+<h2 id="type">type</h2>
+<p>执行计划的一条记录就代表着 MySQL 对某个表的执行查询时的访问方法</p>
+<p><strong>system：</strong><br/>
+当表中只有一条记录并且该表使用的存储引擎的统计数据是精确的，比如MyISAM、Memory，那么对该表的访问方法就是 system。</p>
+<p><strong>const：</strong><br/>
+根据主键或者唯一二级索引列与常数进行等值匹配</p>
+<p><strong>eq_ref：</strong><br/>
+在连接查询时，如果<strong>被驱动表是通过主键或者唯一二级索引列等值匹配的方式进行访问</strong>的（如果该主键或者唯一二级索引是联合索引的话，所有的索引列都必须进行等值比较），则对该<strong>被驱动表的访问方法</strong>就是eq_ref</p>
+<p><strong>ref：</strong><br/>
+搜索条件为二级索引列与常数等值比较来<strong>定位多条记录</strong>，采用二级索引来执行查询的访问方法</p>
+<p><strong>fulltext</strong><br/>
+全文索引</p>
+<p><strong>ref_or_null：</strong><br/>
+当对普通二级索引进行等值匹配查询，该索引列的值也可以是 NULL 值时，那么对该表的访问方法就可能是ref_or_null</p>
+<p><strong>index_merge：</strong><br/>
+一般情况下对于某个表的查询只能使用到一个索引，但我们唠叨单表访问方法时特意强调了在某些场景下可以使用 <strong>Intersection 、 Union 、 Sort-Union 这三种索引合</strong>并的方式来执行查询，会使用到多个索引。</p>
+<p><strong>unique_subquery：</strong><br/>
+类似于<strong>两表连接中被驱动表的 eq_ref 访问方法</strong>， unique_subquery 是<strong>针对在一些包含 IN 子查询</strong>的查询语句中，如果查询优化器决定将 IN 子查询转换为 EXISTS 子查询，而且<strong>子查询可以使用到主键进行等值匹配</strong>的话，那么该子查询执行计划的 type 列的值就是 unique_subquery</p>
+<p><strong>index_subquery：</strong><br/>
+index_subquery 与 unique_subquery 类似，只不过访问子查询中的表时使用的是<strong>普通的索引</strong>（unique_subquery之前用的是主键索引或者一二级索引）。</p>
+<p><strong>range：</strong><br/>
+如果使用索引获取某些 范围区间 的记录，那么就可能使用到 range 访问方法</p>
+<p><strong>index：</strong><br/>
+当我们可以使用索引覆盖，但需要扫描全部的索引记录时，该表的访问方法就是 index。</p>
+<p><strong>ALL：</strong><br/>
+全表扫描。</p>
+<h2 id="possible-keyskey">possible_keys和key</h2>
+<p>possible_keys 列表示在某个查询语句中，对某个表执行单表查询时可能用到的索引有哪些， key 列表示实际用到的索引有哪些。</p>
+<h2 id="key-len">key_len</h2>
+<p>key_len 列表示当优化器决定使用某个索引执行查询时，该索引记录的最大长度，它是由这三个部分构成的：</p>
+<ul>
+<li>对于使用固定长度类型的索引列来说，它实际占用的存储空间的最大长度就是该固定值，对于指定字符集的变长类型的索引列来说，比如某个索引列的类型是 VARCHAR(100) ，使用的字符集是 utf8 ，那么该列实际占用的最大存储空间就是 100 × 3 = 300 个字节。</li>
+<li>如果该索引列以存储 NULL 值，则 key_len 比不可以存储 NULL 值时多1个字节。</li>
+<li>对于变长字段来说，都会有2个字节的空间来存储该变长列的实际长度。</li>
+</ul>
+<p>例子</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220222202111013.png" alt="image-20220222202111013"/></p>
+<blockquote>
+<p>提示：有的同学可能有疑问：你在前边唠叨 InnoDB 行格式的时候不是说，存储变长字段的实际长度不是可能占用1个字节或者2个字节么？为什么现在</p>
+<p>不管三七二十一都用了 2 个字节？这里需要强调的一点是，执行计划的生成是在MySQL server 层中的功能，并不是针对具体某个存储引擎的功能，设计</p>
+<p>MySQL 的大叔在执行计划中输出key_len 列<strong>主要是为了让我们区分某个使用联合索引的查询具体用了几个索引列</strong>，<strong>而不是为了准确的说明针对某个具体</strong></p>
+<p><strong>存储引擎存储变长字段的实际长度占用的空间到底是占用1个字节还是2个字节</strong></p>
+</blockquote>
+<h2 id="ref">ref</h2>
+<h2 id="rows">rows</h2>
+<p>如果查询优化器决定使用全表扫描的方式对某个表执行查询时，执行计划的 rows 列就代表预计需要扫描的行数，如果使用索引来执行查询时，执行计划的 rows 列就代表预计扫描的索引记录行数</p>
+<h2 id="filtered">filtered</h2>
+<p>之前在分析连接查询的成本时提出过一个 condition filtering 的概念，就是 MySQL 在计算驱动表扇出时采用的一个策略：</p>
+<ul>
+<li>如果使用的是全表扫描的方式执行的单表查询，那么计算驱动表扇出时需要估计出满足搜索条件的记录到底有多少条。</li>
+<li>如果使用的是索引执行的单表扫描，那么计算驱动表扇出的时候需要估计出满足除使用到对应索引的搜索条件外的其他搜索条件的记录有多少条。</li>
+</ul>
+<p>连接查询中驱动表对应的执行计划记录的filtered 值，比方说下边这个查询：</p>
+<p><img src="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220222204006642.png" alt="image-20220222204006642"/></p>
+<p>从执行计划中可以看出来，查询优化器打算把 s1 当作驱动表， s2 当作被驱动表。我们可以看到驱动表 s1 表的执行计划的 rows 列为 9688 ， filtered 列为 10.00 ，这意味着驱动表 s1 的扇出值就是 9688 × 10.00% = 968.8 ，这说明还要对被驱动表执行大约 968 次查询。</p>
+<h2 id="extra">Extra</h2>
+<p>Extra 列是用来说明一些额外信息的，我们可以通过这些额外信息来更准确的理解 MySQL 到底将如何执行给定的查询语句</p>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#explain-">EXPLAIN 语句输出的各个列解释</a><ul>
+<li>
+<a href="#select-type">select_type</a><ul>
+<li>
+<a href="#simple">SIMPLE</a></li>
+<li>
+<a href="#primary">PRIMARY</a></li>
+<li>
+<a href="#union">UNION</a></li>
+<li>
+<a href="#union-result">UNION RESULT</a></li>
+<li>
+<a href="#subquery">SUBQUERY</a></li>
+<li>
+<a href="#dependent-subquery">DEPENDENT SUBQUERY</a></li>
+<li>
+<a href="#dependent-union">DEPENDENT UNION</a></li>
+<li>
+<a href="#derived">DERIVED</a></li>
+<li>
+<a href="#materialized">MATERIALIZED</a></li>
+<li>
+<a href="#uncacheable-subquery">UNCACHEABLE SUBQUERY</a></li>
+<li>
+<a href="#uncacheable-union">UNCACHEABLE UNION</a></li>
+</ul>
+</li>
+<li>
+<a href="#type">type</a></li>
+<li>
+<a href="#possible-keyskey">possible_keys和key</a></li>
+<li>
+<a href="#key-len">key_len</a></li>
+<li>
+<a href="#ref">ref</a></li>
+<li>
+<a href="#rows">rows</a></li>
+<li>
+<a href="#filtered">filtered</a></li>
+<li>
+<a href="#extra">Extra</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/db/mysql/16.explain%e4%b9%8b%e8%ae%bf%e9%97%ae%e6%96%b9%e6%b3%95/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/db/mysql/18.mysql%e4%b9%8bInnoDB%e7%9a%84BufferPool/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

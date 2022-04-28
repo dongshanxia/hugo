@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>00.mysql思维导图</title>
     
 
 
@@ -363,369 +363,499 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<iframe :src="$withBase(&#39;./mysql思维导图.html&#39;)" width="100%" height="400" frameborder="0" scrolling="No" leftmargin="0" topmargin="0"></iframe>
+<h1 id="mysql">mysql</h1>
+<h2 id="1-">1. 基础知识</h2>
+<h3 id="1-cs">1. cs架构</h3>
+<h3 id="2-">2. 安装与启动</h3>
+<h3 id="3-">3. 连接过程</h3>
+<h4 id="1-3tcpsocket">1. 客户端发起连接（3种，tcp,命名通道与共享内存，socket）</h4>
+<h4 id="2-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220208173328925png">2. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220208173328925.png">服务端接受连接</a></h4>
+<h5 id="1--1">1. 处理连接</h5>
+<h5 id="2-123">2. 解析与优化（1.查询缓存，2.语法解析，3.查询优化）</h5>
+<h5 id="3--1">3. 存储引擎</h5>
+<h3 id="4-">4. 常用引擎</h3>
+<h4 id="1-innodb">1. InnoDB</h4>
+<h4 id="2-myisam">2. MyISAM</h4>
+<h2 id="2--1">2. 启动选项与变量</h2>
+<h3 id="1-mysql">1. 设置mysql启动参数（就近原则）</h3>
+<h4 id="1--2">1. 命令行和配置文件</h4>
+<h4 id="2--2">2. 配置文件</h4>
+<h3 id="1--3">1. 系统变量</h3>
+<h3 id="2--3">2. 状态变量</h3>
+<h2 id="3--2">3. 字符串比较规则</h2>
+<h3 id="1--4">1. 什么是字符集</h3>
+<h4 id="heading">使用二进制的一组数据代表现实世界的字符串。</h4>
+<h4 id="-gbk2uft83utf8mb44">常用字符集 GBK(最多2字节),uft8（最多3字节）,utf8mb4（最多4字节）</h4>
+<h3 id="2--4">2. 字符集比较规则</h3>
+<h4 id="heading-1">用来比较同一种字符集的字符大小</h4>
+<h3 id="3--3">3. 字符集应用</h3>
+<h4 id="heading-2">注意：对于同一个字符串，如果编码和解码采用的不同字符集，那么结果可能会不同。</h4>
+<h3 id="4--1">4. 四个级别的字符集和比较规则</h3>
+<h4 id="heading-3">服务器级别</h4>
+<h4 id="heading-4">数据库级别</h4>
+<h4 id="heading-5">表级别</h4>
+<h4 id="heading-6">列级别</h4>
+<h2 id="4-innodb">4. InnoDB记录结构</h2>
+<h3 id="1-innodb-1">1. InnoDB页简介</h3>
+<h4 id="16kb">磁盘和内存数据交互的最小单位，一页=16kb。</h4>
+<h3 id="2-innodb">2. InnoDB行格式</h3>
+<h4 id="1--5">1. 简介</h4>
+<h5 id="heading-7">记录存放在磁盘上的方式成为行格式</h5>
+<h3 id="3--4">3. 行格式分类</h3>
+<h4 id="1-compact">1. compact类型行格式</h4>
+<h5 id="1-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220211144936545png">1. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220211144936545.png">组成</a></h5>
+<h6 id="null">额外信息（变长字段长度列表，null值列表，记录头信息）</h6>
+<h6 id="heading-8">真实数据</h6>
+<h4 id="2-redundant">2. redundant行格式</h4>
+<h4 id="3-dynamic">3. Dynamic行格式</h4>
+<h5 id="-compact-768">这两种行格式类似于 COMPACT行格式 ，只不过在处理行溢出数据时有点儿分歧，它们不会在记录的真实数据处存储字符串的前768个字节，而是把所有的字节都存储到其他页面中，只在记录的真实数据处存储其他页面的地址。</h5>
+<h4 id="3-compressed">3. Compressed行格式</h4>
+<h5 id="compressed-">Compressed 行格式会采用压缩算法对页面进行压缩。</h5>
+<h3 id="4--2">4. 行溢出</h3>
+<h4 id="1--6">1. 什么是行溢出</h4>
+<h5 id="20">当一页的容量满了，这是如果记录的数据仍然存不下，记录的真实数据的溢出部分会存在另外的页中，此时记录的真实数据会腾出20个字节存放剩余数据在其他页的地址。</h5>
+<h4 id="2--5">2. 行溢出的临界值</h4>
+<h5 id="16348byte">记住一页最大容量=16348byte</h5>
+<h2 id="5-innodb">5. InnoDB数据页结构</h2>
+<h4 id="1--7">1. 概念：存储数据的页</h4>
+<h4 id="2-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220213170828841png">2. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220213170828841.png">数据页结构</a></h4>
+<h5 id="1-file-header-38">1. File Header 表示页的一些通用信息，占固定的38字节。</h5>
+<h5 id="2-page-header-56">2. Page Header 表示数据页专有的一些信息，占固定的56个字节。</h5>
+<h5 id="3-infimum--supremum--26-">3. Infimum + Supremum 两个虚拟的伪记录，分别表示页中的最小和最大记录，占固定的 26 个字节。</h5>
+<h5 id="4-user-records-">4. User Records 真实存储我们插入的记录的部分，大小不固定。</h5>
+<h5 id="5-free-space-">5. Free Space 页中尚未使用的部分，大小不确定。</h5>
+<h5 id="6-page-directoryhttpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220213184021833png-">6. <a href="https://gitee.com/zxqzhuzhu/imgs/raw/master/picGo/image-20220213184021833.png">Page Directory</a> 将一页里面的记录分为多组，记录每组最大记录的物理地址和主键，这个称为槽，页目录就是由槽组成。</h5>
+<h5 id="7-file-trailer-8">7. File Trailer 用于检验页是否完整的部分，占用固定的8个字节。</h5>
+<h4 id="3--5">3. 记录在数据页的数据结构</h4>
+<h5 id="-next-record---">每个记录的头信息中都有一个 next_record 属性，从而使页中的所有记录串联成一个 单链表 。</h5>
+<h4 id="4--3">4. 根据主键在页中查找过程</h4>
+<h5 id="1--8">1. 利用二分法查找槽</h5>
+<h5 id="2-next-record">2. 通过记录的记录头信息中的next_record,依次寻找主键相同的记录。</h5>
+<h4 id="5-">5. 页与页之间的数据结构</h4>
+<h5 id="file-header-">利用File Header的 前指针和后指针形成双向链表。</h5>
+<h2 id="6-mysql">6. mysql索引</h2>
+<h3 id="1-innodb-2">1. InnoDB索引方案</h3>
+<h4 id="1--9">1. 页分裂</h4>
+<h4 id="1--10">1. 前提条件：<strong>下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值。</strong></h4>
+<h4 id="2--">2. 索引 （给数据页做目录）</h4>
+<h5 id="1--11">1. 目录页</h5>
+<h5 id="2--6">2. 目录项记录</h5>
+<h5 id="3-b">3. B+数据结构</h5>
+<h4 id="3--6">3. 索引类型</h4>
+<h5 id="1--12">1. 聚簇索引</h5>
+<h5 id="2--7">2. 二级索引</h5>
+<h5 id="3--7">3. 联合索引</h5>
+<h3 id="2-myisam-1">2. MyISAM索引方案</h3>
+<h4 id="innodbmyisaminnodb">和InnoDB索引区别：MyISAM的索引的子节点不存数据，只存数据的行号和索引列，而InnoDB索引的子节点是保存了索引列和主键（如果是聚簇索引保存整行数据和主键）</h4>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#mysql">mysql</a><ul>
+<li>
+<a href="#1-">1. 基础知识</a><ul>
+<li>
+<a href="#1-cs">1. cs架构</a></li>
+<li>
+<a href="#2-">2. 安装与启动</a></li>
+<li>
+<a href="#3-">3. 连接过程</a><ul>
+<li>
+<a href="#1-3tcpsocket">1. 客户端发起连接（3种，tcp,命名通道与共享内存，socket）</a></li>
+<li>
+<a href="#2-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220208173328925png">2. 服务端接受连接</a><ul>
+<li>
+<a href="#1--1">1. 处理连接</a></li>
+<li>
+<a href="#2-123">2. 解析与优化（1.查询缓存，2.语法解析，3.查询优化）</a></li>
+<li>
+<a href="#3--1">3. 存储引擎</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#4-">4. 常用引擎</a><ul>
+<li>
+<a href="#1-innodb">1. InnoDB</a></li>
+<li>
+<a href="#2-myisam">2. MyISAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#2--1">2. 启动选项与变量</a><ul>
+<li>
+<a href="#1-mysql">1. 设置mysql启动参数（就近原则）</a><ul>
+<li>
+<a href="#1--2">1. 命令行和配置文件</a></li>
+<li>
+<a href="#2--2">2. 配置文件</a></li>
+</ul>
+</li>
+<li>
+<a href="#1--3">1. 系统变量</a></li>
+<li>
+<a href="#2--3">2. 状态变量</a></li>
+</ul>
+</li>
+<li>
+<a href="#3--2">3. 字符串比较规则</a><ul>
+<li>
+<a href="#1--4">1. 什么是字符集</a><ul>
+<li>
+<a href="#heading">使用二进制的一组数据代表现实世界的字符串。</a></li>
+<li>
+<a href="#-gbk2uft83utf8mb44">常用字符集 GBK(最多2字节),uft8（最多3字节）,utf8mb4（最多4字节）</a></li>
+</ul>
+</li>
+<li>
+<a href="#2--4">2. 字符集比较规则</a><ul>
+<li>
+<a href="#heading-1">用来比较同一种字符集的字符大小</a></li>
+</ul>
+</li>
+<li>
+<a href="#3--3">3. 字符集应用</a><ul>
+<li>
+<a href="#heading-2">注意：对于同一个字符串，如果编码和解码采用的不同字符集，那么结果可能会不同。</a></li>
+</ul>
+</li>
+<li>
+<a href="#4--1">4. 四个级别的字符集和比较规则</a><ul>
+<li>
+<a href="#heading-3">服务器级别</a></li>
+<li>
+<a href="#heading-4">数据库级别</a></li>
+<li>
+<a href="#heading-5">表级别</a></li>
+<li>
+<a href="#heading-6">列级别</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#4-innodb">4. InnoDB记录结构</a><ul>
+<li>
+<a href="#1-innodb-1">1. InnoDB页简介</a><ul>
+<li>
+<a href="#16kb">磁盘和内存数据交互的最小单位，一页=16kb。</a></li>
+</ul>
+</li>
+<li>
+<a href="#2-innodb">2. InnoDB行格式</a><ul>
+<li>
+<a href="#1--5">1. 简介</a><ul>
+<li>
+<a href="#heading-7">记录存放在磁盘上的方式成为行格式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#3--4">3. 行格式分类</a><ul>
+<li>
+<a href="#1-compact">1. compact类型行格式</a><ul>
+<li>
+<a href="#1-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220211144936545png">1. 组成</a><ul>
+<li>
+<a href="#null">额外信息（变长字段长度列表，null值列表，记录头信息）</a></li>
+<li>
+<a href="#heading-8">真实数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#2-redundant">2. redundant行格式</a></li>
+<li>
+<a href="#3-dynamic">3. Dynamic行格式</a><ul>
+<li>
+<a href="#-compact-768">这两种行格式类似于 COMPACT行格式 ，只不过在处理行溢出数据时有点儿分歧，它们不会在记录的真实数据处存储字符串的前768个字节，而是把所有的字节都存储到其他页面中，只在记录的真实数据处存储其他页面的地址。</a></li>
+</ul>
+</li>
+<li>
+<a href="#3-compressed">3. Compressed行格式</a><ul>
+<li>
+<a href="#compressed-">Compressed 行格式会采用压缩算法对页面进行压缩。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#4--2">4. 行溢出</a><ul>
+<li>
+<a href="#1--6">1. 什么是行溢出</a><ul>
+<li>
+<a href="#20">当一页的容量满了，这是如果记录的数据仍然存不下，记录的真实数据的溢出部分会存在另外的页中，此时记录的真实数据会腾出20个字节存放剩余数据在其他页的地址。</a></li>
+</ul>
+</li>
+<li>
+<a href="#2--5">2. 行溢出的临界值</a><ul>
+<li>
+<a href="#16348byte">记住一页最大容量=16348byte</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#5-innodb">5. InnoDB数据页结构</a><ul>
+<li>
+<ul>
+<li>
+<a href="#1--7">1. 概念：存储数据的页</a></li>
+<li>
+<a href="#2-httpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220213170828841png">2. 数据页结构</a><ul>
+<li>
+<a href="#1-file-header-38">1. File Header 表示页的一些通用信息，占固定的38字节。</a></li>
+<li>
+<a href="#2-page-header-56">2. Page Header 表示数据页专有的一些信息，占固定的56个字节。</a></li>
+<li>
+<a href="#3-infimum--supremum--26-">3. Infimum + Supremum 两个虚拟的伪记录，分别表示页中的最小和最大记录，占固定的 26 个字节。</a></li>
+<li>
+<a href="#4-user-records-">4. User Records 真实存储我们插入的记录的部分，大小不固定。</a></li>
+<li>
+<a href="#5-free-space-">5. Free Space 页中尚未使用的部分，大小不确定。</a></li>
+<li>
+<a href="#6-page-directoryhttpsgiteecomzxqzhuzhuimgsrawmasterpicgoimage-20220213184021833png-">6. Page Directory 将一页里面的记录分为多组，记录每组最大记录的物理地址和主键，这个称为槽，页目录就是由槽组成。</a></li>
+<li>
+<a href="#7-file-trailer-8">7. File Trailer 用于检验页是否完整的部分，占用固定的8个字节。</a></li>
+</ul>
+</li>
+<li>
+<a href="#3--5">3. 记录在数据页的数据结构</a><ul>
+<li>
+<a href="#-next-record---">每个记录的头信息中都有一个 next_record 属性，从而使页中的所有记录串联成一个 单链表 。</a></li>
+</ul>
+</li>
+<li>
+<a href="#4--3">4. 根据主键在页中查找过程</a><ul>
+<li>
+<a href="#1--8">1. 利用二分法查找槽</a></li>
+<li>
+<a href="#2-next-record">2. 通过记录的记录头信息中的next_record,依次寻找主键相同的记录。</a></li>
+</ul>
+</li>
+<li>
+<a href="#5-">5. 页与页之间的数据结构</a><ul>
+<li>
+<a href="#file-header-">利用File Header的 前指针和后指针形成双向链表。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#6-mysql">6. mysql索引</a><ul>
+<li>
+<a href="#1-innodb-2">1. InnoDB索引方案</a><ul>
+<li>
+<a href="#1--9">1. 页分裂</a></li>
+<li>
+<a href="#1--10">1. 前提条件：下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值。</a></li>
+<li>
+<a href="#2--">2. 索引 （给数据页做目录）</a><ul>
+<li>
+<a href="#1--11">1. 目录页</a></li>
+<li>
+<a href="#2--6">2. 目录项记录</a></li>
+<li>
+<a href="#3-b">3. B+数据结构</a></li>
+</ul>
+</li>
+<li>
+<a href="#3--6">3. 索引类型</a><ul>
+<li>
+<a href="#1--12">1. 聚簇索引</a></li>
+<li>
+<a href="#2--7">2. 二级索引</a></li>
+<li>
+<a href="#3--7">3. 联合索引</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#2-myisam-1">2. MyISAM索引方案</a><ul>
+<li>
+<a href="#innodbmyisaminnodb">和InnoDB索引区别：MyISAM的索引的子节点不存数据，只存数据的行号和索引列，而InnoDB索引的子节点是保存了索引列和主键（如果是聚簇索引保存整行数据和主键）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/db/mssql/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/db/mysql/09.%e9%87%8d%e6%96%b0%e8%ae%a4%e8%af%86mysql/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>

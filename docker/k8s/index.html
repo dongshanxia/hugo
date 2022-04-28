@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>k8s</title>
     
 
 
@@ -363,369 +363,297 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="heading">获取节点和服务版本信息</h1>
+<p>kubectl get nodes</p>
+<h1 id="heading-1">获取节点和服务版本信息，并查看附加信息</h1>
+<p>kubectl get nodes -o wide</p>
+<h1 id="poddefault">获取pod信息，默认是default名称空间</h1>
+<p>kubectl get pod</p>
+<h1 id="poddefaultpodip">获取pod信息，默认是default名称空间，并查看附加信息【如：pod的IP及在哪个节点运行】</h1>
+<p>kubectl get pod -o wide</p>
+<h1 id="pod">获取指定名称空间的pod</h1>
+<p>kubectl get pod -n kube-system</p>
+<h1 id="pod-1">获取指定名称空间中的指定pod</h1>
+<p>kubectl get pod -n kube-system podName</p>
+<h1 id="pod-2">获取所有名称空间的pod</h1>
+<p>kubectl get pod -A</p>
+<h1 id="podyamljson">查看pod的详细信息，以yaml格式或json格式显示</h1>
+<p>kubectl get pods -o yaml<br/>
+kubectl get pods -o json</p>
+<h1 id="pod-3">查看pod的标签信息</h1>
+<p>kubectl get pod -A --show-labels</p>
+<h1 id="selectorlabel-querypod">根据Selector（label query）来查询pod</h1>
+<p>kubectl get pod -A --selector=&#34;k8s-app=kube-dns&#34;</p>
+<h1 id="pod-4">查看运行pod的环境变量</h1>
+<p>kubectl exec podName env</p>
+<h1 id="pod-5">查看指定pod的日志</h1>
+<p>kubectl logs -f --tail 500 -n kube-system kube-apiserver-k8s-master</p>
+<h1 id="service">查看所有名称空间的service信息</h1>
+<p>kubectl get svc -A</p>
+<h1 id="service-1">查看指定名称空间的service信息</h1>
+<p>kubectl get svc -n kube-system</p>
+<h1 id="componentstatuses">查看componentstatuses信息</h1>
+<p>kubectl get cs</p>
+<h1 id="configmaps">查看所有configmaps信息</h1>
+<p>kubectl get cm -A</p>
+<h1 id="serviceaccounts">查看所有serviceaccounts信息</h1>
+<p>kubectl get sa -A</p>
+<h1 id="daemonsets">查看所有daemonsets信息</h1>
+<p>kubectl get ds -A</p>
+<h1 id="deployments">查看所有deployments信息</h1>
+<p>kubectl get deploy -A</p>
+<h1 id="replicasets">查看所有replicasets信息</h1>
+<p>kubectl get rs -A</p>
+<h1 id="statefulsets">查看所有statefulsets信息</h1>
+<p>kubectl get sts -A</p>
+<h1 id="jobs">查看所有jobs信息</h1>
+<p>kubectl get jobs -A</p>
+<h1 id="ingresses">查看所有ingresses信息</h1>
+<p>kubectl get ing -A</p>
+<h1 id="heading-2">查看有哪些名称空间</h1>
+<p>kubectl get ns</p>
+<h1 id="pod-6">查看pod的描述信息</h1>
+<p>kubectl describe pod podName<br/>
+kubectl describe pod -n kube-system kube-apiserver-k8s-master</p>
+<h1 id="deploy">查看指定名称空间中指定deploy的描述信息</h1>
+<p>kubectl describe deploy -n kube-system coredns</p>
+<h1 id="nodepod">查看node或pod的资源使用情况</h1>
+<h1 id="heapster-metrics-server">需要heapster 或metrics-server支持</h1>
+<p>kubectl top node<br/>
+kubectl top pod</p>
+<h1 id="heading-3">查看集群信息</h1>
+<p>kubectl cluster-info   或  kubectl cluster-info dump</p>
+<h1 id="172161110master">查看各组件信息【172.16.1.110为master机器】</h1>
+<p>kubectl -s <a href="https://172.16.1.110:6443">https://172.16.1.110:6443</a> get componentstatuses</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code></code></pre></div>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 174 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/%e6%9c%aa%e5%88%86%e7%b1%bb">
-                                            未分类
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dongshanxia/">dongshanxia</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2466 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/cwz">
-                                            cwz
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/cwz/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 410 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2021/">2021</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1088 字  预计读完 6 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/dream">
-                                            dream
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="hugo/about/dream/xcb/2022/">2022</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 478 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#heading">获取节点和服务版本信息</a></li>
+<li>
+<a href="#heading-1">获取节点和服务版本信息，并查看附加信息</a></li>
+<li>
+<a href="#poddefault">获取pod信息，默认是default名称空间</a></li>
+<li>
+<a href="#poddefaultpodip">获取pod信息，默认是default名称空间，并查看附加信息【如：pod的IP及在哪个节点运行】</a></li>
+<li>
+<a href="#pod">获取指定名称空间的pod</a></li>
+<li>
+<a href="#pod-1">获取指定名称空间中的指定pod</a></li>
+<li>
+<a href="#pod-2">获取所有名称空间的pod</a></li>
+<li>
+<a href="#podyamljson">查看pod的详细信息，以yaml格式或json格式显示</a></li>
+<li>
+<a href="#pod-3">查看pod的标签信息</a></li>
+<li>
+<a href="#selectorlabel-querypod">根据Selector（label query）来查询pod</a></li>
+<li>
+<a href="#pod-4">查看运行pod的环境变量</a></li>
+<li>
+<a href="#pod-5">查看指定pod的日志</a></li>
+<li>
+<a href="#service">查看所有名称空间的service信息</a></li>
+<li>
+<a href="#service-1">查看指定名称空间的service信息</a></li>
+<li>
+<a href="#componentstatuses">查看componentstatuses信息</a></li>
+<li>
+<a href="#configmaps">查看所有configmaps信息</a></li>
+<li>
+<a href="#serviceaccounts">查看所有serviceaccounts信息</a></li>
+<li>
+<a href="#daemonsets">查看所有daemonsets信息</a></li>
+<li>
+<a href="#deployments">查看所有deployments信息</a></li>
+<li>
+<a href="#replicasets">查看所有replicasets信息</a></li>
+<li>
+<a href="#statefulsets">查看所有statefulsets信息</a></li>
+<li>
+<a href="#jobs">查看所有jobs信息</a></li>
+<li>
+<a href="#ingresses">查看所有ingresses信息</a></li>
+<li>
+<a href="#heading-2">查看有哪些名称空间</a></li>
+<li>
+<a href="#pod-6">查看pod的描述信息</a></li>
+<li>
+<a href="#deploy">查看指定名称空间中指定deploy的描述信息</a></li>
+<li>
+<a href="#nodepod">查看node或pod的资源使用情况</a></li>
+<li>
+<a href="#heapster-metrics-server">需要heapster 或metrics-server支持</a></li>
+<li>
+<a href="#heading-3">查看集群信息</a></li>
+<li>
+<a href="#172161110master">查看各组件信息【172.16.1.110为master机器】</a></li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="hugo/categories/linux/">
-                    <span class="year">linux</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=hugo/docker/docker%e6%b8%85%e7%90%86/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="hugo/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/">
-                    <span class="year">未分类</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="hugo/categories/yum/">
-                    <span class="year">yum</span>
-                </a>
-            
-                <a href="hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=hugo/docker/mssql%e5%ae%89%e8%a3%85/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="hugo/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba/" class="font_size_4">
-                虚拟机
-            </a>
-        
-            <a href="hugo/tags/cluster/" class="font_size_4">
-                cluster
-            </a>
-        
-            <a href="hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="hugo/tags/mybatis/" class="font_size_4">
-                mybatis
-            </a>
-        
-            <a href="hugo/tags/leak/" class="font_size_4">
-                leak
-            </a>
-        
-            <a href="hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="hugo/tags/%e5%ae%89%e8%a3%85/" class="font_size_4">
-                安装
-            </a>
-        
-            <a href="hugo/tags/%e5%88%86%e5%8c%ba/" class="font_size_4">
-                分区
-            </a>
-        
-            <a href="hugo/tags/%e6%9d%82/" class="font_size_4">
-                杂
-            </a>
-        
-            <a href="hugo/tags/blog/" class="font_size_4">
-                blog
-            </a>
-        
-            <a href="hugo/tags/mssql/" class="font_size_4">
-                mssql
-            </a>
-        
-            <a href="hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="hugo/tags/certbot/" class="font_size_4">
-                certbot
-            </a>
-        
-            <a href="hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>
