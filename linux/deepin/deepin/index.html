@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tag</title>
+    <title>deepin</title>
     
 
 
@@ -363,154 +363,192 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
 
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<p>显示当前工作区窗口  super+W<br/>
+dbus-send --session --dest=com.deepin.wm --print-reply /com/deepin/wm com.deepin.wm.PerformAction int32:6</p>
+<p>--system<br/>
+将命令发向系统总线，也可使用--session<br/>
+--print-reply<br/>
+打印返回结果<br/>
+--dest=org.bluez<br/>
+服务名。用户可以用查询命令获得当前系统的所有服务名<br/>
+/org/bluez/audio<br/>
+对象名。由服务定义<br/>
+org.bluez.audio.Manager.CreateDevice<br/>
+object.interface.Method<br/>
+string:&#39;11:11:11:11:11&#39;<br/>
+参数。 类型:值 int32:123</p>
+<p>dbus-send --session --dest=com.deepin.wm --type=method_call --print-reply /com/deepin/wm org.freedesktop.DBus.ObjectManager.GetManagedObjects int32:6</p>
+<p>dbus-send --system --print-reply --type=method_call --dest=org.bluez / org.freedesktop.DBus.ObjectManager.GetManagedObjects</p>
+<p>调整屏幕亮度<br/>
+dbus-send --print-reply --dest=com.deepin.daemon.Display /com/deepin/daemon/Display com.deepin.daemon.Display.GetBrightness</p>
+<p>弹出控制中心<br/>
+dbus-send --print-reply --dest=com.deepin.dde.ControlCenter /com/deepin/dde/ControlCenter com.deepin.dde.ControlCenter.Show</p>
 
-    5
-<div class="container main-container flex on-phone--column extended ">
-    <main class="main full-width">
-        <h3 class="section-title">Section</h3>
-
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">13 pages</h3>
-                <h1 class="section-term">Tag</h1>
-            </div>
+            </article>
         </div>
 
-        <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
 
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/pgsql/">pgsql</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/docker/">docker</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/centos7/">centos7</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/docker-compose/">docker-compose</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/cluster/">cluster</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-        </section>
-
-    
-    <nav class='pagination'>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
         
-            
-                <a class='page-link' href='/hugo/tags/page/1/'>1</a>
-            
-        
-            
-                <span class='page-link current'>2</span>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/4/'>4</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/5/'>5</a>
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
-
-
-    <aside class="sidebar right-sidebar sticky">
-        
-
-
-        
-
-
-    </aside>
-
+    </div>
 
 </div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
+
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
+
+
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
+            
+                <div class="pageTop">
+                    <a class="" href=/hugo/linux/date%e5%91%bd%e4%bb%a4/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href=/hugo/linux/deepin/vim/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>
