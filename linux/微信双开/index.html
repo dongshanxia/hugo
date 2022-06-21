@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>README</title>
+    <title>微信双开</title>
     
 
 
@@ -367,13 +367,54 @@
 
         <div id="post" class="post">
             <article class="article-content"><hr/>
-<h1 id="hadoop-">hadoop 相关技术</h1>
+<h2 id="linux-">linux 双开微信</h2>
+<h3 id="1">1.复制原来的微信安装目录</h3>
+<p>sudo cp -r com.qq.weixin.deepin/ com.qq.weixin.deepin2</p>
+<h3 id="2">2.修改第二个微信的参数</h3>
 <ul>
-<li>获取某个application的 日志</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>    yarn logs -applicationId application_1593492224442_0003 &gt;./yarn.log
+<li>
+<p>进去微信目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd /opt/apps/com.qq.weixin.deepin2/files
 </span></span></code></pre></div>
-<p>./hadoop jar ../share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.1.jar  pi 5 10</p>
+</li>
+<li>
+<p>修改run.sh</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>com.qq.weixin.deepin --&gt; com.qq.weixin.deepin2
+</span></span></code></pre></div>
+</li>
+</ul>
+<h3 id="3-">3. 增加第二个微信桌面快捷方式的参数</h3>
+<ul>
+<li>
+<p>复制原来的微信快捷方式</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cp com.qq.weixin.deepin.desktop com.qq.weixin.deepin2.desktop 
+</span></span></code></pre></div>
+</li>
+<li>
+<p>修改 com.qq.weixin.deepin2.desktop</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>[Desktop Entry]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>Categories=chat;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>Comment=Tencent WeChat Client on Deepin Wine
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>Encoding=UTF-8
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>Exec=&#34;/opt/apps/com.qq.weixin.deepin2/files/run.sh&#34; -u %u
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>Icon=com.qq.weixin.deepin
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>MimeType=
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>Name=WeChat2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>Name[zh_CN]=微信2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>StartupWMClass=WeChat.exe
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>Type=Application
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>X-Created-By=Deepin WINE Team
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>X-Deepin-AppID=com.qq.weixin.deepin2
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>X-Deepin-Vendor=user-custom2
+</span></span></code></pre></div>
+</li>
+<li>
+<p>复制 /home/zhu/.deepinwine</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cp -r Deepin-WeChat/ Deepin-WeChat2/
+</span></span></code></pre></div>
+</li>
+</ul>
 
             </article>
         </div>
@@ -387,7 +428,19 @@
     <div id="table-of-contents">
         <nav id="TableOfContents"><ul>
 <li>
-<a href="#hadoop-">hadoop 相关技术</a></li>
+<ul>
+<li>
+<a href="#linux-">linux 双开微信</a><ul>
+<li>
+<a href="#1">1.复制原来的微信安装目录</a></li>
+<li>
+<a href="#2">2.修改第二个微信的参数</a></li>
+<li>
+<a href="#3-">3. 增加第二个微信桌面快捷方式的参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
     </div>
@@ -494,7 +547,7 @@
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/about/%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%8c%82%e6%9c%ba%e7%ad%96%e7%95%a5/>
+                    <a class="" href=/hugo/linux/%e5%ae%9a%e5%88%b6%e5%8c%96iso/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -502,7 +555,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/bigdata/kafka/>
+                    <a class="" href=/hugo/linux/%e7%a6%bb%e7%ba%bf%e5%ae%89%e8%a3%85mysql/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>
