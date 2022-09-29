@@ -405,9 +405,11 @@
 <p>个人理解：</p>
 <p>作为注册信息的载体，各种属性开关，Configuration组件还作为Executor、StatementHandler、ResultSetHandler、ParameterHandler组件的工厂类，用于创建这些组件的实例</p>
 <p>excutor</p>
-<p>Executor接口中定义了对数据库的增删改查方法，其中query()和queryCursor()方法用于执行查询操作，update()方法用于执行插入、删除、修改操作</p>
+<p>createTime: 2021-12-08T12:19:57+08:00<br/>
+updateTime: 2021-12-08T12:19:57+08:00</p>
 <p>MappedStatement</p>
-<p>MyBatis通过MappedStatement描述&lt;select|update|insert|delete&gt;或者@Select、@Update等注解配置的SQL信息</p>
+<p>createTime: 2021-12-08T12:19:57+08:00<br/>
+updateTime: 2021-12-08T12:19:57+08:00</p>
 <p>StatementHandler</p>
 <p>StatementHandler组件封装了对JDBC Statement的操作，例如设置Statement对象的fetchSize属性、设置查询超时时间、调用JDBC Statement与数据库交互等。</p>
 <p>TypeHandler</p>
@@ -416,6 +418,7 @@
 <p>如果SQL语句中有参数占位符，在执行SQL语句之前，就需要为参数占位符设置值。ParameterHandler的作用是在PreparedStatementHandler和CallableStatementHandler操作对应的Statement执行数据库交互之前为参数占位符设置值</p>
 <p>ResultSetHandler</p>
 <p>ResultSetHandler用于在StatementHandler对象执行完查询操作或存储过程后，对结果集或存储过程的执行结果进行处理</p>
+<p>��行完查询操作或存储过程后，对结果集或存储过程的执行结果进行处理</p>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>
             </article>
         </div>

@@ -389,14 +389,17 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>===============================================================================
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>^* classroom.example.com         8  10   377  1000   +130us[ +147us] +/-  819us
 </span></span></code></pre></div>
-<h3 id="timedatectl">Timedatectl</h3>
-<p>Query or change system time and date settings.</p>
+<p>createTime: 2022-01-05T14:51:19+08:00<br/>
+updateTime: 2022-01-05T14:51:19+08:00</p>
+<p>createTime: 2022-01-05T14:51:19+08:00<br/>
+updateTime: 2022-01-05T14:51:19+08:00</p>
 <h4 id="set-timezone">set-timezone</h4>
 <ul>
 <li>设置时区，也可以手动执行localtime软连接</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>timedatectl set-timezone Asia/Shanghai
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>createTime: 2022-01-05T14:51:19+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>updateTime: 2022-01-05T14:51:19+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 </span></span></code></pre></div>
 <h4 id="set-ntp-bool">set-ntp BOOL</h4>
 <p>　　和chrony配置的ntp server进行时间同步</p>
@@ -419,9 +422,7 @@
 <li>
 <a href="#chronyd">Chronyd</a><ul>
 <li>
-<a href="#chronyc">Chronyc</a></li>
-<li>
-<a href="#timedatectl">Timedatectl</a><ul>
+<a href="#chronyc">Chronyc</a><ul>
 <li>
 <a href="#set-timezone">set-timezone</a></li>
 <li>
@@ -540,7 +541,7 @@
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/hadoop/a/>
+                    <a class="" href=/hugo/install/VirtualBox/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -548,7 +549,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/install/VirtualBox/>
+                    <a class="" href=/hugo/install/kernel/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

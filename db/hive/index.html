@@ -388,10 +388,10 @@
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-40-31-image-20211214154046316.png" alt="image-20211214154046316"/></p>
 <h3 id="5">5、时间函数</h3>
-<ul>
-<li>to_date</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>select xcb_id,to_date(xcb_timestamp) from xcb_oracle_hive_base_dt;
+<p>createTime: 2021-12-13T20:52:41+08:00<br/>
+updateTime: 2021-12-13T20:52:41+08:00</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>createTime: 2021-12-13T20:52:41+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>updateTime: 2021-12-13T20:52:41+08:00
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/15-47-17-image-20211214154725488.png" alt="image-20211214154725488"/></p>
 <ul>
@@ -448,24 +448,26 @@
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-15-17-image-20211214161525157.png" alt="image-20211214161525157"/></p>
 </li>
-<li>
-<p>datediff：返回开始日期减去结束日期的天数</p>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>select datediff(&#39;2021-12-09&#39;,&#39;2021-12-14&#39;);
+</ul>
+<p>createTime: 2021-12-13T20:52:41+08:00<br/>
+updateTime: 2021-12-13T20:52:41+08:00</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>createTime: 2021-12-13T20:52:41+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>updateTime: 2021-12-13T20:52:41+08:00
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-18-7-image-20211214161822514.png" alt="image-20211214161822514"/></p>
-</li>
-<li>
-<p>date_sub：返回日期前n天的日期</p>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>select xcb_id,date_sub(xcb_timestamp,4) from xcb_oracle_hive_base_dt;
+<p>createTime: 2021-12-13T20:52:41+08:00<br/>
+updateTime: 2021-12-13T20:52:41+08:00</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>createTime: 2021-12-13T20:52:41+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>updateTime: 2021-12-13T20:52:41+08:00
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/16-37-31-image-20211214163739034.png" alt="image-20211214163739034"/></p>
-</li>
-<li>
-<p>date_add：返回日期后n天的日期</p>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>select xcb_id,date_add(xcb_timestamp,4) from xcb_oracle_hive_base_dt;
+<p>createTime: 2021-12-13T20:52:41+08:00<br/>
+updateTime: 2021-12-13T20:52:41+08:00</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>createTime: 2021-12-13T20:52:41+08:00
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>updateTime: 2021-12-13T20:52:41+08:00
 </span></span></code></pre></div>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-12-14/17-6-8-image-20211214170616062.png" alt="image-20211214170616062"/></p>
-</li>
+<ul>
 <li>
 <p>特殊组合</p>
 <div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>select xcb_id,from_unixtime(unix_timestamp(xcb_timestamp),&#39;yyyy-MM-dd hh:mm:ss&#39;) from xcb_oracle_hive_base_dt;
@@ -622,7 +624,7 @@
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/bigdata/zookeeper/>
+                    <a class="" href=/hugo/about/blog/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -630,7 +632,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/db/mssql/>
+                    <a class="" href=/hugo/db/oracle/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

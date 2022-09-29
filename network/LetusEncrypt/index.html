@@ -401,8 +401,9 @@
 </ul>
 <h3 id="42-certbot">4.2 安装certbot</h3>
 <ul>
-<li>更新 apt 源索引</li>
-<li>apt update</li>
+<li>更新 apt 源索引<br/>
+createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00</li>
 <li>安装 certbot
 <ul>
 <li>apt install certbot</li>
@@ -417,11 +418,17 @@
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>certbot certonly --agree-tos  --server https://acme-v02.api.letsencrypt.org/directory \
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>       -m xx@qq.com -d xxx.top --manual --preferred-challenges dns \
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>        --manual-auth-hook &#34;/root/TopALiDns -method updateCerbot&#34; -n 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>        --manual-public-ip-logging-ok  
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span>        --dry-run
 </span></span></code></pre></div>
 </li>
+</ul>
+</li>
+</ul>
+<p>createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00<br/>
+--manual-public-ip-logging-ok<br/>
+--dry-run<br/>
+```</p>
+<ul>
 <li>
 <p>解释</p>
 <ul>
@@ -439,63 +446,35 @@
 <li>具体限制地址 <a href="https://letsencrypt.org/zh-cn/docs/rate-limits/">dry-run 限制策略</a></li>
 </ul>
 </li>
-<li>
-<p>特殊解释: /root/TopALiDns -method updateCerbot</p>
-<ul>
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>CERTBOT_DOMAIN：正在验证的域
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>CERTBOT_VALIDATION：验证字符串
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>CERTBOT_TOKEN：HTTP-01 挑战的资源名称部分（仅适用于 HTTP-01）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>CERTBOT_REMAINING_CHALLENGES：当前挑战之后剩余的挑战数
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span>CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列表
+</ul>
+<p>createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>+ ```
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>  CERTBOT_DOMAIN：正在验证的域
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>  CERTBOT_VALIDATION：验证字符串
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>  CERTBOT_TOKEN：HTTP-01 挑战的资源名称部分（仅适用于 HTTP-01）
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>  CERTBOT_REMAINING_CHALLENGES：当前挑战之后剩余的挑战数
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>  CERTBOT_ALL_DOMAINS：用逗号分隔的当前证书所面临的所有域的列表
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>  ```
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>+ 最主要还是 CERTBOT_VALIDATION   
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>  + shell可以通过echo ${CERTBOT_VALIDATION} 脚本获取 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>  + go可以通过 var accessKeyID = os.Getenv(&#34;CERTBOT_VALIDATION&#34;) 获取
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>+ 通过这个脚本  完成一下操作
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>+ | 主机记录 | 记录类型 | 解析线路 | 记录值 | TTL  | 状态 |
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>  |------|-------- | -------| ----| ----| ----|
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>  | _acme-challenge | TXT | 默认 | CERTBOT_VALIDATION | 10分钟 | 正常 |
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>+ 通过域名服务商 提供的API 完成 添加或者更新  DNS的解析  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">22</span><span>+   完成以后 最好让脚本程序 睡眠10秒 (更改没那么快)
 </span></span></code></pre></div>
-</li>
-<li>
-<p>最主要还是 CERTBOT_VALIDATION</p>
 <ul>
-<li>shell可以通过echo ${CERTBOT_VALIDATION} 脚本获取</li>
-<li>go可以通过 var accessKeyID = os.Getenv(&#34;CERTBOT_VALIDATION&#34;) 获取</li>
-</ul>
-</li>
-<li>
-<p>通过这个脚本  完成一下操作</p>
-</li>
-<li>
-<table>
-<thead>
-<tr>
-<th>主机记录</th>
-<th>记录类型</th>
-<th>解析线路</th>
-<th>记录值</th>
-<th>TTL</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_acme-challenge</td>
-<td>TXT</td>
-<td>默认</td>
-<td>CERTBOT_VALIDATION</td>
-<td>10分钟</td>
-<td>正常</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>通过域名服务商 提供的API 完成 添加或者更新  DNS的解析</p>
-</li>
-<li>
-<p>完成以后 最好让脚本程序 睡眠10秒 (更改没那么快)</p>
-</li>
-</ul>
-</li>
 <li>
 <p>这样就完成了全自动申请证书了</p>
-</li>
-</ul>
 </li>
 <li>
 <p>续期证书</p>
@@ -507,20 +486,20 @@
 <p>续签命令</p>
 <ul>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>certbot renew  --manual --preferred-challenges dns  --manual-auth-hook &#34;/root/cerbot/TopALiDns -method updateCerbot&#34;
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00<br/>
+```</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>+ 目前这个命令还没测试 通过  (证书没有过期)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>+ 可以用定时任务进行 上述命令  
 </span></span></code></pre></div>
-</li>
-<li>
-<p>目前这个命令还没测试 通过  (证书没有过期)</p>
-</li>
-<li>
-<p>可以用定时任务进行 上述命令</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <h3 id="44-">4.4 收尾操作</h3>
 <ul>
 <li>产生证书目录  /etc/letsencrypt/live</li>
@@ -562,53 +541,51 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>		<span style="color:#e5c07b">echo</span> <span style="color:#63c381">&#34;证书没有 需要重新申请&#34;</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>        certbot certonly --agree-tos  --server https://acme-v02.api.letsencrypt.org/directory <span style="color:#d26464;font-weight:bold">\
 </span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span><span style="color:#d26464;font-weight:bold"></span>        -m 邮箱@qq.com -d 域名 --manual --preferred-challenges dns <span style="color:#d26464;font-weight:bold">\
-</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span><span style="color:#d26464;font-weight:bold"></span>        --manual-auth-hook <span style="color:#63c381">&#34;/root/TopALiDns -method updateCerbot&#34;</span> -n --manual-public-ip-logging-ok  
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>	<span style="color:#76a9f9">fi</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span><span style="color:#54b1c7">}</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>sleep_stop<span style="color:#54b1c7">(){</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>	<span style="color:#dcaeea">process</span><span style="color:#54b1c7">=</span><span style="color:#98c379">`</span>ps -ef <span style="color:#abb2bf">|</span> grep start_sleep.sh <span style="color:#abb2bf">|</span> grep -v grep <span style="color:#abb2bf">|</span>awk <span style="color:#98c379">&#39;{print $2}&#39;</span><span style="color:#98c379">`</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>	<span style="color:#e5c07b">kill</span> -15 <span style="color:#dcaeea">$process</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>	<span style="color:#e5c07b">kill</span> -18 <span style="color:#dcaeea">$process</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">21</span><span>	<span style="color:#e5c07b">exit</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">22</span><span><span style="color:#54b1c7">}</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">23</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">24</span><span><span style="color:#8a93a5;font-style:italic">#RENEW_DAEMON守护脚本</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">25</span><span>RENEW_DAEMON<span style="color:#54b1c7">(){</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">26</span><span>    <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#39;RENEW_DAEMON&#39;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">27</span><span>	<span style="color:#76a9f9">while</span> :
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">28</span><span>	<span style="color:#76a9f9">do</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">29</span><span>	    <span style="color:#e5c07b">trap</span> <span style="color:#98c379">&#39;sleep_stop&#39;</span> SIGTERM
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">30</span><span>		<span style="color:#e5c07b">trap</span> <span style="color:#98c379">&#39;sleep_stop&#39;</span> SIGINT
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">31</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">32</span><span>	    <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#39;RENEW_DAEMON&#39;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">33</span><span>		certbot renew  --manual --preferred-challenges dns  --manual-auth-hook <span style="color:#63c381">&#34;/root/cerbot/TopALiDns -method updateCerbot&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">34</span><span>		chmod +x  /root/start_sleep.sh
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">35</span><span>		/root/start_sleep.sh <span style="color:#98c379">${</span><span style="color:#dcaeea">SLEEPTIME</span><span style="color:#98c379">}</span> <span style="color:#abb2bf">&amp;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">36</span><span>		<span style="color:#e5c07b">wait</span> <span style="color:#dcaeea">$!</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">37</span><span>	<span style="color:#76a9f9">done</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">38</span><span><span style="color:#54b1c7">}</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">39</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">40</span><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#39;开始INIT_CERBOT&#39;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">41</span><span>INIT_GET_CERBORT
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">42</span><span>RENEW_DAEMON
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">43</span><span>
-</span></span></code></pre></div>
+</span></span></span></code></pre></div>
 </li>
-<li>
-<p>脚本功能解释</p>
-</li>
-<li>
-<div class="mermaid">graph TD
-    A[Start] --&gt; B{是否有申请好的证书};
-    B --&gt;|Yes| C[进入renew证书];
-    D --&gt; F[申请证书]
-    F --&gt; C;
- 	B ----&gt;|No| D[进入申请证书];
- 	C --&gt;G[进入循环续签证书];
- 	G --&gt;|循环 sleep| G;
-</div></li>
 </ul>
+<p>createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00<br/>
+fi<br/>
+}</p>
+<p>sleep_stop(){<br/>
+process=ps -ef | grep start_sleep.sh | grep -v grep |awk &#39;{print $2}&#39;<br/>
+kill -15 $process<br/>
+kill -18 $process<br/>
+exit<br/>
+}</p>
+<p>#RENEW_DAEMON守护脚本<br/>
+RENEW_DAEMON(){<br/>
+echo &#39;RENEW_DAEMON&#39;<br/>
+while :<br/>
+do<br/>
+trap &#39;sleep_stop&#39; SIGTERM<br/>
+trap &#39;sleep_stop&#39; SIGINT</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>    echo &#39;RENEW_DAEMON&#39;
+</span></span></code></pre></div>
+<p>createTime: 2021-07-29T10:15:04+08:00<br/>
+updateTime: 2021-07-29T10:15:04+08:00<br/>
+chmod +x  /root/start_sleep.sh<br/>
+/root/start_sleep.sh ${SLEEPTIME} &amp;<br/>
+wait $!<br/>
+done<br/>
+}</p>
+<p>echo &#39;开始INIT_CERBOT&#39;<br/>
+INIT_GET_CERBORT<br/>
+RENEW_DAEMON</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>+ 脚本功能解释
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>+ ```mermaid
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>graph TD
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>    A[Start] --&gt; B{是否有申请好的证书};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>    B --&gt;|Yes| C[进入renew证书];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>    D --&gt; F[申请证书]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>    F --&gt; C;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span> 	B ----&gt;|No| D[进入申请证书];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span> 	C --&gt;G[进入循环续签证书];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span> 	G --&gt;|循环 sleep| G;
+</span></span></code></pre></div>
 <h4 id="docker-composeyml">docker-compose.yml</h4>
 <ul>
 <li>
@@ -634,7 +611,7 @@
 </span></span></code></pre></div>
 </li>
 </ul>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>
+
             </article>
         </div>
 
@@ -788,7 +765,7 @@
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/linux/%e9%98%b2%e7%81%ab%e5%a2%99firewalld/>
+                    <a class="" href=/hugo/linux/deepin/vim/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -796,7 +773,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/network/zerotier/>
+                    <a class="" href=/hugo/java/skyWalking/skyWalking%e6%90%ad%e5%bb%ba%28%e4%b8%80%29/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>
