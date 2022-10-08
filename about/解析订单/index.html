@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tag</title>
+    <title>解析订单</title>
     
 
 
@@ -363,154 +363,271 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
 
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h2 id="heading">一、环境准备</h2>
+<ul>
+<li>windows10环境</li>
+<li>wx-dump-key 程序 (解析微信的本地)</li>
+<li>wx-decrypter 程序</li>
+<li>parseExcel程序</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-10-59-8-image-20221008105907432.png" alt="image-20221008105907432"/></li>
+</ul>
+<h2 id="heading-1">二、打开命令行</h2>
+<ul>
+<li>windows + R</li>
+</ul>
+<p><img src="/home/zhu/.config/Typora/typora-user-images/image-20221008102125647.png" alt="image-20221008102125647"/></p>
+<h2 id="heading-2">三、进入命令运行目录</h2>
+<ul>
+<li>切换磁盘</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>e:
+</span></span></code></pre></div>
+<ul>
+<li>
+<p>进入工作目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd weixin
+</span></span></code></pre></div>
+</li>
+</ul>
+<h2 id="-code">四 解密当前code</h2>
+<ul>
+<li>命令 : wx-dump-key-v0.1.0.exe zmkm</li>
+</ul>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-4-33-image-20221008110426762.png" alt="image-20221008110426762"/></p>
+<h2 id="-">五 得到当前帐号的聊天记录</h2>
+<ul>
+<li>
+<p>查找聊天记录保存地址</p>
+<ul>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-12-37-image-20221008111231597.png" alt="image-20221008111231597"/></li>
+<li>点击上图中  打开文件夹</li>
+<li>打开后依次 进入 Msg , Multi文件夹</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-14-44-image-20221008111443848.png" alt="image-20221008111443848"/></li>
+<li>复制MSG开头的文件到 wx-decrypter中input文件中</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-16-25-image-20221008111617333.png" alt="image-20221008111617333"/></li>
+</ul>
+</li>
+<li>
+<p>执行解析命令</p>
+</li>
+<li>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-18-43-image-20221008111843004.png" alt="image-20221008111843004"/></p>
+</li>
+<li>
+<p>在output中得到当前聊天记录</p>
+</li>
+</ul>
+<h2 id="--excel">六  准备需要解析的excel</h2>
+<ul>
+<li>打开output里面的csv格式  进行操作筛选操作</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-21-47-image-20221008112139725.png" alt="image-20221008112139725"/></li>
+<li>筛选创建时间
+<ul>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-23-29-image-20221008112321322.png" alt="image-20221008112321322"/></li>
+</ul>
+</li>
+<li>根据聊天 内容确定聊天人</li>
+</ul>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-26-46-image-20221008112639834.png" alt="image-20221008112639834"/></p>
+<ul>
+<li>例子中  根据    &#34;昨天的&#34;   聊天内容 你要筛选的聊天帐号</li>
+</ul>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-29-37-image-20221008112937268.png" alt="image-20221008112937268"/></p>
+<ul>
+<li>上面是刷选后的聊天记录</li>
+<li>复制content 列   到新的 a.xlsx文件中</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-32-14-image-20221008113213823.png" alt="image-20221008113213823"/></li>
+<li>把 a.xlsx中  移动到 parseExcel文件夹的</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-34-15-image-20221008113409536.png" alt="image-20221008113409536"/></li>
+</ul>
+<h2 id="--excel-">七  执行解析excel文件 得到最终订单文件</h2>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-39-22-image-20221008113914013.png" alt="image-20221008113914013"/></p>
 
-    5
-<div class="container main-container flex on-phone--column extended ">
-    <main class="main full-width">
-        <h3 class="section-title">Section</h3>
-
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">13 pages</h3>
-                <h1 class="section-term">Tag</h1>
-            </div>
+            </article>
         </div>
 
-        <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
 
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/blog/">blog</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/dream/">dream</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/redis/">redis</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/kafka/">kafka</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/http/">http</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-        </section>
-
-    
-    <nav class='pagination'>
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/9/'>9</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/10/'>10</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/11/'>11</a>
-            
-        
-            
-                <span class='page-link current'>12</span>
-            
-        
-            
-                <a class='page-link' href='/hugo/tags/page/13/'>13</a>
-            
-        
-    </nav>
-</main>
-
-
-    <aside class="sidebar right-sidebar sticky">
-        
-
-
-        
-
-
-    </aside>
-
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#heading">一、环境准备</a></li>
+<li>
+<a href="#heading-1">二、打开命令行</a></li>
+<li>
+<a href="#heading-2">三、进入命令运行目录</a></li>
+<li>
+<a href="#-code">四 解密当前code</a></li>
+<li>
+<a href="#-">五 得到当前帐号的聊天记录</a></li>
+<li>
+<a href="#--excel">六  准备需要解析的excel</a></li>
+<li>
+<a href="#--excel-">七  执行解析excel文件 得到最终订单文件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
 </div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
+
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
+
+
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
+            
+                <div class="pageTop">
+                    <a class="" href=/hugo/about/learnBlog/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
+            
+            <div class="pagePiddle"></div>
+            
+                <div class="pageBottom">
+                    <a class="" href=/hugo/about/zhh/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
+
+        .buttonStyle{
+            border-radius: 60%;
+        }
+
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
+
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>
