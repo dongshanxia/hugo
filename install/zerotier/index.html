@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>zerotier</title>
     
 
 
@@ -363,377 +363,265 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h2 id="1windows">1.windows</h2>
+<h3 id="11-">1.1 安装基础文件</h3>
+<ul>
+<li>首先去zerotier官网下载一个zerotier客户端  <a href="https://download.zerotier.com/dist/ZeroTier%20One.msi">地址</a></li>
+</ul>
+<h3 id="12-">1.2 双击直接安装</h3>
+<ul>
+<li>默认安装不用选</li>
+</ul>
+<h3 id="13-planet">1.3 修改planet文件</h3>
+<ul>
+<li>路径: C:\ProgramData\ZeroTier\One</li>
+<li>替换 planet</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-10-39-59-image-20221010103956010.png" alt="image-20221010103956010"/></li>
+</ul>
+<h3 id="14-zerotier">1.4 重启zerotier服务</h3>
+<ul>
+<li>打开运行窗口</li>
+<li>Windows + R 组合快捷键打开“运行”窗口</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-10-57-58-image-20221010105755957.png" alt="image-20221010105755957"/></li>
+<li>输入 services.msc
+<ul>
+<li>点击确定</li>
+<li>找到服务; 重启动此服务</li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-0-43-image-20221010110045859.png" alt="image-20221010110045859"/></li>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-4-15-image-20221010110412093.png" alt="image-20221010110412093"/></li>
+</ul>
+</li>
+</ul>
+<h3 id="15-">1.5 加入网络</h3>
+<ul>
+<li>
+<p>打开powershell</p>
+</li>
+<li>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-6-22-image-20221010110625557.png" alt="image-20221010110625557"/></p>
+</li>
+<li>
+<p>敲入命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>zerotier-cli.bat join 网络id(就是在网页里面创建的那个网络)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>## 记得敲回车
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>zerotier-cli.bat join 618fc0205f989b49
+</span></span></code></pre></div>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-9-58-image-20221010110956352.png" alt="image-20221010110956352"/></p>
+</li>
+</ul>
+<h3 id="16-">1.6 登录管理后台</h3>
+<ul>
+<li>可以看到有个新的客户端，勾选Authorized就行</li>
+</ul>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-11-37-image-20221010111138947.png" alt="image-20221010111138947"/></p>
+<h3 id="17-windows-">1.7 windows 客户端进行验证</h3>
+<ul>
+<li>
+<p>验证命令</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>zerotier-cli.bat peers
+</span></span></code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>显示结果</p>
+<ul>
+<li><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-11-15-19-image-20221010111516105.png" alt="image-20221010111516105"/></li>
+</ul>
+</li>
+</ul>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/software">
-                                            software
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/software/typora/">typora</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2355 字  预计读完 12 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/software">
-                                            software
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/software/photoshop/">photoshop</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 123 字  预计读完 1 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/software">
-                                            software
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/software/webstorm/">webstorm</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 215 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/software">
-                                            software
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/software/jenkins/">jenkins</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 384 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/software">
-                                            software
-                                        </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/software/idea/">idea</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 297 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#1windows">1.windows</a><ul>
+<li>
+<a href="#11-">1.1 安装基础文件</a></li>
+<li>
+<a href="#12-">1.2 双击直接安装</a></li>
+<li>
+<a href="#13-planet">1.3 修改planet文件</a></li>
+<li>
+<a href="#14-zerotier">1.4 重启zerotier服务</a></li>
+<li>
+<a href="#15-">1.5 加入网络</a></li>
+<li>
+<a href="#16-">1.6 登录管理后台</a></li>
+<li>
+<a href="#17-windows-">1.7 windows 客户端进行验证</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-                <a class='page-link' href='/hugo/page/10/'>10</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/11/'>11</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/12/'>12</a>
-            
-        
-            
-                <span class='page-link current'>13</span>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/14/'>14</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/15/'>15</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/16/'>16</a>
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="/hugo/categories/zookeeper/">
-                    <span class="year">zookeeper</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=/hugo/about/learnBlog/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="/hugo/categories/docker/">
-                    <span class="year">docker</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="/hugo/categories/shell/">
-                    <span class="year">shell</span>
-                </a>
-            
-                <a href="/hugo/categories/cwz/">
-                    <span class="year">cwz</span>
-                </a>
-            
-                <a href="/hugo/categories/hadoop/">
-                    <span class="year">hadoop</span>
-                </a>
-            
-                <a href="/hugo/categories/about/">
-                    <span class="year">about</span>
-                </a>
-            
-                <a href="/hugo/categories/db/">
-                    <span class="year">db</span>
-                </a>
-            
-                <a href="/hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="/hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="/hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=/hugo/install/zerotier-plant/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="/hugo/tags/config/" class="font_size_4">
-                config
-            </a>
-        
-            <a href="/hugo/tags/Chronyd/" class="font_size_4">
-                Chronyd
-            </a>
-        
-            <a href="/hugo/tags/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/" class="font_size_4">
-                面试题整理
-            </a>
-        
-            <a href="/hugo/tags/http/" class="font_size_4">
-                http
-            </a>
-        
-            <a href="/hugo/tags/%e6%ad%a6%e6%9e%97%e7%a7%98%e7%b1%8d/" class="font_size_4">
-                武林秘籍
-            </a>
-        
-            <a href="/hugo/tags/%e6%9c%8d%e5%8a%a1%e5%99%a8/" class="font_size_4">
-                服务器
-            </a>
-        
-            <a href="/hugo/tags/oracle/" class="font_size_4">
-                oracle
-            </a>
-        
-            <a href="/hugo/tags/%e6%8f%92%e4%bb%b6/" class="font_size_4">
-                插件
-            </a>
-        
-            <a href="/hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="/hugo/tags/pve/" class="font_size_4">
-                pve
-            </a>
-        
-            <a href="/hugo/tags/%e4%bb%bb%e5%8a%a1/" class="font_size_4">
-                任务
-            </a>
-        
-            <a href="/hugo/tags/ssh/" class="font_size_4">
-                ssh
-            </a>
-        
-            <a href="/hugo/tags/DB/" class="font_size_4">
-                DB
-            </a>
-        
-            <a href="/hugo/tags/npm%e5%ae%89%e8%a3%85/" class="font_size_4">
-                npm安装
-            </a>
-        
-            <a href="/hugo/tags/jenkins/" class="font_size_4">
-                jenkins
-            </a>
-        
-            <a href="/hugo/tags/markdown/" class="font_size_4">
-                markdown
-            </a>
-        
-            <a href="/hugo/tags/typora/" class="font_size_4">
-                typora
-            </a>
-        
-            <a href="/hugo/tags/linux/" class="font_size_4">
-                linux
-            </a>
-        
-            <a href="/hugo/tags/docker/" class="font_size_4">
-                docker
-            </a>
-        
-            <a href="/hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>
