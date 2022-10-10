@@ -436,6 +436,84 @@
 </ul>
 </li>
 </ul>
+<h2 id="2-linux">2. Linux</h2>
+<h3 id="21-zerotier">2.1 安装zerotier</h3>
+<ul>
+<li>
+<p>安装命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span> curl -s https://install.zerotier.com/ | sudo bash
+</span></span></code></pre></div>
+</li>
+</ul>
+<h3 id="22-planet">2.2 修改planet</h3>
+<ul>
+<li>
+<p>进入目录 /var/lib/zerotier-one</p>
+<ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd  /var/lib/zerotier-one
+</span></span></code></pre></div>
+</li>
+<li>
+<p>替换 planet</p>
+<ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cp /root/planet .
+</span></span></code></pre></div>
+<ul>
+<li>显示</li>
+</ul>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-13-41-7-image-20221010134102565.png" alt="image-20221010134102565"/></p>
+</li>
+</ul>
+<h3 id="23--zerotier">2.3 重启 zerotier服务</h3>
+<ul>
+<li>
+<p>敲命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>service zerotier-one restart
+</span></span></code></pre></div>
+</li>
+<li>
+<p>显示结果</p>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-13-46-13-image-20221010134611384.png" alt="image-20221010134611384"/></p>
+</li>
+</ul>
+<h3 id="24-">2.4 加入网络</h3>
+<ul>
+<li>
+<p>敲命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>zerotier-cli join 网络id(就是在网页里面创建的那个网络)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>## 记得敲回车
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>zerotier-cli join 618fc0205f989b49
+</span></span></code></pre></div>
+</li>
+<li>
+<p>显示</p>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-13-48-59-image-20221010134854097.png" alt="image-20221010134854097"/></p>
+</li>
+</ul>
+<h3 id="25-">2.5 登录管理后台</h3>
+<ul>
+<li>
+<p>可以看到有个新的客户端，勾选Authorized就行</p>
+<p><img src="/home/zhu/.config/Typora/typora-user-images/image-20221010134836006.png" alt="image-20221010134836006"/></p>
+</li>
+</ul>
+<h3 id="26-linux-">2.6 linux 客户端进行验证</h3>
+<ul>
+<li>
+<p>命令:</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>zerotier-cli peers
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>
+</span></span></code></pre></div>
+</li>
+<li>
+<p>显示</p>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-10/xcb-13-52-5-image-20221010135208469.png" alt="image-20221010135208469"/></p>
+</li>
+</ul>
 
             </article>
         </div>
@@ -466,6 +544,22 @@
 <a href="#16-">1.6 登录管理后台</a></li>
 <li>
 <a href="#17-windows-">1.7 windows 客户端进行验证</a></li>
+</ul>
+</li>
+<li>
+<a href="#2-linux">2. Linux</a><ul>
+<li>
+<a href="#21-zerotier">2.1 安装zerotier</a></li>
+<li>
+<a href="#22-planet">2.2 修改planet</a></li>
+<li>
+<a href="#23--zerotier">2.3 重启 zerotier服务</a></li>
+<li>
+<a href="#24-">2.4 加入网络</a></li>
+<li>
+<a href="#25-">2.5 登录管理后台</a></li>
+<li>
+<a href="#26-linux-">2.6 linux 客户端进行验证</a></li>
 </ul>
 </li>
 </ul>
