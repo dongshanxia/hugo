@@ -386,20 +386,29 @@
 <p>在那个黑框框下操作</p>
 </li>
 <li>
-<p>切换磁盘</p>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>e:
+<p>命令   (参照下面的图片)</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>## 切换磁盘
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>e:
 </span></span></code></pre></div>
 </li>
 <li>
-<p>进入工作目录</p>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd weixin
+<p>进入工作目录  (参照下面的图片)</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>## 进入weixin这个目录
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>cd weixin
 </span></span></code></pre></div>
 </li>
 </ul>
 <p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-13-35-53-image-20221008133547196.png" alt="image-20221008133547196"/></p>
 <h2 id="-code">四 解密当前code</h2>
 <ul>
-<li>命令 : wx-dump-key-v0.1.0.exe zmkm</li>
+<li>
+<p>命令 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>wx-dump-key-v0.1.1.exe zmkm
+</span></span></code></pre></div>
+</li>
+<li>
+<p>显示</p>
+</li>
 </ul>
 <p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-4-33-image-20221008110426762.png" alt="image-20221008110426762"/></p>
 <h2 id="-">五 得到当前帐号的聊天记录</h2>
@@ -411,23 +420,40 @@
 <li>点击上图中  打开文件夹</li>
 <li>打开后依次 进入 Msg , Multi文件夹</li>
 <li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-14-44-image-20221008111443848.png" alt="image-20221008111443848"/></li>
-<li>复制MSG开头的文件到 wx-decrypter中input文件中</li>
+<li>复制MSG开头的文件到   E:\softwore\weixin\wx-decrypter-v0.1.1\input文件中</li>
 <li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-16-25-image-20221008111617333.png" alt="image-20221008111617333"/></li>
 </ul>
 </li>
 <li>
-<p>执行解析命令</p>
+<p>删除显示目录</p>
+<ul>
+<li>删除这个文件夹 E:\softwore\weixin\wx-decrypter-v0.1.1\output</li>
+</ul>
+</li>
+<li>
+<p>进入执行解析的目录</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>wx-decrypter-v0.1.1.exe # 进入解析目录
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>cd wx-decrypter-v0.1.1
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span># 执行解析命令
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>wx-decrypter-v0.1.1.exe 9c5145a9b33940548812630a37cef2a1427c31ea1c914850ba183552c5199c96
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span># 执行命令解释 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">6</span><span>wx-decrypter-v0.1.1.exe sqllite-key
+</span></span></code></pre></div>
 </li>
 <li>
 <p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-18-43-image-20221008111843004.png" alt="image-20221008111843004"/></p>
 </li>
+</ul>
+</li>
 <li>
-<p>在output中得到当前聊天记录</p>
+<p>在E:\softwore\weixin\wx-decrypter-v0.1.1\output中得到当前聊天记录</p>
 </li>
 </ul>
 <h2 id="--excel">六  准备需要解析的excel</h2>
 <ul>
-<li>打开output里面的csv格式  进行操作筛选操作</li>
+<li>打开E:\softwore\weixin\wx-decrypter-v0.1.1\output里面的csv格式  进行操作筛选操作</li>
 <li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-21-47-image-20221008112139725.png" alt="image-20221008112139725"/></li>
 <li>筛选创建时间
 <ul>
@@ -445,11 +471,18 @@
 <li>上面是刷选后的聊天记录</li>
 <li>复制content 列   到新的 a.xlsx文件中</li>
 <li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-32-14-image-20221008113213823.png" alt="image-20221008113213823"/></li>
-<li>把 a.xlsx中  移动到 parseExcel文件夹的</li>
+<li>把 a.xlsx中  移动到 E:\softwore\weixin\parseExcel文件夹的</li>
 <li><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-34-15-image-20221008113409536.png" alt="image-20221008113409536"/></li>
 </ul>
 <h2 id="--excel-">七  执行解析excel文件 得到最终订单文件</h2>
-<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-39-22-image-20221008113914013.png" alt="image-20221008113914013"/></p>
+<ul>
+<li>
+<p><img src="https://img.dongshanxia.top:35000/img/2022-10-08/xcb-11-34-15-image-20221008113409536.png" alt="image-20221008113409536"/></p>
+</li>
+<li>
+<p>双击上图中的 parseExcel.exe</p>
+</li>
+</ul>
 
             </article>
         </div>
