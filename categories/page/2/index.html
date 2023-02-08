@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -383,7 +384,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/yum/">yum</a>
+                                    <a href="/hugo/categories/install/">install</a>
                                 </h2>
                             </div>
                         </header>
@@ -393,7 +394,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/about/">about</a>
+                                    <a href="/hugo/categories/linux/">linux</a>
                                 </h2>
                             </div>
                         </header>
@@ -403,7 +404,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/%e6%9c%8d%e5%8a%a1%e5%99%a8/">服务器</a>
+                                    <a href="/hugo/categories/zerotier/">zerotier</a>
                                 </h2>
                             </div>
                         </header>
@@ -413,7 +414,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/windows/">windows</a>
+                                    <a href="/hugo/categories/shell/">shell</a>
                                 </h2>
                             </div>
                         </header>
@@ -423,7 +424,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/study/">study</a>
+                                    <a href="/hugo/categories/blog/">blog</a>
                                 </h2>
                             </div>
                         </header>

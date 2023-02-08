@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -384,7 +385,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/service/">service</a>
+                                    <a href="/hugo/tags/ssh/">ssh</a>
                                 </h2>
 
                             </div>
@@ -396,7 +397,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/mysql/">mysql</a>
+                                    <a href="/hugo/tags/ago/">ago</a>
                                 </h2>
 
                             </div>
@@ -408,7 +409,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/docker/">docker</a>
+                                    <a href="/hugo/tags/%e6%8f%92%e4%bb%b6/">插件</a>
                                 </h2>
 
                             </div>
@@ -420,7 +421,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/docker-compose/">docker-compose</a>
+                                    <a href="/hugo/tags/zerotier/">zerotier</a>
                                 </h2>
 
                             </div>
@@ -432,7 +433,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/skywalking/">skywalking</a>
+                                    <a href="/hugo/tags/typora/">typora</a>
                                 </h2>
 
                             </div>

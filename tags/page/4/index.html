@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -384,7 +385,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/redis/">redis</a>
+                                    <a href="/hugo/tags/mssql/">mssql</a>
                                 </h2>
 
                             </div>
@@ -396,7 +397,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/java/">java</a>
+                                    <a href="/hugo/tags/config/">config</a>
                                 </h2>
 
                             </div>
@@ -408,7 +409,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/vim/">vim</a>
+                                    <a href="/hugo/tags/cluster/">cluster</a>
                                 </h2>
 
                             </div>
@@ -420,7 +421,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/jenkins/">jenkins</a>
+                                    <a href="/hugo/tags/certbot/">certbot</a>
                                 </h2>
 
                             </div>
@@ -432,7 +433,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/%e8%b7%af%e7%94%b1/">路由</a>
+                                    <a href="/hugo/tags/dockerfile/">dockerfile</a>
                                 </h2>
 
                             </div>

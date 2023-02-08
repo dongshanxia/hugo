@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -384,7 +385,31 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/kafka/">kafka</a>
+                                    <a href="/hugo/tags/centos/">centos</a>
+                                </h2>
+
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+
+                                <h2 class="article-title">
+                                    <a href="/hugo/tags/redis/">redis</a>
+                                </h2>
+
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+
+                                <h2 class="article-title">
+                                    <a href="/hugo/tags/zookeeper/">zookeeper</a>
                                 </h2>
 
                             </div>
@@ -408,31 +433,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/start/">start</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/">未标签</a>
-                                </h2>
-
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-
-                                <h2 class="article-title">
-                                    <a href="/hugo/tags/shell/">shell</a>
+                                    <a href="/hugo/tags/%e5%ae%9a%e6%97%b6/">定时</a>
                                 </h2>
 
                             </div>

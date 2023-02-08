@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -414,10 +415,10 @@ mac的安装方式  抄袭 linux的<br/>
 <ul>
 <li><input checked="" disabled="" type="checkbox"/> deepian安装 wireshark</li>
 <li><input checked="" disabled="" type="checkbox"/> 编写一个解析微信本地历史记录 抽取订单的windows程序</li>
-<li>[] 编写vpn-client</li>
-<li>[] passwall bug解决</li>
-<li>[] 软路由方案确认</li>
-<li>[] vmare控制多台虚拟机</li>
+<li><input checked="" disabled="" type="checkbox"/> 编写vpn-client</li>
+<li><input checked="" disabled="" type="checkbox"/> passwall bug解决</li>
+<li><input checked="" disabled="" type="checkbox"/> 软路由方案确认</li>
+<li><input checked="" disabled="" type="checkbox"/> vmare控制多台虚拟机</li>
 </ul>
 <p>luci-i18n- base-zh-cn</p>
 

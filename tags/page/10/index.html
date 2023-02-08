@@ -131,6 +131,7 @@
                     
                     
                    var url =  item.url.substr(1);
+                    var encodeUrl = encodeURIComponent(item.url);
                     $("#result").append(`
                         <article class="has-image">
                             <header class="article-header">
@@ -141,7 +142,7 @@
 
 
                             <h2 class="article-title">
-                            <a href=`+ "/hugo/"+item.url+` >`+item.name+`</a>
+                            <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
@@ -384,7 +385,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/ago/">ago</a>
+                                    <a href="/hugo/tags/zerotier-client/">zerotier-client</a>
                                 </h2>
 
                             </div>
@@ -396,7 +397,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/%e4%bb%bb%e5%8a%a1/">任务</a>
+                                    <a href="/hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/">未标签</a>
                                 </h2>
 
                             </div>
@@ -408,7 +409,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/config/">config</a>
+                                    <a href="/hugo/tags/docker-compose/">docker-compose</a>
                                 </h2>
 
                             </div>
@@ -420,7 +421,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/install/">install</a>
+                                    <a href="/hugo/tags/tomcat/">tomcat</a>
                                 </h2>
 
                             </div>
@@ -432,7 +433,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/zerotier-plant/">zerotier-plant</a>
+                                    <a href="/hugo/tags/pve/">pve</a>
                                 </h2>
 
                             </div>
