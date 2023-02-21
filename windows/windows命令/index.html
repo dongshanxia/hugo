@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>windows命令</title>
     
 
 
@@ -364,428 +364,270 @@
         <div id="content">
 
             
+    <div class="container slideout-panel slideout-panel-left" id="mobile-panel">
+
+        <div id="post" class="post">
+            <article class="article-content"><hr/>
+<h1 id="windows-">windows 命令</h1>
+<h2 id="route">route命令</h2>
+<ol>
+<li>route delete
+<ul>
+<li>route delete 0.0.0.0 删除这个 目标网络（网络目标）</li>
+</ul>
+</li>
+<li>route print
+<ul>
+<li>打印你的 网络路由</li>
+</ul>
+</li>
+<li>route add [目标网络] mask [子网掩码] 本地网关(本地ip)
+<ul>
+<li>route add 13.8.135.0 mask 255.255.255.0 13.8.135.1  通过13.8.135.1 访问 13.8.135.0 这个网络</li>
+</ul>
+</li>
+</ol>
+<h2 id="heading">网络重置</h2>
+<ul>
+<li>netsh int ipv4  reset    记得重启</li>
+</ul>
+<h2 id="--">收集 历史命令 记录</h2>
+<ul>
+<li>doskey /HISTORY &gt; F:\Users\Public\User.txt</li>
+</ul>
+<h1 id="bat-">bat 相关命令总结</h1>
+<h2 id="call---">call 命令 （其他命令 不退出命令）</h2>
+<ul>
+<li>其他命令可以 输出后  不退出</li>
+<li>例子:vuepress build docs</li>
+<li>例子:npm install</li>
+</ul>
+<h2 id="heading-1">相关例子</h2>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>@echo off
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>:main
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>::pause 10
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>timeout /t 60
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>for /F %%d IN (&#39;git rev-parse HEAD&#39;) do ( set oldCommitid=%%d )
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>echo oldCommitid=%oldCommitid%
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>git pull
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>for /F %%i in (&#39;git rev-parse HEAD&#39;) do ( set newCommitid=%%i )
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>echo newCommitid=%newCommitid%
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>if %oldCommitid%==%newCommitid% (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>	ECHO TRUE
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>	ECHO TRUE
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>	ECHO TRUE	
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">21</span><span>	echo &#39;kaishi2&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">22</span><span>)else (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">23</span><span>	echo &#39;false&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">24</span><span>	goto sourceTrue
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">25</span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">26</span><span>echo &#39;kaishi&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">27</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">28</span><span>goto main
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">30</span><span>:sourceTrue
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">31</span><span>echo &#39;kaishi3&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">32</span><span>del/s/q F:\Users\Public\ourdoc\docs\.vuepress\dist
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">33</span><span>echo &#39;kaishi2&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">34</span><span>call npm install
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">35</span><span>echo &#39;kaishi5&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">36</span><span>call vuepress build docs
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">37</span><span>echo &#39;kaisahi6ss&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">38</span><span>del/s/q F:\Users\Public\docs\*
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">39</span><span>xcopy/s F:\Users\Public\ourdoc\docs\.vuepress\dist\* F:\Users\Public\docs
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">40</span><span>echo &#39;kaishi1&#39;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">41</span><span>goto main
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">42</span><span>
+</span></span></code></pre></div>
+
+            </article>
+        </div>
 
 
-    
-    <div class="container main-container flex on-phone--column extended ">
-        <main class="main full-width">
-            <section class="article-list">
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/study/">
-                                            study
-                                        </a>
-                                    
-                                        <a href="/categories/blog/">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <div class="article-tags">
-                                    
-                                    <a href="/tags/%e4%bb%bb%e5%8a%a1/">
-                                        任务
-                                    </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/about/learnBlog/">learnBlog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 384 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/blog/">
-                                            blog
-                                        </a>
-                                    
-                                </div>
-                                <div class="article-tags">
-                                    
-                                    <a href="/tags/blog/">
-                                        blog
-                                    </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/about/blog/">blog</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 320 字  预计读完 2 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/windows/">
-                                            windows
-                                        </a>
-                                    
-                                </div>
-                                <div class="article-tags">
-                                    
-                                    <a href="/tags/windows/">
-                                        windows
-                                    </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/about/%e8%a7%a3%e6%9e%90%e8%ae%a2%e5%8d%95/">解析订单</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 1729 字  预计读完 9 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/zerotier/">
-                                            zerotier
-                                        </a>
-                                    
-                                </div>
-                                <div class="article-tags">
-                                    
-                                    <a href="/tags/zerotier-plant/">
-                                        zerotier-plant
-                                    </a>
-                                    
-                                    <a href="/tags/zerotier-client/">
-                                        zerotier-client
-                                    </a>
-                                    
-                                    <a href="/tags/zerotier/">
-                                        zerotier
-                                    </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/network/zerotier-client/">zerotier-client</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 2214 字  预计读完 11 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <div class="article-category">
-                                    
-                                        <a href="/categories/zerotier/">
-                                            zerotier
-                                        </a>
-                                    
-                                </div>
-                                <div class="article-tags">
-                                    
-                                    <a href="/tags/zerotier-plant/">
-                                        zerotier-plant
-                                    </a>
-                                    
-                                    <a href="/tags/zerotier/">
-                                        zerotier
-                                    </a>
-                                    
-                                </div>
-                                <h2 class="article-title">
-                                    <a href="/hugo/network/zerotier-plant/">zerotier-plant</a>
-                                </h2>
-                                <h7 class="article-subtitle" style="font-size: 0.5rem">
-                                    
-                                    统计 439 字  预计读完 3 分钟
-                                </h7>
-                            </div>
-                        </header>
-                    </article>
-                
-            </section>
+<div class="button-container">
+    <div class="catalog-button">
+        <button class="buttonStyle display-none" id="open" onclick="click_open()">开</button>
+        <button class="buttonStyle" id="close" onclick="click_close()">关</button>
+    </div>
+    <div id="table-of-contents">
+        <nav id="TableOfContents"><ul>
+<li>
+<a href="#windows-">windows 命令</a><ul>
+<li>
+<a href="#route">route命令</a></li>
+<li>
+<a href="#heading">网络重置</a></li>
+<li>
+<a href="#--">收集 历史命令 记录</a></li>
+</ul>
+</li>
+<li>
+<a href="#bat-">bat 相关命令总结</a><ul>
+<li>
+<a href="#call---">call 命令 （其他命令 不退出命令）</a></li>
+<li>
+<a href="#heading-1">相关例子</a></li>
+</ul>
+</li>
+</ul>
+</div>
+    </div>
 
-    
-    <nav class='pagination'>
-        
-            
-                <span class='page-link current'>1</span>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/2/'>2</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/3/'>3</a>
-            
-        
-            
-                <a class='page-link' href='/hugo/page/4/'>4</a>
-            
-        
-            
+</div>
+<script>
+    function click_open() {
+        console.log("打开")
+        $('#table-of-contents').show()
+        $('#close').show()
+        $('#open').hide()
 
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-            
-
-            
-        
-    </nav>
-</main>
+    }
+    function click_close() {
+        console.log("关闭")
+        $('#table-of-contents').hide()
+        $('#open').show()
+        $('#close').hide()
+    }
+</script>
 
 
-        <aside class="sidebar right-sidebar sticky"><section class="widget archives">
-    <h2 class="widget-title section-title">分类</h2>
-    <div class="widget-archive--list">
-        <div class="archives-year">
+<style>
+    .button-container{
+        position: fixed;
+        border-radius: 4px;
+        right: 2%;
+        top: 12%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         
+        background-color: #515151e1;
+        opacity: 0.8;
+        border: 6px solid rgba(255, 255, 81, 0.5);
+        z-index: 99;
+        align-items: flex-end;
+    }
+    .div-inline-block{
+        display: inline-block;
+    }
+    .catalog-button{
+    }
+
+    #tab-of-content-area{
+        float: right;
+        position: relative;
+        right: 24px;
+        top: -70px;
+        display: none;
+    }
+
+    #TableOfContents{
+        border-radius: 4px;
+        left:85%;
+        top:115px;
+        display: inline-block;
+        width: max-content;
+        width:-webkit-max-content;
+        width:-moz-max-content;
+        max-width: 600px;
+        padding: 0;
+        background-color: #515151e1;
+        border: 1px solid rgba(81, 81, 81, 0.1);
+        overflow:auto;
+        height: 750px;
+    }
+
+    #TableOfContents::-webkit-scrollbar {
+        display: none;
+    }
+
+    #TableOfContents ul{
+        font-size: 16px;
+        color: #fff;
+        padding-left:1px;
+        margin: 0px;
+    }
+
+    #TableOfContents ul a{
+        color: inherit;
+    }
+
+    #TableOfContents ul ul{
+        padding-left: 20px;
+        font-size: 14px;
+        color:#ddd;
+    }
+
+    #TableOfContents li{
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+    }
+
+
+</style>
+
+
+
+
+<div class="pageOut">
+
             
-                <a href="/hugo/categories/about/">
-                    <span class="year">about</span>
-                </a>
+                <div class="pageTop">
+                    <a class="" href=/hugo//search/>
+                        <button class="buttonStyle">上</button>
+                    </a>
+                </div>
             
-                <a href="/hugo/categories/%e6%9c%8d%e5%8a%a1%e5%99%a8/">
-                    <span class="year">服务器</span>
-                </a>
+            <div class="pagePiddle"></div>
             
-                <a href="/hugo/categories/OpenSearch/">
-                    <span class="year">OpenSearch</span>
-                </a>
-            
-                <a href="/hugo/categories/pve/">
-                    <span class="year">pve</span>
-                </a>
-            
-                <a href="/hugo/categories/network/">
-                    <span class="year">network</span>
-                </a>
-            
-                <a href="/hugo/categories/my/">
-                    <span class="year">my</span>
-                </a>
-            
-                <a href="/hugo/categories/zxq/">
-                    <span class="year">zxq</span>
-                </a>
-            
-                <a href="/hugo/categories/study/">
-                    <span class="year">study</span>
-                </a>
-            
-                <a href="/hugo/categories/software/">
-                    <span class="year">software</span>
-                </a>
-            
-                <a href="/hugo/categories/">
-                    <span class="year">更多</span>
-                </a>
+                <div class="pageBottom">
+                    <a class="" href=/hugo/db/mysql/mysql%e6%80%9d%e7%bb%b4%e5%af%bc%e5%9b%be/>
+                        <button class="buttonStyle">下</button>
+                    </a>
+                </div>
             
         </div>
     </div>
-</section><section class="widget tagCloud">
-    <h2 class="widget-title section-title">Tags</h2>
-    <div class="tagCloud-tags">
 
-        
-            <a href="/hugo/tags/hive/" class="font_size_4">
-                hive
-            </a>
-        
-            <a href="/hugo/tags/zerotier/" class="font_size_4">
-                zerotier
-            </a>
-        
-            <a href="/hugo/tags/server/" class="font_size_4">
-                server
-            </a>
-        
-            <a href="/hugo/tags/skywalking/" class="font_size_4">
-                skywalking
-            </a>
-        
-            <a href="/hugo/tags/vim/" class="font_size_4">
-                vim
-            </a>
-        
-            <a href="/hugo/tags/jenkins/" class="font_size_4">
-                jenkins
-            </a>
-        
-            <a href="/hugo/tags/zerotier-plant/" class="font_size_4">
-                zerotier-plant
-            </a>
-        
-            <a href="/hugo/tags/markdown/" class="font_size_4">
-                markdown
-            </a>
-        
-            <a href="/hugo/tags/VMware/" class="font_size_4">
-                VMware
-            </a>
-        
-            <a href="/hugo/tags/%e6%9c%aa%e6%a0%87%e7%ad%be/" class="font_size_4">
-                未标签
-            </a>
-        
-            <a href="/hugo/tags/ago/" class="font_size_4">
-                ago
-            </a>
-        
-            <a href="/hugo/tags/mysql/" class="font_size_4">
-                mysql
-            </a>
-        
-            <a href="/hugo/tags/DB/" class="font_size_4">
-                DB
-            </a>
-        
-            <a href="/hugo/tags/es/" class="font_size_4">
-                es
-            </a>
-        
-            <a href="/hugo/tags/tomcat/" class="font_size_4">
-                tomcat
-            </a>
-        
-            <a href="/hugo/tags/http/" class="font_size_4">
-                http
-            </a>
-        
-            <a href="/hugo/tags/https/" class="font_size_4">
-                https
-            </a>
-        
-            <a href="/hugo/tags/npm%e5%ae%89%e8%a3%85/" class="font_size_4">
-                npm安装
-            </a>
-        
-            <a href="/hugo/tags/tar/" class="font_size_4">
-                tar
-            </a>
-        
-            <a href="/hugo/tags/" class="font_size_4">
-                更多
-            </a>
-        
-    </div>
+    <style>
+        .pageTop,.pagePiddle,.pageBottom{
+            width: 100%;
+        }
+        .pagePiddle{
+            height: 1em;
+        }
 
-</section></aside>
+        .buttonStyle{
+            border-radius: 60%;
+        }
 
+        .pageOut {
+            position: fixed;
+            border-radius: 4px;
+            left: 2%;
+            top: 14%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+             
+            background-color: #515151e1;
+            background-image: linear-gradient(#513c1e 10%, #514411 10%, #515151e1 20%);  
+            opacity: 0.8;
+            border: 6px solid rgba(255, 255, 81, 0.5);
 
-    </div>
+            z-index: 99;
+        }
+    </style>
+
 
             
         </div>
