@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -563,7 +567,7 @@ SIGQUIT退出时会产生core文件, 在这个意义上类似于一个程序错�
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/linux/linux%e4%b8%bb%e6%9c%ba%e5%90%8d/>
+                    <a class="" href=/hugo/linux/%e8%99%9a%e6%8b%9f%e6%9c%ba%e5%ae%89%e8%a3%85%20centos/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>

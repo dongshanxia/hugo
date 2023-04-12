@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -373,7 +377,7 @@
 
         <div class="section-card">
             <div class="section-details">
-                <h3 class="section-count">13 pages</h3>
+                <h3 class="section-count">14 pages</h3>
                 <h1 class="section-term">Tag</h1>
             </div>
         </div>
@@ -385,7 +389,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/Chronyd/">Chronyd</a>
+                                    <a href="/hugo/tags/cluster/">cluster</a>
                                 </h2>
 
                             </div>
@@ -397,7 +401,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/mybatis/">mybatis</a>
+                                    <a href="/hugo/tags/webstorm/">webstorm</a>
                                 </h2>
 
                             </div>
@@ -409,7 +413,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/photoshop/">photoshop</a>
+                                    <a href="/hugo/tags/mysql/">mysql</a>
                                 </h2>
 
                             </div>
@@ -421,7 +425,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/zookeeper/">zookeeper</a>
+                                    <a href="/hugo/tags/install/">install</a>
                                 </h2>
 
                             </div>
@@ -433,7 +437,7 @@
                             <div class="article-details">
 
                                 <h2 class="article-title">
-                                    <a href="/hugo/tags/tomcat/">tomcat</a>
+                                    <a href="/hugo/tags/centos/">centos</a>
                                 </h2>
 
                             </div>
@@ -483,6 +487,10 @@
         
             
                 <a class='page-link' href='/hugo/tags/page/10/'>10</a>
+            
+        
+            
+
             
         
             

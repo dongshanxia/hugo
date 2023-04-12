@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -491,7 +495,7 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>mysql&gt; ^C
 </span></span></code></pre></div>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-08-27/164238_2fe22ec01b.png" alt="image-20200827162355697"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-08-27/164238_2fe22ec01b.png" alt="image-20200827162355697"/></p>
 <h4 id="faq">四、升级FAQ</h4>
 <p>​		这个地方描述升级可能会碰到的问题，以及解决方法</p>
 <h5 id="41-xxx">4.1 xxx服务启动问题</h5>

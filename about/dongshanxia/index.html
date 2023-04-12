@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -395,11 +399,8 @@
 <h2 id="heading-2">掌握技能</h2>
 <ol>
 <li>严格遵守Java开发规范，有良好的面向对象的业务分析能力，代码书写简洁，力求完美开发。</li>
-<li>了解jvm  以及 几种常见的jvm的垃圾回收机制</li>
-<li>熟练运用Spring和ioc的加载过程</li>
 <li>熟练掌握MySql，了解mysql的索引</li>
 <li>精通使用kafka，kafka调优，spark,spark调优等大数据技术。</li>
-<li>熟练使用SpringMVC，Springboot，Spring Cloud等Spring全家桶系列框架。</li>
 <li>熟练使用 PostgreSQL, Redis等数据库和mybatis，mybatisPlus，jdbc等持久层开发技术.</li>
 <li>熟练使用fastDFS，Cloudreve等文件存储服务技术。</li>
 <li>熟练使用zookeeper , hadoop , hbase , Elasticsearch，Kerboros等技术工具进行开发。</li>
@@ -407,12 +408,13 @@
 <li>熟练使用linux操作系统，网络配置，shell脚本 (grep , sed , awk）</li>
 <li>熟练使用docker镜像的分层，docker-compose和docker命令简单使用</li>
 <li>熟练使用gitlab和gitlab_ci简单使用</li>
+<li>熟悉docker,通过dockerfile 创建docker镜像,通过docker-compose进行docker编排</li>
 <li>熟悉k8s（正在学习）</li>
 <li>熟练使用netty, netty-websock</li>
 <li>熟悉Nginx等web服务器。</li>
-<li>熟练使用idea，Eclipse开发工具和Git，SVN版本控制工具。</li>
-<li>了解go,用go语言写leetcode</li>
+<li>用go语言写leetcode</li>
 <li>会使用异地组网 (蒲公英,zerotier)</li>
+<li>通过gitea 和 drone 完成自己私有代码的管理 和发布</li>
 <li>博客地址  (见其它补充)</li>
 </ol>
 <h2 id="heading-3">工作经历</h2>
@@ -443,7 +445,47 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-6">项目经历</h2>
+<h4 id="heading-6">杭州钛鑫科技有限公司</h4>
+<ul>
+<li>职位:  java开发工程师(大数据方向)</li>
+<li>时间:  2021-10 ~~ 至今</li>
+<li>职责:
+<ul>
+<li>负责Dlite平台 日常版本迭代；</li>
+<li>Dilte平台的搭建；</li>
+<li>负责flinkx 二次开发</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-7">项目经历</h2>
+<h3 id="dlite">Dlite平台（类似数据中心)</h3>
+<ul>
+<li>项目时间:
+<ul>
+<li>2021年10月-至今</li>
+</ul>
+</li>
+<li>项目描述:
+<ul>
+<li>本项目使用Hadoop作为大数据底座，使用Spark为离线计算引擎，使用flink作为实时计算引擎。使用pump（基于flinkx进行二次开发）作为数据同步或数据采集的主要工具，目前支持20+种数据源。使用Hive作为数据仓库，以mysql作为hive元数据存储库。该架构支持离线计算与实时计算两种场景，并提供了易使用的基于web进行数据开发的一体化开发环境。具有统一的任务运维中心、数据资产管理、数据源管理、数据安全、数据权限管理与系统监控等功能</li>
+</ul>
+</li>
+<li>项目结构
+<ul>
+<li>控制层：SpringMVC；</li>
+<li>业务层：Spring；</li>
+<li>持久层：hibernate，Druid连接池；</li>
+<li>数据层：MySQL，Redis,hdfs。</li>
+</ul>
+</li>
+<li>负责模块:
+<ul>
+<li>负责pump 开发和维护(抽取业务库 比如mysql,oracle,非业务mongodb)；</li>
+<li>利用form表单参数化配置 简化flinkx 启动配置；</li>
+<li>负责日常bug维护</li>
+</ul>
+</li>
+</ul>
 <h3 id="-">公安预警系统(西湖指挥中心 六翮凌风)</h3>
 <ul>
 <li>项目时间:
@@ -476,7 +518,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="heading-7">数据资源中心系统（类似百度网盘的功能)</h3>
+<h3 id="heading-8">数据资源中心系统（类似百度网盘的功能)</h3>
 <ul>
 <li>项目时间:
 <ul>
@@ -505,7 +547,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="heading-8">博客系统(地址见其它补充)</h3>
+<h3 id="heading-9">博客系统(地址见其它补充)</h3>
 <ul>
 <li>项目时间:
 <ul>
@@ -532,7 +574,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-9">其它补充</h2>
+<h2 id="heading-10">其它补充</h2>
 <ul>
 <li>
 <p>对接华为的 FusionInsight （kerbors，kafka，spark，hbase, MapReduce）</p>
@@ -547,10 +589,10 @@
 <p>个人使用情况：系统deepin，电脑双屏幕台式机，如果自己带有 路由器，NAS，台式机，双屏幕。</p>
 </li>
 <li>
-<p>博客地址：http://our.dongshanxia.top:56789/docs 和 <a href="https://dongshanxia.github.io/hugo/">https://dongshanxia.github.io/hugo/</a></p>
+<p>博客地址：https://hugo.dongshanxia.top:35000/about%2Fdongshanxia%2F 和 <a href="https://dongshanxia.github.io/hugo/">https://dongshanxia.github.io/hugo/</a></p>
 </li>
 </ul>
-<h2 id="heading-10">自我评价</h2>
+<h2 id="heading-11">自我评价</h2>
 <ul>
 <li>
 <p>乐观开朗，面对困难喜欢迎难而上，对技术难点有永不放弃的钻研精神；</p>
@@ -563,15 +605,15 @@
 </li>
 <li>
 <p>严于代码，对工作积极严谨，能吃苦耐劳。</p>
+<h2 id="heading-12">网络拓扑</h2>
 </li>
 </ul>
-<h2 id="heading-11">网络拓扑</h2>
 <p><img src="https://img.dongshanxia.top:35000/img/2021-08-29/130927_Qx71umInLx.png" alt="home-network"/></p>
 <h2 id="docker">docker拓扑</h2>
-<div class="mermaid">  graph TD
+<div class="mermaid">graph TD
       A[Start] --&gt; B[centos];
       A[Start] --&gt; C[debian];
-	  C[debian] --&gt; D[ssh];
+      C[debian] --&gt; D[ssh];
       D[ssh]--&gt;E[git];
       C--&gt;F[jdk]
       F--&gt;G[maven];
@@ -592,7 +634,9 @@
       C--&gt;V[oracle-base]
       V--&gt;W[oracle]
       C--&gt;X[hugo]
-</div><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>
+</div><h2 id="drone--blog">drone 拓扑 (blog项目部署)</h2>
+<p><img src="https://img.dongshanxia.top:35000/img/2023-04-12/xcb-10-27-25-image-20230412102859247.png" alt="image-20230412102859247"/></p>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>
             </article>
         </div>
 
@@ -620,28 +664,34 @@
 <a href="#heading-4">杭州合韬科技有限公司</a></li>
 <li>
 <a href="#heading-5">浙江火眼金睛数据科技有限公司</a></li>
+<li>
+<a href="#heading-6">杭州钛鑫科技有限公司</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<a href="#heading-6">项目经历</a><ul>
+<a href="#heading-7">项目经历</a><ul>
+<li>
+<a href="#dlite">Dlite平台（类似数据中心)</a></li>
 <li>
 <a href="#-">公安预警系统(西湖指挥中心 六翮凌风)</a></li>
 <li>
-<a href="#heading-7">数据资源中心系统（类似百度网盘的功能)</a></li>
+<a href="#heading-8">数据资源中心系统（类似百度网盘的功能)</a></li>
 <li>
-<a href="#heading-8">博客系统(地址见其它补充)</a></li>
+<a href="#heading-9">博客系统(地址见其它补充)</a></li>
 </ul>
 </li>
 <li>
-<a href="#heading-9">其它补充</a></li>
+<a href="#heading-10">其它补充</a></li>
 <li>
-<a href="#heading-10">自我评价</a></li>
+<a href="#heading-11">自我评价</a></li>
 <li>
-<a href="#heading-11">网络拓扑</a></li>
+<a href="#heading-12">网络拓扑</a></li>
 <li>
 <a href="#docker">docker拓扑</a></li>
+<li>
+<a href="#drone--blog">drone 拓扑 (blog项目部署)</a></li>
 </ul>
 </li>
 </ul>

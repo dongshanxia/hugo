@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -535,6 +539,73 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>8. 再次查询集群中的 Topic 信息：
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>bin/kafka-topics.sh --zookeeper $zkUrls --list bin/kafka-topics.sh --zookeeper $zkUrls --describe --topic testTopic
 </span></span></code></pre></div>
+<h2 id="kafka-3">华为云客户端kafka相关命令</h2>
+<h2 id="kerberos">kerberos验证</h2>
+<ul>
+<li>
+<p>进入安装好的kafka客户端</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd /htga/client
+</span></span></code></pre></div>
+</li>
+<li>
+<p>执行以下命令配置环境变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>source bigdata_env 
+</span></span></code></pre></div>
+</li>
+<li>
+<p>执行以下命令，进行用户认证</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>kinit 组件业务用户
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>kinit cjpt
+</span></span></code></pre></div>
+</li>
+<li>
+<p>输入密码</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>SNI!@ffer34
+</span></span></code></pre></div>
+</li>
+<li>
+<p>执行以下命令切换到Kafka客户端安装目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>cd Kafka/kafka/ 
+</span></span></code></pre></div>
+</li>
+</ul>
+<h3 id="kafka-4">kafka相关命令</h3>
+<h4 id="topic-6">查看当前集群的topic列表</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-topics.sh --list --zookeeper &lt;ZooKeeper集群IP:24002/kafka&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-topics.sh --list --zookeeper 13.104.24.63:24002,13.104.24.64:24002,13.104.24.65:24002/kafka
+</span></span></code></pre></div>
+<h4 id="topic-7">查看单个Topic详细信息。</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-topics.sh --describe --zookeeper &lt;ZooKeeper集群IP:24002/kafka&gt; --topic &lt;Topic名称&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-topics.sh --describe --zookeeper 13.104.24.63:24002,13.104.24.64:24002,13.104.24.65:24002/kafka --topic topic_zizhu_gsm
+</span></span></code></pre></div>
+<h4 id="topic-8">创建Topic，由管理员用户操作</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-topics.sh --create --zookeeper &lt;ZooKeeper集群IP:24002/kafka&gt; --partitions 6 --replication-factor 3 --topic &lt;Topic名称&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-topics.sh --create --zookeeper 13.104.24.63:24002,13.104.24.64:24002,13.104.24.65:24002/kafka --partitions 6 --replication-factor 3 --topic topic_test
+</span></span></code></pre></div>
+<h4 id="topic-9">删除Topic，由管理员用户操作。</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-topics.sh --delete --zookeeper &lt;ZooKeeper集群IP:24002/kafka&gt; --topic &lt;Topic名称&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-topics.sh --delete --zookeeper 13.104.24.63:24002,13.104.24.64:24002,13.104.24.65:24002/kafka --topic topic_test
+</span></span></code></pre></div>
+<h4 id="new-producer-apitopic">New Producer API生产消息，需要拥有该Topic生产者权限。</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-console-producer.sh --broker-list &lt;Kafka集群IP:21007&gt; --topic &lt;Topic名称&gt; --producer.config config/producer.properties 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-console-producer.sh --broker-list 13.104.24.74:21007,13.104.24.75:21007,13.104.24.76:21007 --topic zx_video --producer.config config/producer.properties 
+</span></span></code></pre></div>
+<h4 id="new-consumer-apitopic">New Consumer API消费数据，需要拥有该Topic的消费者权限</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-console-consumer.sh --topic &lt;Topic名称&gt; --bootstrap-server &lt;Kafka集群IP:21007&gt; --new-consumer --consumer.config config/consumer.properties
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>#样例如下：
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>bin/kafka-console-consumer.sh --topic topic_zizhu_gsm --bootstrap-server 13.104.24.74:21007,13.104.24.75:21007,13.104.24.76:21007  --new-consumer --consumer.config config/consumer.properties
+</span></span></code></pre></div>
+<h4 id="consumer-1">赋Consumer权限命令，由管理员用户操作。</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-acls.sh --authorizer-properties zookeeper.connect=&lt;ZooKeeper集群IP:24002/kafka &gt; --add --allow-principal User:&lt;用户名&gt; --consumer --topic &lt;Topic名称&gt; --group &lt;消费者组名称&gt;
+</span></span></code></pre></div>
+<h4 id="producer-1">赋Producer权限命令，由管理员用户操作</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>bin/kafka-acls.sh --authorizer-properties zookeeper.connect=&lt;ZooKeeper集群IP:24002/kafka &gt; --add --allow-principal User:&lt;用户名&gt; --producer --topic &lt;Topic名称&gt;
+</span></span></code></pre></div>
 
             </article>
         </div>
@@ -599,6 +670,32 @@
 <a href="#kafka--1">kafka 集群的注意点</a><ul>
 <li>
 <a href="#-kafka--zookeeperconnect-">获取到 Kafka 集群的 zookeeper.connect 信息。</a></li>
+</ul>
+</li>
+<li>
+<a href="#kafka-3">华为云客户端kafka相关命令</a></li>
+<li>
+<a href="#kerberos">kerberos验证</a><ul>
+<li>
+<a href="#kafka-4">kafka相关命令</a><ul>
+<li>
+<a href="#topic-6">查看当前集群的topic列表</a></li>
+<li>
+<a href="#topic-7">查看单个Topic详细信息。</a></li>
+<li>
+<a href="#topic-8">创建Topic，由管理员用户操作</a></li>
+<li>
+<a href="#topic-9">删除Topic，由管理员用户操作。</a></li>
+<li>
+<a href="#new-producer-apitopic">New Producer API生产消息，需要拥有该Topic生产者权限。</a></li>
+<li>
+<a href="#new-consumer-apitopic">New Consumer API消费数据，需要拥有该Topic的消费者权限</a></li>
+<li>
+<a href="#consumer-1">赋Consumer权限命令，由管理员用户操作。</a></li>
+<li>
+<a href="#producer-1">赋Producer权限命令，由管理员用户操作</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

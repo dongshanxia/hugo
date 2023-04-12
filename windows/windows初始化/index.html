@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -667,7 +671,7 @@ updateTime: 2022-03-24T09:44:32+08:00</p>
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/about/mh%e6%8a%93%e9%ac%bc/>
+                    <a class="" href=/hugo/linux/shell/shell%e7%9a%84appimg/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -675,7 +679,7 @@ updateTime: 2022-03-24T09:44:32+08:00</p>
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/java/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/%e6%80%9d%e6%b1%89%e7%a7%91%e6%8a%80/>
+                    <a class="" href=/hugo/java/%e9%9d%a2%e8%af%95%e9%a2%98%e6%95%b4%e7%90%86/%e6%9d%ad%e5%b7%9e%e4%b9%9d%e7%8e%a9/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

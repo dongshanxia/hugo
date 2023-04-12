@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -384,26 +388,6 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/zxq/">zxq</a>
-                                </h2>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <h2 class="article-title">
-                                    <a href="/hugo/categories/%e6%9c%8d%e5%8a%a1%e5%99%a8/">服务器</a>
-                                </h2>
-                            </div>
-                        </header>
-                    </article>
-                
-                    <article class="has-image">
-                        <header class="article-header">
-                            <div class="article-details">
-                                <h2 class="article-title">
                                     <a href="/hugo/categories/db/">db</a>
                                 </h2>
                             </div>
@@ -414,7 +398,7 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/linux/">linux</a>
+                                    <a href="/hugo/categories/shell/">shell</a>
                                 </h2>
                             </div>
                         </header>
@@ -424,7 +408,27 @@
                         <header class="article-header">
                             <div class="article-details">
                                 <h2 class="article-title">
-                                    <a href="/hugo/categories/yum/">yum</a>
+                                    <a href="/hugo/categories/zerotier/">zerotier</a>
+                                </h2>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <h2 class="article-title">
+                                    <a href="/hugo/categories/java/">java</a>
+                                </h2>
+                            </div>
+                        </header>
+                    </article>
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+                                <h2 class="article-title">
+                                    <a href="/hugo/categories/linux/">linux</a>
                                 </h2>
                             </div>
                         </header>

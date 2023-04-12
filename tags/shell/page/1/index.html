@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -379,6 +383,18 @@
         </div>
 
         <section class="article-list">
+                
+                    <article class="has-image">
+                        <header class="article-header">
+                            <div class="article-details">
+
+                                <h2 class="article-title">
+                                    <a href="/hugo/linux/shell/shell%e7%9a%84appimg/">shell的appimg</a>
+                                </h2>
+
+                            </div>
+                        </header>
+                    </article>
                 
                     <article class="has-image">
                         <header class="article-header">

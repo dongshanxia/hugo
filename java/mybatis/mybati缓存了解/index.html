@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -1034,7 +1038,7 @@ throw new BuilderException(&#34;Error parsing Mapper XML. The XML location is &#
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/java/leak/>
+                    <a class="" href=/hugo/java/mybatis/mybatis%e6%a0%b8%e5%bf%83%e7%bb%84%e4%bb%b6/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -1042,7 +1046,7 @@ throw new BuilderException(&#34;Error parsing Mapper XML. The XML location is &#
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/java/mybatis/mybatis%e6%8b%a6%e6%88%aa%e5%99%a8%e6%89%a7%e8%a1%8c%e5%8e%9f%e7%90%86/>
+                    <a class="" href=/hugo/es/%e5%ae%89%e8%a3%85OpenSearch/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

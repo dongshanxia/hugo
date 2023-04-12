@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -374,12 +378,12 @@
 <ul>
 <li>useradd 选项 用户名</li>
 </ul>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-06-13/141531_4e97865a74.png" alt="image-20200613141535359"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-06-13/141531_4e97865a74.png" alt="image-20200613141535359"/></p>
 <h3 id="12passwd">1.2passwd</h3>
 <ul>
 <li>passwd 选项 用户名</li>
 </ul>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-06-13/141621_1837097202.png" alt="image-20200613141630828"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-06-13/141621_1837097202.png" alt="image-20200613141630828"/></p>
 <h3 id="13-">1.3 例子：</h3>
 <h4 id="131testuser--hometestuser">1.3.1创建用户testuser  主目录为home/testuser</h4>
 <div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>useradd –d  /home/testuser -m testuser  
@@ -401,7 +405,7 @@
 </ul>
 <h2 id="2---etcgroup">2、 用户组相关  /etc/group</h2>
 <h3 id="21-groupadd">2.1 groupadd</h3>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-06-13/141705_374022899c.png" alt="image-20200613141714691"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-06-13/141705_374022899c.png" alt="image-20200613141714691"/></p>
 <h3 id="22-">2.2 例子</h3>
 <h4 id="221--testgroup">2.2.1 增加用户组 testgroup</h4>
 <div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>groupadd testgroup   
@@ -414,7 +418,7 @@
 </span></span></code></pre></div>
 <h3 id="3">3.用户与用户组相关</h3>
 <h4 id="31-usermod">3.1 usermod</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-06-13/141744_fb8fd535f5.png" alt="image-20200613141754276"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-06-13/141744_fb8fd535f5.png" alt="image-20200613141754276"/></p>
 <h4 id="32">3.2例子</h4>
 <ul>
 <li>让testuser 加入testgGroup   -G 后面+ group的名字  -a 是指加入</li>
@@ -600,7 +604,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/linux/%e9%98%b2%e7%81%ab%e5%a2%99firewalld/>
+                    <a class="" href=/hugo/linux/linux%e4%b8%bb%e6%9c%ba%e5%90%8d/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

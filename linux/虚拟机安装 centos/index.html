@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -385,48 +389,48 @@
 </ul>
 <h3 id="3-centos">3. 配置centos镜像</h3>
 <h4 id="31-">3.1 新建虚拟机信息</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064533_2uPDld0Mq7.png" alt="image-20201206144526579"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064533_2uPDld0Mq7.png" alt="image-20201206144526579"/></p>
 <h4 id="32-">3.2 编辑虚拟机名称</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064554_D70ucfCM21.png" alt="image-20201206144553949"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064554_D70ucfCM21.png" alt="image-20201206144553949"/></p>
 <h4 id="33--">3.3  配置虚拟机内存大小</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064618_3duM5WSerD.png" alt="image-20201206144617403"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064618_3duM5WSerD.png" alt="image-20201206144617403"/></p>
 <h4 id="34---">3.4 配置虚拟硬盘  选择新建</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064631_2GWqH7lyTi.png" alt="image-20201206144630843"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064631_2GWqH7lyTi.png" alt="image-20201206144630843"/></p>
 <h4 id="35-">3.5 配置虚拟硬盘文件类型</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064712_E7F5WXhI81.png" alt="image-20201206144711480"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064712_E7F5WXhI81.png" alt="image-20201206144711480"/></p>
 <h4 id="36-">3.6 配置虚拟硬盘大小</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064742_OTm49w6b6b.png" alt="image-20201206144741457"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064742_OTm49w6b6b.png" alt="image-20201206144741457"/></p>
 <h4 id="37---centos">3.7 选择虚拟硬盘  就是下载好的centos镜像</h4>
 <p><img src="/home/zhu/.config/Typora/typora-user-images/image-20201206144842477.png" alt="image-20201206144842477"/></p>
 <h5 id="371">3.7.1选择后的图</h5>
 <p><img src="/home/zhu/.config/Typora/typora-user-images/image-20201206144911286.png" alt="image-20201206144911286"/></p>
 <h3 id="4-centos7">4. 安装centos7</h3>
 <h4 id="41centos-----install--centos-7">4.1开始安装centos   选择第一个  install  centos 7</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/064942_O5rZP5JGSY.png" alt="image-20201206144941384"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/064942_O5rZP5JGSY.png" alt="image-20201206144941384"/></p>
 <h4 id="42--">4.2 系统语言选择 选择英文</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034809_E80HOy582Y.png" alt="image-20201206145041053"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/034809_E80HOy582Y.png" alt="image-20201206145041053"/></p>
 <h4 id="43-">4.3 进去后第一个画面</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034540_3Tf7cxCX78.png" alt="image-20201213112613354"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/034540_3Tf7cxCX78.png" alt="image-20201213112613354"/></p>
 <h4 id="44-">4.4 配置时间和时区</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034815_04Ly1143Br.png" alt="image-20201206145109995"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/034815_04Ly1143Br.png" alt="image-20201206145109995"/></p>
 <h4 id="45-">4.5 配置硬盘分区</h4>
 <h5 id="451--">4.5.1 选中硬盘-配置硬盘分区</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034907_C2Ozg771EH.png" alt="image-20201206145148486"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/034907_C2Ozg771EH.png" alt="image-20201206145148486"/></p>
 <h5 id="452-">4.5.2 配置硬盘分区之默认自动</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/034930_qfDXe68441.png" alt="image-20201206145207842"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/034930_qfDXe68441.png" alt="image-20201206145207842"/></p>
 <h5 id="453--">4.5.3 配配置硬盘分区之默认自动 结果</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-06/065240_YxucR6X2w3.png" alt="image-20201206145239026"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-06/065240_YxucR6X2w3.png" alt="image-20201206145239026"/></p>
 <h5 id="454-">4.5.4 硬盘分区配置完成</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035257_xthHakcC2d.png" alt="image-20201213115255982"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/035257_xthHakcC2d.png" alt="image-20201213115255982"/></p>
 <h4 id="46-">4.6 配置网络</h4>
 <h5 id="461-">4.6.1 配置网络静态获取</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035200_O6fkFEHRSQ.png" alt="image-20201213115156130"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/035200_O6fkFEHRSQ.png" alt="image-20201213115156130"/></p>
 <h5 id="462-">4.6.2 配置网络随着系统启动而自动脸上</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035323_22ef6i9oSa.png" alt="image-20201213115321488"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/035323_22ef6i9oSa.png" alt="image-20201213115321488"/></p>
 <h5 id="463-">4.6.3 配置主机名字</h5>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035359_PL2m5SlL1N.png" alt="image-20201213115358189"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/035359_PL2m5SlL1N.png" alt="image-20201213115358189"/></p>
 <h4 id="47-reboot">4.7 完成可以reboot</h4>
-<p><img src="https://our.dongshanxia.top:38443/img/2020-12-13/035410_fvjfL3qAm1.png" alt="image-20201213115405713"/></p>
+<p><img src="https://img.dongshanxia.top:35000/img/2020-12-13/035410_fvjfL3qAm1.png" alt="image-20201213115405713"/></p>
 
             </article>
         </div>
@@ -623,7 +627,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/linux/linux%e4%b8%bb%e6%9c%ba%e5%90%8d/>
+                    <a class="" href=/hugo/linux/linux%e4%bf%a1%e5%8f%b7/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>

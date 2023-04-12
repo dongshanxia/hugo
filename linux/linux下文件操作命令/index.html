@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -368,29 +372,29 @@
 
         <div id="post" class="post">
             <article class="article-content"><hr/>
-<h1 id="linux">Linux下文件操作命令 </h1>
+<h1 id="linux">Linux下文件操作命令</h1>
 <h2 id="tar">tar命令</h2>
 <ul>
 <li>使用tar命令一般打包分为两种*.tar ,*.tar.gz 相信大家也使用过</li>
-<li>tar -zcvf test.tar test/ </li>
+<li>tar -zcvf test.tar test/</li>
 <li>tar -zcvf test.tar.gz test/</li>
 <li>两条命令为：将当前文件夹下的test文件夹中的所有数据压缩至test.tar* 解压后是 test/</li>
-<li>解压命令为：tar -zxvf **.tar   tar -zxvf **.tar.gz</li>
+<li>解压命令为：tar -zxvf **.tar tar -zxvf **.tar.gz</li>
 </ul>
 <h2 id="zip">zip命令</h2>
 <ul>
 <li>压缩命令： zip -r test.zip test/</li>
-<li>解压命令： unzip test.zip       --解压至当前文件夹中 </li>
+<li>解压命令： unzip test.zip   --解压至当前文件夹中</li>
 </ul>
 <h2 id="heading">复制命令</h2>
 <ul>
-<li>cp test.zip /data/test    --将test.zip复制到/data/test中 </li>
-<li>cp -r test.zip /data/test    --将test.zip覆盖复制到/data/test中  /data/test路径中有test.zip 则直接替换</li>
+<li>cp test.zip /data/test  --将test.zip复制到/data/test中</li>
+<li>cp -r test.zip /data/test  --将test.zip覆盖复制到/data/test中/data/test路径中有test.zip 则直接替换</li>
 </ul>
 <h2 id="heading-1">上传下载命令</h2>
 <ul>
 <li>rz 上传 会弹出本地窗口，选择文件 点击确定即可上传</li>
-<li>scp 本地文件  远程主机用户@远程主机IP：远程目录  此命令需要输入密码</li>
+<li>scp 本地文件 远程主机用户@远程主机IP：远程目录 此命令需要输入密码</li>
 <li>scp test.zip <a href="mailto:htga@192.168.200.128">htga@192.168.200.128</a>:/home/htga</li>
 </ul>
 
@@ -406,7 +410,7 @@
     <div id="table-of-contents">
         <nav id="TableOfContents"><ul>
 <li>
-<a href="#linux">Linux下文件操作命令 </a><ul>
+<a href="#linux">Linux下文件操作命令</a><ul>
 <li>
 <a href="#tar">tar命令</a></li>
 <li>

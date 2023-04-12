@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -370,8 +374,11 @@
             <article class="article-content"><hr/>
 <h3 id="crontab">crontab</h3>
 <ul>
-<li>查看</li>
+<li>查看
+<ul>
 <li>crontab -l</li>
+</ul>
+</li>
 <li>编辑
 <ul>
 <li>crontab -e</li>
@@ -406,6 +413,11 @@
 <ul>
 <li>&gt;/dev/null 2&gt;&amp;1  命令后面加这个</li>
 </ul>
+</li>
+<li>
+<p>案例</p>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>*/10 * * * *  /home/zhu/Qsyc/logseq/AutoPush.sh   &gt;&gt; /home/zhu/Qsyc/logseq/logs/date.log 2&gt;&amp;1
+</span></span></code></pre></div>
 </li>
 </ul>
 

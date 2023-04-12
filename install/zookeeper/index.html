@@ -109,6 +109,7 @@
         $.ajax({
             type: "GET",
             url: " https://hugo.dongshanxia.top:35000/api/v3/zincSearch?name="+key+"&num="+currentPage,
+           
             dataType: "json",
             success: function (data) {
                 
@@ -145,6 +146,9 @@
                             <a href=`+ "/hugo/"+encodeUrl+` >`+item.name+`</a>
                             </h2>
                             <h7 class="article-subtitle" style="font-size: 0.5rem">
+                                `+item.full_name+`
+                            </h7>
+                            <h7 class="article-subtitle" style="font-size: 0.5rem">
                             2021-12-20 统计 26 预计读完 1 分钟
                         </h7>
                         </div>
@@ -178,7 +182,7 @@
     }
 
 
-    
+    // <header class="article-category">
     
     
     
@@ -368,7 +372,7 @@
 
         <div id="post" class="post">
             <article class="article-content"><hr/>
-<h1 id="zookeeperhttpourdongshanxiatop18888kafkazookeepere99b86e7bea4e690ade5bbbahtml"><a href="http://our.dongshanxia.top:18888/kafka/zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA.html">zookeeper集群搭建</a></h1>
+<h1 id="zookeeperhttpshugodongshanxiatop35000kafkazookeepere99b86e7bea4e690ade5bbbahtml"><a href="https://hugo.dongshanxia.top:35000/kafka/zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA.html">zookeeper集群搭建</a></h1>
 <h2 id="zookeeper">一、下载zookeeper</h2>
 <ul>
 <li>进入将要安装的目录</li>
@@ -543,7 +547,7 @@
     <div id="table-of-contents">
         <nav id="TableOfContents"><ul>
 <li>
-<a href="#zookeeperhttpourdongshanxiatop18888kafkazookeepere99b86e7bea4e690ade5bbbahtml">zookeeper集群搭建</a><ul>
+<a href="#zookeeperhttpshugodongshanxiatop35000kafkazookeepere99b86e7bea4e690ade5bbbahtml">zookeeper集群搭建</a><ul>
 <li>
 <a href="#zookeeper">一、下载zookeeper</a></li>
 <li>
