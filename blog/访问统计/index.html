@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>a</title>
+    <title>访问统计</title>
     
 
 
@@ -372,27 +372,26 @@
 
         <div id="post" class="post">
             <article class="article-content"><hr/>
-<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 1</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 3</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 4</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 5</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 6</span><span>## abc
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 7</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 8</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f"> 9</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">10</span><span>sss
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">11</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">12</span><span>abc
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">13</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">14</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">15</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">16</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">17</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">18</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">19</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">20</span><span>hive
+<h2 id="heading">静态页面访问统计</h2>
+<h3 id="heading-1">使用方式</h3>
+<h4 id="js">加入js</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span>   &lt;script async 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>   data-api=&#34;https://hugo.dongshanxia.top:35000/api/v4/count&#34; 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>   src=&#34;https://hugo.dongshanxia.top:35000/api/js&#34;&gt;    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>   &lt;/script&gt;
 </span></span></code></pre></div>
+<h4 id="html">加入html</h4>
+<div class="highlight"><pre tabindex="0" style="color:#b0c4de;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">1</span><span> &lt;p style=&#34;text-align: center; max-width: 95vw; margin: auto; padding-top: 10px;&#34;&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">2</span><span>            本页访问量 &lt;span id=&#34;top_page_pv&#34;&gt;-&lt;/span&gt; 次
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">3</span><span>            本页访客数 &lt;span id=&#34;top_page_uv&#34;&gt;-&lt;/span&gt; 人 =====
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">4</span><span>            本站访问量 &lt;span id=&#34;top_site_pv&#34;&gt;-&lt;/span&gt; 次
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">5</span><span>            本站访客数 &lt;span id=&#34;top_site_uv&#34;&gt;-&lt;/span&gt; 人
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#58626f">6</span><span>&lt;/p&gt;
+</span></span></code></pre></div>
+<h4 id="heading-2">版本说明</h4>
+<ul>
+<li>目前只能暂存30天</li>
+</ul>
 
             </article>
         </div>
@@ -404,7 +403,27 @@
         <button class="buttonStyle" id="close" onclick="click_close()">关</button>
     </div>
     <div id="table-of-contents">
-        
+        <nav id="TableOfContents"><ul>
+<li>
+<ul>
+<li>
+<a href="#heading">静态页面访问统计</a><ul>
+<li>
+<a href="#heading-1">使用方式</a><ul>
+<li>
+<a href="#js">加入js</a></li>
+<li>
+<a href="#html">加入html</a></li>
+<li>
+<a href="#heading-2">版本说明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
     </div>
 
 </div>
@@ -509,7 +528,7 @@
 
             
                 <div class="pageTop">
-                    <a class="" href=/hugo/linux/pve/pve/>
+                    <a class="" href=/hugo//search/>
                         <button class="buttonStyle">上</button>
                     </a>
                 </div>
@@ -517,7 +536,7 @@
             <div class="pagePiddle"></div>
             
                 <div class="pageBottom">
-                    <a class="" href=/hugo/about/dongshanxia/>
+                    <a class="" href=/hugo/vpn/top_vpn_linux_%e9%85%8d%e7%bd%ae/>
                         <button class="buttonStyle">下</button>
                     </a>
                 </div>
@@ -832,7 +851,7 @@
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
-<script async data-api=" https://hugo.dongshanxia.top:35000/api/v4/count" src=" https://hugo.dongshanxia.top:35000/api/js"></script>
+<script async data-api="https://hugo.dongshanxia.top:35000/api/v4/count" src=" https://hugo.dongshanxia.top:35000/api/js"></script>
 
 <script>
     
