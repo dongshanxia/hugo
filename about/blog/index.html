@@ -382,10 +382,23 @@ C--&gt;vercel
 D--&gt;netlify
 C--go-OS-Client--&gt;E[openSearch]
 
-F[blogweb] &lt;----&gt; G[go-blogserver]
+F[blog-web] &lt;----&gt; G[go-blog-server]
 
-E&lt;--正在实现--&gt;G
+E&lt;----&gt;G
 
+C--go-OS-Client--&gt;H[pgsql]
+
+
+H---&gt;HH[blog-selenium]
+HH---&gt;I[blog-chrome]
+
+
+I&lt;---&gt;J[blog-clipboard]
+
+I---&gt;K[CSDN]
+I---&gt;L[掘金]
+I---&gt;M[博客园]
+I---&gt;N[简书]
 </div><ol>
 <li>格式md</li>
 <li>传输git</li>
